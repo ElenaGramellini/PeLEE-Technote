@@ -133,9 +133,41 @@ Conceptual issues can be raised in association with the various assumptions made
 \newpage
 
 \section{Neutrino Event Reconstruction \textcolor{red}{Giuseppe, David + ...}}
-\subsection{Particle Identification}
-\subsubsection{Log Likelihood Ratio Particle ID}
+
+\subsection{Track and Shower Reconstruction \textcolor{green}{Giuseppe}}
+\label{sec:tkshreco}
+The output of Pandora~\cite{bib:pandoraub} is organized in a hierarchy of reconstructed Particle Flow Particles (``PFParticles''), which describes the particle content in an observed event as a parent-daughter relationship chain. Final state PFParticles are 3D objects matching clusters of hits in at least two different planes.
+Pandora classifies PFParticles as track-like or shower-like base on a Support Vector Machine (SVM) algorithm~\cite{bib:tkshsvm}, producing a score with values between 0 (shower-like) and 1 (track-like).
+
+Pandora processes track-like PFParticles with a sliding linear fit procedure (described in~\cite{bib:pandoraub}) that returns the 3D position and direction at each point along the trajectory (where each point corresponds to a 2D hit). For each point the d$Q$/d$x$ and distance from the track-start are recorded using MicroBooNE's Calorimetry module. This procedure allows to accurately measure d$x$, including small deflections due to the particle's trajectory and SCE offsets, and d$Q$, by incorporating MicroBooNE's full position- and field-dependent relative and absolute charge calibration. From d$Q$/d$x$, d$E$/d$x$ is calculated assuming a fixed recombination correction assuming 2.1 MeV/cm energy loss, but accounting for local variations in the electric field.
+
+We evaluate the energy and 3D direction of shower-like PFParticles with the same algorithm used for the $\pi^0$ reconstruction paper~\cite{bib:pi0reco}. The energy reconstruction accounts for various detector effects, including gain and recombination; corrections for reconstruction effects (hit threshold and imperfect clustering) will be described in Sec.~\ref{sec:ereco}. We also fit showers using a Kalman filter-based procedure~\cite{bib:shrtrackfitter} which aims at identifying the main trunk of the shower by rejecting hits that are longitudinally or transversely displaced from it; the output of this fit is a track object so that the calorimetric tools described above become available for showers as well.
+
+By default, Pandora separates showers and tracks with a cut on the SVM score at 0.5; however, as will be described in later sections, in many cases we choose different cut values, i.e. tighter shower definition for the $\nu_e$ selection and looser for the pi0 control region.
+
+\subsection{Particle Identification \textcolor{green}{Nico}}
+% GC: this part is now in the previous subsection
+%In the neutrino slice, every PFParticle is reconstructed in three different ways:
+%\begin{itemize}
+%    \item Track, using the standard Pandora Track reconstruction
+%    \item Shower, using the standard Pandora Shower reconstruction (is there any modification on top of this?)
+%    \item Track-fitted shower, using a dedicated track fitting tool which aims at identifying the main branch of %the shower and fit it as a track. As a result, all the tools developed for the track become available for the %tracks too. For example, for each track-fitted shower, a recob::track and a anab::calorimetry objects are available.
+%\end{itemize}
+Particle identification is performed with different tools depending the type of candidate a given PFParticle has been selected as.
+If the PFParticle has been selected as a muon or proton candidate, so as a track-like object, the identification is performed using the Calorimetry Likelihood tool, which results in the variable Log Likelihood Ratio PID \ref{subsec:loglikelihoodpid}.
+If the PFParticle has been selected as an electron or photon candidate, the identification is performed using several variables described in \ref{subsec:egammaspearation}.
+
+It is noteworthy that this particle identification consists of one or multiple variables, available for the specific PFParticle, that may or may not depend on the rest of the slice. 
+For example, the shower dE/dx depends only on the PFParticle itself, whereas the track-shower separation relies also on additional objects identified in the slice.
+
+The value of the cuts applied on these variables depend not only on the general level of efficiency and mis-identification one may want to achieve in distinguishing two kind of particles (electrons from photons, for example), but also on the mixture of backgrounds, which eventually depends on the specific selection the analyser is performing.
+
+\subsubsection{Log Likelihood Ratio Particle ID \textcolor{red}{Nico}}
+\label{subsec:loglikelihoodpid}
+
+
 \subsubsection{$e$/$\gamma$ Separation}
+\label{subsec:egammaspearation}
 \par Distinguishing electron from photon EM-showers is one of the crucial steps required to perform a measurement of $\nu_e$ interactions in the BNB beam. Photon backgrounds to a $\nu_e$ measurement are largely caused by neutrino interactions with $\pi^0 \rightarrow \gamma\gamma$ in the final state, which dominate the $\nu_e$ event rate by at least an order of magnitude. Three key features distinguish events with $\pi^0$ induced photon showers from $\nu_e$ interactions: (a) the presence of two final state EM showers. (b) the non-zero conversion distance separating the neutrino interaction vertex from the shower start point, and (c) the calorimetric separation via $dE$/$dx$ due to the overlapping ionization segment of $e^+$/$e^-$ pair-conversions through which most $\gamma$ showers manifest themselves. Figure~\ref{fig:egammasep} shows how, at reconstruction level, each of these features can aid in $e$/$\gamma$ separation. This section describes how each of the items above is utilized in the analysis on a technical level, what performance is obtained and challenges (both physics- and reconstruction-driven) are encountered in doing so.
 
 \begin{figure}[ht] 
@@ -161,9 +193,11 @@ Conceptual issues can be raised in association with the various assumptions made
 
 \par \textbf{two-shower requirement} Requiring a single reconstructed shower keeps 68\% of $nu_e$ interactions (with no $\pi^0$ in the final state) while removing 61\% of $\nu_{\mu}$ events with at least one $\pi^0$ in the final state. The fraction of kept $\nu_e$s grows to 79\% when looking below 800 MeV of true energy (the focus of this analysis). Rejection of $\nu_e$s is largely due to events where the electron shower is reconstructed as two separate EM showers, often closely aligned in 3D. Events with final state $\pi^0$s are reconstructed with a single EM shower in the final state because either the second photon escapes the TPC active volume completely (irreducible) or because the second shower is not reconstructed. The dominant causes of this second case are (1) highly-boosted $\pi^0$ decays, in which two aligned photons are merged into one shower and (2) photons which go undetected, often low in energy (below 100 MeV). Additional discriminating variables which aim to recover the reconstruction-related mis-ID of (1) and (2) are utilized in the analysis and presented in Sec.~\ref{sec:nueselection:tools}.
 \par \textbf{track-shower separation} For events where hadronic activity at the neutrino interaction vertex (i.e. final-state protons) is visible, a clear gap between the vertex and the shower start-point can be used to reject $\gamma$ backgrounds. This is a powerful background mitigation tool in the 1$e$N$p$ $\nu_e$ selection. Two factors determine the performance of such a tool: the ability to detect protons and other hadronic activity at the vertex and the accuracy with which the shower start-point is reconstructed. The shower start-point reconstruction accuracy determines the level of background rejection one can obtain, as $\gamma$ showers lead to an exponential conversion-distance distribution. A 1 vs. 5 cm track-shower separation cuts lead to 95\% vs 74\% mis-ID respectively, but causes a drop in selection efficiency for 1$e$N$p$ events from 72\% to 28\%. In order to enhance the ability to isolate $\nu_e$ events in the 1$e$N$p$ selection through vertex-displacement, different metrics are used to measure the presence of a gap between an electron and proton candidate. These will be described in section~\ref{sec:nueselection:tools}. It is important to note that this background mitigation strategy is not applicable to single-electron searches, which are an important contribution to $\nu_e$ interactions, especially in the low-energy regime.
-\par \textbf{shower d$E$/d$x$} The majority of photons manifest themselves in a TPC through the ionization released by the $e^+$/$e^-$ pair produced via pair-conversion. The electron-positron pair is highly aligned and overlaps on the mm-scale, leading to a doubly-ionizing charge-segment compared to electron showers. To measure this, the trunk of each reconstructed shower is fit to a track with a modified version of the MicroBooNE track-fitter~\cite{bib:shrtrackfitter} and for each point along a track the d$Q$/d$x$  and distance from the shower-start are recorded using MicroBooNE's Calorimetry module. This procedure allows to accurately measure d$x$, including small deflections due to the electron's trajectory and SCE offsets, and d$Q$, by incorporating MicroBooNE's full position- and field-dependent relative and absolute charge calibration. From d$Q$/d$x$, d$E$/d$x$ is calculated assuming a fixed recombination correction assuming 2.1 MeV/cm energy loss, but accounting for local variations in the electric field. The distinctive 4 MeV/cm population expected for $\gamma$ showers is visible in figure~\ref{fig:egammasep:dedx}. The main limitation to $e$/$\gamma$ separation via d$E$/d$x$ is the large fraction of photons reconstructed with a d$E$/d$x$ of less then 3 MeV/cm (23\% of $\pi^0$ events fall in the 1-3 MeV range). This is due both to mis-reconstructed events, for which the start-point is incorrectly reconstructed by more than one or two cm, and to events where the photon shower's energy loss-profile is not as clearly distinguishable from that of a single electron. While the relative contribution of these two sources is still under determination, the second causes a significant mis-ID rate, and is largely associated to lower-energy $\gamma$ showers for which the production of a highly asymmetric electron-positron pair where one of the electrons is barely visible is more frequent. The impact of shower energy on the measured d$E$/d$x$ for a $\gamma$ shower is shown in figure~\ref{fig:dedxgammas:energy}. Below 100 MeV, where most $\gamma$ showers in the BNB are produced, the reconstructed d$E$/d$x$ is electron-like. The impact of distance from the shower start-point on whether  d$E$/d$x$ is reconstructed to be 2 or 4 MeV/cm is also important, as can be seen in figure~\ref{fig:dedxgammas:dist}. This is particularly true for low-energy asymmetric pair-production events, and motivates utilizing 
+\par \textbf{shower d$E$/d$x$} The majority of photons manifest themselves in a TPC through the ionization released by the $e^+$/$e^-$ pair produced via pair-conversion. The electron-positron pair is highly aligned and overlaps on the mm-scale, leading to a doubly-ionizing charge-segment compared to electron showers. To measure this, we use the track fit of the main shower trunk and the calorimetric tools as described in Sec.~\ref{sec:tkshreco}. 
+%with a modified version of the MicroBooNE track-fitter~\cite{bib:shrtrackfitter} and for each point along a track the d$Q$/d$x$  and distance from the shower-start are recorded using MicroBooNE's Calorimetry module. This procedure allows to accurately measure d$x$, including small deflections due to the electron's trajectory and SCE offsets, and d$Q$, by incorporating MicroBooNE's full position- and field-dependent relative and absolute charge calibration. From d$Q$/d$x$, d$E$/d$x$ is calculated assuming a fixed recombination correction assuming 2.1 MeV/cm energy loss, but accounting for local variations in the electric field. 
+The distinctive 4 MeV/cm population expected for $\gamma$ showers is visible in figure~\ref{fig:egammasep:dedx}. The main limitation to $e$/$\gamma$ separation via d$E$/d$x$ is the large fraction of photons reconstructed with a d$E$/d$x$ of less then 3 MeV/cm (23\% of $\pi^0$ events fall in the 1-3 MeV range). This is due both to mis-reconstructed events, for which the start-point is incorrectly reconstructed by more than one or two cm, and to events where the photon shower's energy loss-profile is not as clearly distinguishable from that of a single electron. While the relative contribution of these two sources is still under determination, the second causes a significant mis-ID rate, and is largely associated to lower-energy $\gamma$ showers for which the production of a highly asymmetric electron-positron pair where one of the electrons is barely visible is more frequent. The impact of shower energy on the measured d$E$/d$x$ for a $\gamma$ shower is shown in figure~\ref{fig:dedxgammas:energy}. Below 100 MeV, where most $\gamma$ showers in the BNB are produced, the reconstructed d$E$/d$x$ is electron-like. The impact of distance from the shower start-point on whether d$E$/d$x$ is reconstructed to be 2 or 4 MeV/cm is also important, as can be seen in figure~\ref{fig:dedxgammas:dist}. This is particularly true for low-energy asymmetric pair-production events, and motivates utilizing 
 d$E$/d$x$ information at different distances from the shower start-point for $e$/$\gamma$ separation.
-\begin{figure}[ht] 
+\begin{figure}[H] 
 \begin{center}
     \begin{subfigure}[b]{0.45\textwidth}
     \centering
@@ -181,8 +215,8 @@ d$E$/d$x$ information at different distances from the shower start-point for $e$
 
 \newpage
 
-\subsection{Energy Reconstruction \textcolor{red}{Giuseppe + ...}}
-
+\subsection{Energy Reconstruction \textcolor{red}{Giuseppe + David}}
+\label{sec:ereco}
 \par Energy reconstruction is performed calorimetrically for EM showers and through a measurement of a track's range for contained muons and protons. For muons multiple Coulomb scattering (MCS) is also used to estimate the muon energy. The energy resolution obtained for different particles is reported in table~\ref{tab:eres}. More information on each particle specie's energy resolution is reported in figure~\ref{fig:eres:particle} where for each particle species the 2D reconstructed vs. true energy distribution (in log-scale) is shown on the left, next to a plot of energy resolution vs. true energy on the right. The energy resolution reported here is obtained from a Gaussian plus one-sided exponential fit to the distribution $[E_{\rm reco}-E_{\rm true}] / E_{\rm true}$. The resolution reported refers only to the Gaussian width $\sigma$ extracted in the fit, and therefore does not account for negative tails, which are significant in the case of EM shower energy reconstruction, and described below.
 
 
@@ -284,12 +318,130 @@ Figure~\ref{fig:eres:neutrino} shows the comparison between reconstructed energy
 \newpage
 
 \section{$\nu_e$ Selections}
+
 \subsection{Common Tools and Inputs \textcolor{red}{Sophie + ...}}
 \label{sec:nueselection:tools}
+
+The 1$e$N$p$ and 1$e$0$p$ selections rely on a common pre-selection which requires the presence of at least one reconstructed and contained EM shower (figure~\ref{fig:nue:presel:nshower}) with reconstructed energy above 70 MeV (figure~\ref{fig:nue:presel:shrenergy}). This second cut applies as a Michel-electron veto, as the majority of events which do not pass this cut are associated to cosmic or $\nu_{\mu}$ induced $\mu \rightarrow e$ Michel electrons. The two selections are subsequently split based on whether a proton candidate is (N$p$) or is not (0$p$) found. Events with a fully contained track must have a \texttt{trkpid} score $< 0$ and a value of \texttt{tksh\_angle} $> -0.9$. The first condition requires that the track be proton-like according to the PID tool~\ref{subsec:loglikelihoodpid}, while the second excludes tracks reconstructed back-to-back to the electron candidate, generally due to mis-reconstruction. For events with more than one reconstructed track, these requirements are applied on the longest track.
+
+\begin{figure}[H] 
+\begin{center}
+    \begin{subfigure}[b]{0.3\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{nueselection/n_showers_contained_01132020_RUN1.pdf}
+    \caption{\label{fig:nue:presel:nshower} }
+    \end{subfigure}
+    \begin{subfigure}[b]{0.3\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{nueselection/n_tracks_contained_01132020_RUN1.pdf}
+    \caption{\label{fig:nue:presel:ntrack} }
+    \end{subfigure}
+    \begin{subfigure}[b]{0.3\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{nueselection/shr_energy_tot_cali_01132020_RUN1.pdf}
+    \caption{\label{fig:nue:presel:shrenergy} }
+    \end{subfigure}
+\caption{\label{fig:nue:presel}Variables input to the common $\nu_e$ N$p$ and 0$p$ pre-selections.}
+\end{center}
+\end{figure}
+
+\par The efficiencies of the 1$e$N$p$ and 1$e$0$p$ pre-selections are shown in figure~\ref{fig:nue:presel:eff}. Efficiencies are presented as a function of true neutrino energy~\ref{fig:nue:presel:eff:nu}, proton KE~\ref{fig:nue:presel:eff:proton}, and electron energy~\ref{fig:nue:presel:eff:elec}. Each plot shows in black the efficiency for the common pre-selection (before a proton requirement is or is not imposed) and is reported relative to all intrinsic $\nu_e$ events. In blue and red respectively are shown the efficiencies for the  1$e$N$p$ and 1$e$0$p$ selections respectively, for true N$p$ and 0$p$ events. Shaded histograms in red and blue show the stacked truth-level distributions for N$p$ and 0$p$ events for the variables being plotted.
+
+\begin{figure}[H] 
+\begin{center}
+    \begin{subfigure}[b]{0.3\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{nueselection/nu_RUN1.pdf}
+    \caption{\label{fig:nue:presel:eff:nu} }
+    \end{subfigure}
+    \begin{subfigure}[b]{0.3\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{nueselection/proton_RUN1.pdf}
+    \caption{\label{fig:nue:presel:eff:proton} }
+    \end{subfigure}
+    \begin{subfigure}[b]{0.3\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{nueselection/elec_RUN1.pdf}
+    \caption{\label{fig:nue:presel:eff:elec} }
+    \end{subfigure}
+\caption{\label{fig:nue:presel:eff}}
+\end{center}
+\end{figure}
+
+\subsection{Variable definitions}
+
+\par \noindent  \textbf{Slice variables}:
+
+\begin{itemize}
+    \item \emph{nslice}: number of neutrino slices identified by the SliceId (possible values are 0 and 1);
+    \item \emph{reco\_nu\_vtx\_sce\_\{x,y,z\}}: Reconstructed space charged corrected neutrino interaction vertex in (x,y,z) coordinates.
+    \item \emph{n\_showers\_contained}: number of showers with a starting point within the fiducial volume;
+    \item \emph{n\_tracks\_contained}: number of tracks fully contained in the fiducial volume;
+    \item \emph{contained\_fraction}: fraction of hits in PFParticles contained in the fiducial volume (according to definitions above) with respect to the total number of clustered hits in the slice;
+    \item \emph{hits\_ratio}: ratio between hits from showers and total number of hits;
+    \item \emph{CosmicIP}: closest distance between shower start and space points associated to tracks flagged as cosmics.
+    \item \emph{crtveto}
+    \item \emph{\_closestNuCosmicDist}
+\end{itemize}
+
+\par \noindent \textbf{Shower and Track variables}:
+
+\begin{itemize}
+    \item \emph{tksh\_distance}: distance between leading shower vertex and longest track vertex;
+    \item \emph{tksh\_angle}: angle between leading shower vertex and longest track vertex;
+    item \emph{merge\_bestdist}: Distance between shower start point and track start (or end) point for the track in the slice that best matches the direction of the shower. 
+\end{itemize}
+
+\par \noindent \textbf{Shower variables}:
+
+\begin{itemize}
+    \item \emph{shr\_energy\_tot\_cali}: sum of the energy of the calibrated showers (in GeV);
+    \item \emph{shr\_tkfit\_2cm\_dedx\_\{U,V,Y\}}: dE/dx in the first 2 cm of the leading shower on plane (U,V,Y) with the track fitting;
+    \item \emph{shr\_tkfit\_gap10\_dedx\_\{U,V,Y\}}: dE/dx in the [1,5] cm range of the leading shower on plane (U,V,Y) with the track fitting;
+    \item \emph{shr\_score}: Pandora SVM track/shower score for the leading shower;
+    \item \emph{shrmoliereavg}: xxx
+    \item \emph{subcluster}: number of subclusters (counted in all planes) for the leading shower.
+    \item \emph{trkfit}: ratio of hits fitted in the track fit to the shower to all hits in the shower.
+\end{itemize}
+
+\par \noindent  \textbf{Track variables}:
+
+\begin{itemize}
+    \item \emph{trkpid}: proton-muon LLR particle identification 
+\end{itemize}
+
+\par \noindent  \textbf{$\pi^0$ rejection variables}:
+
+\begin{itemize}
+    \item \emph{secondshower\_Y\_nhit}:
+    \item \emph{secondshower\_Y\_dot}:
+    \item \emph{anglediff\_Y}:
+    \item \emph{secondshower\_Y\_vtxdist}:
+\end{itemize}
+
 \subsection{Inclusive Channel}
-\subsection{1$e$N$p$ Channel}
+
+\subsection{1$e$N$p$ Channel \textcolor{red}{David + Giuseppe}}
+
+The 1$e$N$p$ channel is the most sensitive to the MiniBooNE eLEE signal as it contains a large fraction of the signal events and allows for selection requirements based both on showers and tracks. 
+Given the large cosmic background and that $\nu_e$ charge-current interactions are O(1\%) in the BNB, a high-purity selection is needed to achieve a sizeable signal sensitivity. 
+
+We first define a set of minimal requirements ("preselection") to obtain a high statistics sample (dominated by cosmic and neutrino backgrounds) that is used to monitor the data-MC agreement of the selection variables. 
+We then define two alternative selections, respectively based on a simple box-cut approach and on boosted decision trees (BDT); the BDT approach is clearly the most sensitive, while box-cuts provide a robust reference selection.
 
 \par \textbf{Preselection}:
+
+At preselection stage we apply the minimum set of requirements so that all selection variabes can be defined, plus the containment and a minimum shower energy to reject Michel electrons:
+\begin{itemize}
+    \item nslice = 1
+    \item n\_tracks\_contained $>$ 0
+    \item n\_showers\_contained $>$ 0
+    \item contained\_fraction $>$ 0.9
+    \item shr\_energy\_tot\_cali $>$ 0.07
+\end{itemize}
+
+\par 
+Topics to discuss: selection efficiency and purity, data-MC agreement of selection variables.
 
 \begin{figure}[ht] 
 \begin{center}
@@ -309,6 +461,31 @@ Figure~\ref{fig:eres:neutrino} shows the comparison between reconstructed energy
 
 \par \textbf{Box-cuts}:
 
+In addition to the preselection requirements, cuts are applied to suppress specific backgrounds.
+Cosmics are rejected by requiring large CosmicIP and a proton-like trkpid.
+Events from $\nu_\mu$ charged current interactions are suppressed requiring shower hits to be the dominant in the slice, and imposing tight quality requirements on the shower object (shr\_score, shrmoliereavg, trkfit, subcluster).
+Events with $\pi^0$ are rejected requiring only one shower in the event, a small distance between the track and shower start points, that the shower dEdx can be evaluated at least on the collection plane and it is not consistent with two or more MIPs in any plane (using two different dEdx definitions).
+Finally, in order to avoid misreconstructed events, events where the track and shower are aligned are rejected.
+
+The full list of cuts is:
+\begin{itemize}
+    \item CosmicIP $>$ 20.
+    \item trkpid $<$ -0.02
+    \item hits\_ratio $>$ 0.60
+    \item shr\_score $<$ 0.275
+    \item shrmoliereavg $>$ 2 and shrmoliereavg $<$ 9
+    \item trkfit $<$ 0.45 or subcluster $>$ 6
+    \item n\_showers\_contained = 1
+    \item tksh\_distance $<$ 3.5
+    \item shr\_tkfit\_2cm\_dedx\_Y $\in$ [0,4.0] and shr\_tkfit\_2cm\_dedx\_U $<$ 4.0 and shr\_tkfit\_2cm\_dedx\_V $<$ 4.0
+    \item shr\_tkfit\_gap10\_dedx\_Y $\in$ [0,4.5] and shr\_tkfit\_gap10\_dedx\_U $<$ 4.5 and shr\_tkfit\_gap10\_dedx\_V $<$ 4.5
+    \item secondshower\_Y\_nhit $\leq$ 8 or secondshower\_Y\_dot $\leq$ 0.8 or anglediff\_Y $\leq$ 40 or secondshower\_Y\_vtxdist $\geq$ 100
+    \item tksh\_angle $>$ -0.9 and tksh\_angle $<$ 0.7
+\end{itemize}
+
+\par 
+Topics to discuss: selection efficiency and purity, expected number of events in open data and in full sample.
+
 \begin{figure}[ht]
 \begin{center}
 \includegraphics[width=0.45\textwidth]{1eNp/reco_e_01122020_RUN1_box.pdf}
@@ -317,6 +494,56 @@ Figure~\ref{fig:eres:neutrino} shows the comparison between reconstructed energy
 \end{figure}
 
 \par \textbf{BDT}:
+
+Two BDTs are trained separately to reject backgrounds with and without $\pi^0$ in the final state. The same set of training variables is used in the two BDTs, corresponding to the list of variables used in the box-cut selection. 
+
+Both in the training and in the analysis, events are required to pass the preselection requirements plus a loose set of cuts intended to avoid considering events where one or more variables is clearly inconsistent with $\nu_e$ events. The list of cuts is:
+\begin{itemize}
+    \item CosmicIP $>$ 20.
+    \item trkpid $<$ 0.1
+    \item hits\_ratio $>$ 0.5
+    \item shr\_score $<$ 0.30
+    \item n\_showers\_contained = 1
+    \item tksh\_distance $<$ 6.0
+    \item shr\_tkfit\_2cm\_dedx\_Y $<$ 4.0
+    \item tksh\_angle $>$ -0.9
+\end{itemize}
+
+Indeed the BDT is able to figure out during training which variables are most important for each background: shower quality variables (e.g. shr\_score, trkfit, subcluster) have higher ranking for the non-$\pi^0$ BDT, while variables such as tksh\_distance and the shower dEdx show higher importance for the $\pi^0$-BDT. It is interesting to note that the most discriminating variable is in both cases shrmoliereavg which may be useful to discriminate both muons in $\nu_\mu$ events (low values) and merged showers in $\pi^0$ events (large values).
+
+\begin{table}[h!]
+\centering
+ \begin{tabular}{c | c c | c c} 
+ \hline
+& \multicolumn{2}{c |}{$\pi^0$ BDT} & \multicolumn{2}{c}{non-$\pi^0$ BDT} \\
+ \hline
+Rank & Variable & Importance & Variable & Importance \\
+ \hline
+1 & shrmoliereavg & 5813 & shrmoliereavg & 6436 \\ 
+2 & tksh\_distance & 2834 & trkfit & 3309 \\
+3 & trkpid & 2306 & shr\_tkfit\_2cm\_dedx\_ALL & 1980 \\
+4 & shr\_tkfit\_2cm\_dedx\_ALL & 2225 & subcluster & 1908 \\
+5 & secondshower\_Y\_vtxdist & 1891 & shr\_score & 1851 \\
+6 & shr\_tkfit\_gap10\_dedx\_ALL & 1702 & trkpid & 1778 \\
+7 & shr\_score & 1572 & secondshower\_Y\_vtxdist & 1405 \\
+8 & trkshrhitdist2 & 1286 & shr\_tkfit\_gap10\_dedx\_ALL & 1293 \\
+9 & trkfit & 1101 & tksh\_distance & 981 \\
+10 & secondshower\_Y\_nhit & 1015 & secondshower\_Y\_nhit & 976 \\
+11 & hits\_ratio & 949 & anglediff\_Y & 914 \\
+12 & tksh\_angle & 929 & trkshrhitdist2 & 903 \\
+13 & anglediff\_Y & 831 & tksh\_angle & 881 \\
+14 & subcluster & 699  & hits\_ratio & 657 \\
+15 & secondshower\_Y\_dot & 680 & secondshower\_Y\_dot & 592 \\
+ \hline
+\end{tabular}
+\caption{Ranking of BDT variables based on their importance in terms of "total gain". dEdx variables are combined for different planes (note the "ALL" suffix).}
+\label{tab:bdtimp}
+\end{table}
+
+We then cut separately on the output of the two BDTs, requiring pi0\_score $>$ 0.995 and nonpi0\_score $>$ 0.9984.
+
+\par 
+Topics to discuss: selection efficiency and purity, expected number of events in open data and in full sample.
 
 \begin{figure}[H] 
 \begin{center}
@@ -360,6 +587,17 @@ Figure~\ref{fig:eres:neutrino} shows the comparison between reconstructed energy
 
 
 \subsection{1$e$0$p$ Channel \textcolor{red}{Sophie, Ivan}}
+Selection motivation:
+
+\subsubsection{Tools Unique to 0p Selection}
+Shower-Track merging to recover signal orthogonal to Np selection.
+
+\subsubsection{Pre-selection}
+Data-MC comparisons:
+
+\subsubsection{Box cut selection}
+
+\subsubsection{BDT}
 
 \newpage
 \section{$\nu_{\mu}$ Selection}
@@ -383,12 +621,13 @@ Document~\cite{bib:geniesupportnote} describes the GENIE cross-section model, re
 
 \newpage
 
-\section{Sensitivity Estimation}
+\section{Sensitivity Estimation ID \textcolor{red}{Nico + ...}}
 \label{sec:sensitivity}
 \par This document is primarily focused on presenting sensitivities for a specific signal hypothesis:  
 \subsection{Test Statistics and Statistics-Only Sensitivities}
 The test statistics are performed through the SBNfit tool~\cite{bib:sbnfit20437} and a separate stand-alone tool that is primarily used to crosscheck and understand SBNfit. The stand-alone test statistics tool is also used for performing additional test statistics not covered by the SBNfit, such as the Poisson log likelihood  ratio test statistics.
 \subsection{How Constraints and Systematics are included in the 1$e$N$p$ Sensitivity Calculation}
+
 \subsubsection{Constraint from Muon Neutrino}
 \subsection{Final Sensitivities}
 
@@ -402,7 +641,18 @@ The test statistics are performed through the SBNfit tool~\cite{bib:sbnfit20437}
 
 \section{Data-MC Comparisons}
 
+\section{Code Repositories}
+
 \begin{thebibliography}{}
+\bibitem{bib:pandoraub} 
+  R.~Acciarri {\it et al.} [MicroBooNE Collaboration],
+  \emph{The Pandora multi-algorithm approach to automated pattern recognition of cosmic-ray muon and neutrino events in the MicroBooNE detector}, Eur.\ Phys.\ J.\ C {\bf 78}, no. 1, 82 (2018) [arXiv:1708.03135 [hep-ex]].
+\bibitem{bib:tkshsvm}
+L. Escudero Sanchez, \emph{Updates on SVM-based track/shower identification in Pandora},
+\href{https://microboone-docdb.fnal.gov/cgi-bin/private/ShowDocument?docid=14039}{DocDB 14039}
+\bibitem{bib:pi0reco}
+  C.~Adams {\it et al.} [MicroBooNE Collaboration],
+  \emph{Reconstruction and Measurement of $\mathcal{O}$(100) MeV Energy Electromagnetic Activity from $\pi^0 \rightarrow \gamma\gamma$ Decays in the MicroBooNE LArTPC},  arXiv:1910.02166 [hep-ex].
 \bibitem{bib:shrtrackfitter}
 G. Cerati, \emph{Track fits to main shower trunk and improved dEdx}, \href{https://microboone-docdb.fnal.gov/cgi-bin/private/ShowDocument?docid=20824}{DocDB 20824}
 \bibitem{bib:detsyssupportnote}
