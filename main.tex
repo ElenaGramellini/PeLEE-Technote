@@ -141,9 +141,10 @@ Conceptual issues can be raised in association with the various assumptions made
 \begin{itemize}
     \item wire-response modeling: the response of MicroBooNE's electronics to drifting charge is a complex subject described in three past publications~\cite{bib:noise,bib:SP1,bib:SP2}. The work of these papers in improving the understanding and modeling of noise and field-response effects has been implemented in the current detector simulation,
     \item Space-Charge modeling: MicroBooNE's space-charge model has changed significantly since 2018, moving from a calculation-based~\cite{bib:SCETN} implementation of electric field distortions to a data-driven E-field map implemented in simulation and reconstruction. Due to the large position distortions (and, though smaller, charge distortions) SCE can significantly impact an analysis through the determination  of fiducial boundaries, tracking and energy resolution.
-    \item Scintillation light modeling: MicroBooNE's model of scintillation light production has not changed significantly since the beginning of data-taking, and has known limitations. Of particular importance to this analysis, which aims to use a dataset spanning four years, is the known and significant time-dependent variation of MicroBooNE's light response. This analysis takes several steps to correct for, and mitigate the impact that light mismodeling can have on the analysis. Triggering on low-energy signal $\nu_e$ events, and cosmic-rejection are particularly sensitive to 
+    \item Scintillation light modeling: MicroBooNE's model of scintillation light production has not changed significantly since the beginning of data-taking, and has known limitations. Of particular importance to this analysis, which aims to use a dataset spanning four years, is the known and significant time-dependent variation of MicroBooNE's light response. This analysis takes several steps to correct for, and mitigate the impact that light mismodeling can have on the analysis. Triggering on low-energy signal $\nu_e$ events, and cosmic-rejection are particularly sensitive to scintillation light detector effects.
 \end{itemize}{}
 Additional detector effects are ion Recombination...
+\par \noindent \textbf{Flux and Cross-Section Modeling}
 
 \subsection{Sensitivity Calculation}
 
@@ -371,7 +372,7 @@ Figure~\ref{fig:eres:neutrino} shows the comparison between reconstructed energy
 \newpage
 
 \section{Control Samples and Analysis Input Validation}
-\par The selections and analysis described below rely on well understood detector, simulation, calibration, and analysis tools performance. This section is dedicated to providing information pertaining to the robustness of the analysis developed. 
+\par The selections and analysis described below rely on well understood detector, simulation, calibration, and analysis tools performance. This section is dedicated to evaluating the performance of detector modeling through data-mc comparisons of targeted sidebands. The sidebands developed for this analysis are a high-stats $\pi^0$ selection, and an \emph{anti-BDT} filter which targets the selection of $\nu_e$ like backgrounds. Currently comparisons for the \emph{anti-BDT} filter are not available and will be documented in a future iteration of this note.
 \par It is important to note that in addition to detector simulation and reconstruction effects, $\nu$-Ar modeling can impact the level of data-mc agreement in various variables. We will try to point out when this might be the case.
 \subsection{$\pi^0$ control sample}
 \par A $\pi^0$ selection has been developed in order to obtain high-stats samples of $\pi^0$ events and $\gamma$ EM showers which can constrain $\pi^0$ production modeling uncertainties as well as validate the analyis' ability to reconstruct and select EM showers.
@@ -450,6 +451,8 @@ Figure~\ref{fig:eres:neutrino} shows the comparison between reconstructed energy
 \end{center}
 \end{figure}
 
+\subsection{Anti-BDT sample}
+\par An anti-BDT filter was developed with the goal of isolating $\nu_e$ like backgrounds that could help study in detail data-mc agreement for events that are close to, but not in the $\nu_e$ signal region. The filter selects events that pass the $\nu_e$  pre-selection but fail a past iteration of the 1$e$N$p$ BDT, in order to veto and remain blind to signal events. The filter was run on $1.5E20$ POT of Run 3 data with the goal of studying in particular detail data-mc agreement for Run3, which otherwise would be limited to $0.8E19$ POT of open data. Further documentation on the \emph{anti-BDT} filter is available in reference~\ref{bib:antiBDT}. Comparisons of distributions from this filter are to be made available in a subsequent version of this note.
 
 \newpage
 
@@ -615,7 +618,7 @@ First, we aim at rejecting cosmic-induced events by requiring large CosmicIP and
 
 Next, the goal is to suppress events from $\nu_\mu$ charged current interactions. We require shower hits to be the dominant in the slice, and imposing tight quality requirements on the shower object (shr\_score, shrmoliereavg, trkfit, subcluster).
 
-At this stage, most of selected events contain neutrino-induced electromagnetic activity so that main background are events with $\pi^0$. They are rejected requiring only one shower in the event, a small distance between the track and shower start points, that the shower dEdx can be evaluated at least on the collection plane and it is not consistent with two or more MIPs in any plane (using two different dEdx definitions).
+At this stage, most of selected events contain neutrino-induced electromagnetic activity so that main background are events with $\pi^0$. They are rejected requiring only one shower in the event, a short distance between the track and shower start points, and that the shower dEdx can be evaluated at least on the collection plane and it is not consistent with two or more MIPs in any plane. Two different dEdx definitions are used, one in the first 2 cm of the shower (motivated by Fig.~).
 
 Finally, in order to avoid misreconstructed events, events where the track and shower are aligned are rejected.
 
@@ -770,6 +773,14 @@ The details on detector systematics can be found in~\cite{bib:detsyssupportnote}
 \subsection{Flux Uncertainties}
 The flux and uncertainties for MCC9~\cite{bib:fluxmcc9} are largely the same as MCC8~\cite{bib:fluxtechnote}. We use multisim technique to estimate the flux and neutrino interaction uncertainties. In this procedure, many Monte Carlo distributions are generated and the parameters (see  Table~\ref{tab:fluxsyst}) in the model are varied simultaneously resulting in different MC reweighting in each universe. Reweighting all the parameters at the same time allows for correct correlation between them. This correlation then can be used to generate a covariance matrix as follows:
 
+\begin{equation}
+    E_{ij}^{sys} = \frac{1}{N}\sum_{k}^N (N_i^{CV} - N_i^k)(N_j^{CV} - N_j^k) ,
+\end{equation}
+
+where $N$ is the total number of universes, $N_i^k$ is the value in the
+$i$-th bin of the $k$-th universe and $N_i^{CV}$ is that of the central value.
+
+
 \begin{table}[H]
 \centering
  \begin{tabular}{| c | m{6cm} | c |} 
@@ -796,7 +807,21 @@ piplus\_PrimaryHadronSWCentralSplineVariation     &  Primary Hadron Sanford Wang
 \label{tab:fluxsyst}
 \end{table}
 
-
+\begin{figure}[ht] 
+\begin{center}
+    \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{CovarianceMatrices/SBNfit_fractional_covariance_matrix_nue_reco_e_genietune_run1_fluxonly.pdf}
+    \caption{fractional covariance matrix}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{CovarianceMatrices/SBNfit_correlation_matrix_nue_reco_e_genietune_run1_fluxonly.pdf}
+    \caption{correlation matrix}
+    \end{subfigure}
+\caption{\label{fig:fluxmatrices} Flux only systematics for the 1eNp selection separated by its sub-channels}
+\end{center}
+\end{figure}
 
 \subsection{Neutrino Interaction Modeling Uncertainties}
 We use genie event reweighting framework with the standard reweighting parameters also known as "knobs" to model the neutrino cross section and final states uncertainties. Document~\cite{bib:geniesupportnote} describes the GENIE cross-section model, recommended central-value tune, and the recommended uncertainties for MCC9 analyses. 
@@ -815,19 +840,15 @@ Genie knobs & Description & Universes \\
 All\_Genie        & All other GENIE knobs that is not covered by the parameters listed below that are varied, including the cross section modeling and final state uncertainties   & 100\\ 
 AxFFCCQEshape\_Genie   &  CCQE Axial form factor model & 2\\ 
 DecayAngMEC\_Genie        &   & 2\\ 
-RPA\_CCQE\_Genie       & \textit{RPA-based calculation on Genie CCQE mode} & 2\\ 
+RPA\_CCQE\_Genie       & RPA-based calculation on Genie CCQE model & 2\\ 
 Theta\_Delta2Npi\_Genie       &  pion angle distribution (resonant events) & 2\\ 
 VecFFCCQEshape\_Genie      &  CCQE vector form factor model & 2\\  
-XSecShape\_CCMEC\_Genie     &  \textit{Charge-current MEC cross section model} & 2\\ 
+XSecShape\_CCMEC\_Genie     &  Charge-current MEC cross section model & 2\\ 
 \hline
 \end{tabular}
 \caption{List of genie systematic variations used in the Pandora eLEE analysis}
 \label{tab:fluxsyst}
 \end{table}
-
-\begin{itemize}
-    \item 
-\end{itemize}{}
 
 \newpage
 
@@ -877,6 +898,9 @@ The procedure to test the hypothesis is as follows:
 \begin{enumerate}
     \item larger MC stats with select truth-level filters.
     \ite apply common optical filter to simulation events. Important for Run3.
+    \item finalize charge re-calibration for trk PID and shower dE/dx
+    \item implement LLR-PID for e/gamma separation.
+    \item MCS fitter for better efficiency for low-energy showers.
 \end{enumerate}{}
 
 \newpage
