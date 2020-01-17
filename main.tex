@@ -1340,12 +1340,13 @@ The primary scope of the analysis is to be able to learn knew knowledge about th
 For this reason, the sensitivity to this excess is estimated, as a metric of the power of the analysis.
 The model for the signal currently used is the MiniBooNE LEE unfolded signal \cite{bib:sbnfit20437}.
 To construct this signal, the reconstructed energy distribution, under the CCQE hypothesis, of the excess observed by MiniBooNE, is unfolded to a distribution in true neutrino energy.
-Given this spectrum, it is possible to derive a correction for the \nue flux in order to account for the LEE, that is then propagated in the MicroBooNE simulation \ref{fig:lee_unfolded_signal}.
+Scale factors for the \nue flux are then derived, in order to make the BNB flux account for the LEE, as seen in figure \ref{fig:lee_unfolded_signal}.
+This additional flux is then propagated in the MicroBooNE simulation.
 
-\begin{figure}[H]
+\begin{figure}[]
     \begin{center}
     \includegraphics[width=0.45\textwidth]{Sensitivity/lee_unfolded_signal.png}
-    \caption{}
+    \caption{If the intrinsic \nue flux was the red histogram instead of the predicted blue histogram then the observed excess and MC prediction for the reconstructed energy in MiniBooNE would match.}
     \label{fig:lee_unfolded_signal}
     \end{center}
 \end{figure}
