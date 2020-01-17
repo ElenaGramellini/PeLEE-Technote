@@ -559,55 +559,6 @@ Figure~\ref{fig:eres:neutrino} shows the comparison between reconstructed energy
 \section{$\nu_e$ Selections}
 \par This chapter present the three $\nu_e$ selections which comprise the analysis. The starting point for the $\nu_e$ selections, including a description of efficiencies, are described in section~\ref{sec:nueselection:inputs} . The common variables and tools leveraged for the $\nu_e$ selection are presented in section~\ref{sec:nueselection:variables}. Following sections describe the three channels being targeted: $\nu_e$ inclusive (\ref{sec:nueselection:inclusive}),1$e$N$p$0$\pi$ (\ref{sec:nueselection:1eNp}), and 1$e$0$p$0$\pi$ (\ref{sec:nueselection:1e0p}).
 
-\subsection{Input to $\nu_e$ selections and 1$e$N$p$/1$e$0$p$ orthogonality \textcolor{green}{Sophie}}
-\label{sec:nueselection:inputs}
-
-The 1$e$N$p$ and 1$e$0$p$ selections rely on a common pre-selection which requires the presence of at least one reconstructed and contained EM shower (figure~\ref{fig:nue:presel:nshower}) with reconstructed energy above 70 MeV (figure~\ref{fig:nue:presel:shrenergy}). This second cut applies as a Michel-electron veto, as the majority of events which do not pass this cut are associated to cosmic or $\nu_{\mu}$ induced $\mu \rightarrow e$ Michel electrons. The two selections are subsequently split based on whether a proton candidate is (N$p$) or is not (0$p$) found. Events with a fully contained track must have a \texttt{trkpid} score $< 0$ and a value of \texttt{tksh\_angle} $> -0.9$. The first condition requires that the track be proton-like according to the PID tool~\ref{subsec:loglikelihoodpid}, while the second excludes tracks reconstructed back-to-back to the electron candidate, generally due to mis-reconstruction. For events with more than one reconstructed track, these requirements are applied on the longest track.
-
-\begin{figure}[H] 
-\begin{center}
-    \begin{subfigure}[b]{0.3\textwidth}
-    \centering
-    \includegraphics[width=1.00\textwidth]{nueselection/n_showers_contained_01132020_RUN1.pdf}
-    \caption{\label{fig:nue:presel:nshower} }
-    \end{subfigure}
-    \begin{subfigure}[b]{0.3\textwidth}
-    \centering
-    \includegraphics[width=1.00\textwidth]{nueselection/n_tracks_contained_01132020_RUN1.pdf}
-    \caption{\label{fig:nue:presel:ntrack} }
-    \end{subfigure}
-    \begin{subfigure}[b]{0.3\textwidth}
-    \centering
-    \includegraphics[width=1.00\textwidth]{nueselection/shr_energy_tot_cali_01132020_RUN1.pdf}
-    \caption{\label{fig:nue:presel:shrenergy} }
-    \end{subfigure}
-\caption{\label{fig:nue:presel}Variables input to the common $\nu_e$ N$p$ and 0$p$ pre-selections.}
-\end{center}
-\end{figure}
-
-\par The efficiencies of the 1$e$N$p$ and 1$e$0$p$ pre-selections are shown in figure~\ref{fig:nue:presel:eff}. Efficiencies are presented as a function of true neutrino energy~\ref{fig:nue:presel:eff:nu}, proton KE~\ref{fig:nue:presel:eff:proton}, and electron energy~\ref{fig:nue:presel:eff:elec}. Each plot shows in black the efficiency for the common pre-selection (before a proton requirement is or is not imposed) and is reported relative to all intrinsic $\nu_e$ events. In blue and red respectively are shown the efficiencies for the  1$e$N$p$ and 1$e$0$p$ selections respectively, relative to true N$p$ and 0$p$ events. Shaded histograms in red and blue show the stacked truth-level distributions for N$p$ and 0$p$ events for the variables being plotted. An important observation to make is the fact that at this pre-selection stage the efficiency for 1$e$N$p$ events is significantly lower then that of 1$e$N$p$ events. This is caused by the additional requirement of the presence of a proton-like track in the final state. The strong energy dependence for the efficiency in tagging protons is shown in figure~\ref{fig:nue:presel:eff:proton}. While requiring the presence of a final-state proton lowers the efficiency, this requirement has a significant impact on the selection's ultimate purity.
-
-\begin{figure}[H] 
-\begin{center}
-    \begin{subfigure}[b]{0.3\textwidth}
-    \centering
-    \includegraphics[width=1.00\textwidth]{nueselection/nu_RUN1.pdf}
-    \caption{\label{fig:nue:presel:eff:nu} }
-    \end{subfigure}
-    \begin{subfigure}[b]{0.3\textwidth}
-    \centering
-    \includegraphics[width=1.00\textwidth]{nueselection/proton_RUN1.pdf}
-    \caption{\label{fig:nue:presel:eff:proton} }
-    \end{subfigure}
-    \begin{subfigure}[b]{0.3\textwidth}
-    \centering
-    \includegraphics[width=1.00\textwidth]{nueselection/elec_RUN1.pdf}
-    \caption{\label{fig:nue:presel:eff:elec} }
-    \end{subfigure}
-\caption{\label{fig:nue:presel:eff} $\nu_e$ pre-selection efficiencies split by final-state topology as a function of different truth variables.}
-\end{center}
-\end{figure}
-
 \subsection{Variable definitions \textcolor{red}{Elena}}
 \label{sec:nueselection:variables}
 \par Variables used for the $\nu_e$ selections aim to isolate features in the neutrino interaction that are specific to events with final-state electrons. These features are split in several categories which leverage calorimetric and topological information that characterizes $\nu_e$ interactions. This section will describe the variables used in the $\nu_e$ selections. Table [\textcolor{red}{TABLE}] summarizes all variables used, with a brief description. Variables that warrant a longer introduction are described below.
@@ -727,10 +678,62 @@ The 1$e$N$p$ and 1$e$0$p$ selections rely on a common pre-selection which requir
     \item \emph{secondshower\_Y\_vtxdist}: 2D distance from vertex for the largest 2D cluster associated to the  recovered 2nd shower in the collection plane
 \end{itemize}
 
+
 \clearpage
 \subsection{$\nu_e$ CC Inclusive selection \textcolor{red}{Wouter}}
 \input{NueCCsel/NueCCsel}
 \clearpage
+
+
+
+\subsection{Input to \npsel and \opsel and channel orthogonality \textcolor{green}{David + Sophie}}
+\label{sec:nueselection:inputs}
+
+The 1$e$N$p$ and 1$e$0$p$ selections rely on a common pre-selection which requires the presence of at least one reconstructed and contained EM shower (figure~\ref{fig:nue:presel:nshower}) with reconstructed energy above 70 MeV (figure~\ref{fig:nue:presel:shrenergy}). This second cut applies as a Michel-electron veto, as the majority of events which do not pass this cut are associated to cosmic or $\nu_{\mu}$ induced $\mu \rightarrow e$ Michel electrons. The two selections are subsequently split based on whether a proton candidate is (N$p$) or is not (0$p$) found. Events with a fully contained track must have a \texttt{trkpid} score $< 0$ and a value of \texttt{tksh\_angle} $> -0.9$. The first condition requires that the track be proton-like according to the PID tool~\ref{subsec:loglikelihoodpid}, while the second excludes tracks reconstructed back-to-back to the electron candidate, generally due to mis-reconstruction. For events with more than one reconstructed track, these requirements are applied on the longest track.
+
+\begin{figure}[H] 
+\begin{center}
+    \begin{subfigure}[b]{0.3\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{nueselection/n_showers_contained_01132020_RUN1.pdf}
+    \caption{\label{fig:nue:presel:nshower} }
+    \end{subfigure}
+    \begin{subfigure}[b]{0.3\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{nueselection/n_tracks_contained_01132020_RUN1.pdf}
+    \caption{\label{fig:nue:presel:ntrack} }
+    \end{subfigure}
+    \begin{subfigure}[b]{0.3\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{nueselection/shr_energy_tot_cali_01132020_RUN1.pdf}
+    \caption{\label{fig:nue:presel:shrenergy} }
+    \end{subfigure}
+\caption{\label{fig:nue:presel}Variables input to the common $\nu_e$ N$p$ and 0$p$ pre-selections.}
+\end{center}
+\end{figure}
+
+\par The efficiencies of the 1$e$N$p$ and 1$e$0$p$ channels at the point where the selections diverge are shown in figure~\ref{fig:nue:presel:eff}. Efficiencies are presented as a function of true neutrino energy~\ref{fig:nue:presel:eff:nu}, proton KE~\ref{fig:nue:presel:eff:proton}, and electron energy~\ref{fig:nue:presel:eff:elec}. Each plot shows in black the efficiency for the common pre-selection (before a proton requirement is or is not imposed) and is reported relative to all intrinsic $\nu_e$ events. In blue and red respectively are shown the efficiencies for the  1$e$N$p$ and 1$e$0$p$ selections respectively, relative to true N$p$ and 0$p$ events. Shaded histograms in red and blue show the stacked truth-level distributions for N$p$ and 0$p$ events for the variables being plotted. An important observation to make is the fact that at this pre-selection stage the efficiency for 1$e$N$p$ events is significantly lower then that of 1$e$N$p$ events. This is caused by the additional requirement of the presence of a proton-like track in the final state. The strong energy dependence for the efficiency in tagging protons is shown in figure~\ref{fig:nue:presel:eff:proton}. While requiring the presence of a final-state proton lowers the efficiency, this requirement has a significant impact on the selection's ultimate purity.
+
+\begin{figure}[H] 
+\begin{center}
+    \begin{subfigure}[b]{0.3\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{nueselection/nu_RUN1.pdf}
+    \caption{\label{fig:nue:presel:eff:nu} }
+    \end{subfigure}
+    \begin{subfigure}[b]{0.3\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{nueselection/proton_RUN1.pdf}
+    \caption{\label{fig:nue:presel:eff:proton} }
+    \end{subfigure}
+    \begin{subfigure}[b]{0.3\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{nueselection/elec_RUN1.pdf}
+    \caption{\label{fig:nue:presel:eff:elec} }
+    \end{subfigure}
+\caption{\label{fig:nue:presel:eff} $\nu_e$ pre-selection efficiencies split by final-state topology as a function of different truth variables.}
+\end{center}
+\end{figure}
 
 \subsection{\npsel Channel \textcolor{red}{David + Giuseppe}}
 \label{sec:nueselection:1eNp}
@@ -738,8 +741,7 @@ The 1$e$N$p$ and 1$e$0$p$ selections rely on a common pre-selection which requir
 The 1$e$N$p$ channel is the most sensitive to the MiniBooNE eLEE signal as it contains a large fraction of the signal events and allows for selection requirements based both on showers and tracks. 
 Given the large cosmic background and that $\nu_e$ charge-current interactions are O(1\%) in the BNB, a high-purity selection is needed to achieve a sizeable signal sensitivity; the necessary trade-off is that the final signal efficiency will be low.
 
-We first define a set of minimal requirements ("preselection") to obtain a high statistics sample (dominated by cosmic and neutrino backgrounds) that is used to monitor the data-MC agreement of the selection variables. 
-We then define two alternative selections, respectively based on a simple box-cut approach and on boosted decision trees (BDT); the BDT approach is expected to be the most sensitive, while box-cuts provide a robust reference selection.
+The section is organized as follows. We first define a set of minimal requirements ("preselection") to obtain a high statistics sample (dominated by cosmic and neutrino backgrounds) that is used to monitor the data-MC agreement of the selection variables. We then define two alternative selections, respectively based on a simple box-cut approach and on boosted decision trees (BDT); the BDT approach is expected to be the most sensitive, while box-cuts provide a robust reference selection. Finally we compare all presented selections in terms for their signal efficiency and purity.
 
 \subsubsection{Preselection}
 
@@ -772,16 +774,14 @@ The relative fraction of EXT events at this stage is roughly 25\%, so we can loo
 
 \subsubsection{Box-cuts}
 
-On top of the preselection requirements we define a robust selection based on box cuts, targeting high $\nu_e$ purity, especially at lower energy.
-In this section, cuts is presented are usually designed in order to suppress specific backgrounds; however, to the extent that some variables are effective against multiple backgrounds, the following description is a simplification.
+On top of preselection requirements we define a robust selection based on box cuts targeting high $\nu_e$ purity, especially at lower energy.
+In this section cuts are presented in different categories according to the background they primarily suppress; however, to the extent that some variables are effective against multiple backgrounds, the following description should be regarded as a simplification.
 
-First, we aim at rejecting cosmic-induced events by requiring large CosmicIP and a proton-like trkpid. The latter requirement in particular rejects more than 90\% of the cosmics that pass pre-selection.
+First, we aim at rejecting cosmic-induced events by requiring a large distance of the neutrino vertex from clear cosmic tracks and a proton-like track. The latter requirement in particular rejects more than 90\% of the cosmics that pass pre-selection. The next goal is to suppress events from $\nu_\mu$ charged current interactions, so for this purpose we require shower hits to be the dominant in the slice, as well as imposing tight quality requirements on the shower object. They rely on several variables aiming at separating electron or photon showers from single-particle tracks, i.e. shr\_score, shrmoliereavg, trkfit, subcluster. 
 
-Next, the goal is to suppress events from $\nu_\mu$ charged current interactions. We require shower hits to be the dominant in the slice, and imposing tight quality requirements on the shower object (shr\_score, shrmoliereavg, trkfit, subcluster).
+At this stage most of the selected events contain neutrino-induced electromagnetic activity. The main background are $\pi^0$ events abd we reject them with a series of requirements based on the different topology and energy deposition of electrons and photons. We first require only one shower-like PFParticle in the event, and that its start point is at a short distance from the track start. Then, we require that the energy loss at the start of the electron shower is be compatible with a single MIP. Many possible dEdx variable definitions are possible, and information from all TPC planes can be used. However, due to detector and reconstruction limitations, there is not a single definition that provides a sharp separation between electrons and photons; therefore, in order to obtain a good background rejection without large efficiency losses, we choose to apply a loose MIP cut on two different dEdx definitions (described in Sec.~\ref{sec:nueselection:variables}). The loose MIP requirement enforces that there is at least one hit in the collection plane in the probed range, and that the dEdx is not consistent with two or more MIPs in any plane. Finally, the single shower requirement is reinforced with a 2nd shower veto based on clusters in the collection plane that are not matched to any PFParticle.
 
-At this stage, most of selected events contain neutrino-induced electromagnetic activity so that main background are events with $\pi^0$. They are rejected requiring only one shower in the event, a short distance between the track and shower start points, and that the shower dEdx can be evaluated at least on the collection plane and it is not consistent with two or more MIPs in any plane. Two different dEdx definitions are used, one where it is computed in the first 2 cm of the shower (motivated by Fig.~\ref{fig:dedxgammas:dist}) and one where it is computed between 1 and 5 cm from the shower start (the first cm is skipped to avoid possible contributions from low energy protons merged with the shower). The single shower requirement is reinforced with a 2nd shower veto based on clusters in the collection plane that are not matched to any PFParticle.
-
-Finally, in order to avoid misreconstructed events, events where the track and shower are aligned are rejected.
+The last cut aims at rejecting misreconstructed events, so when the track and shower are aligned the candidate event is rejected.
 
 For reference, the full list of cuts is:
 \begin{itemize}
@@ -814,12 +814,12 @@ Topics to discuss: selection efficiency and purity, expected number of events in
     \begin{subfigure}[b]{0.45\textwidth}
     \centering
     \includegraphics[width=1.00\textwidth]{1eNp/1eNp_box_evd1.png}
-    \caption{\label{fig:1eNp:box:evd1}1.19 GeV}
+    \caption{\label{fig:1eNp:box:evd1}1.19 GeV [reco] $\nu_e$ candidate}
     \end{subfigure}
     \begin{subfigure}[b]{0.45\textwidth}
     \centering
     \includegraphics[width=1.00\textwidth]{1eNp/1eNp_box_evd2.png}
-    \caption{\label{fig:1eNp:box:evd2}1.15 GeV}
+    \caption{\label{fig:1eNp:box:evd2}1.15 GeV [reco] $\nu_e$ candidate}
     \end{subfigure}
 \caption{\label{ffig:1eNp:box:evd} \npsel candidates from the open $4eE19$ Run1 open dataset. Two data events are found when }
 \end{center}
@@ -1117,7 +1117,7 @@ The details on detector systematics can be found in~\cite{bib:detsyssupportnote}
 \end{enumerate}
 \par Detector systematics samples are generated as \emph{uni-sim} variations, meaning that, for each detector effect, a given MC event is re-simulated once with a change to a detector modeling parameter. This produces a new simulation of the same underlying neutrino interactions, which can be used to measure the impact of the detector effect being studied on efficiencies, reconstructed variables, and event pass-rates.
 \par In the context of a sensitivity calculation, detector systematics unisims can be used to calculate a covariance matrix for selected event rates in each bin used in the sensitivity calculation. This covariance is then added to the total uncertainty matrix. This procedure has several flaws, including the fact that the excursion in the number of measured events in a bin computed from a single variation is taken as the 1$\sigma$ excurions for the error estimation. 
-\par Below, simple comparisons of distributions relevant to the analysis under different detector variation samples are shown, but the full inclusion of detector systematics in the sensitivity calculation has not been performed.
+\par Below, simple comparisons of distributions relevant to the analysis under different detector variation samples are shown, but the full inclusion of detector systematics in the sensitivity calculation has not been performed. For calorimetric variables such as electron d$E$/d$x$ and $\pi^0$ mass some clear differences, such as shifts in energy scale, are visible, though contained to within a few percent. These initial comparisons are promising in that they seem to suggest a relatively minor impact to the analysis from detector systematics. 
 
 \begin{figure}[H] 
 \begin{center}
@@ -1443,6 +1443,7 @@ The SBNfit tool can currently estimate sensitivities using only one test statist
 
 To estimate the sensitivity of the MiniBooNE LEE unfolded signal, SBNfit uses the following $\Delta \chi^2$-like variable as test statistic:
 \begin{equation}
+
 \Delta\chi^2 = \sum_{i=1}^{N}\left( \frac{(n^i - \mu^i_{H_1})^2}{\mu^i_{H_1}} - \frac{(n^i - \mu^i_{H_0})^2}{\mu^i_{H_0}} \right)
 \end{equation}
 where $i$ is the index of the bin, $n_i$ is the observed number of entries in that bin, whereas $\mu^i_{H_0, 1}$ is the expected number of entries under the null and alternative hypothesis, respectively.
@@ -1497,7 +1498,7 @@ SBNfit uses the covariance matrix to build on the systematics for the sensitivit
     \item A Cholesky decomposition is performed on the covariance matrix: $$M = LL*$$,
     where $L$ is a lower triangular matrix.
     \item A vector $v$ is generated, where each of the $i$ elements of $v$ are drawn from a Gaussian distribution with mean 0 and variance 1.
-    \item A poisson fluctuated toy data histogram is given by
+    \item A Poisson fluctuated toy data histogram is given by
 $$x_{toy} = x_{CV} + Lv.$$
     \item We follow the same procedure to test the LEE hypothesis as described in the Section~\ref{subsec:teststats}
 \end{enumerate}
@@ -1521,15 +1522,21 @@ $$x_{toy} = x_{CV} + Lv.$$
 
 The multiple selections described in  ~\ref{sec:nueselection}-\ref{sec:numuselection} share the same neutrino flux and cross-section and therefore the measurements between them are highly correlated. We can exploit these correlations to reduce the systematics uncertainties when performing the combined side-by-side fit of the different channel for the sensitivity results.
 
-The different selections described in Section~\ref{sec:nueselection}-\ref{sec:numuselection} provide constraints to different energy range of the 1eNp selection as well as the kinematics and topology. The inclusive $\nu_e$ selection can be used to constrain the high energy $\nu_e$. We explore the prospect of adding the inclusive $\nu_e$ selection to constrain the high energy $\nu_e$. Given the non-orthogonality of this selection to the 1eNp0$pi$ selection, we still need to explore other variables that can provide orthogonality to provide constraint.
+The different selections described in Section~\ref{sec:nueselection}-\ref{sec:numuselection} provide constraints to different energy range of the 1eNp selection as well as the kinematics and topology. The inclusive $\nu_e$ selection can be used to constrain the high energy $\nu_e$. We explore the prospect of adding the inclusive $\nu_e$ selection to constrain the high energy $\nu_e$. Given the non-orthogonality of this selection to the 1eNp0$\pi$ selection, we still need to explore other variables that can provide orthogonality in order to exercise the constraint. The 1e0p0$\pi$ channel can provide constraint to the less understood proton reconstruction and kinematics. The $CC\pi0$ sample can be utilized to constrain the uncertainties coming from shower. Finally, we can use the $\nu_\mu$ selection to constrain the flux and cross section at low energy $\nu_e$ and Section~\ref{subsec:constraintfromnumu} describes this in more details.
 
 \subsubsection{Constraint from Muon Neutrino}
+\label{subsec:constraintfromnumu}
 Using the measured $\nu_{\mu}$ energy spectrum interactions to constrain $\nu_e$ systematics is a common approach in oscillation experiments. 
 This constraint takes advantage of the high statistics $\nu_{\mu}$ data and known correlations between electron and muon neutrino fluxes and cross sections. 
 The constraint is exercised through the covariance matrix constructed in the energy spectrum of $\nu_e$ and $\nu_{\mu}$. 
-The correlation between the elements in the matrix provides constraint when we perform the combined fits between the two channels. This constraint comes from the minimization of the $\chi^2$ when we fit both the 1eNp $\nu_e$ and the inclusive $\nu_{\mu}$ selection to the MiniBooNE unfolded LEE signal. Figure~\cite{fig:numuconstraint} displayed the cross section (genie) and flux correlation matrix between the two channels. 
+The correlation between the elements in the matrix provides constraint when we perform the combined fits between the two channels. 
+This constraint comes from the minimization of the $\chi^2$ when we fit both the 1eNp $\nu_e$ and the inclusive $\nu_{\mu}$ selection to the MiniBooNE unfolded LEE signal. 
+Figure~\cite{fig:numuconstraint} displayed the cross section (genie) and flux correlation matrix between the two channels. 
 
-\textit{Note that work on getting the numu constraint channel with the new genie tuned CV is still underway. The matrices are shown here to demonstrate the effect of the constraint which will be updated once the new $\nu_{\mu}$ constraint channel is available. At the time of the plots creation, the CCQE-related knobs are not included in the systematics, hence the cross section uncertainties are mostly dominated by the resonance uncertainties. Therefore, we observed less correlation between the $\nu_e$ and the $\nu_{\mu}$ channels at low $\nu_e$ energy.}
+\textit{Note that work on getting the numu constraint channel with the new genie tuned CV is still underway. 
+The matrices are shown here to demonstrate the effect of the constraint which will be updated once the new $\nu_{\mu}$ constraint channel is available. 
+At the time of the plots creation, the CCQE-related knobs are not included in the systematics, hence the cross section uncertainties are mostly dominated by the resonance uncertainties. 
+Therefore, we observed less correlation between the $\nu_e$ and the $\nu_{\mu}$ channels at low $\nu_e$ energy.}
 
 \begin{figure}[ht] 
 \begin{center}
