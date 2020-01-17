@@ -28,11 +28,15 @@
     \item \emph{pfp\_generation}: The generation of the PFParticle according to Pandora, i.e. how many parents the object on interest has in the slice.
 \end{itemize}
 
-\begin{comment}
 \subsubsection{Backgrounds}
 \label{sssec:NuMUCCsel:sel:bkgrnds}
-\end{comment}
 
+\par Coming soon...
+
+\subsubsection{Fiducial Volume and Spacecharge-Corrected Spacepoints}
+\label{sssec:NuMUCCsel:sel:FVandSCE}
+
+\par Coming soon...
 
 \begin{figure}
     \centering
@@ -46,12 +50,12 @@
 
 \subsubsection{Signal Definition}
 \label{sssec:NuMUCCsel:INC:signaldef}
-\par A $\nu_{\mu}$ event is identified by, at least, one muon candidate originating from inside the fiducial volume of the detector. Additional tracks and showers may accompany the muon candidate; these assist in the proper reconstruction of vertex location and energy calculation but are not necessary in the inclusive selection. 
+\par A $\nu_{\mu}$ event is identified by, at least, one muon candidate originating from inside the fiducial volume of the detector. Additional tracks and showers may accompany the muon candidate; these assist in reconstruction but are not necessary in the inclusive selection. In the event selection detailed below, only one track per slice must satisfy the criterion in order to be included in this selection.
 
 \subsubsection{Event Selection}
 \label{sssec:NuMUCCsel:sel:evt}
 
-\par In this selection all slices must satisfy these criterion. The slice must be identified to be neutrino-like in nature, via SliceID, the topological score must be greater than 0.06, and the vertex must be in the fiducial volume of the detector. I.e:
+\par The cuts in this section are primarily designed to eliminate cosmic and dirt backgrounds and select slices that are $\nu_{\mu}$-like. The SliceID cut and the requirement of at least one reconstructed track are pursuant of $\nu_{\mu}$-like slices. The requirement that the reconstructed vertex be contained inside the fiducial volume and that the slice have a sufficiently high topological score favor $\nu_{\mu}$ CC events and disfavor activity that is cosmogenic or dirt-like. Those cuts, specifically, are:
 
 \begin{itemize}
     \item \emph{nslice} = 1.
@@ -59,17 +63,18 @@
     \item \emph{reco\_nu\_vtx\_sce\_x} $\in$ [5,251] cm.
     \item \emph{reco\_nu\_vtx\_sce\_y} $\in$ [-110,110] cm.
     \item \emph{reco\_nu\_vtx\_sce\_z} $\in$ [20,986] cm.
-    \item \emph{reco\_nu\_vtx\_sce\_z} $\not\in$ [675,775] cm.
     \item \emph{topological\_score} $>$ 0.06.
+    \item \emph{reco\_nu\_vtx\_sce\_z} $\not\in$ [675,775] cm.
 \end{itemize}
 
-\par The final cuto on the $z$ coordinate is to ensure that it is not in the region of `dead wires' in the detector.
+\par \noindent The final cuto on the $z$ coordinate is to ensure that it is not in the region of `dead wires' in the MicroBooNE detector. \textcolor{pink}{include some plot/statistic to motivate this further}
 
-\par Run 3 has the additional power to leverage the CRT system and these cuts are additionally applied:
+\par Run 3 has the additional power to leverage the CRT system to further limit cosmic contamination of the signal.
 
+\textbf{Run 3 only:}
 \begin{itemize}
     \item \emph{CRT Veto} != 1 or \emph{crthitpe} $<$ 100
-    \item \emph{closestNuCosmicDist} > 5 cm
+    \item \emph{closestNuCosmicDist} $>$ 5 cm
 \end{itemize}
 
 \subsubsection{Muon Selection}
@@ -91,11 +96,18 @@
     \item \emph{pfp\_generation} = 2.
 \end{itemize}
 
+\par \noindent The cuts made on the start and end points of the reconstructed tracks require that the track is fully contained inside the fiducial volume of the detector. This cut further limits the primary background for this selection which is cosmic muons, originating from outside the detector. The containment requirement also allows for the use of range-based momentum calculations on the muons; this has been shown to have a high resolution (see fig \ref{fig:numusel:momres}). The cut on the track distance requires that the reconstructed track be sufficiently close to the interaction vertex, this removes many in-time cosmics from the selection that are reconstructed as part of the slice. 
+\par The cut on the log likelihood ratio pid score is to separate the muons from the protons among the PFParticle tracks in the passing slices. The track length cut further separates the muons from the protons which tend to have shorter track lengths. 
+
+\par The track score cut ensures that the selected tracks are particularly track-like and this removes many particularly high energy, track-like electrons from the selection. Finally the PFParticle generation cut ensures that pandora recognizes that the track is a first daughter of the parent neutrino interaction. 
+
 \subsubsection{Run 1}
 \label{sssec:NuMUCCsel:INC:Run1}
 \begin{comment}
 \par The first run of the MicroBooNE detector to employ the trigger system is known as `run 1' and includes data taken between February to July of 2016. Run 1 and run 3 (see sec. \ref{sssec:NuMUCCsel:INC:Run3} are two runs presented in this document. Run 1, being the older data-set, is more well-understood and also has a higher statistics than run 3. 
 \end{comment}
+
+\par Coming soon...
 
 
 \begin{figure}
@@ -130,6 +142,8 @@
 
 \subsubsection{Run3}
 \label{sssec:NuMUCCsel:INC:Run3}
+
+\par Coming soon...
 
 \begin{figure}
     \centering

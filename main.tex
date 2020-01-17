@@ -63,6 +63,8 @@
 \newcommand{\numucc}{$\nu_{\mu} CC$ }
 \newcommand{\numubar}{$\bar{\nu}_{\mu}$ }
 \newcommand{\numubarcc}{$\bar{\nu}_{\mu} CC$ }
+\newcommand{\npsel}{1$e$N$p$0$\pi$ }
+\newcommand{\zpsel}{1$e$0$p$0$\pi$ }
 
 \begin{document}
 
@@ -588,6 +590,13 @@ The 1$e$N$p$ and 1$e$0$p$ selections rely on a common pre-selection which requir
 \label{sec:nueselection:variables}
 \par Variables used for the $\nu_e$ selections aim to isolate features in the neutrino interaction that are specific to events with final-state electrons. These features are split in several categories which leverage calorimetric and topological information that characterizes $\nu_e$ interactions. This section will describe the variables used in the $\nu_e$ selections. Table [\textcolor{red}{TABLE}] summarizes all variables used, with a brief description. Variables that warrant a longer introduction are described below.
 
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.6\textwidth]{nueselection/tools.png}
+\caption{\label{fig:nue:variables}Categories of variables leveraged in the $\nu_e$ selections.}
+\end{center}
+\end{figure}
+
 \par \noindent \textbf{track-shower separation} The first step in track-shower separation relies on the topological score reconstructed by Pandora, which utilizes inputs such as the PCA component of 3D space-points to classify PFParticles. Nonetheless, this classification is not sufficient to obtain the track-shower separation needed. To improve on this, additional variables which leverage different aspects of shower topologies are devised:
 
 \begin{itemize}
@@ -612,18 +621,39 @@ The 1$e$N$p$ and 1$e$0$p$ selections rely on a common pre-selection which requir
     \begin{subfigure}[b]{0.3\textwidth}
     \centering
     \includegraphics[width=1.00\textwidth]{nueselection/variables/dedx.png}
-    \caption{\label{fig:nue:variables:dedx} d$E$/d$x$ variable }
+    \caption{\label{fig:nue:variables:dedx} d$E$/d$x$ variables }
     \end{subfigure}
-\caption{\label{fig:nue:presel:eff} variables}
+\caption{\label{fig:nue:presel:eff} Additional shower variables defined by the analysis to improve track-shower separation.}
 \end{center}
 \end{figure}
 
-\begin{figure}[H]
+
+\par \noindent \textbf{second-shower variables} Often in $\pi^0$ events one of the two EM $\gamma$ showers is not fully reconstructed by Pandora. In many cases, these second $\gamma$ showers are correctly identified by Pandora as belonging to the neutrino slice (reconstructed in 2D), but never fully reconstructed in 3D (see fig.~\ref{fig:nue:variables:secondshowerevd}). To improve on our $\pi^0$ rejection, we exploit this 2D-only information to reconstruct several variables which store information associated to the largest 2D cluster belonging to the slice on each plane. At the moment, only collection-plane variables are used. The variables, shown graphically in figure~\ref{fig:nue:variables:secondshower}, are described below. In the example event of figure~\ref{fig:nue:variables:secondshowerevd} these quantities are computed for the circles black cluster of charge.
+\begin{itemize}
+    \item \emph{secondshower\_Y\_nhit}: number of hits in the collection plane of the largest cluster associated to the  recovered 2nd shower
+    \item \emph{secondshower\_Y\_dot}: dot product between the vector connecting the vertex to the closest hit in cluster and the charge-weighted cluster direction w.r.t. closest hit in cluster
+    \item \emph{anglediff\_Y}: 2D angle difference in the collection plane between the 2nd shower and the 1st shower cluster  (cluster direction defined as charge-weighted direction of cluster w.r.t. vertex)
+    \item \emph{secondshower\_Y\_vtxdist}: 2D distance from vertex for the largest 2D cluster associated to the  recovered 2nd shower in the collection plane
+\end{itemize}{}
+
+\begin{figure}[H] 
 \begin{center}
-\includegraphics[width=0.6\textwidth]{nueselection/tools.png}
-\caption{\label{fig:nue:variables}Categories of variables leveraged in the $\nu_e$ selections.}
+    \begin{subfigure}[b]{0.35\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{nueselection/variables/secondshowerevd.png}
+    \caption{\label{fig:nue:variables:secondshowerevd} ``trkfit'' variable }
+    \end{subfigure}
+    \begin{subfigure}[b]{0.35\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{nueselection/variables/secondshower.png}
+    \caption{\label{fig:nue:variables:secondshower} ``subcluster'' variable }
+    \end{subfigure}
+\caption{\label{fig:nue:variables:secondshower} variables}
 \end{center}
 \end{figure}
+
+\par \noindent \textbf{track-shower separation} In the 1$e$N$p$ channel, a gap between the shower candidate and vertex activity is a powerful $\pi^0$ rejection discriminant. We primarily rely on the measured 3D distance between the shower start point and the reconstructed start point of the longest track in the slice (variable: \emph{tksh\_distance}). Due to mis-reconstruction in the 3D shower and track reconstruction, sometimes the 3D distance just defined is reconstructed to be large (up to several centimeters) even if the individual track and shower are correctly clustered. This factors smears the track-shower separation of $\nu_e$ interactions therefore reducing the $e-\gamma$ separation power achievable. To overcome this failure specific to the 3D reconstruction, a new quantity is calculated with 2D information from the collection plane defined as the smallest 2D distance between any hits associated with the shower candidate and any hits associated with the proton candidate.
+
 
 \par \noindent  \textbf{Slice variables}: these are variables associated to general features of the reconstructed neutrino interaction or event.
 
@@ -637,6 +667,7 @@ The 1$e$N$p$ and 1$e$0$p$ selections rely on a common pre-selection which requir
     \item \emph{CosmicIP}: closest distance between shower start and space points associated to tracks flagged as cosmics.
     \item \emph{crtveto}: boolean variable checking whether the event passes the CRT veto or not
     \item \emph{\_closestNuCosmicDist}: minimum 3D distance of the reconstructed neutrino vertex from a CRT-tagged cosmic track
+    \item \emph{slclustfrac}: fraction of hits in the slice that are fully reconstructed to 3D particles.
 \end{itemize}
 
 \par \noindent \textbf{Shower and Track variables}:
@@ -650,7 +681,7 @@ The 1$e$N$p$ and 1$e$0$p$ selections rely on a common pre-selection which requir
 \par \noindent \textbf{Shower variables}:
 
 \begin{itemize}
-    \item \emph{shr\_energy\_tot\_cali}: sum of the energy of the calibrated showers (in GeV);
+    \item \emph{shr\_energy\_tot\_cali}: sum of the energy of the calibrated showers (in GeV). This variable is used only at pre-selection as a ``Michel veto'';
     \item \emph{shr\_tkfit\_2cm\_dedx\_\{U,V,Y\}}: dE/dx in the first 2 cm of the leading shower on plane (U,V,Y) with the track fitting;
     \item \emph{shr\_tkfit\_gap10\_dedx\_\{U,V,Y\}}: dE/dx in the [1,5] cm range of the leading shower on plane (U,V,Y) with the track fitting;
     \item \emph{shr\_score}: Pandora SVM track/shower score for the leading shower;
@@ -679,14 +710,14 @@ The 1$e$N$p$ and 1$e$0$p$ selections rely on a common pre-selection which requir
 \input{NueCCsel/NueCCsel}
 \clearpage
 
-\subsection{1$e$N$p$ Channel \textcolor{red}{David + Giuseppe}}
+\subsection{\npsel Channel \textcolor{red}{David + Giuseppe}}
 \label{sec:nueselection:1eNp}
 
 The 1$e$N$p$ channel is the most sensitive to the MiniBooNE eLEE signal as it contains a large fraction of the signal events and allows for selection requirements based both on showers and tracks. 
-Given the large cosmic background and that $\nu_e$ charge-current interactions are O(1\%) in the BNB, a high-purity selection is needed to achieve a sizeable signal sensitivity. 
+Given the large cosmic background and that $\nu_e$ charge-current interactions are O(1\%) in the BNB, a high-purity selection is needed to achieve a sizeable signal sensitivity; the necessary trade-off is that the final signal efficiency will be low.
 
 We first define a set of minimal requirements ("preselection") to obtain a high statistics sample (dominated by cosmic and neutrino backgrounds) that is used to monitor the data-MC agreement of the selection variables. 
-We then define two alternative selections, respectively based on a simple box-cut approach and on boosted decision trees (BDT); the BDT approach is clearly the most sensitive, while box-cuts provide a robust reference selection.
+We then define two alternative selections, respectively based on a simple box-cut approach and on boosted decision trees (BDT); the BDT approach is expected to be the most sensitive, while box-cuts provide a robust reference selection.
 
 \subsubsection{Preselection}
 
@@ -699,8 +730,7 @@ At preselection stage we apply the minimum set of requirements so that all selec
     \item shr\_energy\_tot\_cali $>$ 0.07
 \end{itemize}
 
-\par 
-Topics to discuss: selection efficiency and purity, data-MC agreement of selection variables.
+The relative fraction of EXT events at this stage is roughly 25\%, so we can look at all selection variables in data and MC in a neutrino-dominated sample with the open Run1 and Run3 data sets. We typically see very good agreement, which rules out major problems related to POT-scaling, detector modeling, inclusive cross-section. The full list of plots can be found in Appendix~\ref{sec:datamc:plots}. Figure~\ref{fig:1eNp:prsel} shows the level of agreement for the reconstructed neutrino energy variable. \textcolor{red}{We should probably discuss variables with not so great data-MC agreement here (in case they are not already discussed elsewhere).}
 
 \begin{figure}[ht] 
 \begin{center}
@@ -714,13 +744,14 @@ Topics to discuss: selection efficiency and purity, data-MC agreement of selecti
     \includegraphics[width=1.00\textwidth]{1eNp/reco_e_01162020_RUN3.pdf}
     \caption{\label{fig:1eNp:prsel:RUN1} RUN 3}
     \end{subfigure}
-\caption{\label{fig:1eNp:prsel}pre-selection for 1$e$N$p$ channel}
+\caption{\label{fig:1eNp:prsel}Reconstructed neutrino energy after pre-selection for the \npsel channel.}
 \end{center}
 \end{figure}
 
 \subsubsection{Box-cuts}
 
-In addition to the preselection requirements, cuts are applied to suppress specific backgrounds. Note however that, to the extent that some variables are effective against multiple backgrounds, the following description is a simplification.
+On top of the preselection requirements we define a robust selection based on box cuts, targeting high $\nu_e$ purity, especially at lower energy.
+Cuts are usually designed in order to suppress specific backgrounds; however, to the extent that some variables are effective against multiple backgrounds, the following description is a simplification.
 
 First, we aim at rejecting cosmic-induced events by requiring large CosmicIP and a proton-like trkpid. The latter requirement in particular rejects more than 90\% of the cosmics that pass pre-selection.
 
@@ -752,7 +783,23 @@ Topics to discuss: selection efficiency and purity, expected number of events in
 \begin{figure}[ht]
 \begin{center}
 \includegraphics[width=0.45\textwidth]{1eNp/reco_e_01162020_box_RUN1.pdf}
-\caption{\label{fig:1eNp:box:RUN1}Box-cuts for 1$e$N$p$ channel.}
+\caption{\label{fig:1eNp:box:RUN1}Box-cuts for \npsel channel.}
+\end{center}
+\end{figure}
+
+\begin{figure}[H] 
+\begin{center}
+    \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{1eNp/1eNp_box_evd1.png}
+    \caption{\label{fig:1eNp:box:evd1}1.19 GeV}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{1eNp/1eNp_box_evd2.png}
+    \caption{\label{fig:1eNp:box:evd2}1.15 GeV}
+    \end{subfigure}
+\caption{\label{ffig:1eNp:box:evd} \npsel candidates from the open $4eE19$ Run1 open dataset. Two data events are found when }
 \end{center}
 \end{figure}
 
@@ -814,7 +861,7 @@ Topics to discuss: selection efficiency and purity, expected number of events in
     \includegraphics[width=1.00\textwidth]{1eNp/nonpi0_score_zoom_01162020_RUN1.pdf}
     \caption{\label{fig:1eNp:bdt:nonpi0:zoom}}
     \end{subfigure}
-\caption{\label{ffig:1eNp:bdt:nonpi0}BDT response for non-$\pi^0$ BDT after 1$e$N$p$ pre-selection}
+\caption{\label{ffig:1eNp:bdt:nonpi0}BDT response for non-$\pi^0$ BDT after \npsel pre-selection}
 \end{center}
 \end{figure}
 
@@ -831,23 +878,23 @@ Topics to discuss: selection efficiency and purity, expected number of events in
     \includegraphics[width=1.00\textwidth]{1eNp/pi0_score_zoom_01162020_RUN1.pdf}
     \caption{\label{fig:1eNp:bdt:pi0:zoom}}
     \end{subfigure}
-\caption{\label{ffig:1eNp:bdt:pi0}BDT response for $\pi^0$ BDT after 1$e$N$p$ pre-selection}
+\caption{\label{ffig:1eNp:bdt:pi0}BDT response for $\pi^0$ BDT after \npsel pre-selection}
 \end{center}
 \end{figure}
 
 \begin{figure}[H]
 \begin{center}
 \includegraphics[width=0.45\textwidth]{1eNp/reco_e_01162020_bdt_RUN1.pdf}
-\caption{\label{fig:1eNp:box:RUN1}BDT-based selection for 1$e$N$p$ with cuts at 0.995 and 0.9984 for the $\pi^0$ and non-$\pi^0$ variables respectively.}
+\caption{\label{fig:1eNp:box:RUN1}BDT-based selection for \npsel with cuts at 0.995 and 0.9984 for the $\pi^0$ and non-$\pi^0$ variables respectively.}
 \end{center}
 \end{figure}
 
-\subsubsection{Performance of box cut and BDT selections}
+\subsubsection{Performance of \npsel selections}
 
 \begin{figure}[H]
 \begin{center}
 \includegraphics[width=0.45\textwidth]{1eNp/effpur_1eNp_cut_bdt.pdf}
-\caption{\label{fig:1eNp:effpur:RUN1} Efficiency of box cut and BDT selections for true 1$e$N$p$0$\pi$ events. The legend quotes the purity of intrinsic 1$e$N$p$0$\pi$ in the range 0.2$<$reco\_e$<1.0$ GeV (where a possible MiniBooNE LEE signal is not considered).}
+\caption{\label{fig:1eNp:effpur:RUN1} Efficiency of different selections for true \npsel events. The legend quotes the purity of intrinsic\npsel in the range 0.2$<$reco\_e$<1.0$ GeV (where a possible MiniBooNE LEE signal is not considered).}
 \end{center}
 \end{figure}
 
@@ -1009,7 +1056,7 @@ The reconstructed energy distribution for selected 1e0p events that pass the BDT
 \begin{figure}[H]
 \begin{center}
 \includegraphics[width=0.45\textwidth]{1e0p/efficiency_RUN3.pdf}
-\caption{\label{fig:1e0p:eff:RUN3} Efficiency for cut-based and BDT selection.}
+\caption{\label{fig:1e0p:eff:RUN3} Efficiency of 1e0p selections.  The purity quoted in the legend is calculated from 0-2 GeV in reconstructed neutrino energy.}
 \end{center}
 \end{figure}
 
@@ -1358,45 +1405,71 @@ In fact no parameter is extracted from the data at this stage: the hypothesis of
 The procedure is recapped here:
 \begin{itemize}
     \item Choice of the observables, typically one or more histograms. In the standard case it will consist of a reconstructed energy spectrum for a \nue selection plus a reconstructed energy spectrum of a \numu selection for the constraint of the systematic uncertainties.
-    \item Choice of the test statistics, which is a function of the observables only. It is in fact necessary to choose a variable that condensates all information of the observables in one number. Different choices are described in the following subsection.
+    \item Choice of the test statistic, which is a function of the observables only. It is in fact necessary to choose a variable that condensates all information of the observables in one number. Different choices are described in the following subsection.
     \item Definition of the two hypothesis. $H_0$ is the null hypothesis, where we do not observed any LEE signal, whereas $H_1$ is the hypothesis where we do observe the LEE signal.
-    \item Toy-experiments or pseudo-experiments. The expected distributions of the test statistics under the two hypotheses are built by randomly sampling the observables from their expected distributions. In case of the statistical only sensitivities, the bins of the histograms are treated as independent Poisson variables. In case systematic uncertainties are considered, the bins of the histograms are treated as a Multivariate Gaussian distribution, determined by the mean values and by a covariance matrix, which is then convoluted with a Poisson sampling that accounts for the statistical fluctuations.
-    \item Once the experiment is performed, and a values of the histograms is observed, the discovery significance, i.e. reject $H_0$, can be computed. This is done by computing the value of the test statistics associated to the observation, and then the p-value with respect to the expected distribution of the test statistics under $H_0$.
-    \item To compute the expected significance, in the case the LEE is present, we can consider the median value, and an interval which contain 68\% (or 95\%) of the distribution of the test statistics under $H_1$, and compute the p-values with respect to $H_0$.
+    \item Toy-experiments or pseudo-experiments. The expected distributions of the test statistic under the two hypotheses are built by randomly sampling the observables from their expected distributions. In case of the statistical only sensitivities, the bins of the histograms are treated as independent Poisson variables. In case systematic uncertainties are considered, the bins of the histograms are treated as a Multivariate Gaussian distribution, determined by the mean values and by a covariance matrix, which is then convoluted with a Poisson sampling that accounts for the statistical fluctuations.
+    \item Once the experiment is performed, and a values of the histograms is observed, the discovery significance, i.e. reject $H_0$, can be computed. This is done by computing the value of the test statistic associated to the observation, and then the p-value with respect to the expected distribution of the test statistic under $H_0$.
+    \item To compute the expected significance, in the case the LEE is present, we can consider the median value, and an interval which contain 68\% (or 95\%) of the distribution of the test statistic under $H_1$, and compute the p-values with respect to $H_0$.
+    \item The p-value is typically converted to the number of sigma of a standard Gaussian that produces the same p-value, as outlined in \cite{bib:cowan}.
 \end{itemize}
 
 \subsection{Statistics-Only Sensitivities \textcolor{red}{Nico}}
 \label{subsec:teststats}
 
 Statistics-only sensitivities are computed using the SBNfit tool~\cite{bib:sbnfit20437} and a separate stand-alone tool that is primarily used to crosscheck and understand SBNfit (Nicolo's).
-The SBNfit tool 
-The stand-alone test statistics tool is also used for performing additional test statistics not covered by the SBNfit, such as the Poisson log likelihood  ratio test statistics.
+The SBNfit tool can currently estimate sensitivities using only one test statistic, whereas the other tool is used to estimate the sensitivities with multiple test statistics.
 
-
-The test statistics are performed through the SBNfit tool~\cite{bib:sbnfit20437} and a separate stand-alone tool that is primarily used to crosscheck and understand SBNfit (Nicolo's). The stand-alone test statistics tool is also used for performing additional test statistics not covered by the SBNfit, such as the Poisson log likelihood  ratio test statistics.
-
-To estimate the sensitivity of the MiniBooNE LEE unfolded signal, SBNfit uses the following $\chi^2$ test statistics:
+To estimate the sensitivity of the MiniBooNE LEE unfolded signal, SBNfit uses the following $\Delta \chi^2$-like variable as test statistic:
 \begin{equation}
-\chi^2 = \sum_{i} \frac{data - prediction}{\sigma_{prediction}}
+\Delta\chi^2 = \sum_{i=1}^{N}\left( \frac{(n^i - \mu^i_{H_1})^2}{\mu^i_{H_1}} - \frac{(n^i - \mu^i_{H_0})^2}{\mu^i_{H_0}} \right)
 \end{equation}
+where $i$ is the index of the bin, $n_i$ is the observed number of entries in that bin, whereas $\mu^i_{H_0, 1}$ is the expected number of entries under the null and alternative hypothesis, respectively.
 
-The procedure to test the hypothesis is as follows:
-\begin{enumerate}
-    \item We first defined two hypothesis. H0 is the null hypothesis where we do not observed LEE signal and H1 is the hypothesis where we do observe the LEE signal. 
-    \item Generate a large number of toy experiments under the null hypothesis. The $\Delta \chi^2 = \chi^2_{H0} - \chi^2_{H1}$ is computed for each toy experiment and this gives the $\Delta \chi^2_{H0}$ distribution.
-    \item We also generate a large number of toy experiments under the LEE hypothesis. The $\Delta \chi^2 = \chi^2_{H0} - \chi^2_{H1}$ is computed for each toy experiment and this gives the $\Delta \chi^2_{H1}$ distribution.
-    \item The quoted sensitivity for the discovery of the LEE is given by the p-value at the median of the $H1$ distribution.
-\end{enumerate}
+Using the stand-alone tool we tested the ratio of the likelihoods under the two hypotheses as test statistic.
+In fact, as the statistical test involves only simple hypothesis, it can be proven this is the most powerful test, that means the one with the highest purity for any given efficiency.
+\begin{equation}
+T_{LLR~Pois} = 2 \sum_{i=1}^{N}\left( \mu^i_{H_1} - \mu^i_{H_0} - n^i\log\left(\mu^i_{H_1} / \mu^i_{H_0}\right) \right)
+\end{equation}
+where LLR Pois stands for log-likelihood-ratio of the Poisson likelihoods, and the factor of two in front of the expression is just a convention, to make it analogous to the $\chi^2$.
+
+One can see that the $\Delta \chi^2$-like variable is a log-likelihood-ratio, in the Gaussian approximation, and by dropping the term coming from the normalisation factor of the Gaussian formula.
+
+% Nico: I outlined this before
+% The procedure to test the hypothesis is as follows:
+% \begin{enumerate}
+%     \item We first defined two hypothesis. H0 is the null hypothesis where we do not observed LEE signal and H1 is the hypothesis where we do observe the LEE signal. 
+%     \item Generate a large number of toy experiments under the null hypothesis. The $\Delta \chi^2 = \chi^2_{H0} - \chi^2_{H1}$ is computed for each toy experiment and this gives the $\Delta \chi^2_{H0}$ distribution.
+%     \item We also generate a large number of toy experiments under the LEE hypothesis. The $\Delta \chi^2 = \chi^2_{H0} - \chi^2_{H1}$ is computed for each toy experiment and this gives the $\Delta \chi^2_{H1}$ distribution.
+%     \item The quoted sensitivity for the discovery of the LEE is given by the p-value at the median of the $H1$ distribution.
+% \end{enumerate}
 
 \begin{figure}[H]
+    \begin{center}
+    \includegraphics[width=0.45\textwidth]{Sensitivity/nue_reco_e_genietune_run1_nueStacked.pdf}
+    \caption{\label{fig:1eNp:box:sensitivitysample} The final 1eNp selection used for the sensitivity estimate. Sample is taken from Monte Carlo Run 1 Data and scaled to $1.01\times10^{21}$ POT}
+    \end{center}
+\end{figure}
+
+\begin{figure}[ht] 
 \begin{center}
-\includegraphics[width=0.45\textwidth]{Sensitivity/nue_reco_e_genietune_run1_nueStacked.pdf}
-\caption{\label{fig:1eNp:box:sensitivitysample} The final 1eNp selection used for the sensitivity estimate. Sample is taken from Monte Carlo Run 1 Data and scaled to $1.01\times10^{21}$ POT}
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \includegraphics[width=1.\textwidth]{Sensitivity/SBNfit_Cls_nue_reco_e_genietune_run1_LEE_deltachi_statonly.pdf}
+        \caption{\label{fig:1eNp:box:statonlysensitivity} Statistics-only sensitivity estimation for the 1eNp box cut selection. Sample is taken from Monte Carlo Run 1 Data and scaled to $1.01\times10^{21}$ POT}
+    \end{subfigure}
+        \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \includegraphics[width=1.\textwidth]{Sensitivity/pois_llr_discovery_totalpot_1e+21_nosyst.png}
+        \caption{correlation matrix}
+    \end{subfigure}
+\caption{\label{fig:fluxmatrices} Neutrino interactions (GENIE) only systematics for the 1eNp selection separated by its sub-channels}
 \end{center}
 \end{figure}
 
+\subsection{Sensitivities with systematic uncertainties}
+In the case in which systematic uncertainties are present, this definition can be expanded by adding the covariance matrix to account for these uncertainties.
+This second test statistic is more optimal in the case systematic uncertainties are present.
 
-\subsection{Generating toy experiments using the covariance matrix \textcolor{red}{Nico}}
 SBNfit uses the covariance matrix to build on the systematics for the sensitivity. The toy experiments can be generated once the full covariance matrix is in hand. The procedure to generate these toy experiments is as follows:
 \begin{enumerate}
     \item A Cholesky decomposition is performed on the covariance matrix: $$M = LL*$$,
@@ -1407,12 +1480,13 @@ $$x_{toy} = x_{CV} + Lv.$$
     \item We follow the same procedure to test the LEE hypothesis as described in the Section~\ref{subsec:teststats}
 \end{enumerate}
 
-\begin{figure}[H]
-\begin{center}
-\includegraphics[width=0.45\textwidth]{Sensitivity/SBNfit_Cls_nue_reco_e_genietune_run1_LEE_deltachi_statonly.pdf}
-\caption{\label{fig:1eNp:box:statonlysensitivity} Statistics-only sensitivity estimation for the 1eNp box cut selection. Sample is taken from Monte Carlo Run 1 Data and scaled to $1.01\times10^{21}$ POT}
-\end{center}
-\end{figure}
+% Nico: added in the previous subsection
+% \begin{figure}[H]
+% \begin{center}
+% \includegraphics[width=0.45\textwidth]{Sensitivity/SBNfit_Cls_nue_reco_e_genietune_run1_LEE_deltachi_statonly.pdf}
+% \caption{\label{fig:1eNp:box:statonlysensitivity} Statistics-only sensitivity estimation for the 1eNp box cut selection. Sample is taken from Monte Carlo Run 1 Data and scaled to $1.01\times10^{21}$ POT}
+% \end{center}
+% \end{figure}
 
 \begin{figure}[H]
 \begin{center}
@@ -1421,37 +1495,65 @@ $$x_{toy} = x_{CV} + Lv.$$
 \end{center}
 \end{figure}
 
-\subsection{How Constraints and Systematics are included in the 1$e$N$p$ Sensitivity Calculation \textcolor{red}{Nico}}
+\subsection{How Constraints and Systematics are included in the 1$e$N$p$ Sensitivity Calculation}
 
 The multiple selections described in  ~\ref{sec:nueselection}-\ref{sec:numuselection} share the same neutrino flux and cross-section and therefore the measurements between them are highly correlated. We can exploit these correlations to reduce the systematics uncertainties when performing the combined side-by-side fit of the different channel for the sensitivity results.
 
-The different selections described in Section~\ref{sec:nueselection}-\ref{sec:numuselection} provide constraints to different energy range of the 1eNp selection as well as the kinematics and topology.
+The different selections described in Section~\ref{sec:nueselection}-\ref{sec:numuselection} provide constraints to different energy range of the 1eNp selection as well as the kinematics and topology. The inclusive $\nu_e$ selection can be used to constrain the high energy $\nu_e$. We explore the prospect of adding the inclusive $\nu_e$ selection to constrain the high energy $\nu_e$. Given the non-orthogonality of this selection to the 1eNp0$pi$ selection, we still need to explore other variables that can provide orthogonality to provide constraint.
 
-\subsubsection{Constraint from Muon Neutrino \textcolor{red}{Nico}}
+\subsubsection{Constraint from Muon Neutrino}
 Using the measured $\nu_{\mu}$ energy spectrum interactions to constrain $\nu_e$ systematics is a common approach in oscillation experiments. 
 This constraint takes advantage of the high statistics $\nu_{\mu}$ data and known correlations between electron and muon neutrino fluxes and cross sections. 
 The constraint is exercised through the covariance matrix constructed in the energy spectrum of $\nu_e$ and $\nu_{\mu}$. 
-The correlation between the $\nu_e$ and $\nu_{\mu}$ provides constraint when we perform the combined fits between the two channels. This constraint comes from the minimization of the $\chi^2$ when we fit the 1eNp $\nu_e$ selection to the MiniBooNE unfolded LEE signal. Figure~\cite{fig:numuconstraint} displayed the cross section (genie) and flux correlation matrix between the two channels. \textit{Note that work on getting the numu constraint with the new genie tuned CV is still underway and the matrices are shown here to demonstrate the effect of the constraint which will be updated once the new $\nu_{\mu}$ constraint channel is available}.
+The correlation between the elements in the matrix provides constraint when we perform the combined fits between the two channels. This constraint comes from the minimization of the $\chi^2$ when we fit both the 1eNp $\nu_e$ and the inclusive $\nu_{\mu}$ selection to the MiniBooNE unfolded LEE signal. Figure~\cite{fig:numuconstraint} displayed the cross section (genie) and flux correlation matrix between the two channels. 
+
+\textit{Note that work on getting the numu constraint channel with the new genie tuned CV is still underway. The matrices are shown here to demonstrate the effect of the constraint which will be updated once the new $\nu_{\mu}$ constraint channel is available. At the time of the plots creation, the CCQE-related knobs are not included in the systematics, hence the cross section uncertainties are mostly dominated by the resonance uncertainties. Therefore, we observed less correlation between the $\nu_e$ and the $\nu_{\mu}$ channels at low $\nu_e$ energy.}
 
 \begin{figure}[ht] 
 \begin{center}
     \begin{subfigure}[b]{0.45\textwidth}
     \centering
     \includegraphics[width=1.00\textwidth]{Sensitivity/numuconstraint/SBNfit_correlation_matrix_nuenumu_reco_e_genieonly_mc_collapsed.pdf}
-    \caption{correlation matrix for cross section systematics}
+    \caption{cross section systematics}
     \end{subfigure}
     \begin{subfigure}[b]{0.45\textwidth}
     \centering
     \includegraphics[width=1.00\textwidth]{Sensitivity/numuconstraint/SBNfit_correlation_matrix_nuenumu_reco_e_fluxonly_mc_collapsed.pdf}
-    \caption{correlation matrix for flux systematics}
+    \caption{flux systematics}
     \end{subfigure}
-\caption{\label{fig:fluxmatrices} Correlation matrices between the $\nu_e$ and $\nu_mu$}
+\caption{\label{fig:numuconstraint} Correlation matrices between the $\nu_e$ and $\nu_\mu$. The correlation in (a) is dominated by the resonance systematics due to missing CCQE knobs. The correlation matrix for (b) is consistent with what is shown in the MCC8 Flux tech note ~\cite{bib:fluxtechnote}}.
+\end{center}
+\end{figure}
+
+\par We follow the procedures described in Document~\ref{bib:muonconstraint} to include the $\nu_\mu$ constraint to the covariance matrix. We make an assumption that the $N_{MC}$ is approximately the same as the $N_{signal}$.
+Figure~\ref{fig:numuconstraintresult} demonstrates the effects of the $\nu_\mu$ constraint on the systematics of the 1eNp $\nu_e$ selection. 
+
+\begin{figure}[ht] 
+\begin{center}
+    \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{Sensitivity/numuconstraint/nuenumu_reco_e1_before_constraint.pdf}
+    \caption{before constraint}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{Sensitivity/numuconstraint/nuenumu_reco_e1_after_constraint.pdf}
+    \caption{after constraint}
+    \end{subfigure}
+\caption{\label{fig:numuconstraintresult} The final 1eNp selection from run 1 scaled to $1.01\times10^{21}$. The shaded pink band on the top and bottom half of plots (a) and (b) is the systematic uncertainty associated to each bin. Overall we see ~50\% reduction in systematics at the low $\nu_e$ energy bin.}
 \end{center}
 \end{figure}
 
 
-
 \subsection{Final Sensitivities \textcolor{red}{Nico}}
+
+\begin{figure}[H]
+    \begin{center}
+    \includegraphics[width=0.45\textwidth]{Sensitivity/sensitivity_vs_pot.png}
+    \caption{The final 1eNp selection used for the sensitivity estimate. Sample is taken from Monte Carlo Run 1 Data and scaled to $1.01\times10^{21}$ POT}
+    \label{fig:}
+    \end{center}
+\end{figure}
 
 \newpage
 \section{Conclusions and Outlook}
@@ -1468,10 +1570,10 @@ The correlation between the $\nu_e$ and $\nu_{\mu}$ provides constraint when we 
 
 \newpage
 
-
 \appendix
 
 \section{Data-MC Comparisons}
+\label{sec:datamc:plots}
 
 \section{Code Repositories}
 
@@ -1501,10 +1603,13 @@ A. Furmanski, \emph{Reinteraction systematics}, \href{https://microboone-docdb.f
 M. Ross-Lonergan, \emph{From MiniBooNE data to MicroBooNE LEE sensitivity: A step-by-step review and guide},\href{https://microboone-docdb.fnal.gov/cgi-bin/private/RetrieveFile?docid=20437}{DocDB 20437}
 \bibitem{bib:CRTPresel_Technote}
 D. Caratelli, et al., \emph{Use of the MicroBooNE Cosmic Ray Tagger for Electron Neutrino Preselection}, \href{https://microboone-docdb.fnal.gov/cgi-bin/private/RetrieveFile?docid=24031&filename=CRTPACTechnote.pdf&version=1}{DocDB 24031}
-
+\bibitem{bib:muonconstraint}
+M. H. Schaevitz, \emph{Constraining the $\nu_e$ Background Uncertainties with the Observed $\nu_\mu$ Events}, \href{https://microboone-docdb.fnal.gov/cgi-bin/private/RetrieveFile?docid=7583}{DocDB 7583}
 \bibitem{bib:SCE}
 MicroBooNE Collaboration, \emph{A Method to Determine the Electric Field of Liquid Argon Time Projection Chambers Using a UV Laser System and its Application in MicroBooNE}, \href{https://arxiv.org/abs/1910.01430}{arXiv:1910.01430}
 
+\bibitem{bib:cowan}
+Cowan, G., Cranmer, K., Gross, E. et al. Asymptotic formulae for likelihood-based tests of new physics. Eur. Phys. J. C 71, 1554 (2011) doi:10.1140/epjc/s10052-011-1554-0
 \end{thebibliography}
 
 \end{document}
