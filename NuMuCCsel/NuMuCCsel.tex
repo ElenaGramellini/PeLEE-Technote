@@ -4,7 +4,7 @@
 \label{ssec:NuMUCCsel:sel}
 
 \par The selection of $\nu_{\mu}$ events is built from the SliceID preselection (see sec. \ref{sec:sliceID:SliceID}) and a combination of cuts on slice-level and track-level observable values. The $\nu_{\mu}$ selection has this prescription: first, perform SliceID preselection; second, perform slice-level cuts to remove backgrounds; finally, perform track-level cuts to select one muon candidate.
-\par Below is a summary of the variables used in this selection. There is some redundancy between this list and the list in sec. \ref{sec:NuMUCCsel:sel:vars}; this is intentional, as an overlap in phase space of the $\nu_{\mu}$ and $\nu_{e}$ selections improves constraining power.
+\par Below is a summary of the variables used in this selection. There is some redundancy between this list and the lists given for the $\nu_e$ selection; this is intentional, as an overlap in phase space of the $\nu_{\mu}$ and $\nu_{e}$ selections improves constraining power.
 
 \subsubsection{Variable Definitions}
 \label{sssec:NuMUCCsel:sel:vars}
@@ -28,8 +28,25 @@
     \item \emph{pfp\_generation}: The generation of the PFParticle according to Pandora, i.e. how many parents the object on interest has in the slice.
 \end{itemize}
 
+\begin{comment}
 \subsubsection{Backgrounds}
 \label{sssec:NuMUCCsel:sel:bkgrnds}
+\end{comment}
+
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{NuMuCCsel/Images/run1/numu_pret_run1.pdf}
+    \caption{Caption}
+    \label{fig:numu_topo_pid}
+\end{figure}
+
+\subsection{Inclusive Selection}
+\label{ssec:NuMUCCsel:INC}
+
+\subsubsection{Signal Definition}
+\label{sssec:NuMUCCsel:INC:signaldef}
+\par A $\nu_{\mu}$ event is identified by, at least, one muon candidate originating from inside the fiducial volume of the detector. Additional tracks and showers may accompany the muon candidate; these assist in the proper reconstruction of vertex location and energy calculation but are not necessary in the inclusive selection. 
 
 \subsubsection{Event Selection}
 \label{sssec:NuMUCCsel:sel:evt}
@@ -73,20 +90,6 @@
     \item \emph{trk\_trk\_distance} $<$ 4 cm.
     \item \emph{pfp\_generation} = 2.
 \end{itemize}
-
-\begin{figure}
-    \centering
-    \includegraphics[width=\textwidth]{NuMuCCsel/Images/run1/numu_pret_run1.pdf}
-    \caption{Caption}
-    \label{fig:numu_topo_pid}
-\end{figure}
-
-\subsection{Inclusive Selection}
-\label{ssec:NuMUCCsel:INC}
-
-\subsubsection{Signal Definition}
-\label{sssec:NuMUCCsel:INC:signaldef}
-\par A $\nu_{\mu}$ event is identified by, at least, one muon candidate originating from inside the fiducial volume of the detector. Additional tracks and showers may accompany the muon candidate; these assist in the proper reconstruction of vertex location and energy calculation but are not necessary in the inclusive selection. 
 
 \subsubsection{Run 1}
 \label{sssec:NuMUCCsel:INC:Run1}
