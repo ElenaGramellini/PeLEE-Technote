@@ -9,7 +9,7 @@
 \usepackage[colorinlistoftodos]{todonotes}
 \usepackage{hyperref}
 \usepackage[noabbrev]{cleveref}
-\usepackage{lineno}
+\usepackage{siunitx}
 \usepackage{setspace}
 \usepackage{soul}
 \usepackage{multirow}
@@ -53,6 +53,16 @@
 \affil[4]{University of Oxford}
 %\date{\today}	
 
+
+\newcommand{\nue}{$\nu_e$ }
+\newcommand{\nuecc}{$\nu_e CC$ }
+\newcommand{\nueccnopinp}{$\nu_e CC 0\pi Np$ }
+\newcommand{\nuebar}{$\bar{\nu}_e$ }
+\newcommand{\nuebarcc}{$\bar{\nu}_e CC$ }
+\newcommand{\numu}{$\nu_{\mu}$ }
+\newcommand{\numucc}{$\nu_{\mu} CC$ }
+\newcommand{\numubar}{$\bar{\nu}_{\mu}$ }
+\newcommand{\numubarcc}{$\bar{\nu}_{\mu} CC$ }
 
 \begin{document}
 
@@ -1324,11 +1334,11 @@ reinteractions\_piminus        & $\pi^-$ hadronic reinteractions  & ---\\
 
 \newpage
 
-\section{Sensitivity Estimation \textcolor{red}{Nico}}
+\section{Sensitivity Estimation \textcolor{green}{Nico}}
 \label{sec:sensitivity}
 The primary scope of the analysis is to be able to learn knew knowledge about the anomalous excess observed by MiniBooNE.
 For this reason, the sensitivity to this excess is estimated, as a metric of the power of the analysis.
-The model for the signal currently used is the MiniBooNE LEE unfolded signal \cite{}.
+The model for the signal currently used is the MiniBooNE LEE unfolded signal \cite{bib:sbnfit20437}.
 To construct this signal, the reconstructed energy distribution, under the CCQE hypothesis, of the excess observed by MiniBooNE, is unfolded to a distribution in true neutrino energy.
 Given this spectrum, it is possible to derive a correction for the \nue flux in order to account for the LEE, that is then propagated in the MicroBooNE simulation.
 It is noteworthy that this method is not a perfect signal, as the cross section model used by MiniBooNE and MicroBooNE are different, implying that the signal, as in the MicroBooNE simulation, will not explain the MiniBooNE LEE.
@@ -1342,11 +1352,12 @@ The procedure is recapped here:
     \item Definition of the two hypothesis. $H_0$ is the null hypothesis, where we do not observed any LEE signal, whereas $H_1$ is the hypothesis where we do observe the LEE signal.
     \item Toy-experiments or pseudo-experiments. The expected distributions of the test statistics under the two hypotheses are built by randomly sampling the observables from their expected distributions. In case of the statistical only sensitivities, the bins of the histograms are treated as independent Poisson variables. In case systematic uncertainties are considered, the bins of the histograms are treated as a Multivariate Gaussian distribution, determined by the mean values and by a covariance matrix, which is then convoluted with a Poisson sampling that accounts for the statistical fluctuations.
     \item Once the experiment is performed, and a values of the histograms is observed, the discovery significance, i.e. reject $H_0$, can be computed. This is done by computing the value of the test statistics associated to the observation, and then the p-value with respect to the expected distribution of the test statistics under $H_0$.
-    \item To compute the expected significance, in the case the LEE is present, we can consider the median value, and an interval which contain 68\% (or 95\%) of the distribution of the test statistics under $H_1$, and compute the p
+    \item To compute the expected significance, in the case the LEE is present, we can consider the median value, and an interval which contain 68\% (or 95\%) of the distribution of the test statistics under $H_1$, and compute the p-values with respect to $H_0$.
 \end{itemize}
 
-\subsection{Test Statistics and Statistics-Only Sensitivities \textcolor{red}{Nico}}
+\subsection{Statistics-Only Sensitivities \textcolor{red}{Nico}}
 \label{subsec:teststats}
+
 The test statistics are performed through the SBNfit tool~\cite{bib:sbnfit20437} and a separate stand-alone tool that is primarily used to crosscheck and understand SBNfit (Nicolo's). The stand-alone test statistics tool is also used for performing additional test statistics not covered by the SBNfit, such as the Poisson log likelihood  ratio test statistics.
 
 To estimate the sensitivity of the MiniBooNE LEE unfolded signal, SBNfit uses the following $\chi^2$ test statistics:
@@ -1411,13 +1422,13 @@ The correlation between the $\nu_e$ and $\nu_{\mu}$ provides constraint when we 
 \begin{center}
     \begin{subfigure}[b]{0.45\textwidth}
     \centering
-    \includegraphics[width=1.00\textwidth]{CovarianceMatrices/SBNfit_fractional_covariance_matrix_nue_reco_e_genietune_run1_genieonly.pdf}
-    \caption{fractional covariance matrix}
+    \includegraphics[width=1.00\textwidth]{}
+    \caption{correlation matrix for cross section systematics}
     \end{subfigure}
     \begin{subfigure}[b]{0.45\textwidth}
     \centering
-    \includegraphics[width=1.00\textwidth]{CovarianceMatrices/SBNfit_correlation_matrix_nue_reco_e_genietune_run1_genieonly.pdf}
-    \caption{correlation matrix}
+    \includegraphics[width=1.00\textwidth]{Sensitivity/numuconstraint/SBNfit_correlation_matrix_nuenumu_reco_e_fluxonly_mc_collapsed.pdf}
+    \caption{correlation matrix for flux systematics}
     \end{subfigure}
 \caption{\label{fig:fluxmatrices} Neutrino interactions (GENIE) only systematics for the 1eNp selection separated by its sub-channels}
 \end{center}
@@ -1471,7 +1482,7 @@ Z. Pavlović, \emph{Booster Neutrino Flux Prediction at MicroBooNE}, \href{https
 K. Duffy, et al., \emph{Supporting note: Cross-section model and uncertainties}, \href{https://microboone-docdb.fnal.gov/cgi-bin/private/ShowDocument?docid=27018}{DocDB 27018}
 \bibitem{bib:reintslides}
 A. Furmanski, \emph{Reinteraction systematics}, \href{https://microboone-docdb.fnal.gov/cgi-bin/private/ShowDocument?docid=17455}{DocDB 17455}
-\bibitem{bib:sbnfit20437}
+\bibitem{C}
 M. Ross-Lonergan, \emph{From MiniBooNE data to MicroBooNE LEE sensitivity: A step-by-step review and guide},\href{https://microboone-docdb.fnal.gov/cgi-bin/private/RetrieveFile?docid=20437}{DocDB 20437}
 \bibitem{bib:CRTPresel_Technote}
 D. Caratelli, et al., \emph{Use of the MicroBooNE Cosmic Ray Tagger for Electron Neutrino Preselection}, \href{https://microboone-docdb.fnal.gov/cgi-bin/private/RetrieveFile?docid=24031&filename=CRTPACTechnote.pdf&version=1}{DocDB 24031}
