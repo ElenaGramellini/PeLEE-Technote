@@ -116,7 +116,7 @@ In devising the selections presented above, we have deliberately chosen to not r
 
 
 
-\subsection{Signal Model \textcolor{pink}{David}}
+\subsection{Signal Model \textcolor{green}{David}}
 \par In order to benchmark the performance of the analysis it is valuable to have a signal model which can be used to assess the analysis' sensitivity.  This section describes the choice of model used for this purpose. It is important to stress that the signal model used serves the purpose of benchmarking the analysis' sensitivity, but the ultimate goal of the analysis remains to measure the rate of $\nu_e$ interactions in the BNB and report whether the observation is consistent or not with MicroBooNE's MC prediction. \textcolor{blue}{Answering whether MicroBooNE's observation is consistent or not with the MiniBooNE LEE anomaly is beyond the scope of this work, and something not achievable without significant work for both MiniBooNE and MicroBooNE.}
 \par To test this analysis' sensitivity to MiniBooNE's LEE, a model which can explain it as an excess of $\nu_e$ interactions must be produced, and used to generate simulated events in MicroBooNE. Many such models can be devised, each relying on a given (new) physics production mechanism and set of assumptions on detector response. The primary sensitivity quoted by this analysis will focus on the MiniBooNE-unfolded LEE model, referred to as \textbf{MB-$\nu_e$ LEE} model in this document. In this model, excess LEE events are assumed to be due to $\nu_e$ interactions with a value of true energy obtained by unfolding from the reconstructed CCQE energy of MiniBooNE LEE events, as recorded by MiniBooNE's data. This procedure is perfomed by relying on MiniBooNE's energy smearing matrix. The resulting true neutrino energy distribution is shown in figure~\ref{fig:minibooneunfolded}. There are several limitations to this model worth observing, some technical, others conceptual. On a technical level, the model is composed of a binned event distribution, rather then a parametrized or analytic prediction of the expected $\nu_e$ spectrum. Additionally, no events below 200 MeV of true energy exist in this model. These two factors lead to a granular and truncated model prediction.
 \begin{figure}[ht]
@@ -144,7 +144,7 @@ Conceptual issues can be raised in association with the various assumptions made
 \end{center}
 \end{figure}
 
-\subsection{Goals of the $\nu_{\mu}$ Selection}
+\subsection{Goals of the $\nu_{\mu}$ Selection \textcolor{green}{David}}
 \par For the purpose of this analysis, measurements of $\nu_{\mu}$ interactions are aimed at reducing modeling uncertainties for intrinsic $\nu_e$ events and backgrounds, with the goal of reducing systematic uncertainties in order to be able to claim the observation of new physics were a measurement of $\nu_e$ interactions differ significantly from the expected intrinsic rate. This section describes why such a data-driven constraint is needed and what are the choices which motivate the approach taken in this analysis.
 \par Event reconstruction and $\nu_e$ identification are only one of the challenges in this analysis. In order to be able to make statements on whether the observed $\nu_e$ rate indicates a presence of new physics, a well understood prediction of the intrinsic $\nu_e$ expectation is needed. Uncertainties in the expected $\nu_e$ rate are associated to reconstruction efficiencies (detector effects) as well as modeling uncertainties in both the $\nu_e$ flux prediction and neutrino-argon cross-section modeling. Here we focus on describing the strategy employed to deal with flux and cross-section uncertainties. Modeling uncertainties in the expected rate of $\nu_e$ interaction are large, and can limit the ability to associate a $\nu_e$ measurement with potential new physics if not constrained through additional measurements. Flux uncertainties for $\nu_e$ are $\mathcal{O}$(10\%) above 800 MeV and grow to 40\% at 200 MeV. Cross-section uncertainties are also large, a consequence of a lack of measurements of $\nu$-Ar cross-sections, particularly at low energy, and the complex modeling of neutrino interactions on a heavy target such as argon. Combining all effects, the uncertainty on the $\nu_e$ interaction rate in the few-hundred MeV energy range in MicroBooNE's could be as high as 100\%.
 \par To reduce modeling uncertainties on the expected rate of $\nu_e$ interactions, data-driven constraints are required. These can be performed through measurements of $\nu_{\mu}$ interactions subject to the same uncertainties. In order to constrain flux uncertainties, we rely on the fact that $\nu_e$ and $\nu_{\mu}$ intrinsic to the beam are produced by the decay of the same parent $\pi$ and $K$ flux. Similarly for uncertainties on neutrino interaction modeling, we rely on the common charged-current interaction mode $\nu_{l} + Ar \rightarrow l + X$ for both $\nu_{\mu}$ and $\nu_e$ interactions to constrain interaction uncertainties. 
@@ -166,7 +166,7 @@ Conceptual issues can be raised in association with the various assumptions made
 \end{center}
 \end{figure}
 
-\subsection{Systematics}
+\subsection{Systematics  \textcolor{green}{David}}
 \par This section gives a brief overview of how detector and modeling uncertainties are accounted for in the analysis. The estimation of systematics is performed in section~\ref{sec:systematics}.
 \par \noindent \textbf{Detector Systematics}: Detector modeling in MicroBooNE has undergone significant updates in the past year, in part as a result of the large impact that detector systematics have had on 2018 analyses (\textcolor{red}{cite CCpi0,CCincl}). Detector effects with significant impact on the analysis can be broken up into three main categories:
 \begin{itemize}
@@ -177,7 +177,7 @@ Conceptual issues can be raised in association with the various assumptions made
 An additional detector effects that needs to be accounted for are ion Recombination which impacts the detector's calorimetric response. Tailored studies and proton samples are being developed to assess ion recombination modeling accuracy in MCC9.
 \par \noindent \textbf{Flux and Cross-Section Modeling} Uncertainties in flux and cross-section modeling are treated through a \emph{multi-sim} approach, where underlying parameters that are input to the modeling are varied in a correlated way. Flux uncertainties are taken from the MiniBooNE BNB flux simulation adapted to MicroBooNE~\cite{bib:fluxmcc9}, while $\nu$ interaction uncertainties are handled within the \texttt{GENIE} reweighting package, as described in~\cite{bib:geniesupportnote}. We note that the \texttt{GENIE} event reweighting infrastructure is still in development and likely to be updated or further expanded on in the future. Finally, uncertainties associated with pion and proton re-interactions in argon were unavailable when this version of the Tech Note was produced and not included at this stage.
 
-\subsection{Sensitivity Calculation}
+\subsection{Sensitivity Calculation  \textcolor{red}{Nico/Maya}}
 
 
 \newpage
@@ -189,7 +189,7 @@ An additional detector effects that needs to be accounted for are ion Recombinat
 
 \newpage
 
-\section{Neutrino Event Reconstruction \textcolor{red}{Giuseppe, David + ...}}
+\section{Neutrino Event Reconstruction}
 
 \subsection{Track and Shower Reconstruction \textcolor{green}{Giuseppe}}
 \label{sec:tkshreco}
@@ -283,7 +283,7 @@ As long as the likelihood is correct, that means the model is correct, this can 
 Any imperfection in the simulation used to build the model produces a loss of power, but does not add any systematic uncertainty.
 
 
-\subsubsection{$e$/$\gamma$ Separation}
+\subsubsection{$e$/$\gamma$ Separation \textcolor{red}{David}}
 \label{subsec:egammaspearation}
 \par Distinguishing electron from photon EM-showers is one of the crucial steps required to perform a measurement of $\nu_e$ interactions in the BNB beam. Photon backgrounds to a $\nu_e$ measurement are largely caused by neutrino interactions with $\pi^0 \rightarrow \gamma\gamma$ in the final state, which dominate the $\nu_e$ event rate by approximately an order of magnitude. Three key features distinguish events with $\pi^0$ induced photon showers from $\nu_e$ interactions: (a) the presence of two final state EM showers. (b) the non-zero conversion distance separating the neutrino interaction vertex from the shower start point, and (c) the calorimetric separation via $dE$/$dx$ due to the overlapping ionization segment of $e^+$/$e^-$ pair-conversions through which most $\gamma$ showers manifest themselves. Figure~\ref{fig:egammasep} shows how, at reconstruction level, each of these features can aid in $e$/$\gamma$ separation. This section describes how each of the items above is utilized in the analysis on a technical level, what performance is obtained, and what challenges (both physics- and reconstruction-driven) are encountered when leveraging these variables.
 
@@ -403,7 +403,7 @@ d$E$/d$x$ information at different distances from the shower start-point for $e$
 
 \newpage
 
-\subsubsection{Neutrino Energy Reconstruction}
+\subsubsection{Neutrino Energy Reconstruction \textcolor{green}{Giuseppe + David}}
 
 \par In this analysis, the energy reconstruction for neutrino interactions is performed through a sum of the visible energy of the various reconstructed final-state particles in the interaction. For $\nu_e$ events the reconstructed energy is defined as:
 \begin{equation}
@@ -439,7 +439,7 @@ Figure~\ref{fig:eres:neutrino} shows the comparison between reconstructed energy
 \section{Control Samples and Analysis Input Validation}
 \par The selections and analysis described below rely on well understood detector, simulation, calibration, and analysis tools performance. This section is dedicated to evaluating the performance of detector modeling through data-mc comparisons of targeted sidebands. The sidebands developed for this analysis are a high-stats $\pi^0$ selection, and an \emph{anti-BDT} filter which targets the selection of $\nu_e$ like backgrounds. Currently comparisons for the \emph{anti-BDT} filter are not available and will be documented in a future iteration of this note.
 \par It is important to note that in addition to detector simulation and reconstruction effects, $\nu$-Ar modeling can impact the level of data-mc agreement in various variables. We will try to point out when this might be the case.
-\subsection{$\pi^0$ control sample}
+\subsection{$\pi^0$ control sample \textcolor{green}{David}}
 \par A $\pi^0$ selection has been developed in order to obtain high-stats samples of $\pi^0$ events and $\gamma$ EM showers which can constrain $\pi^0$ production modeling uncertainties as well as validate the analyis' ability to reconstruct and select EM showers.
 \par Figure~\ref{fig:pi0:mass} shows the reconstructed $M\gamma\gamma$ for candidate $\pi^0$ events, with a calibrated but uncorrected (i.e. not accounting for biases in shower energy reconstruction caused by the incompleteness in charge clustering) energy reconstruction. Overall there is good data-MC agreement, apart from an apparent normalization difference. To account for this normalization difference we measure a flat scaling factor needed for CC and NC $\pi^0$ events needed to obtain  consitent rate in data and MC. This factor is found to be 72.4\% in Run1 and 72.7\% in Run3. We repeat the exercise applying a tighter $\pi^0$ selection enhancing the $\pi^0$ purity and obtain scaling factors of 70\% for both Run1 and Run3. While this procedure is far from rigorous, it allows us to study detector-related and specifically shower-related variables removing a large normalization difference. \textcolor{red}{A more rigorous data-driven constrain of our $\pi^0$ rate, performed accounting for detector and flux systematics, and considering a broader range of $\pi^0$ modeling, will need to be performed.}
 
@@ -516,7 +516,7 @@ Figure~\ref{fig:eres:neutrino} shows the comparison between reconstructed energy
 \end{center}
 \end{figure}
 
-\subsection{Anti-BDT sample}
+\subsection{Anti-BDT sample \textcolor{green}{David}}
 \par An anti-BDT filter was developed with the goal of isolating $\nu_e$ like backgrounds that could help study in detail data-mc agreement for events that are close to, but not in the $\nu_e$ signal region. The filter selects events that pass the $\nu_e$  pre-selection but fail a past iteration of the 1$e$N$p$ BDT, in order to veto and remain blind to signal events. The filter was run on $1.5E20$ POT of Run 3 data with the goal of studying in particular detail data-mc agreement for Run3, which otherwise would be limited to $0.8E19$ POT of open data. Further documentation on the \emph{anti-BDT} filter is available in reference~\ref{bib:antiBDT}. Comparisons of distributions from this filter are to be made available in a subsequent version of this note.
 
 \newpage
@@ -524,7 +524,7 @@ Figure~\ref{fig:eres:neutrino} shows the comparison between reconstructed energy
 \section{$\nu_e$ Selections}
 \par This chapter present the three $\nu_e$ selections which comprise the analysis. The starting point for the $\nu_e$ selections, including a description of efficiencies, are described in section~\ref{sec:nueselection:inputs} . The common variables and tools leveraged for the $\nu_e$ selection are presented in section~\ref{sec:nueselection:variables}. Following sections describe the three channels being targeted: $\nu_e$ inclusive (\ref{sec:nueselection:inclusive}),1$e$N$p$0$\pi$ (\ref{sec:nueselection:1eNp}), and 1$e$0$p$0$\pi$ (\ref{sec:nueselection:1e0p}).
 
-\subsection{Input to $\nu_e$ selections and 1$e$N$p$/1$e$0$p$ orthogonality \textcolor{red}{Sophie + ...}}
+\subsection{Input to $\nu_e$ selections and 1$e$N$p$/1$e$0$p$ orthogonality \textcolor{green}{Sophie}}
 \label{sec:nueselection:inputs}
 
 The 1$e$N$p$ and 1$e$0$p$ selections rely on a common pre-selection which requires the presence of at least one reconstructed and contained EM shower (figure~\ref{fig:nue:presel:nshower}) with reconstructed energy above 70 MeV (figure~\ref{fig:nue:presel:shrenergy}). This second cut applies as a Michel-electron veto, as the majority of events which do not pass this cut are associated to cosmic or $\nu_{\mu}$ induced $\mu \rightarrow e$ Michel electrons. The two selections are subsequently split based on whether a proton candidate is (N$p$) or is not (0$p$) found. Events with a fully contained track must have a \texttt{trkpid} score $< 0$ and a value of \texttt{tksh\_angle} $> -0.9$. The first condition requires that the track be proton-like according to the PID tool~\ref{subsec:loglikelihoodpid}, while the second excludes tracks reconstructed back-to-back to the electron candidate, generally due to mis-reconstruction. For events with more than one reconstructed track, these requirements are applied on the longest track.
@@ -573,7 +573,7 @@ The 1$e$N$p$ and 1$e$0$p$ selections rely on a common pre-selection which requir
 \end{center}
 \end{figure}
 
-\subsection{Variable definitions}
+\subsection{Variable definitions \textcolor{red}{Elena}}
 \label{sec:nueselection:variables}
 \par Variables used for the $\nu_e$ selections aim to isolate features in the neutrino interaction that are specific to events with final-state electrons. These features are split in several categories:
 
@@ -998,7 +998,7 @@ In the multisim procedure, several variations of a given analysis input paramete
 where $N$ is the total number of universes, $N_i^k$ is the value in the
 $i$-th bin of the $k$-th universe and $N_i^{CV}$ is that of the central value. We utilized the SBNfit framework~\cite{bib:bib:sbnfit20437} to construct the covariance matrices and the associated correlation matrices for our selection.
 
-\subsection{Detector Systematics}
+\subsection{Detector Systematics \textcolor{red}{Maya}}
 The details on detector systematics can be found in~\cite{bib:detsyssupportnote}. To asses the detector systematics uncertainties in the eLEE analysis, the following detector variations samples are used:
 \begin{enumerate}
     \item Waveform variations in examined variables ($x$, $yz$, $\theta_{XZ}$, $\theta_{YZ}$, $dE/dx$), where the waveform variations as function of $dE/dx$ may later be replaced. Samples are available for the $x$, $yz$, and angular wire-modification variations. These detector variations are constructed by profiling reconstructed hit variables of charge, amplitude and width as a function of the mentioned variables with data-driven samples, and re-scaling the simulation by the difference between data and simulation. By doing this, the samples cover the difference between data and simulation. 
@@ -1072,7 +1072,7 @@ The details on detector systematics can be found in~\cite{bib:detsyssupportnote}
 \end{center}
 \end{figure}
 
-\subsection{Flux Uncertainties}
+\subsection{Flux Uncertainties \textcolor{red}{Maya}}
 The flux and uncertainties for MCC9~\cite{bib:fluxmcc9} are largely the same as MCC8~\cite{bib:fluxtechnote}. We use multisim technique to estimate the flux uncertainties. The various sources of uncertainties are taken as independent and are varied individually. They are listed in Table~\ref{tab:fluxsyst} along the number of universes considered for each. The fractional covariance matrix and correlation matrix for the 1eNp selection are presented in Figure~\ref{fig:fluxmatrices} which amount to 12\% in flux uncertainties. Meanwhile, Figure~\ref{fig:fluxsystvars} displays the effects of reweighting central value in each universe of an individual parameter of flux.
 
 \begin{table}[H]
@@ -1139,7 +1139,7 @@ piplus\_PrimaryHadronSWCentralSplineVariation     &  Primary Hadron Sanford Wang
 \end{center}
 \end{figure}
 
-\subsection{Neutrino Interaction Modeling Uncertainties}
+\subsection{Neutrino Interaction Modeling Uncertainties \textcolor{red}{Maya}}
 We use genie event reweighting framework with the standard reweighting parameters, also known as "knobs", to model the neutrino cross section and final states uncertainties. Document~\cite{bib:geniesupportnote} describes the GENIE cross-section model, recommended central-value tune, and the recommended uncertainties for MCC9 analyses. 
 
 The updated Genie central value is guided on fits to the T2K data which increase the MA CCQE and scale up the MEC normalization.
@@ -1271,7 +1271,7 @@ Theta\_Delta2Npi\_Genie       &  Interpolates angular distribution for $\Delta\t
 \end{center}
 \end{figure}
 
-\subsection{Hadronic Reinteraction Uncertainties}
+\subsection{Hadronic Reinteraction Uncertainties \textcolor{red}{Maya}}
 An additional type of systematic uncertainty that can be included is that related to hadrons interacting strongly with argon nuclei~\cite{bib:reintslides}. These hadronic rescatterings can induce a large momentum transfer in the hadron and thus have an impact in the reconstruction and the selection of events. These uncertainties can be thought of as GEANT4 uncertainties in the cross section of a hadron with argon nuclei. The hadronic reinteraction uncertainties listed in Table~\ref{tab:fluxsyst} are technically readily available to the analysis but have not been investigated.
 
 
@@ -1293,10 +1293,10 @@ reinteractions\_piminus        & $\pi^-$ hadronic reinteractions  & ---\\
 
 \newpage
 
-\section{Sensitivity Estimation ID \textcolor{red}{Nico + ...}}
+\section{Sensitivity Estimation ID \textcolor{red}{Nico}}
 \label{sec:sensitivity}
 \par This document is primarily focused on presenting sensitivities for a specific signal hypothesis:  
-\subsection{Test Statistics and Statistics-Only Sensitivities}
+\subsection{Test Statistics and Statistics-Only Sensitivities \textcolor{red}{Nico}}
 \label{subsec:teststats}
 The test statistics are performed through the SBNfit tool~\cite{bib:sbnfit20437} and a separate stand-alone tool that is primarily used to crosscheck and understand SBNfit (Nicolo's). The stand-alone test statistics tool is also used for performing additional test statistics not covered by the SBNfit, such as the Poisson log likelihood  ratio test statistics.
 
@@ -1321,7 +1321,7 @@ The procedure to test the hypothesis is as follows:
 \end{figure}
 
 
-\subsection{Generating toy experiments using the covariance matrix}
+\subsection{Generating toy experiments using the covariance matrix \textcolor{red}{Nico}}
 SBNfit uses the covariance matrix to build on the systematics for the sensitivity. The toy experiments can be generated once the full covariance matrix is in hand. The procedure to generate these toy experiments is as follows:
 \begin{enumerate}
     \item A Cholesky decomposition is performed on the covariance matrix: $$M = LL*$$,
@@ -1346,15 +1346,15 @@ $$x_{toy} = x_{CV} + Lv.$$
 \end{center}
 \end{figure}
 
-\subsection{How Constraints and Systematics are included in the 1$e$N$p$ Sensitivity Calculation}
+\subsection{How Constraints and Systematics are included in the 1$e$N$p$ Sensitivity Calculation \textcolor{red}{Nico}}
 
 As have been discussed before, we have shown that we have a  well-reconstructed nue and numu selection. All the selections share the same neutrino flux and cross-section and therefore the measurements between them are highly correlated. We can exploit these correlations to reduce the systematics uncertainties when performing the combined side-by-side fit of the different channel for the sensitivity results.
 
 The different selections described in Section~\ref{sec:nueselection:variables}-\ref{section:numu} provide constraints to different energy range of the 1eNp selection as well as the kinematics and topology.
 
-\subsubsection{Constraint from Muon Neutrino}
+\subsubsection{Constraint from Muon Neutrino \textcolor{red}{Nico}}
 
-\subsection{Final Sensitivities}
+\subsection{Final Sensitivities \textcolor{red}{Nico}}
 
 \newpage
 \section{Conclusions and Outlook}
