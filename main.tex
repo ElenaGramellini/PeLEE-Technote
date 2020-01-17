@@ -1340,7 +1340,16 @@ The primary scope of the analysis is to be able to learn knew knowledge about th
 For this reason, the sensitivity to this excess is estimated, as a metric of the power of the analysis.
 The model for the signal currently used is the MiniBooNE LEE unfolded signal \cite{bib:sbnfit20437}.
 To construct this signal, the reconstructed energy distribution, under the CCQE hypothesis, of the excess observed by MiniBooNE, is unfolded to a distribution in true neutrino energy.
-Given this spectrum, it is possible to derive a correction for the \nue flux in order to account for the LEE, that is then propagated in the MicroBooNE simulation.
+Given this spectrum, it is possible to derive a correction for the \nue flux in order to account for the LEE, that is then propagated in the MicroBooNE simulation \ref{fig:lee_unfolded_signal}.
+
+\begin{figure}[H]
+    \begin{center}
+    \includegraphics[width=0.45\textwidth]{Sensitivity/lee_unfolded_signal.png}
+    \caption{}
+    \label{fig:lee_unfolded_signal}
+    \end{center}
+\end{figure}
+
 It is noteworthy that this method is not a perfect signal, as the cross section model used by MiniBooNE and MicroBooNE are different, implying that the signal, as in the MicroBooNE simulation, will not explain the MiniBooNE LEE.
 
 The method used to estimate the sensitivity follows the standard prescription for a simple hypothesis test.
@@ -1422,7 +1431,7 @@ The correlation between the $\nu_e$ and $\nu_{\mu}$ provides constraint when we 
 \begin{center}
     \begin{subfigure}[b]{0.45\textwidth}
     \centering
-    \includegraphics[width=1.00\textwidth]{}
+    \includegraphics[width=1.00\textwidth]{Sensitivity/numuconstraint/SBNfit_correlation_matrix_nuenumu_reco_e_genieonly_mc_collapsed.pdf}
     \caption{correlation matrix for cross section systematics}
     \end{subfigure}
     \begin{subfigure}[b]{0.45\textwidth}
@@ -1430,7 +1439,7 @@ The correlation between the $\nu_e$ and $\nu_{\mu}$ provides constraint when we 
     \includegraphics[width=1.00\textwidth]{Sensitivity/numuconstraint/SBNfit_correlation_matrix_nuenumu_reco_e_fluxonly_mc_collapsed.pdf}
     \caption{correlation matrix for flux systematics}
     \end{subfigure}
-\caption{\label{fig:fluxmatrices} Neutrino interactions (GENIE) only systematics for the 1eNp selection separated by its sub-channels}
+\caption{\label{fig:fluxmatrices} Correlation matrices between the $\nu_e$}
 \end{center}
 \end{figure}
 
