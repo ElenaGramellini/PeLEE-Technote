@@ -73,7 +73,7 @@ This analysis focuses on being able to measure low-energy $\nu_e$ interactions. 
 \end{comment}
 
 \subsection{$\nu_e$ Selection Philosophy \textcolor{green}{David ... (P.R. Elena) }}
-\par Several proposals have been made to explain the nature of the MiniBooNE LEE anomaly. It is fair to say that a large amount of uncertainty remains in the community regarding what may have generated such an excess of EM events: this analysis works within the $\nu_e$ excess hypothesis.  To best explore the potential new physics in the $\nu_e$ channel at low energy, this analysis aims to perform an inclusive multi-channel measurement of $\nu_e$ interactions without relying on kinematic variables which depend upon neutrino-interaction models.   \textcolor{red}{A multi-channel approach potentially reduces the systematics dependent on the chosen interaction model as well as builds a stronger confidence against  issues in the MC simulation. Please check if this is a pile of BS}.
+\par Several proposals have been made to explain the nature of the MiniBooNE LEE anomaly. It is fair to say that a large amount of uncertainty remains in the community regarding what may have generated such an excess of EM events: this analysis works within the $\nu_e$ excess hypothesis.  To best explore the potential new physics in the $\nu_e$ channel at low energy, this analysis aims to perform an inclusive multi-channel measurement of $\nu_e$ interactions without relying on kinematic variables which depend upon neutrino-interaction models. A multi-channel approach can reduce systematic uncertainties dependent on the chosen interaction model in addition to building a stronger confidence against  issues in the MC simulation.
 
 \par By performing three different $\nu_e$ selections, we aim at isolating three channel topologies: the $\nu_e$ inclusive, 1$e$N$p$0$\pi$, and a 1$e$0$p$0$\pi$ channels. A schematic summarizing the strengths and features of each selection is shown in table~\ref{tab:selectionsNue}. The 1$e$N$p$0$\pi$ and 1$e$0$p$0$\pi$ selections are orthogonal and share a common pre-selection, which splits at the stage in which presence of a final state proton in the event is determined; these two channels combined match the MiniBooNE signal channel (1$e$X$p$0$\pi$). The inclusive $\nu_e$ selection currently is developed independently of the other two selections: therefore, its selected events are not orthogonal to the 1$e$X$p$0$\pi$ pool of candidates.
 %\textcolor{red}{Should we add that our main selection is the 1$e$N$p$0$\pi$? }
@@ -170,12 +170,12 @@ Conceptual issues can be raised in association with the various assumptions made
 \par This section gives a brief overview of how detector and modeling uncertainties are accounted for in the analysis. The estimation of systematics is performed in section~\ref{sec:systematics}.
 \par \noindent \textbf{Detector Systematics}: Detector modeling in MicroBooNE has undergone significant updates in the past year, in part as a result of the large impact that detector systematics have had on 2018 analyses (\textcolor{red}{cite CCpi0,CCincl}). Detector effects with significant impact on the analysis can be broken up into three main categories:
 \begin{itemize}
-    \item wire-response modeling: the response of MicroBooNE's electronics to drifting charge is a complex subject described in three past publications~\cite{bib:noise,bib:SP1,bib:SP2}. The work of these papers in improving the understanding and modeling of noise and field-response effects has been implemented in the current detector simulation,
+    \item wire-response modeling: the response of MicroBooNE's electronics to drifting charge is a complex subject described in three past publications~\cite{bib:noise,bib:SP1,bib:SP2}. The work of these papers in improving the understanding and modeling of noise and field-response effects has been implemented in the current detector simulation and is expected to lead to a reduction in what for MCC8 analysis comprised the largest detector uncertainty.
     \item Space-Charge modeling: MicroBooNE's space-charge model has changed significantly since 2018, moving from a calculation-based~\cite{bib:SCETN} implementation of electric field distortions to a data-driven E-field map implemented in simulation and reconstruction. Due to the large position distortions (and, though smaller, charge distortions) SCE can significantly impact an analysis through the determination  of fiducial boundaries, tracking and energy resolution.
     \item Scintillation light modeling: MicroBooNE's model of scintillation light production has not changed significantly since the beginning of data-taking, and has known limitations. Of particular importance to this analysis, which aims to use a dataset spanning four years, is the known and significant time-dependent variation of MicroBooNE's light response. This analysis takes several steps to correct for, and mitigate the impact that light mismodeling can have on the analysis. Triggering on low-energy signal $\nu_e$ events, and cosmic-rejection are particularly sensitive to scintillation light detector effects.
 \end{itemize}{}
-Additional detector effects are ion Recombination...
-\par \noindent \textbf{Flux and Cross-Section Modeling}
+An additional detector effects that needs to be accounted for are ion Recombination which impacts the detector's calorimetric response. Tailored studies and proton samples are being developed to assess ion recombination modeling accuracy in MCC9.
+\par \noindent \textbf{Flux and Cross-Section Modeling} Uncertainties in flux and cross-section modeling are treated through a \emph{multi-sim} approach, where underlying parameters that are input to the modeling are varied in a correlated way. Flux uncertainties are taken from the MiniBooNE BNB flux simulation adapted to MicroBooNE~\cite{bib:fluxmcc9}, while $\nu$ interaction uncertainties are handled within the \texttt{GENIE} reweighting package, as described in~\cite{bib:geniesupportnote}. We note that the \texttt{GENIE} event reweighting infrastructure is still in development and likely to be updated or further expanded on in the future. Finally, uncertainties associated with pion and proton re-interactions in argon were unavailable when this version of the Tech Note was produced and not included at this stage.
 
 \subsection{Sensitivity Calculation}
 
@@ -248,10 +248,44 @@ The value of the cuts applied on these variables depend not only on the general 
 \subsubsection{Log Likelihood Ratio Particle ID \textcolor{red}{Nico}}
 \label{subsec:loglikelihoodpid}
 
+For track-like particles, the particle identification is performed looking at the profile of the deposited charge per unit length ($dE/dx$).
+The scope of particle identification is to tell the type of particle a certain track was originated from.
+For what concerns this analysis, it has been decided to limit the problem to a binary classification problem, distinguishing protons from muons.
+In fact, kaons are produced rarely in neutrino interactions at this energy, whereas pions are very difficult to distinguish from muons, given the very similar mass and the current resolution of the detector.
+Additional information, such as possible hadronic reinteractions or Michel electrons, can be powerful to perform particle identification.
+No additional information is used in this analysis, as we believe the reconstruction is not precise enough to tag such reinteractions.
+
+The expected distribution of the $dE/dx$ is modeled for each particle type and for each plane, as a function of two variables: the residual range ($rr$), and the pitch.
+\[ p(dE/dx | \text{type}, \text{plane}, \text{rr}, \text{pitch}) \]
+The residual range is defined as the length of the track between a given trajectorty point of a track and the point where the track stops.
+The pitch is the length on which the charge measured on a given wire has been deposited.
+Given the angle $\gamma$ between the local direction of the track and the direction vector orthogonal to the wires and lying on the wire plane, the pitch is measured as $\text{pitch} = 0.3 cm / \cos(\gamma) $.
+The expected distribution is modeled for each plane independently, and for the two kinds of particles under study, protons and muons.
+Multiple effects enter in the model of this distribution.
+First of all, the average $dE/dx$ at a given residual range depends on the physical mass, and this can be easily seen by integrating the Bethe-Bloch function for different masses.
+Secondly, the fluctuations of the $dE/dx$ depends on the pitch.
+In fact, these fluctuations are intrinsically stochastic, and the longer the length over which the charge is averaged, the smaller the fluctuations.
+On top of these, detector effects such as recombination, deconvolution of the signal, and hit reconstruction add a non-linear response and additional smearing, which is a complex function of the true deposited charge and of the pitch, for which a closed analytic formula is not available.
+For this reason, the expected distribution of $dE/dx$ is built starting from the simulation.
+This has the main advantage of containing all of these effects, as best of our knowledge.
+In fact, the performance of the particle identification become more and more optimal, the more accurate the model used for the distribution of $dE/dx$.
+The model for $dE/dx$ is built by considering well reconstructed tracks (completeness > 90\%, purity > 90\%), well contained within a fiducial volume, and backtracked to protons and muons.
+The pdf of $dE/dx$ is built in bins (add binning) and in bins of the residual range and pitch.
+For a given track, the three calorimetry objects, one per plane, are considered.
+For each of them, the vectors - one entry per hit - of the $dE/dx$, the residual range, and the pitch are considered to compute the likelihood of each particle type.
+\[ \mathcal{L}(\text{type} | \text{plane}, dE/dx_{i = 1, ..., N},   \text{rr}_{i = 1, ..., N}, \text{pitch}_{i = 1, ..., N}) = \prod_{i=1}^N p(dE/dx_i | \text{type}, \text{plane}, \text{rr}_i, \text{pitch}_i) \]
+where $i=1, ..., N$ is the index that run on the hit number.
+The combination of the three planes happens in a straightforward way, by taking the product of the three likelihoods, or summing up the log-likelihoods.
+\[ p(dE/dx | \text{type}, \text{plane}, \text{rr}, \text{pitch}) \]
+In order to perform the classification task, the likelihood ratio test statistics is chosen:
+\[ T(dE/dx, \text{rr}, \text{pitch}) = \mathcal{L}(\text(muon)| dE/dx, \text{rr}, \text{pitch}) /  \mathcal{L}(\text(proton)| dE/dx, \text{rr}, \text{pitch}) \]
+As long as the likelihood is correct, that means the model is correct, this can be proven to be the most powerful statistical test, i.e. the one with the smallest mis-identification rate for any given value of the efficiency.
+Any imperfection in the simulation used to build the model produces a loss of power, but does not add any systematic uncertainty.
+
 
 \subsubsection{$e$/$\gamma$ Separation}
 \label{subsec:egammaspearation}
-\par Distinguishing electron from photon EM-showers is one of the crucial steps required to perform a measurement of $\nu_e$ interactions in the BNB beam. Photon backgrounds to a $\nu_e$ measurement are largely caused by neutrino interactions with $\pi^0 \rightarrow \gamma\gamma$ in the final state, which dominate the $\nu_e$ event rate by at least an order of magnitude. Three key features distinguish events with $\pi^0$ induced photon showers from $\nu_e$ interactions: (a) the presence of two final state EM showers. (b) the non-zero conversion distance separating the neutrino interaction vertex from the shower start point, and (c) the calorimetric separation via $dE$/$dx$ due to the overlapping ionization segment of $e^+$/$e^-$ pair-conversions through which most $\gamma$ showers manifest themselves. Figure~\ref{fig:egammasep} shows how, at reconstruction level, each of these features can aid in $e$/$\gamma$ separation. This section describes how each of the items above is utilized in the analysis on a technical level, what performance is obtained and challenges (both physics- and reconstruction-driven) are encountered in doing so.
+\par Distinguishing electron from photon EM-showers is one of the crucial steps required to perform a measurement of $\nu_e$ interactions in the BNB beam. Photon backgrounds to a $\nu_e$ measurement are largely caused by neutrino interactions with $\pi^0 \rightarrow \gamma\gamma$ in the final state, which dominate the $\nu_e$ event rate by approximately an order of magnitude. Three key features distinguish events with $\pi^0$ induced photon showers from $\nu_e$ interactions: (a) the presence of two final state EM showers. (b) the non-zero conversion distance separating the neutrino interaction vertex from the shower start point, and (c) the calorimetric separation via $dE$/$dx$ due to the overlapping ionization segment of $e^+$/$e^-$ pair-conversions through which most $\gamma$ showers manifest themselves. Figure~\ref{fig:egammasep} shows how, at reconstruction level, each of these features can aid in $e$/$\gamma$ separation. This section describes how each of the items above is utilized in the analysis on a technical level, what performance is obtained, and what challenges (both physics- and reconstruction-driven) are encountered when leveraging these variables.
 
 \begin{figure}[ht] 
 \begin{center}
@@ -274,9 +308,9 @@ The value of the cuts applied on these variables depend not only on the general 
 \end{center}
 \end{figure}
 
-\par \textbf{two-shower requirement} Requiring a single reconstructed shower keeps 68\% of $\nu_e$ interactions (with no $\pi^0$ in the final state) while removing 61\% of $\nu_{\mu}$ events with at least one $\pi^0$ in the final state. The fraction of kept $\nu_e$s grows to 79\% when looking below 800 MeV of true energy (the focus of this analysis). Rejection of $\nu_e$s is largely due to events where the electron shower is reconstructed as two separate EM showers, often closely aligned in 3D. Events with final state $\pi^0$s are reconstructed with a single EM shower in the final state because either the second photon escapes the TPC active volume completely (irreducible) or because the second shower is not reconstructed. The dominant causes of this second case are (1) highly-boosted $\pi^0$ decays, in which two aligned photons are merged into one shower and (2) photons which go undetected, often low in energy (below 100 MeV). Additional discriminating variables which aim to recover the reconstruction-related mis-ID of (1) and (2) are utilized in the analysis and presented in Sec.~\ref{sec:nueselection:tools}.
-\par \textbf{track-shower separation} For events where hadronic activity at the neutrino interaction vertex (i.e. final-state protons) is visible, a clear gap between the vertex and the shower start-point can be used to reject $\gamma$ backgrounds. This is a powerful background mitigation tool in the 1$e$N$p$ $\nu_e$ selection. Two factors determine the performance of such a tool: the ability to detect protons and other hadronic activity at the vertex and the accuracy with which the shower start-point is reconstructed. The shower start-point reconstruction accuracy determines the level of background rejection one can obtain, as $\gamma$ showers lead to an exponential conversion-distance distribution. A 1 vs. 5 cm track-shower separation cuts lead to 95\% vs 74\% mis-ID respectively, but causes a drop in selection efficiency for 1$e$N$p$ events from 72\% to 28\%. In order to enhance the ability to isolate $\nu_e$ events in the 1$e$N$p$ selection through vertex-displacement, different metrics are used to measure the presence of a gap between an electron and proton candidate. These will be described in section~\ref{sec:nueselection:tools}. It is important to note that this background mitigation strategy is not applicable to single-electron searches, which are an important contribution to $\nu_e$ interactions, especially in the low-energy regime.
-\par \textbf{shower d$E$/d$x$} The majority of photons manifest themselves in a TPC through the ionization released by the $e^+$/$e^-$ pair produced via pair-conversion. The electron-positron pair is highly aligned and overlaps on the mm-scale, leading to a doubly-ionizing charge-segment compared to electron showers. To measure this, we use the track fit of the main shower trunk and the calorimetric tools as described in Sec.~\ref{sec:tkshreco}. 
+\par \textbf{two-shower requirement} Requiring a single reconstructed shower retains 68\% of $\nu_e$ interactions (with no $\pi^0$ in the final state) while removing 61\% of $\nu_{\mu}$ events with at least one $\pi^0$ in the final state. The fraction of selected $\nu_e$s grows to 79\% when looking below 800 MeV of true energy (the focus of this analysis). Rejection of $\nu_e$s is largely due to events where the electron shower is reconstructed as two separate EM showers, often closely aligned in 3D. Events with final state $\pi^0$s are reconstructed with a single EM shower in the final state because either the second photon escapes the TPC active volume completely (irreducible) or because the second shower is not reconstructed. The dominant causes of this second case are (1) highly-boosted $\pi^0$ decays, in which two aligned photons are merged into one shower and (2) photons which go undetected, often low in energy (below 100 MeV). Additional discriminating variables which aim to recover the reconstruction-related mis-ID of (1) and (2) are utilized in the analysis and presented in Sec.~\ref{sec:nueselection:inputs}.
+\par \textbf{track-shower separation} For events where hadronic activity at the neutrino interaction vertex (i.e. final-state protons) is visible, a clear gap between the vertex and the shower start-point can be used to reject $\gamma$ backgrounds. This is a powerful background mitigation tool in the 1$e$N$p$ $\nu_e$ selection. Two factors determine the performance of such a tool: the ability to detect protons and other hadronic activity at the vertex and the accuracy with which the shower start-point is reconstructed. The shower start-point reconstruction accuracy determines the level of background rejection one can obtain, as $\gamma$ showers lead to an exponential conversion-distance distribution. A 1 vs. 5 cm track-shower separation cuts lead to 95\% vs 74\% mis-ID respectively, but causes a drop in selection efficiency for 1$e$N$p$ events from 72\% to 28\%. This is a consequence of the sub-optimal vertex reconstruction accuracy for low-energy $\nu_e$ interactions. In order to enhance the ability to isolate $\nu_e$ events in the 1$e$N$p$ selection through vertex-displacement, different metrics are used to measure the presence of a gap between an electron and proton candidate. These will be described in section~\ref{sec:nueselection:inputs}. It is important to note that this background mitigation strategy is not applicable to single-electron searches, which are an important contribution to $\nu_e$ interactions, especially in the low-energy regime.
+\par \textbf{shower d$E$/d$x$} The majority of photons manifest themselves in the TPC through the ionization released by the $e^+$/$e^-$ pair produced via pair-conversion. The electron-positron pair is highly aligned and overlaps on the mm-scale, leading to a doubly-ionizing charge-segment compared to electron showers. To measure this, we use the track fit of the main shower trunk and the calorimetric tools as described in Sec.~\ref{sec:tkshreco}. 
 %with a modified version of the MicroBooNE track-fitter~\cite{bib:shrtrackfitter} and for each point along a track the d$Q$/d$x$  and distance from the shower-start are recorded using MicroBooNE's Calorimetry module. This procedure allows to accurately measure d$x$, including small deflections due to the electron's trajectory and SCE offsets, and d$Q$, by incorporating MicroBooNE's full position- and field-dependent relative and absolute charge calibration. From d$Q$/d$x$, d$E$/d$x$ is calculated assuming a fixed recombination correction assuming 2.1 MeV/cm energy loss, but accounting for local variations in the electric field. 
 The distinctive 4 MeV/cm population expected for $\gamma$ showers is visible in figure~\ref{fig:egammasep:dedx}. The main limitation to $e$/$\gamma$ separation via d$E$/d$x$ is the large fraction of photons reconstructed with a d$E$/d$x$ of less then 3 MeV/cm (23\% of $\pi^0$ events fall in the 1-3 MeV range). This is due both to mis-reconstructed events, for which the start-point is incorrectly reconstructed by more than one or two cm, and to events where the photon shower's energy loss-profile is not as clearly distinguishable from that of a single electron. While the relative contribution of these two sources is still under determination, the second causes a significant mis-ID rate, and is largely associated to lower-energy $\gamma$ showers for which the production of a highly asymmetric electron-positron pair where one of the electrons is barely visible is more frequent. The impact of shower energy on the measured d$E$/d$x$ for a $\gamma$ shower is shown in figure~\ref{fig:dedxgammas:energy}. Below 100 MeV, where most $\gamma$ showers in the BNB are produced, the reconstructed d$E$/d$x$ is electron-like. The impact of distance from the shower start-point on whether d$E$/d$x$ is reconstructed to be 2 or 4 MeV/cm is also important, as can be seen in figure~\ref{fig:dedxgammas:dist}. This is particularly true for low-energy asymmetric pair-production events, and motivates utilizing 
 d$E$/d$x$ information at different distances from the shower start-point for $e$/$\gamma$ separation.
@@ -300,7 +334,7 @@ d$E$/d$x$ information at different distances from the shower start-point for $e$
 
 \newpage
 
-\subsection{Energy Reconstruction \textcolor{red}{Giuseppe + David}}
+\subsection{Energy Reconstruction \textcolor{green}{Giuseppe + David}}
 \label{sec:ereco}
 \par Energy reconstruction is performed calorimetrically for EM showers and through a measurement of a track's range for contained muons and protons. For muons multiple Coulomb scattering (MCS) is also used to estimate the muon energy. The energy resolution obtained for different particles is reported in table~\ref{tab:eres}. More information on each particle specie's energy resolution is reported in figure~\ref{fig:eres:particle} where for each particle species the 2D reconstructed vs. true energy distribution (in log-scale) is shown on the left, next to a plot of energy resolution vs. true energy on the right. The energy resolution reported here is obtained from a Gaussian plus one-sided exponential fit to the distribution $[E_{\rm reco}-E_{\rm true}] / E_{\rm true}$. The resolution reported refers only to the Gaussian width $\sigma$ extracted in the fit, and therefore does not account for negative tails, which are significant in the case of EM shower energy reconstruction, and described below.
 
@@ -516,7 +550,7 @@ The 1$e$N$p$ and 1$e$0$p$ selections rely on a common pre-selection which requir
 \end{center}
 \end{figure}
 
-\par The efficiencies of the 1$e$N$p$ and 1$e$0$p$ pre-selections are shown in figure~\ref{fig:nue:presel:eff}. Efficiencies are presented as a function of true neutrino energy~\ref{fig:nue:presel:eff:nu}, proton KE~\ref{fig:nue:presel:eff:proton}, and electron energy~\ref{fig:nue:presel:eff:elec}. Each plot shows in black the efficiency for the common pre-selection (before a proton requirement is or is not imposed) and is reported relative to all intrinsic $\nu_e$ events. In blue and red respectively are shown the efficiencies for the  1$e$N$p$ and 1$e$0$p$ selections respectively, relative to true N$p$ and 0$p$ events. Shaded histograms in red and blue show the stacked truth-level distributions for N$p$ and 0$p$ events for the variables being plotted.
+\par The efficiencies of the 1$e$N$p$ and 1$e$0$p$ pre-selections are shown in figure~\ref{fig:nue:presel:eff}. Efficiencies are presented as a function of true neutrino energy~\ref{fig:nue:presel:eff:nu}, proton KE~\ref{fig:nue:presel:eff:proton}, and electron energy~\ref{fig:nue:presel:eff:elec}. Each plot shows in black the efficiency for the common pre-selection (before a proton requirement is or is not imposed) and is reported relative to all intrinsic $\nu_e$ events. In blue and red respectively are shown the efficiencies for the  1$e$N$p$ and 1$e$0$p$ selections respectively, relative to true N$p$ and 0$p$ events. Shaded histograms in red and blue show the stacked truth-level distributions for N$p$ and 0$p$ events for the variables being plotted. An important observation to make is the fact that at this pre-selection stage the efficiency for 1$e$N$p$ events is significantly lower then that of 1$e$N$p$ events. This is caused by the additional requirement of the presence of a proton-like track in the final state. The strong energy dependence for the efficiency in tagging protons is shown in figure~\ref{fig:nue:presel:eff:proton}. While requiring the presence of a final-state proton lowers the efficiency, this requirement has a significant impact on the selection's ultimate purity.
 
 \begin{figure}[H] 
 \begin{center}
@@ -535,7 +569,7 @@ The 1$e$N$p$ and 1$e$0$p$ selections rely on a common pre-selection which requir
     \includegraphics[width=1.00\textwidth]{nueselection/elec_RUN1.pdf}
     \caption{\label{fig:nue:presel:eff:elec} }
     \end{subfigure}
-\caption{\label{fig:nue:presel:eff}}
+\caption{\label{fig:nue:presel:eff} $\nu_e$ pre-selection efficiencies split by final-state topology as a function of different truth variables.}
 \end{center}
 \end{figure}
 
@@ -599,8 +633,10 @@ The 1$e$N$p$ and 1$e$0$p$ selections rely on a common pre-selection which requir
     \item \emph{secondshower\_Y\_vtxdist}: 2D distance from vertex for the largest 2D cluster associated to the  recovered 2nd shower in the collection plane
 \end{itemize}
 
-\subsection{Inclusive Channel \textcolor{red}{Wouter}}
-\label{sec:nueselection:inclusive}
+\clearpage
+\subsection{$\nu_e$ CC Inclusive selection \textcolor{red}{Wouter}}
+\input{NueCCsel/NueCCsel}
+\clearpage
 
 \subsection{1$e$N$p$ Channel \textcolor{red}{David + Giuseppe}}
 \label{sec:nueselection:1eNp}
@@ -649,7 +685,7 @@ First, we aim at rejecting cosmic-induced events by requiring large CosmicIP and
 
 Next, the goal is to suppress events from $\nu_\mu$ charged current interactions. We require shower hits to be the dominant in the slice, and imposing tight quality requirements on the shower object (shr\_score, shrmoliereavg, trkfit, subcluster).
 
-At this stage, most of selected events contain neutrino-induced electromagnetic activity so that main background are events with $\pi^0$. They are rejected requiring only one shower in the event, a short distance between the track and shower start points, and that the shower dEdx can be evaluated at least on the collection plane and it is not consistent with two or more MIPs in any plane. Two different dEdx definitions are used, one in the first 2 cm of the shower (motivated by Fig.~\ref{fig:dedxgammas:dist}) and one.
+At this stage, most of selected events contain neutrino-induced electromagnetic activity so that main background are events with $\pi^0$. They are rejected requiring only one shower in the event, a short distance between the track and shower start points, and that the shower dEdx can be evaluated at least on the collection plane and it is not consistent with two or more MIPs in any plane. Two different dEdx definitions are used, one where it is computed in the first 2 cm of the shower (motivated by Fig.~\ref{fig:dedxgammas:dist}) and one where it is computed between 1 and 5 cm from the shower start (the first cm is skipped to avoid possible contributions from low energy protons merged with the shower). The single shower requirement is reinforced with a 2nd shower veto based on clusters in the collection plane that are not matched to any PFParticle.
 
 Finally, in order to avoid misreconstructed events, events where the track and shower are aligned are rejected.
 
@@ -674,7 +710,7 @@ Topics to discuss: selection efficiency and purity, expected number of events in
 
 \begin{figure}[ht]
 \begin{center}
-\includegraphics[width=0.45\textwidth]{1eNp/reco_e_01122020_RUN1_box.pdf}
+\includegraphics[width=0.45\textwidth]{1eNp/reco_e_01162020_box_RUN1.pdf}
 \caption{\label{fig:1eNp:box:RUN1}Box-cuts for 1$e$N$p$ channel.}
 \end{center}
 \end{figure}
@@ -695,36 +731,30 @@ Both in the training and in the analysis, events are required to pass the presel
     \item tksh\_angle $>$ -0.9
 \end{itemize}
 
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.45\textwidth]{1eNp/loose_sel_perf.png}
+\caption{\label{fig:1eNp:loosesel} Fraction of events in the BNB sample divided in different categories before and after the loose selection.}
+\end{center}
+\end{figure}
+
 Indeed the BDT is able to figure out during training which variables are most important for each background: shower quality variables (e.g. shr\_score, trkfit, subcluster) have higher ranking for the non-$\pi^0$ BDT, while variables such as tksh\_distance and the shower dEdx show higher importance for the $\pi^0$-BDT. It is interesting to note that the most discriminating variable is in both cases shrmoliereavg which may be useful to discriminate both muons in $\nu_\mu$ events (low values) and merged showers in $\pi^0$ events (large values).
 
-\begin{table}[h!]
-\centering
- \begin{tabular}{c | c c | c c} 
- \hline
-& \multicolumn{2}{c |}{$\pi^0$ BDT} & \multicolumn{2}{c}{non-$\pi^0$ BDT} \\
- \hline
-Rank & Variable & Importance & Variable & Importance \\
- \hline
-1 & shrmoliereavg & 5813 & shrmoliereavg & 6436 \\ 
-2 & tksh\_distance & 2834 & trkfit & 3309 \\
-3 & trkpid & 2306 & shr\_tkfit\_2cm\_dedx\_ALL & 1980 \\
-4 & shr\_tkfit\_2cm\_dedx\_ALL & 2225 & subcluster & 1908 \\
-5 & secondshower\_Y\_vtxdist & 1891 & shr\_score & 1851 \\
-6 & shr\_tkfit\_gap10\_dedx\_ALL & 1702 & trkpid & 1778 \\
-7 & shr\_score & 1572 & secondshower\_Y\_vtxdist & 1405 \\
-8 & trkshrhitdist2 & 1286 & shr\_tkfit\_gap10\_dedx\_ALL & 1293 \\
-9 & trkfit & 1101 & tksh\_distance & 981 \\
-10 & secondshower\_Y\_nhit & 1015 & secondshower\_Y\_nhit & 976 \\
-11 & hits\_ratio & 949 & anglediff\_Y & 914 \\
-12 & tksh\_angle & 929 & trkshrhitdist2 & 903 \\
-13 & anglediff\_Y & 831 & tksh\_angle & 881 \\
-14 & subcluster & 699  & hits\_ratio & 657 \\
-15 & secondshower\_Y\_dot & 680 & secondshower\_Y\_dot & 592 \\
- \hline
-\end{tabular}
-\caption{Ranking of BDT variables based on their importance in terms of "total gain". dEdx variables are combined for different planes (note the "ALL" suffix).}
-\label{tab:bdtimp}
-\end{table}
+\begin{figure}[H] 
+\begin{center}
+    \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{1eNp/bdt_var_gain.pdf}
+    \caption{\label{fig:1eNp:bdt:var:gain}}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{1eNp/bdt_var_rank.pdf}
+    \caption{\label{fig:1eNp:bdt:var:rank}}
+    \end{subfigure}
+\caption{\label{ffig:1eNp:bdt:var} BDT variables importance in terms of "total gain". dEdx variables are combined for different planes (note the "ALL" suffix). Left: total gain value. Right: ranking based on the total gain value (highest ranking=15, lowest=1).}
+\end{center}
+\end{figure}
 
 We then cut separately on the output of the two BDTs, requiring pi0\_score $>$ 0.995 and nonpi0\_score $>$ 0.9984.
 
@@ -735,15 +765,15 @@ Topics to discuss: selection efficiency and purity, expected number of events in
 \begin{center}
     \begin{subfigure}[b]{0.45\textwidth}
     \centering
-    \includegraphics[width=1.00\textwidth]{1eNp/nonpi0_score_01122020_RUN1.pdf}
+    \includegraphics[width=1.00\textwidth]{1eNp/nonpi0_score_01162020_RUN1.pdf}
     \caption{\label{fig:1eNp:bdt:nonpi0:all}}
     \end{subfigure}
     \begin{subfigure}[b]{0.45\textwidth}
     \centering
-    \includegraphics[width=1.00\textwidth]{1eNp/nonpi0_score_01122020_zoom_RUN1.pdf}
+    \includegraphics[width=1.00\textwidth]{1eNp/nonpi0_score_zoom_01162020_RUN1.pdf}
     \caption{\label{fig:1eNp:bdt:nonpi0:zoom}}
     \end{subfigure}
-\caption{\label{ffig:1eNp:bdt:nonpi0}BDT resposne for non-$\pi^0$ BDT after 1$e$N$p$ pre-selection}
+\caption{\label{ffig:1eNp:bdt:nonpi0}BDT response for non-$\pi^0$ BDT after 1$e$N$p$ pre-selection}
 \end{center}
 \end{figure}
 
@@ -752,65 +782,298 @@ Topics to discuss: selection efficiency and purity, expected number of events in
 \begin{center}
     \begin{subfigure}[b]{0.45\textwidth}
     \centering
-    \includegraphics[width=1.00\textwidth]{1eNp/pi0_score_01122020_RUN1.pdf}
+    \includegraphics[width=1.00\textwidth]{1eNp/pi0_score_01162020_RUN1.pdf}
     \caption{\label{fig:1eNp:bdt:pi0:all}}
     \end{subfigure}
     \begin{subfigure}[b]{0.45\textwidth}
     \centering
-    \includegraphics[width=1.00\textwidth]{1eNp/pi0_score_01122020_zoom_RUN1.pdf}
+    \includegraphics[width=1.00\textwidth]{1eNp/pi0_score_zoom_01162020_RUN1.pdf}
     \caption{\label{fig:1eNp:bdt:pi0:zoom}}
     \end{subfigure}
-\caption{\label{ffig:1eNp:bdt:pi0}BDT resposne for $\pi^0$ BDT after 1$e$N$p$ pre-selection}
+\caption{\label{ffig:1eNp:bdt:pi0}BDT response for $\pi^0$ BDT after 1$e$N$p$ pre-selection}
 \end{center}
 \end{figure}
 
 \begin{figure}[H]
 \begin{center}
-\includegraphics[width=0.45\textwidth]{1eNp/reco_e_01122020_bdt_RUN1.pdf}
+\includegraphics[width=0.45\textwidth]{1eNp/reco_e_01162020_bdt_RUN1.pdf}
 \caption{\label{fig:1eNp:box:RUN1}BDT-based selection for 1$e$N$p$ with cuts at 0.995 and 0.9984 for the $\pi^0$ and non-$\pi^0$ variables respectively.}
+\end{center}
+\end{figure}
+
+\subsubsection{Performance of box cut and BDT selections}
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.45\textwidth]{1eNp/effpur_1eNp_cut_bdt.pdf}
+\caption{\label{fig:1eNp:effpur:RUN1} Efficiency of box cut and BDT selections for true 1$e$N$p$0$\pi$ events. The legend quotes the purity of intrinsic 1$e$N$p$0$\pi$ in the range 0.2$<$reco\_e$<1.0$ GeV (where a possible MiniBooNE LEE signal is not considered).}
 \end{center}
 \end{figure}
 
 
 \subsection{1$e$0$p$ Channel \textcolor{red}{Sophie, Ivan}}
 \label{sec:nueselection:1e0p}
-Selection motivation:
+The 1e0p channel is an important sideband sample that can be used to constrain uncertainties associated with the 1eNp selection.  In particular it can be used to constrain uncertainties associated with low energy protons, such as the modeling of the proton multiplicity and kinematics produced by neutrino interactions and their reconstruction efficiencies.  This sample is very sensitive to the neutrino interaction modeling, which makes it a useful way to constrain these systematics with data.  In MCC8 there were twice as many events in this channel as in MCC9, and half of the low energy neutrinos (below 0.8 GeV), were in this channel.
+
+This sample also contains additional low energy electron neutrinos which can be used as signal in the eLEE search.  This signal is also complementary because it is part of the signal that MiniBooNE measured; their signal was 1eXp0pi, or the sum of the 1eNp0pi and 1e0p0pi samples, so including this sample makes it possible to fully reproduce the event topologies observed by MinibooNE.    
 
 \subsubsection{Tools Unique to 0p Selection}
-Shower-Track merging to recover signal orthogonal to Np selection.
+
+The 1e0p sample is able to constrain systematic uncertainties in the Np sample because it is fully orthogonal with the Np selection.  This will allow migrations in a simulataneous fit, as described in section XX.  This also makes it possible to recover neutrino events that fail the Np selection cuts.  One of the tools used to do this is shower-track merging.  In some events the shower trunk is mis-reconstructed as a track.  These events are typically discarded immediately in the Np selection, either by a cut on the angle between the track and the shower, or the track PID.  The track-shower merging is a tool designed to recover these events.
+
+In the track-shower merging, the tracks in a neutrino slice are matched with the most energetic shower.  The angle between the track and shower and the distance between both the start and end point of the track and the start point of the shower are evaluated.  The track that best aligns in direction with the shower is selected to merge with the shower.  Then the distance from the start point of the shower to both the start and end point of this track is evaluated.  The smaller distance is stored as merge\_bestdist, which is a measure of the closest distance between the track and the shower. If an event has one contained track and one contained shower, but fails the Np selection cuts at either the shower-track angle or track PID stage, and the merged track is within 2cm of the start point of the shower then the event is recovered in the 1e0p selection.  As of December 20th, this corresponded to a 20\% increase in selected 1e0p events.
+
+This tool could be expanded in the future to re-calculate for de/dx along the new track/shower length, or to re-fit the entire event as a shower.
 
 \subsubsection{Pre-selection}
-Data-MC comparisons:
+A basic set of pre-selection cuts are defined for the 1e0p selection.  These require that the selection variables are defined, and all potential 1eNp events, including those included with track-shower merging are included.  The pre-selection also includes a cut on the shower energy to remove decay electrons from cosmic muons.
+
+The 1e0p pre-selection is:
+\begin{itemize}
+    \item nslice = 1
+    \item slpdg = 12
+    \item n\_showers\_contained = 1
+    \item n\_tracks\_contained == 0 or (n\_tracks\_contained==1 and (tksh\_angle<-0.9 or trkpid > 0.1) and merge\_bestdist<2)
+    \item shr\_energy\_tot\_cali $>$ 0.07
+\end{itemize}
+
+Using this pre-selection, both box cuts and a BDT selection have been developed for the 1e0p channel.
 
 \subsubsection{Box cut selection}
 
+A box cut selection has been developed to select 1e0p events.  The selection cuts are designed to target the main backgrounds.  The strict fiducial volume from the CC inclusive analysis (cite cc inclusive paper) has been implemented to reduce the backgrounds associated with dirt and single showers from backgrounds entering the FV.   In addition to the CRT cuts there is also a cut on CosmicIP which directly targets removing cosmics.  In order to remove muon neutrino, and non-showering backgrounds there are also cuts on the shower profile and the number of subclusters in the shower.  A second shower search for hits in the Y plane is used to remove events where the second shower of a pi0 may have initially been missed.  dEdx is also used to remove pi0 backgrounds.  Two calculations are used, one which looks at the first 2 cm of the shower, and one which starts the calculation after 1 cm so that any hits from a low energy proton that may have been merged with the shower are not included in the calculation.
+
+The 1e0p box cuts are:
+
+\begin{itemize}
+    \item nslice = 1
+    \item slpdg = 12
+    \item n\_showers\_contained == 1
+    \item n\_tracks\_contained == 0 or (n\_tracks\_contained==1 and (tksh\_angle$<$-0.9 or trkpid $>$ 0.1) and merge\_bestdist$<$2)
+    \item shr\_energy\_tot\_cali $>$ 0.1
+    \item (crtveto!=1) and (\_closestNuCosmicDist $>$ 20.)
+    \item (reco\_nu\_vtx\_sce\_x$>$22 and reco\_nu\_vtx\_sce\_x $<$234.35)
+    \item (reco\_nu\_vtx\_sce\_y $>$ -75.1 and reco\_nu\_vtx\_sce\_y$<$75.1)
+    \item ((reco\_nu\_vtx\_sce\_z$>$35 and reco\_nu\_vtx\_sce\_z$<$665) or (reco\_nu\_vtx\_sce\_z$>$785 and reco\_nu\_vtx\_sce\_z$<$941.8))
+    \item shrmoliereavg $>$ 2 and shrmoliereavg $<$ 9
+    \item shr\_score $<$ 0.1
+    \item CosmicIP $>$ 20.
+    \item (trkfit $<$ 0.45 or subcluster $>$ 6)
+    \item secondshower\_Y\_nhit$<$25
+    \item (shr\_tkfit\_2cm\_dedx\_Y $<$ 4 and shr\_tkfit\_2cm\_dedx\_Y $>$ 0.5)
+    \item (shr\_tkfit\_gap10\_dedx\_Y$>$1 and shr\_tkfit\_gap10\_dedx\_Y$<$ 3.5)
+\end{itemize}
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.45\textwidth]{1e0p/reco_e_01162020_RUN3.pdf}
+\caption{\label{fig:1e0p:cutbased:RUN3} Box cuts for 1e0p selection, scaled up to full data set 10.1e20 POT.}
+\end{center}
+\end{figure}
+
+The reconstructed energy distribution after this selection is shown in Fig.~\ref{fig:1e0p:cutbased:RUN3}.  Note that this plot uses the new Genie model, but the cuts have not yet been optimized for the new MC.  This selection predicts 9.8 true 1e0p events in the full data set and is 27\% pure in Run 3 for electron neutrinos and the LEE.  This selection will be tuned and the work expanded to include Run 1.
+
 \subsubsection{BDT}
+
+A selection has also been developed by training a BDT for the 1e0p events, using a similar method to the one employed by the 1eNp analysis.  At this stage the BDT has only been trained for Run 3 events, and includes a cut on the CRT before training to remove cosmics.  This work will be expanded to include Run 1.
+
+The BDT is trained on a loose selection of 1e0p events, which includes the pre-cuts as well as several additional requirements that comprise a "loose selection" to focus on identifying electron neutrinos.
+
+The loose selection for the 1e0p selection is:
+\begin{itemize}
+    \item nslice = 1
+    \item slpdg = 12
+    \item n\_showers\_contained = 1
+    \item n\_tracks\_contained == 0 or (n\_tracks\_contained==1 and (tksh\_angle<-0.9 or trkpid > 0.1) and merge\_bestdist<2)
+    \item shr\_energy\_tot\_cali $>$ 0.07
+    \item Shr\_tkfit\_2cm\_dedx\_Y$<$4
+    \item Shr\_score$<$0.3
+    \item cosmicIP$>$20
+    \item (crtveto!=1) and (\_closestNuCosmicDist $>$ 20.)
+    \item (reco\_nu\_vtx\_sce\_x$>$22 and reco\_nu\_vtx\_sce\_x $<$234.35)
+    \item (reco\_nu\_vtx\_sce\_y $>$ -75.1 and reco\_nu\_vtx\_sce\_y$<$75.1)
+    \item ((reco\_nu\_vtx\_sce\_z$>$35 and reco\_nu\_vtx\_sce\_z$<$665) or (reco\_nu\_vtx\_sce\_z$>$785 and reco\_nu\_vtx\_sce\_z$<$941.8))
+\end{itemize}
+
+Note that even this initial selection is somewhat strict, and comes with a drop in overall electron neutrino efficiency.  This is an initial study of the BDT performance, and it may be possible to loosen these cuts and regain efficiency without compromising the BDT selection performance. 
+
+At this stage a single BDT has been trained for this selection, which tries to separate all backgrounds from electron neutrino signals.  Performance may be improved by using multiple BDTs which are trained for specific background topologies as is done in the 1eNp selection. 
+
+As input the BDT uses for the most part the same variables as the box cuts.  In all cases in the BDT, however, the full three plane information is used, while it was not always found to improve the performance when using box cuts.  More information from the second shower search is also included in the BDT, such as the distance from the vertex to the second shower, and the angle between the second shower and the initial shower. The full list of variables used to train the 0p BDT is: shrmoliererms, shrmoliereavg, shr\_score, CosmicIP, subcluster, secondshower\_(U,V,Y)\_nhit, secondshower\_(U,V,Y)\_vtxdist, secondshower\_(U,V,Y)\_dot, anglediff\_(U,V,Y), shr\_tkfit\_2cm\_dedx\_(U,V,Y), shr\_tkfit\_gap10\_dedx\_(U,V,Y), trkfit, and hits\_ratio.
+
+Plot XX shows the relative importance of each of these variables in the BDT. (Plot still missing)
+
+\begin{figure}[H] 
+\begin{center}
+    \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{1e0p/bkg_score_01162020_RUN3_nslice.pdf}
+    \caption{\label{fig:1e0p:bdt:bkgscore:slice} After requiring a neutrino slice.}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{1e0p/bkg_score_01162020_RUN3_presel.pdf}
+    \caption{\label{fig:1e0p:bdt:bkgscore:presel} After pre-selection.}
+    \end{subfigure}
+\caption{\label{fig:1e0p:bdt:bkgscore} BDT response for background BDT.}
+\end{center}
+\end{figure}
+
+The BDT response after a slice, and after the 1e0p pre-selection is shown in Fig.~\ref{fig:1e0p:bdt:bkgscore}.  These show good data-MC agreement on run 3 data.
+
+\begin{figure}[H] 
+\begin{center}
+    \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{1e0p/bkg_score_01162020_RUN3_loosesel.pdf}
+    \caption{\label{fig:1e0p:bdt:bkgscore:loose} Full response.}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{1e0p/bkg_score_01162020_RUN3_loosesel_zoom.pdf}
+    \caption{\label{fig:1e0p:bdt:bkgscore:loosezoom} Zoomed in.}
+    \end{subfigure}
+\caption{\label{fig:1e0p:bdt:loose} BDT response for background BDT after loose selection.}
+\end{center}
+\end{figure}
+
+The BDT response after the loose selection that is used for training, and to cut on for the selection is shown in Fig.~\ref{fig:1e0p:bdt:bkgscore:loose}.  Based on this plot events above 0.96 in BDT response are selected as signal.
+
+The full set of BDT selection cuts is:
+\begin{itemize}
+    \item nslice = 1
+    \item slpdg = 12
+    \item n\_showers\_contained = 1
+    \item n\_tracks\_contained == 0 or (n\_tracks\_contained==1 and (tksh\_angle<-0.9 or trkpid > 0.1) and merge\_bestdist<2)
+    \item shr\_energy\_tot\_cali $>$ 0.07
+    \item Shr\_tkfit\_2cm\_dedx\_Y$<$4
+    \item Shr\_score$<$0.3
+    \item cosmicIP$>$20
+    \item (crtveto!=1) and (\_closestNuCosmicDist $>$ 20.)
+    \item (reco\_nu\_vtx\_sce\_x$>$22 and reco\_nu\_vtx\_sce\_x $<$234.35)
+    \item (reco\_nu\_vtx\_sce\_y $>$ -75.1 and reco\_nu\_vtx\_sce\_y$<$75.1)
+    \item ((reco\_nu\_vtx\_sce\_z$>$35 and reco\_nu\_vtx\_sce\_z$<$665) or (reco\_nu\_vtx\_sce\_z$>$785 and reco\_nu\_vtx\_sce\_z$<$941.8))
+    \item bkg\_score $>$ 0.96
+\end{itemize}
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.45\textwidth]{1e0p/reco_e_01162020_RUN3_bgbdt.pdf}
+\caption{\label{fig:1e0p:bdt:RUN3} BDT selection for 1e0p events, scaled up to full data set 10.1e20 POT.}
+\end{center}
+\end{figure}
+
+The reconstructed energy distribution for selected 1e0p events that pass the BDT selection are shown in Fig.~\ref{fig:1e0p:bdt:RUN3}.  Note that one event in the run 3 open data passes this selection, but it is omitted from the plot because it is scaled up to the full data set.  This selection predicts 10 true 1e0p events in the full data set, and is 49\% pure in Run 3 for electron neutrinos and the LEE.
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.45\textwidth]{1e0p/efficiency_RUN3.pdf}
+\caption{\label{fig:1e0p:eff:RUN3} Efficiency for cut-based and BDT selection.}
+\end{center}
+\end{figure}
+
+The selection efficiency for the 1e0p cut-based and BDT selections are shown in Fig.~\ref{fig:1e0p:eff:RUN3}.  The BDT selection is both more efficient and more pure. 
 
 \clearpage
 \section{$\nu_{\mu}$ Selection \textcolor{red}{Ryan, Wouter}}
+\label{section:numu}
 \input{NuMuCCsel/NuMuCCsel}
 \clearpage
 
 \section{Systematics \textcolor{red}{Maya, Nicolo, Sebastien}}
 \label{sec:systematics}
-\subsection{Detector Systematics}
-The details on detector systematics can be found in~\cite{bib:detsyssupportnote}. To asses the detector systematics uncertainties in the eLEE analysis, the following detector variations samples are used:
-\begin{enumerate}
-    \item Uncorrelated unisims for waveform variations in examined variables ($x$, $y$, $z$, $\theta_{XZ}$, $\theta_{YZ}$, $dE/dx$), where the waveform variations as function of $dE/dx$ may be replaced by dedicated recombination unisim.
-    \item Unisim for light yield simulation uncertainty.
-    \item Unisim for Space Charge Effects uncertainty.
-\end{enumerate}
 
-\subsection{Flux Uncertainties}
-The flux and uncertainties for MCC9~\cite{bib:fluxmcc9} are largely the same as MCC8~\cite{bib:fluxtechnote}. We use multisim technique to estimate the flux and neutrino interaction uncertainties. In this procedure, many Monte Carlo distributions are generated and the parameters (see  Table~\ref{tab:fluxsyst}) in the model are varied simultaneously resulting in different MC reweighting in each universe. Reweighting all the parameters at the same time allows for correct correlation between them. This correlation then can be used to generate a covariance matrix as follows:
+Our selections are subject to some level of uncertainty, both statistical and systematic. The systematic uncertainties associated to the level of precision of the model used in the reconstruction (GENIE), knowledge of the neutrino beam (flux), and the limitation of our detector (detector systematics). These systematic uncertainties can be calculated for many parameters of the models and measured variables that we use to reconstruct our sample
+
+For each uncertainty, a covariance matrix of its effect on a given distribution is obtained. Two approaches are followed to obtain the covariance matrix, depending on the type of uncertainty: unisim or multisim.
+
+Unisim means that a single variation of a given analysis input parameter is performed according to its uncertainty. The difference in the number of selected events between this variation and the central value is taken as the uncertainty in that number of events.
+
+In the multisim procedure, several variations of a given analysis input parameter are performed. These are called universes. These different variations are obtained from a different sampling of the input parameter, which is varied within its uncertainty. This approach allows to preserve correlations in the various bins of the distributions of selected events. The covariance matrix can then be obtained as
 
 \begin{equation}
     E_{ij}^{sys} = \frac{1}{N}\sum_{k}^N (N_i^{CV} - N_i^k)(N_j^{CV} - N_j^k) ,
 \end{equation}
 
 where $N$ is the total number of universes, $N_i^k$ is the value in the
-$i$-th bin of the $k$-th universe and $N_i^{CV}$ is that of the central value.
+$i$-th bin of the $k$-th universe and $N_i^{CV}$ is that of the central value. We utilized the SBNfit framework~\cite{bib:bib:sbnfit20437} to construct the covariance matrices and the associated correlation matrices for our selection.
 
+\subsection{Detector Systematics}
+The details on detector systematics can be found in~\cite{bib:detsyssupportnote}. To asses the detector systematics uncertainties in the eLEE analysis, the following detector variations samples are used:
+\begin{enumerate}
+    \item Waveform variations in examined variables ($x$, $yz$, $\theta_{XZ}$, $\theta_{YZ}$, $dE/dx$), where the waveform variations as function of $dE/dx$ may later be replaced. Samples are available for the $x$, $yz$, and angular wire-modification variations. These detector variations are constructed by profiling reconstructed hit variables of charge, amplitude and width as a function of the mentioned variables with data-driven samples, and re-scaling the simulation by the difference between data and simulation. By doing this, the samples cover the difference between data and simulation. 
+    \item Light response variations to estimate the light yield (LY) simulation uncertainty. Four variations are envisioned: (1) 10\% uniform and (2) 25\% uniform drop in LY to account for mis-modeling of the absolute LY in the detector. These samples are partially available. (3) 120 cm (compared to the simulation's 60 cm) Rayleigh scattering length and (4) 8 meter light attenuation length to account for drift-distance dependent mis-modeling. These samples are currently unavailable.
+    \item Unisim for Space Charge Effects uncertainty. Currently not available.
+\end{enumerate}
+\par Detector systematics samples are generated as \emph{uni-sim} variations, meaning that, for each detector effect, a given MC event is re-simulated once with a change to a detector modeling parameter. This produces a new simulation of the same underlying neutrino interactions, which can be used to measure the impact of the detector effect being studied on efficiencies, reconstructed variables, and event pass-rates.
+\par In the context of a sensitivity calculation, detector systematics unisims can be used to calculate a covariance matrix for selected event rates in each bin used in the sensitivity calculation. This covariance is then added to the total uncertainty matrix. This procedure has several flaws, including the fact that the excursion in the number of measured events in a bin computed from a single variation is taken as the 1$\sigma$ excurions for the error estimation. 
+\par Below, simple comparisons of distributions relevant to the analysis under different detector variation samples are shown, but the full inclusion of detector systematics in the sensitivity calculation has not been performed.
+
+\begin{figure}[H] 
+\begin{center}
+    \begin{subfigure}[b]{0.3\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{detsys/shr_tkfit_dedx_U01162020_eLEE_low.pdf}
+    %\caption{\label{fig:numuconstraint:flux}$\nu_{\mu}$-$\nu_e$flux correlation matrix}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.3\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{detsys/shr_tkfit_dedx_V01162020_eLEE_low.pdf}
+    %\caption{\label{fig:numuconstraint:xsec}different xsec models for CC interactions.}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.3\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{detsys/shr_tkfit_dedx_Y01162020_eLEE_low.pdf}
+    %\caption{\label{fig:numuconstraint:xsec}different xsec models for CC interactions.}
+    \end{subfigure}
+\caption{\label{fig:detsys:dedx:eLEElow}Variation in reconstructed d$E$/d$x$ for the U, V, and Y planes under the effect of different detector variation samples. Plots are POT normalized.}
+\end{center}
+\end{figure}
+
+\begin{figure}[H] 
+\begin{center}
+    \begin{subfigure}[b]{0.3\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{detsys/pi0_mass_U01162020_bnbnumu.pdf}
+    %\caption{\label{fig:numuconstraint:flux}$\nu_{\mu}$-$\nu_e$flux correlation matrix}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.3\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{detsys/pi0_mass_V01162020_bnbnumu.pdf}
+    %\caption{\label{fig:numuconstraint:xsec}different xsec models for CC interactions.}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.3\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{detsys/pi0_mass_Y01162020_bnbnumu.pdf}
+    %\caption{\label{fig:numuconstraint:xsec}different xsec models for CC interactions.}
+    \end{subfigure}
+\caption{\label{fig:detsys:dedx:eLEElow}Variation in reconstructed $\pi^0$ mass for the U, V, and Y planes under the effect of different detector variation samples. Plots are POT normalized.}
+\end{center}
+\end{figure}
+
+\begin{figure}[H] 
+\begin{center}
+    \begin{subfigure}[b]{0.3\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{detsys/nu_e01162020_presel_eff.pdf}
+    %\caption{\label{fig:numuconstraint:flux}$\nu_{\mu}$-$\nu_e$flux correlation matrix}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.3\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{detsys/nu_e01162020_boxcuts_eff.pdf}
+    %\caption{\label{fig:numuconstraint:xsec}different xsec models for CC interactions.}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.3\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{detsys/nu_e01162020_numu_slice_eff.pdf}
+    %\caption{\label{fig:numuconstraint:xsec}different xsec models for CC interactions.}
+    \end{subfigure}
+\caption{\label{fig:detsys:dedx:eLEElow}Variation in efficiency for the $\nu_e$ pre-selection (left), $\nu_e$ loose box-cuts (center) and $\nu_{\mu}$ SliceID (right) for different detector variation samples.}
+\end{center}
+\end{figure}
+
+\subsection{Flux Uncertainties}
+The flux and uncertainties for MCC9~\cite{bib:fluxmcc9} are largely the same as MCC8~\cite{bib:fluxtechnote}. We use multisim technique to estimate the flux uncertainties. The various sources of uncertainties are taken as independent and are varied individually. They are listed in Table~\ref{tab:fluxsyst} along the number of universes considered for each. The fractional covariance matrix and correlation matrix for the 1eNp selection are presented in Figure~\ref{fig:fluxmatrices} which amount to 12\% in flux uncertainties. Meanwhile, Figure~\ref{fig:fluxsystvars} displays the effects of reweighting central value in each universe of an individual parameter of flux.
 
 \begin{table}[H]
 \centering
@@ -854,30 +1117,177 @@ piplus\_PrimaryHadronSWCentralSplineVariation     &  Primary Hadron Sanford Wang
 \end{center}
 \end{figure}
 
-\subsection{Neutrino Interaction Modeling Uncertainties}
-We use genie event reweighting framework with the standard reweighting parameters also known as "knobs" to model the neutrino cross section and final states uncertainties. Document~\cite{bib:geniesupportnote} describes the GENIE cross-section model, recommended central-value tune, and the recommended uncertainties for MCC9 analyses. 
 
-%Number of sources: 50?
-%Universes created to take correlations of uncertainties
-%how many universes 100?
+\begin{figure}[ht] 
+\begin{center}
+    \begin{subfigure}[b]{0.33\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{systvariations/Variation_nue_reco_e_genietune_run1_kplus_PrimaryHadronFeynmanScaling_nu_uBooNE_nue_intrinsic.pdf}
+    %\caption{\label{fig:numuconstraint:flux}$\nu_{\mu}$-$\nu_e$flux correlation matrix}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.33\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{systvariations/Variation_nue_reco_e_genietune_run1_nucleonqexsec_FluxUnisim_nu_uBooNE_nue_intrinsic.pdf}
+    %\caption{\label{fig:numuconstraint:xsec}different xsec models for CC interactions.}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.33\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{systvariations/Variation_nue_reco_e_genietune_run1_piplus_PrimaryHadronSWCentralSplineVariation_nu_uBooNE_nue_intrinsic.pdf}
+    %\caption{ }
+    \end{subfigure}
+\caption{\label{fig:fluxsystvars}. The effects of individual flux variations on the intrinsic $\nu_e$ sub-channel of the 1eNp selection. Given above are the three leading sources of flux uncertainties. The black crosses show the central value and each multicolored line shows a separate universe's reweighing of the central value. The magnitude of the  uncertainty in each bin corresponds to the average difference between each shifted universe and the central value in that bin.}
+\end{center}
+\end{figure}
+
+\subsection{Neutrino Interaction Modeling Uncertainties}
+We use genie event reweighting framework with the standard reweighting parameters, also known as "knobs", to model the neutrino cross section and final states uncertainties. Document~\cite{bib:geniesupportnote} describes the GENIE cross-section model, recommended central-value tune, and the recommended uncertainties for MCC9 analyses. 
+
+The updated Genie central value is guided on fits to the T2K data which increase the MA CCQE and scale up the MEC normalization.
+
+A total of 55 sources of uncertainties are considered. The majority of them, 49, are varied in a multisim way. Their variations are simultaneous to take into account their correlations. This simultaneous variation is given the name All\_Genie. They are listed in Table~\ref{tab:AllGenie}. The variations of the remaining six sources cover the full range of the parameter values: they are varied from 0 to 1. Table~\ref{tab:geniesyst} lists the uncertainties that are used in the analysis and the number of universes investigated.
+
+\textit{Note on the cross section systematics: The genie variations are currently not treated correctly during the reweighting. The current genie cross sections variations are thrown around the tuned genie central value and therefore already have the tuned central value weight folded in. Meanwhile the old central value has to be multiplied with the tune cv weight to update it to the new cv value. The framework that we are using has limitations on the handling of the different weights that need to be applied to the central value and the universes. As we can only provide one weight to the framework, and we have to correct primarily for the central value, the cross section variations are currently double counting the genie tune weight, and therefore the average distributions of the universes in each genie reweighting parameters do not centered at the central value as shown in Figure~\ref{fig:geniesystvars}. This excursion from the central value resulted in the overestimation of the cross section uncertainty where the uncertainties average around 15\%, and up to 800\% in the lowest neutrino energy bin. 
+The work to fix the handling of the tuning when constructing the covariance matrix is on-going and we will update these set of plots when the fix is committed.}
+
+
+\begin{table}[H]
+\centering
+ \begin{tabular}{| c | c |} 
+    \hline
+\hline
+Genie uncertainties & Description\\
+\hline
+%There are 49 uncertainties in this table.
+MaCCQE & CCQE axial mass\\
+NormCCMEC & Energy-independent normalization for CCMEC\\
+MaNCEL & Axial mass for NCEL\\
+EtaNCEL & Empirical parameter used to account for sea quark contribution to NCEL form factor\\
+NormNCMEC & Energy-independent normalization for NCMEC\\
+FracPN\_CCMEC & Varies fraction of initial nucleon pairs that are pn\\
+FracDelta\_CCMEC & Varies relative contribution of $\Delta$ diagrams to total MEC cross section\\
+NormCCRES & Energy-independent normalization for CCRES\\
+MaCCRESshape & Shape-only CCRES axial mass\\
+MvCCRESshape & Shape-only CCRES vector mass\\
+NormNCRES & Energy-independent normalization for NCRES\\
+MaNCRESshape & Shape-only NCRES axial mass\\
+MvNCRESshape & Shape-only NCRES vector mass\\
+MaCOHpi & Axial mass for COH $\pi$ production\\
+R0COHpi & Nuclear radius parameter for COH $\pi$ production\\
+NonRESBGvpCC1pi & Non-resonant background normalization for $\nu$p CC1$\pi$\\
+NonRESBGvpCC2pi & Non-resonant background normalization for $\nu$p CC2$\pi$\\
+NonRESBGvpNC1pi & Non-resonant background normalization for $\nu$p NC1$\pi$\\
+NonRESBGvpNC2pi & Non-resonant background normalization for $\nu$p NC2$\pi$\\
+NonRESBGvnCC1pi & Non-resonant background normalization for $\nu$n CC1$\pi$\\
+NonRESBGvnCC2pi & Non-resonant background normalization for $\nu$n CC2$\pi$\\
+NonRESBGvnNC1pi & Non-resonant background normalization for $\nu$n NC1$\pi$\\
+NonRESBGvnNC2pi & Non-resonant background normalization for $\nu$n NC2$\pi$\\
+NonRESBGvbarpCC1pi & Non-resonant background normalization for $\bar\nu$p CC1$\pi$\\
+NonRESBGvbarpCC2pi & Non-resonant background normalization for $\bar\nu$p CC2$\pi$\\
+NonRESBGvbarpNC1pi & Non-resonant background normalization for $\bar\nu$p NC1$\pi$\\
+NonRESBGvbarpNC2pi & Non-resonant background normalization for $\bar\nu$p NC2$\pi$\\
+NonRESBGvbarnCC1pi & Non-resonant background normalization for $\bar\nu$n CC1$\pi$\\
+NonRESBGvbarnCC2pi & Non-resonant background normalization for $\bar\nu$n CC2$\pi$\\
+NonRESBGvbarnNC1pi & Non-resonant background normalization for $\bar\nu$n NC1$\pi$\\
+NonRESBGvbarnNC2pi & Non-resonant background normalization for $\bar\nu$n NC2$\pi$\\
+AhtBY & A\_HT higher-twist parameter in the Bodek-Yang model scaling variable xi\_w\\
+BhtBY & BHT higher-twist parameter in the Bodek-Yang model scaling variable xi\_w\\
+CV1uBY & CV1u valence GRV98 PDF correction parameter in the Bodek-Yang model\\
+CV2uBY & CV2u valence GRV98 PDF correction parameter in the Bodek-Yang model\\
+AGKYxF1pi & Hadronization parameter, applicable to true DIS interactions only\\
+AGKYpT1pi & Hadronization parameter, applicable to true DIS interactions only\\
+MFP\_pi & $\pi$ mean free path\\
+MFP\_N & Nucleon mean free path\\
+FrCEx\_pi & Fractional cross section for $\pi$ charge exchange\\
+FrInel\_pi & Fractional cross section for $\pi$ inelastic scattering\\
+FrAbs\_pi & Fractional cross section for $\pi$ absorption\\
+FrCEx\_N & Fractional cross section for nucleon charge exchange\\
+FrInel\_N & Fractional cross section for nucleon inelastic scattering\\
+FrAbs\_N & Fractional cross section for nucleon absorption\\
+RDecBR1gamma & Normalization for $\Delta\to\gamma$ decays\\
+RDecBR1eta & Normalization for $\Delta\to\eta$ decays\\
+FrPiProd\_pi & Fractional cross section for $\pi^-$ induced $\pi$ production\\
+FrPiProd\_N & Fractional cross section for nucleon-induced $\pi$ production\\
+\hline
+\end{tabular}
+\caption{Uncertainties included in All\_Genie. The descriptions are taken from Ref.~\cite{bib:geniesupportnote}.}
+\label{tab:AllGenie}
+\end{table}
+
+\begin{table}[H]
+\centering
+ \begin{tabular}{| c | m{8cm} | c |} 
+    \hline
+\hline
+Genie knobs & Description & Universes \\
+\hline
+All\_Genie        & GENIE knobs listed in Table~\ref{tab:AllGenie}   & 100\\
+RPA\_CCQE\_Genie       & Strength of the RPA correction & 2\\
+XSecShape\_CCMEC\_Genie     &  Changes shape of CCMEC differential cross section & 2\\ 
+AxFFCCQEshape\_Genie   &  CCQE Axial form factor model & 2\\
+VecFFCCQEshape\_Genie      &  CCQE vector form factor model & 2\\  
+DecayAngMEC\_Genie        & Changes angular distribution of nucleon cluster  & 2\\ 
+Theta\_Delta2Npi\_Genie       &  Interpolates angular distribution for $\Delta\to N+\pi$ between Rein-Sehgal model (0) and isotropic (1) & 2\\ 
+\hline
+\end{tabular}
+\caption{List of genie systematic variations used in the Pandora eLEE analysis. Other than the two FFCCQEshape knobs, the descriptions are taken from Ref.~\cite{bib:geniesupportnote}.}
+\label{tab:geniesyst}
+\end{table}
+
+
+\begin{figure}[ht] 
+\begin{center}
+    \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{CovarianceMatrices/SBNfit_fractional_covariance_matrix_nue_reco_e_genietune_run1_genieonly.pdf}
+    \caption{fractional covariance matrix}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{CovarianceMatrices/SBNfit_correlation_matrix_nue_reco_e_genietune_run1_genieonly.pdf}
+    \caption{correlation matrix}
+    \end{subfigure}
+\caption{\label{fig:fluxmatrices} Neutrino interactions (GENIE) only systematics for the 1eNp selection separated by its sub-channels}
+\end{center}
+\end{figure}
+
+\begin{figure}[ht] 
+\begin{center}
+    \begin{subfigure}[b]{0.33\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{systvariations/Variation_nue_reco_e_genietune_run1_All_Genie_nu_uBooNE_nue_intrinsic.pdf}
+    %\caption{\label{fig:numuconstraint:flux}$\nu_{\mu}$-$\nu_e$flux correlation matrix}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.33\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{systvariations/Variation_nue_reco_e_genietune_run1_RPA_CCQE_Genie_nu_uBooNE_nue_intrinsic.pdf}
+    %\caption{\label{fig:numuconstraint:xsec}different xsec models for CC interactions.}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.33\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{systvariations/Variation_nue_reco_e_genietune_run1_XSecShape_CCMEC_Genie_nu_uBooNE_nue_intrinsic.pdf}
+    %\caption{ }
+    \end{subfigure}
+\caption{\label{fig:geniesystvars} The effects of individual genie parameters variations on the intrinsic $\nu_e$ sub-channel of the 1eNp selection. Given above are the three leading sources of the neutrino interaction uncertainties. The black crosses show the central value and each multicolored line shows a separate universe's reweighing of the central value. The magnitude of the  uncertainty in each bin corresponds to the average difference between each shifted universe and the central value in that bin. The large uncertainties in cross section is driven by the large shift of the universe in the XSecShape\_CCMEC\_Genie variation from the central value.}
+\end{center}
+\end{figure}
+
+\subsection{Hadronic Reinteraction Uncertainties}
+An additional type of systematic uncertainty that can be included is that related to hadrons interacting strongly with argon nuclei~\cite{bib:reintslides}. These hadronic rescatterings can induce a large momentum transfer in the hadron and thus have an impact in the reconstruction and the selection of events. These uncertainties can be thought of as GEANT4 uncertainties in the cross section of a hadron with argon nuclei. The hadronic reinteraction uncertainties listed in Table~\ref{tab:fluxsyst} are technically readily available to the analysis but have not been investigated.
+
 
 \begin{table}[H]
 \centering
  \begin{tabular}{| c | m{6cm} | c |} 
     \hline
 \hline
-Genie knobs & Description & Universes \\
+Reinteraction knobs & Description & Universes \\
 \hline
-All\_Genie        & All other GENIE knobs that is not covered by the parameters listed below that are varied, including the cross section modeling and final state uncertainties   & 100\\ 
-AxFFCCQEshape\_Genie   &  CCQE Axial form factor model & 2\\ 
-DecayAngMEC\_Genie        &   & 2\\ 
-RPA\_CCQE\_Genie       & RPA-based calculation on Genie CCQE model & 2\\ 
-Theta\_Delta2Npi\_Genie       &  pion angle distribution (resonant events) & 2\\ 
-VecFFCCQEshape\_Genie      &  CCQE vector form factor model & 2\\  
-XSecShape\_CCMEC\_Genie     &  Charge-current MEC cross section model & 2\\ 
+reinteractions\_proton        &  Proton hadronic reinteractions  & ---\\ 
+reinteractions\_piplus   &  $\pi^+$ hadronic reinteractions & ---\\ 
+reinteractions\_piminus        & $\pi^-$ hadronic reinteractions  & ---\\ 
 \hline
 \end{tabular}
-\caption{List of genie systematic variations used in the Pandora eLEE analysis}
+\caption{List of possible hadronic reinteraction systematic variations, not used for the moment in the Pandora eLEE analysis}
 \label{tab:fluxsyst}
 \end{table}
 
@@ -887,6 +1297,7 @@ XSecShape\_CCMEC\_Genie     &  Charge-current MEC cross section model & 2\\
 \label{sec:sensitivity}
 \par This document is primarily focused on presenting sensitivities for a specific signal hypothesis:  
 \subsection{Test Statistics and Statistics-Only Sensitivities}
+\label{subsec:teststats}
 The test statistics are performed through the SBNfit tool~\cite{bib:sbnfit20437} and a separate stand-alone tool that is primarily used to crosscheck and understand SBNfit (Nicolo's). The stand-alone test statistics tool is also used for performing additional test statistics not covered by the SBNfit, such as the Poisson log likelihood  ratio test statistics.
 
 To estimate the sensitivity of the MiniBooNE LEE unfolded signal, SBNfit uses the following $\chi^2$ test statistics:
@@ -904,22 +1315,45 @@ The procedure to test the hypothesis is as follows:
 
 \begin{figure}[H]
 \begin{center}
-\includegraphics[width=0.45\textwidth]{Sensitivity/nue_reco_e_genietune_run1_nueStacked.pdf}}
-\caption{\label{fig:1eNp:box:sensitivitysample} The final 1eNp selection used for the sensitivity estimate. Sample is taken from Monte Carlo Run 1 Data and scaled to $1.01\times10^21$ POT}
+\includegraphics[width=0.45\textwidth]{Sensitivity/nue_reco_e_genietune_run1_nueStacked.pdf}
+\caption{\label{fig:1eNp:box:sensitivitysample} The final 1eNp selection used for the sensitivity estimate. Sample is taken from Monte Carlo Run 1 Data and scaled to $1.01\times10^{21}$ POT}
+\end{center}
+\end{figure}
+
+
+\subsection{Generating toy experiments using the covariance matrix}
+SBNfit uses the covariance matrix to build on the systematics for the sensitivity. The toy experiments can be generated once the full covariance matrix is in hand. The procedure to generate these toy experiments is as follows:
+\begin{enumerate}
+    \item A Cholesky decomposition is performed on the covariance matrix: $$M = LL*$$,
+    where $L$ is a lower triangular matrix.
+    \item A vector $v$ is generated, where each of the $i$ elements of $v$ are drawn from a Gaussian distribution with mean 0 and variance 1.
+    \item A poisson fluctuated toy data histogram is given by
+$$x_{toy} = x_{CV} + Lv.$$
+    \item We follow the same procedure to test the LEE hypothesis as described in the Section~\ref{subsec:teststats}
+\end{enumerate}
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.45\textwidth]{Sensitivity/SBNfit_Cls_nue_reco_e_genietune_run1_LEE_deltachi_statonly.pdf}
+\caption{\label{fig:1eNp:box:statonlysensitivity} Statistics-only sensitivity estimation for the 1eNp box cut selection. Sample is taken from Monte Carlo Run 1 Data and scaled to $1.01\times10^{21}$ POT}
 \end{center}
 \end{figure}
 
 \begin{figure}[H]
 \begin{center}
-\includegraphics[width=0.45\textwidth]{Sensitivity/SBNfit_Cls_nue_reco_e_genietune_run1_LEE_deltachi_statonly.pdf}}
-\caption{\label{fig:1eNp:box:statonlysensitivity} Statistics-only sensitivity estimation for the 1eNp box cut selection. Sample is taken from Monte Carlo Run 1 Data and scaled to $1.01\times10^21$ POT}
+\includegraphics[width=0.45\textwidth]{Sensitivity/SBNfit_Cls_nue_reco_e_genietune_run1_LEE_syst.pdf}
+\caption{\label{fig:1eNp:box:statsystsensitivity} Statistics and Systematics (cross-section and flux) sensitivity estimation for the 1eNp box cut selection. Sample is taken from Monte Carlo Run 1 Data and scaled to $1.01\times10^21$ POT}
 \end{center}
 \end{figure}
 
-
 \subsection{How Constraints and Systematics are included in the 1$e$N$p$ Sensitivity Calculation}
 
+As have been discussed before, we have shown that we have a  well-reconstructed nue and numu selection. All the selections share the same neutrino flux and cross-section and therefore the measurements between them are highly correlated. We can exploit these correlations to reduce the systematics uncertainties when performing the combined side-by-side fit of the different channel for the sensitivity results.
+
+The different selections described in Section~\ref{sec:nueselection:variables}-\ref{section:numu} provide constraints to different energy range of the 1eNp selection as well as the kinematics and topology.
+
 \subsubsection{Constraint from Muon Neutrino}
+
 \subsection{Final Sensitivities}
 
 \newpage
@@ -928,7 +1362,7 @@ The procedure to test the hypothesis is as follows:
 \subsection{To-Do}
 \begin{enumerate}
     \item larger MC stats with select truth-level filters.
-    \ite apply common optical filter to simulation events. Important for Run3.
+    \item apply common optical filter to simulation events. Important for Run3.
     \item finalize charge re-calibration for trk PID and shower dE/dx
     \item implement LLR-PID for e/gamma separation.
     \item MCS fitter for better efficiency for low-energy showers.
@@ -963,6 +1397,8 @@ Z. Pavlović, \emph{BNB Flux}, \href{https://microboone-docdb.fnal.gov/cgi-bin/p
 Z. Pavlović, \emph{Booster Neutrino Flux Prediction at MicroBooNE}, \href{https://microboone-docdb.fnal.gov/cgi-bin/private/RetrieveFile?docid=15444}{DocDB 15444}
 \bibitem{bib:geniesupportnote}
 K. Duffy, et al., \emph{Supporting note: Cross-section model and uncertainties}, \href{https://microboone-docdb.fnal.gov/cgi-bin/private/ShowDocument?docid=27018}{DocDB 27018}
+\bibitem{bib:reintslides}
+A. Furmanski, \emph{Reinteraction systematics}, \href{https://microboone-docdb.fnal.gov/cgi-bin/private/ShowDocument?docid=17455}{DocDB 17455}
 \bibitem{bib:sbnfit20437}
 M. Ross-Lonergan, \emph{From MiniBooNE data to MicroBooNE LEE sensitivity: A step-by-step review and guide},\href{https://microboone-docdb.fnal.gov/cgi-bin/private/RetrieveFile?docid=20437}{DocDB 20437}
 \bibitem{bib:CRTPresel_Technote}

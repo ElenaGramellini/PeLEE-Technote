@@ -12,6 +12,7 @@
 \par \noindent \textbf{Slice variables}: These variables generally describe the reconstructed neutrino interaction, i.e. the confluence of data gathered from all the PFParticles in the slice.
 \begin{itemize}
     \item \emph{nslice}: number of neutrino slices identified by the SliceID (possible values are 0 or 1).
+    \item \emph{n\_tracks\_contained}: number of tracks fully contained in the fiducial volume.
     \item \emph{reco\_nu\_vtx\_sce\_\{x,y,z\}}: Reconstructed, spacecharge-corrected neutrino interaction vertices in (x,y,z) coordinates (see fig. \ref{fig:numu_vtx}.
     \item \emph{topological\_score}: A machine-learned quantity that reflects the complexity and directionality of observable slice quantities. This variable has strong discriminating power between signal and cosmic-background (see \ref{fig:numu_topo_pid} (possible values are between 0 and 1).
     \item \emph{CRT Veto and Distance Tagger}: Tools provided by the cosmic ray tagger (see sec. \ref{sec:sliceID:CRT}).
@@ -32,9 +33,46 @@
 
 \subsubsection{Event Selection}
 \label{sssec:NuMUCCsel:sel:evt}
-\par In addition to the SliceID preselection, three additional cuts are performed at the slice-level:\\
-\emph{reco\_nu\_vtx\_sce\_\{x,y,z\}}: Requiring that the reconstructed vertex is inside of the fiducial volume eliminates backgrounds from cosmic rays and dirt events which originate outside of the detector. These values have been corrected for spacecharge which allows for the tightening of the fiducial volume near the boundaries of the detector and a higher selection efficiency \textcolor{red}{find plot to show this}. Before spacecharge correction, a more conservative fiducial volume was used due to spacecharge being more drastic near the boundaries.\\
-\emph{topological\_score}:
+
+\par In this selection all slices must satisfy these criterion. The slice must be identified to be neutrino-like in nature, via SliceID, the topological score must be greater than 0.06, and the vertex must be in the fiducial volume of the detector. I.e:
+
+\begin{itemize}
+    \item \emph{nslice} = 1.
+    \item \emph{n\_tracks\_contained} $>$= 1.
+    \item \emph{reco\_nu\_vtx\_sce\_x} $\in$ [5,251] cm.
+    \item \emph{reco\_nu\_vtx\_sce\_y} $\in$ [-110,110] cm.
+    \item \emph{reco\_nu\_vtx\_sce\_z} $\in$ [20,986] cm.
+    \item \emph{reco\_nu\_vtx\_sce\_z} $\not\in$ [675,775] cm.
+    \item \emph{topological\_score} $>$ 0.06.
+\end{itemize}
+
+\par The final cuto on the $z$ coordinate is to ensure that it is not in the region of `dead wires' in the detector.
+
+\par Run 3 has the additional power to leverage the CRT system and these cuts are additionally applied:
+
+\begin{itemize}
+    \item \emph{CRT Veto} != 1 or \emph{crthitpe} $<$ 100
+    \item \emph{closestNuCosmicDist} > 5 cm
+\end{itemize}
+
+\subsubsection{Muon Selection}
+\label{sssec:NuMUCCsel:sel:muonsel}
+
+\par After the slice-level cuts are applied, the tracks in the slice are further analyzed to identify a muon candidate.
+
+\begin{itemize}
+    \item \emph{trk\_sce\_start\_x} $\in$ [5,251] cm.
+    \item \emph{trk\_sce\_start\_y} $\in$ [-110,110] cm.
+    \item \emph{trk\_sce\_start\_z} $\in$ [20,986] cm.
+    \item \emph{trk\_sce\_end\_x} $\in$ [5,251] cm.
+    \item \emph{trk\_sce\_end\_y} $\in$ [-110,110] cm.
+    \item \emph{trk\_sce\_end\_z} $\in$ [20,986] cm.
+    \item \emph{trk\_llr\_pid\_score} $>$ 0.2.
+    \item \emph{trk\_trk\_score} $>$ 0.8.
+    \item \emph{trk\_trk\_length} $>$ 10 cm.
+    \item \emph{trk\_trk\_distance} $<$ 4 cm.
+    \item \emph{pfp\_generation} = 2.
+\end{itemize}
 
 \begin{figure}
     \centering
