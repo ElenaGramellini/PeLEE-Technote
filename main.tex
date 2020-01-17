@@ -581,10 +581,10 @@ The 1$e$N$p$ and 1$e$0$p$ selections rely on a common pre-selection which requir
 \par \noindent \textbf{track-shower separation} The first step in track-shower separation relies on the topological score reconstructed by Pandora, which utilizes inputs such as the PCA component of 3D space-points to classify PFParticles. Nonetheless, this classification is not sufficient to obtain the track-shower separation needed. To improve on this, additional variables which leverage different aspects of shower topologies are devised:
 
 \begin{itemize}
-    \item \textbf{shower track-fitted fraction} (variable: \emph{trkit}) This quantity is calculated as the fraction of all 3D spacepoints in a shower that are successfully fit with the shower track-fitter algorithm. Tracks, comprised of a single contiguous segment, will be entirely fit, leading to a fraction of 1. Showers, with several branches and split charge deposition segments, will have a fraction that is less then one.
-    \item \textbf{shower sub-clusters} (variable: \emph{subcluster}) This quantity leverages the fact that EM showers are often comprised of several branches isolated by gaps caused by photons propagating through the detector medium. The variable is calculated by counting the number of isolated 2D segments of charge associated to reconstructed showers. This quantity is a sum of such clusters from all three planes.
-    \item \textbf{Moliere ``angle''} (variable: \emph{shrmoliereavg}) This quantity aims to characterize the profile of reconstructed EM showers. It is computed using 3D spacepoints. For each 3D spacepoint, the angle between the shower's direction and the spacepoint is calculated. The average of all such angles is used as the variable.
-    \item \textbf{dE/dx variables} (variable: \emph{shr\_tkfit\_gap10\_dedx\_\{U,V,Y\}} and \emph{shr\_tkfit\_2cm\_dedx\_\{U,V,Y\}} )  These variables, computed using calorimetric information from each plane. The two different variables are calculated as the median d$E$/d$x$ computed over some segment of a shower's trunk. The two segments used are the first two centimeters, and the range [1,5] cm. The choice to leverage both these variables  is motivated by: (a) Sometimes - especially for the 1$e$0$p$ channel - the first few hits of a shower merge activity from short protons, causing a large d$E$/d$x$ which hampes the ability to identify the event as an electron.
+    \item \textbf{shower track-fitted fraction} (variable: \emph{trkit}, figure~\ref{fig:nue:variables:trkfit}) This quantity is calculated as the fraction of all 3D spacepoints in a shower that are successfully fit with the shower track-fitter algorithm. Tracks, comprised of a single contiguous segment, will be entirely fit, leading to a fraction of 1. Showers, with several branches and split charge deposition segments, will have a fraction that is less then one.
+    \item \textbf{shower sub-clusters} (variable: \emph{subcluster}, figure~\ref{fig:nue:variables:subcluster}) This quantity leverages the fact that EM showers are often comprised of several branches isolated by gaps caused by photons propagating through the detector medium. The variable is calculated by counting the number of isolated 2D segments of charge associated to reconstructed showers. This quantity is a sum of such clusters from all three planes.
+    \item \textbf{Moliere ``angle''} (variable: \emph{shrmoliereavg}, figure~\ref{fig:nue:variables:dedx}) This quantity aims to characterize the profile of reconstructed EM showers. It is computed using 3D spacepoints. For each 3D spacepoint, the angle between the shower's direction and the spacepoint is calculated. The average of all such angles is used as the variable.
+    \item \textbf{dE/dx variables} (variable: \emph{shr\_tkfit\_gap10\_dedx\_\{U,V,Y\}} and \emph{shr\_tkfit\_2cm\_dedx\_\{U,V,Y\}} )  These variables, computed using calorimetric information from each plane. The two different variables are calculated as the median d$E$/d$x$ computed over some segment of a shower's trunk. The two segments used are the first two centimeters, and the range [1,5] cm. The choice to leverage both these variables  is motivated by: (a) Sometimes - especially for the 1$e$0$p$ channel - the first few hits of a shower merge activity from short protons, causing a large d$E$/d$x$ which hampes the ability to identify the event as an electron. (b) For photon showers, especially at low energy, d$E$/d$x$ becomes more and more MIP-like as one moves further along the shower (see figure~\ref{fig:dedxgammas:dist}).
 \end{itemize}{}
 
 \begin{figure}[H] 
@@ -598,6 +598,11 @@ The 1$e$N$p$ and 1$e$0$p$ selections rely on a common pre-selection which requir
     \centering
     \includegraphics[width=1.00\textwidth]{nueselection/variables/nbranch.png}
     \caption{\label{fig:nue:variables:subcluster} ``subcluster'' variable }
+    \end{subfigure}
+    \begin{subfigure}[b]{0.3\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{nueselection/variables/dedx.png}
+    \caption{\label{fig:nue:variables:dedx} d$E$/d$x$ variable }
     \end{subfigure}
 \caption{\label{fig:nue:presel:eff} variables}
 \end{center}
@@ -675,7 +680,7 @@ We then define two alternative selections, respectively based on a simple box-cu
 
 \subsubsection{Preselection}
 
-At preselection stage we apply the minimum set of requirements so that all selection variabes can be defined, plus the containment and a minimum shower energy to reject Michel electrons:
+At preselection stage we apply the minimum set of requirements so that all selection variables can be defined, plus the containment and a minimum shower energy to reject Michel electrons:
 \begin{itemize}
     \item nslice = 1
     \item n\_tracks\_contained $>$ 0
@@ -691,12 +696,12 @@ Topics to discuss: selection efficiency and purity, data-MC agreement of selecti
 \begin{center}
     \begin{subfigure}[b]{0.45\textwidth}
     \centering
-    \includegraphics[width=1.00\textwidth]{1eNp/reco_e_01122020_RUN1.pdf}
+    \includegraphics[width=1.00\textwidth]{1eNp/reco_e_01162020_RUN1.pdf}
     \caption{\label{fig:1eNp:prsel:RUN1} RUN 1}
     \end{subfigure}
     \begin{subfigure}[b]{0.45\textwidth}
     \centering
-    \includegraphics[width=1.00\textwidth]{1eNp/reco_e_01122020_RUN3.pdf}
+    \includegraphics[width=1.00\textwidth]{1eNp/reco_e_01162020_RUN3.pdf}
     \caption{\label{fig:1eNp:prsel:RUN1} RUN 3}
     \end{subfigure}
 \caption{\label{fig:1eNp:prsel}pre-selection for 1$e$N$p$ channel}
@@ -1329,9 +1334,16 @@ Given this spectrum, it is possible to derive a correction for the \nue flux in 
 It is noteworthy that this method is not a perfect signal, as the cross section model used by MiniBooNE and MicroBooNE are different, implying that the signal, as in the MicroBooNE simulation, will not explain the MiniBooNE LEE.
 
 The method used to estimate the sensitivity follows the standard prescription for a simple hypothesis test.
-In fact no parameter is extracted from the data at this stage: the hypothesis of background-only is tested against the \textit{simple} hypothesis of background-only 
-- 
-
+In fact no parameter is extracted from the data at this stage: the hypothesis of background-only is tested against the \textit{simple} hypothesis of background-plus-signal, with signal being the LEE unfolded signal.
+The procedure is recapped here:
+\begin{itemize}
+    \item Choice of the observables, typically one or more histograms. In the standard case it will consist of a reconstructed energy spectrum for a \nue selection plus a reconstructed energy spectrum of a \numu selection for the constraint of the systematic uncertainties.
+    \item Choice of the test statistics, which is a function of the observables only. It is in fact necessary to choose a variable that condensates all information of the observables in one number. Different choices are described in the following subsection.
+    \item Definition of the two hypothesis. $H_0$ is the null hypothesis, where we do not observed any LEE signal, whereas $H_1$ is the hypothesis where we do observe the LEE signal.
+    \item Toy-experiments or pseudo-experiments. The expected distributions of the test statistics under the two hypotheses are built by randomly sampling the observables from their expected distributions. In case of the statistical only sensitivities, the bins of the histograms are treated as independent Poisson variables. In case systematic uncertainties are considered, the bins of the histograms are treated as a Multivariate Gaussian distribution, determined by the mean values and by a covariance matrix, which is then convoluted with a Poisson sampling that accounts for the statistical fluctuations.
+    \item Once the experiment is performed, and a values of the histograms is observed, the discovery significance, i.e. reject $H_0$, can be computed. This is done by computing the value of the test statistics associated to the observation, and then the p-value with respect to the expected distribution of the test statistics under $H_0$.
+    \item To compute the expected significance, in the case the LEE is present, we can consider the median value, and an interval which contain 68\% (or 95\%) of the distribution of the test statistics under $H_1$, and compute the p
+\end{itemize}
 
 \subsection{Test Statistics and Statistics-Only Sensitivities \textcolor{red}{Nico}}
 \label{subsec:teststats}
@@ -1392,7 +1404,26 @@ The different selections described in Section~\ref{sec:nueselection}-\ref{sec:nu
 \subsubsection{Constraint from Muon Neutrino \textcolor{red}{Nico}}
 Using the measured $\nu_{\mu}$ energy spectrum interactions to constrain $\nu_e$ systematics is a common approach in oscillation experiments. 
 This constraint takes advantage of the high statistics $\nu_{\mu}$ data and known correlations between electron and muon neutrino fluxes and cross sections. 
-The constraint is exercised through the covariance matrix approach in the energy spe
+The constraint is exercised through the covariance matrix constructed in the energy spectrum of $\nu_e$ and $\nu_{\mu}$. 
+The correlation between the $\nu_e$ and $\nu_{\mu}$ provides constraint when we perform the combined fits between the two channels. This constraint comes from the minimization of the $\chi^2$ when we fit the 1eNp $\nu_e$ selection to the MiniBooNE unfolded LEE signal. Figure~\cite{fig:numuconstraint} displayed the cross section (genie) and flux correlation matrix between the two channels. \textit{Note that work on getting the numu constraint with the new genie tuned CV is still underway and the matrices are shown here to demonstrate the effect of the constraint which will be updated once the $\nu_{\mu}$ constraint channel is available}.
+
+\begin{figure}[ht] 
+\begin{center}
+    \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{CovarianceMatrices/SBNfit_fractional_covariance_matrix_nue_reco_e_genietune_run1_genieonly.pdf}
+    \caption{fractional covariance matrix}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{CovarianceMatrices/SBNfit_correlation_matrix_nue_reco_e_genietune_run1_genieonly.pdf}
+    \caption{correlation matrix}
+    \end{subfigure}
+\caption{\label{fig:fluxmatrices} Neutrino interactions (GENIE) only systematics for the 1eNp selection separated by its sub-channels}
+\end{center}
+\end{figure}
+
+
 
 \subsection{Final Sensitivities \textcolor{red}{Nico}}
 
