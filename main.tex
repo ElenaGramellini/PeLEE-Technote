@@ -1368,6 +1368,11 @@ The procedure is recapped here:
 \subsection{Statistics-Only Sensitivities \textcolor{red}{Nico}}
 \label{subsec:teststats}
 
+Statistics-only sensitivities are computed using the SBNfit tool~\cite{bib:sbnfit20437} and a separate stand-alone tool that is primarily used to crosscheck and understand SBNfit (Nicolo's).
+The SBNfit tool 
+The stand-alone test statistics tool is also used for performing additional test statistics not covered by the SBNfit, such as the Poisson log likelihood  ratio test statistics.
+
+
 The test statistics are performed through the SBNfit tool~\cite{bib:sbnfit20437} and a separate stand-alone tool that is primarily used to crosscheck and understand SBNfit (Nicolo's). The stand-alone test statistics tool is also used for performing additional test statistics not covered by the SBNfit, such as the Poisson log likelihood  ratio test statistics.
 
 To estimate the sensitivity of the MiniBooNE LEE unfolded signal, SBNfit uses the following $\chi^2$ test statistics:
@@ -1426,7 +1431,7 @@ The different selections described in Section~\ref{sec:nueselection}-\ref{sec:nu
 Using the measured $\nu_{\mu}$ energy spectrum interactions to constrain $\nu_e$ systematics is a common approach in oscillation experiments. 
 This constraint takes advantage of the high statistics $\nu_{\mu}$ data and known correlations between electron and muon neutrino fluxes and cross sections. 
 The constraint is exercised through the covariance matrix constructed in the energy spectrum of $\nu_e$ and $\nu_{\mu}$. 
-The correlation between the $\nu_e$ and $\nu_{\mu}$ provides constraint when we perform the combined fits between the two channels. This constraint comes from the minimization of the $\chi^2$ when we fit the 1eNp $\nu_e$ selection to the MiniBooNE unfolded LEE signal. Figure~\cite{fig:numuconstraint} displayed the cross section (genie) and flux correlation matrix between the two channels. \textit{Note that work on getting the numu constraint with the new genie tuned CV is still underway and the matrices are shown here to demonstrate the effect of the constraint which will be updated once the $\nu_{\mu}$ constraint channel is available}.
+The correlation between the $\nu_e$ and $\nu_{\mu}$ provides constraint when we perform the combined fits between the two channels. This constraint comes from the minimization of the $\chi^2$ when we fit the 1eNp $\nu_e$ selection to the MiniBooNE unfolded LEE signal. Figure~\cite{fig:numuconstraint} displayed the cross section (genie) and flux correlation matrix between the two channels. \textit{Note that work on getting the numu constraint with the new genie tuned CV is still underway and the matrices are shown here to demonstrate the effect of the constraint which will be updated once the new $\nu_{\mu}$ constraint channel is available}.
 
 \begin{figure}[ht] 
 \begin{center}
@@ -1440,7 +1445,7 @@ The correlation between the $\nu_e$ and $\nu_{\mu}$ provides constraint when we 
     \includegraphics[width=1.00\textwidth]{Sensitivity/numuconstraint/SBNfit_correlation_matrix_nuenumu_reco_e_fluxonly_mc_collapsed.pdf}
     \caption{correlation matrix for flux systematics}
     \end{subfigure}
-\caption{\label{fig:fluxmatrices} Correlation matrices between the $\nu_e$}
+\caption{\label{fig:fluxmatrices} Correlation matrices between the $\nu_e$ and $\nu_mu$}
 \end{center}
 \end{figure}
 
