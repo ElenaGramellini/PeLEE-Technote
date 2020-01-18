@@ -21,6 +21,7 @@
 \usepackage{multicol}
 \usepackage{lineno}
 \usepackage{array}
+\usepackage{siunitx}
 \linenumbers
 \linespread{1.1}
 
@@ -201,19 +202,55 @@ flux uncertainties for $\nu_e$ as calculated from the beam simulation are $\math
 \end{center}
 \end{figure}
 
-\subsection{Systematics  \textcolor{green}{David}}
+\subsection{Systematics \textcolor{green}{David}}
 \par This section gives a brief overview of how detector and modeling uncertainties are accounted for in the analysis. The estimation of systematics is performed in section~\ref{sec:systematics}.
 \par \noindent \textbf{Detector Systematics}: Detector modeling in MicroBooNE has undergone significant updates in the past year, in part as a result of the large impact that detector systematics have had on 2018 analyses (\textcolor{red}{cite CCpi0,CCincl}). Detector effects with significant impact on the analysis can be broken up into three main categories:
 \begin{itemize}
     \item wire-response modeling: the response of MicroBooNE's electronics to drifting charge is a complex subject described in three past publications~\cite{bib:noise,bib:SP1,bib:SP2}. The work of these papers in improving the understanding and modeling of noise and field-response effects has been implemented in the current detector simulation and is expected to lead to a reduction in what for MCC8 analysis comprised the largest detector uncertainty.
     \item Space-Charge modeling: MicroBooNE's space-charge model has changed significantly since 2018, moving from a calculation-based~\cite{bib:SCETN} implementation of electric field distortions to a data-driven E-field map implemented in simulation and reconstruction. Due to the large position distortions (and, though smaller, charge distortions) SCE can significantly impact an analysis through the determination  of fiducial boundaries, tracking and energy resolution.
     \item Scintillation light modeling: MicroBooNE's model of scintillation light production has not changed significantly since the beginning of data-taking, and has known limitations. Of particular importance to this analysis, which aims to use a dataset spanning four years, is the known and significant time-dependent variation of MicroBooNE's light response. This analysis takes several steps to correct for, and mitigate the impact that light mismodeling can have on the analysis. Triggering on low-energy signal $\nu_e$ events, and cosmic-rejection are particularly sensitive to scintillation light detector effects.
-\end{itemize}{}
+\end{itemize}
 An additional detector effects that needs to be accounted for are ion Recombination which impacts the detector's calorimetric response. Tailored studies and proton samples are being developed to assess ion recombination modeling accuracy in MCC9.
 \par \noindent \textbf{Flux and Cross-Section Modeling} Uncertainties in flux and cross-section modeling are treated through a \emph{multi-sim} approach, where underlying parameters that are input to the modeling are varied in a correlated way. Flux uncertainties are taken from the MiniBooNE BNB flux simulation adapted to MicroBooNE~\cite{bib:fluxmcc9}, while $\nu$ interaction uncertainties are handled within the \texttt{GENIE} reweighting package, as described in~\cite{bib:geniesupportnote}. We note that the \texttt{GENIE} event reweighting infrastructure is still in development and likely to be updated or further expanded on in the future. Finally, uncertainties associated with pion and proton re-interactions in argon were unavailable when this version of the Tech Note was produced and not included at this stage.
 
-\subsection{Sensitivity Calculation  \textcolor{red}{Nico/Maya}}
+\subsection{Sensitivity Estimation \textcolor{green}{Nico/Maya}}
+In order to extract information from the selected events, a simple hypothesis test is performed.
+Given an observable quantity, such as a measurement of the energy deposited by the neutrino interaction, the hypothesis in which the observed spectrum of events is entirely due to the standard model, $H_0$, is tested against an alternative hypothesis $H_1$.
+This alternative hypothesis is typically chosen to consist of all the known background plus the LEE unfolded signal from MiniBooNE, but an oscillation signal has also been studied.
+The hypothesis test is simple in the sense no parameter is fitted from the data, but we limit ourselves to a comparison of two different hypotheses.
+
+In order to perform the test a test statistic is chosen, in order to condensate all information of the observable in one number.
+Through toy experiments, the expected distributions of the test statistic under the two hypotheses is chosen, and the separation power is computed, by taking the median p-value with respect to $H_0$ one might observe if $H_1$ is true.
+This is the discovery sensitivity, the sensitivity to reject $H_0$ when $H_1$ is true.
+
+We studied this problem in different cases.
+First by considering only statistical uncertainties, which are good approximation as we expect a handful of events in the exclusive selections.
+We also include systematic uncertainties using the covariance matrix formalism and the SBNfit package, as described in section \ref{subsec:sensitivity_syst_uncertainty}.
+Eventually, the observed spectra from the \nueccnopinp and the \numu selections are analysed simultaneously using a single covariance matrix to constraint the systematic uncertainties and thus increase the sensitivity.
+
 \subsection{Money Plots and Takeaways \textcolor{red}{Elena/David/ Group discussion}}
+
+\subsection{Technical Overview on the Content of this Note}
+\subsubsection{Samples}
+\par This analysis attempts to use all the latest available data and simulation samples for the MicroBooNE LEE analysis. This section briefly describes what samples are used.
+\par MicroBooNE's available dataset for the LEE analysis consists of $10.1E20$ POT of BNB data taken over four Runs. This number takes into account run periods discarded due to data-quality requirements. Small subsets of this data is available for analyzers to use, as described below.
+For on-beam data, three samples are used in this note: the ``5E19'' Run1 open dataset ($4.07E19$ POT after quality cuts), the ``1E19'' ($0.8E19$ POT after quality cuts) open Run3 data, and the $\sim3.0E20$ POT of filtered $\pi^0$ data from runs 1 and 3. For off-beam data, this analysis uses all available samples from Run1 and Run3, consisting of roughly 1 million events for each run. Scaling factors for these EXT datasets to match the full $10.1E20$ POT are $\times3.5$ and $\times2.1$ for Run1 and Run3 respectively. The fact that EXT samples need to be scaled up rather then down is a consequence of the lack of availability of off-beam events, a generally recognized problem with all LEE analyses which may make EXT background estimation difficult and hamper sensitivity estimates.
+\par All MC samples used are from ``overlay datasets''. For each run period, MC datasets are produced for the standard MC BNB flux prediction (``MC'' sample, $\sim1E21$ POT), a $\nu_e$ intrinsic sample simulating only $\nu_e$ neutrinos from the standard MicroBooNE flux prediction (\emph{$\nu_e$ intrinsic}, $\sim5E22$ POT), a sample of \emph{dirt} interactions (neutrinos which interact outside of the cryostat, $\sim3E20$ POT), and samples filtered by final-state topology for CC $\pi^0$ and NC $\pi^0$ channels ($\sim2-3E21$ POT). All samples in addition to the generic ``MC'' are used to boost statistics in channels that are sub-dominant in event rate but important for this analysis. In merging these samples in the analysis we take care to remove the same events from the ``MC'' samples and weigh the high-stats special samples appropriately. As will be seen in this note, even with this workflow several background categories have statistics that are not sufficient for a careful evaluation of their impact on the selection, and lead to large bin-by-bin fluctuations in expected events and therefore an unclear background estimation. To mitigate this, specific targeted truth-based filters have been developed (see DocDB 27409~\cite{bib:truthfilters}) to boost statistics in backgrounds for which current statistics are not sufficient. 
+
+\subsubsection{How to read plots in this tech-note} A large fraction of plots in this note are data-simulation comparison. This paragraph describes common features for these plots. All data-simulation comparisons up to Chapter~\ref{sec:systematics} show statistical errors only, denoted with error-bars for data. The statistical error on MC samples is denoted with a grey band. All plots, unless otherwise labeled, are absolutely normalized based on POT, following the procedure outlined in DocDB 15204~\ref{bib:POTscaling}. Data-simulation comparisons are accompanied by a legend which denotes the various event categories shown. Categories are described below:
+\begin{itemize}
+    \item \textbf{EXT}: Off-beam contributions (data).
+    \item \textbf{BNB}: On-beam contributions (data).
+    \item \textbf{Cosmic}: Events from MC overlay where a cosmic instead of a neutrino interaction have been selected as the neutrino candidate by Pandora's SliceID.
+    \item \textbf{Out. fid. vol.}: Events from MC overlay where a neutrino was tagged, but the neutrino interaction vertex is outside of the defined TPC fiducial volume.
+    \item \textbf{MiniBooNE LEE}: Events from the MB-$\nu_e$ LEE model.
+    \item \textbf{$\nu_e$}: CC $\nu_e$ events, split by final state (\zpsel, \npsel, and N$\pi$).
+    \item \textbf{$\nu_{\mu}$ CC}: CC muon events with no final state $\pi^0$.
+    \item \textbf{$\pi^0$}: $\nu_{\mu}$ events with final state $\pi^0$ split in NC and CC channels.
+    \item \textbf{NC}: NC events (all flavors) with no final state $\pi^0$s.
+\end{itemize}{}
+
+
 
 \newpage
 
@@ -280,7 +317,7 @@ For example, the shower dE/dx depends only on the PFParticle itself, whereas the
 
 The value of the cuts applied on these variables depend not only on the general level of efficiency and mis-identification one may want to achieve in distinguishing two kind of particles (electrons from photons, for example), but also on the mixture of backgrounds, which eventually depends on the specific selection the analyser is performing.
 
-\subsubsection{Log Likelihood Ratio Particle ID \textcolor{red}{Nico}}
+\subsubsection{Log Likelihood Ratio Particle ID \textcolor{green}{Nico}}
 \label{subsec:loglikelihoodpid}
 
 For track-like particles, the particle identification is performed looking at the profile of the deposited charge per unit length ($dE/dx$).
@@ -305,15 +342,46 @@ For this reason, the expected distribution of $dE/dx$ is built starting from the
 This has the main advantage of containing all of these effects, as best of our knowledge.
 In fact, the performance of the particle identification become more and more optimal, the more accurate the model used for the distribution of $dE/dx$.
 The model for $dE/dx$ is built by considering well reconstructed tracks (completeness > 90\%, purity > 90\%), well contained within a fiducial volume, and backtracked to protons and muons.
-The pdf of $dE/dx$ is built in bins (add binning) and in bins of the residual range and pitch.
+The binning of the pdf (probability density function) is the following:
+\begin{itemize}
+    \item $dE/dx$: $[0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 9, 10, 12, 15, 20, 25, 30, 35, 40, 45, 50]$ MeV/cm
+    \item residual range: $[0., 2, 4, 7, 10, 15, 20, 30, 50, 100, 300, 2000]$ cm
+    \item pitch: $[0.3, 0.6, 1, 1.5, 3, 30]$ cm
+\end{itemize}
+A couple of examples of the pdf are provided in figure \ref{fig:llr_pid_pdf_example}, for two different bins in residual range and pitch.
+
+\begin{figure}[ht] 
+\begin{center}
+    \begin{subfigure}[b]{0.48\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{llrpid/plane_2_rr_30_pitch_03.pdf}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.48\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{llrpid/plane_2_rr_125_pitch_225.pdf}
+    \end{subfigure}
+\caption{Comparison of the expected distribution of $dE/dx$ for muons (blue) and protons (orange), for two different bins in residual range and pitch (left and right).}
+\label{fig:llr_pid_pdf_example}
+\end{center}
+\end{figure}
+
 For a given track, the three calorimetry objects, one per plane, are considered.
 For each of them, the vectors - one entry per hit - of the $dE/dx$, the residual range, and the pitch are considered to compute the likelihood of each particle type.
 \[ \mathcal{L}(\text{type} | \text{plane}, dE/dx_{i = 1, ..., N},   \text{rr}_{i = 1, ..., N}, \text{pitch}_{i = 1, ..., N}) = \prod_{i=1}^N p(dE/dx_i | \text{type}, \text{plane}, \text{rr}_i, \text{pitch}_i) \]
 where $i=1, ..., N$ is the index that run on the hit number.
 The combination of the three planes happens in a straightforward way, by taking the product of the three likelihoods, or summing up the log-likelihoods.
 \[ p(dE/dx | \text{type}, \text{plane}, \text{rr}, \text{pitch}) \]
-In order to perform the classification task, the likelihood ratio test statistics is chosen:
+In order to perform the classification task, the likelihood ratio test statistic is chosen:
 \[ T(dE/dx, \text{rr}, \text{pitch}) = \mathcal{L}(\text(muon)| dE/dx, \text{rr}, \text{pitch}) /  \mathcal{L}(\text(proton)| dE/dx, \text{rr}, \text{pitch}) \]
+An example of the distribution of these variable, normalised between -1 and 1, is given in figure \ref{fig:llr_pid_uvy_example}, for tracks contained in a fiducial volume, and backtracked to muon, proton, or cosmic.
+
+\begin{figure}[ht] 
+    \centering
+    \includegraphics[width=0.7\textwidth]{llrpid/llr_012_n.png}
+    \caption{Distribution of the log-likelihood-ratio PID variable for tracks well contained in a fiducial volume, and backtracked to muon (orange), proton (blue), or cosmic (green).}
+    \label{fig:llr_pid_uvy_example}
+\end{figure}
+
 As long as the likelihood is correct, that means the model is correct, this can be proven to be the most powerful statistical test, i.e. the one with the smallest mis-identification rate for any given value of the efficiency.
 Any imperfection in the simulation used to build the model produces a loss of power, but does not add any systematic uncertainty.
 
@@ -745,14 +813,28 @@ The section is organized as follows. We first define a set of minimal requiremen
 
 \subsubsection{Preselection}
 
-At preselection stage we apply the minimum set of requirements so that all selection variables can be defined, plus the containment and a minimum shower energy to reject Michel electrons:
-\begin{itemize}
-    \item nslice = 1
-    \item n\_tracks\_contained $>$ 0
-    \item n\_showers\_contained $>$ 0
-    \item contained\_fraction $>$ 0.9
-    \item shr\_energy\_tot\_cali $>$ 0.07
-\end{itemize}
+At preselection stage we apply the minimum set of requirements so that all selection variables can be defined, plus the containment and a minimum shower energy to reject Michel electrons (Table~\ref{tab:1eNp:presel}).
+
+\begin{table}[h!]
+\centering
+\setlength{\tabcolsep}{10pt}
+\renewcommand{\arraystretch}{1.25}
+ \begin{tabular}{| c | c |} 
+ \hline
+ Cut goal & Cut definition \\
+ \hline\hline
+Cosmic rejection & nslice = 1 \\
+ \hline
+\multirow{2}{*}{Signal~topology} & n\_tracks\_contained $>$ 0 \\
+ & n\_showers\_contained $>$ 0 \\
+ \hline
+Containment & contained\_fraction $>$ 0.9 \\
+ \hline
+Michel rejection & shr\_energy\_tot\_cali $>$ 0.07 \\
+ \hline
+ \end{tabular}
+ \caption{\label{tab:1eNp:presel} Preselection requirements for the \npsel selection.}
+\end{table}
 
 The relative fraction of EXT events at this stage is roughly 25\%, so we can look at all selection variables in data and MC in a neutrino-dominated sample with the open Run1 and Run3 data sets. We typically see very good agreement, which rules out major problems related to POT-scaling, detector modeling, inclusive cross-section. The full list of plots can be found in Appendix~\ref{sec:datamc:plots}. Figure~\ref{fig:1eNp:prsel} shows the level of agreement for the reconstructed neutrino energy variable. \textcolor{red}{We should probably discuss variables with not so great data-MC agreement here (in case they are not already discussed elsewhere).}
 
@@ -781,23 +863,36 @@ First, we aim at rejecting cosmic-induced events by requiring a large distance o
 
 At this stage most of the selected events contain neutrino-induced electromagnetic activity. The main background are $\pi^0$ events abd we reject them with a series of requirements based on the different topology and energy deposition of electrons and photons. We first require only one shower-like PFParticle in the event, and that its start point is at a short distance from the track start. Then, we require that the energy loss at the start of the electron shower is be compatible with a single MIP. Many possible dEdx variable definitions are possible, and information from all TPC planes can be used. However, due to detector and reconstruction limitations, there is not a single definition that provides a sharp separation between electrons and photons; therefore, in order to obtain a good background rejection without large efficiency losses, we choose to apply a loose MIP cut on two different dEdx definitions (described in Sec.~\ref{sec:nueselection:variables}). The loose MIP requirement enforces that there is at least one hit in the collection plane in the probed range, and that the dEdx is not consistent with two or more MIPs in any plane. Finally, the single shower requirement is reinforced with a 2nd shower veto based on clusters in the collection plane that are not matched to any PFParticle.
 
-The last cut aims at rejecting misreconstructed events, so when the track and shower are aligned the candidate event is rejected.
+The last cut aims at rejecting misreconstructed events and requires that the track and shower are not aligned. For reference, the full list of cuts is in Table~\ref{tab:1eNp:boxcut}.
 
-For reference, the full list of cuts is:
-\begin{itemize}
-    \item CosmicIP $>$ 20.
-    \item trkpid $<$ -0.02
-    \item hits\_ratio $>$ 0.60
-    \item shr\_score $<$ 0.275
-    \item shrmoliereavg $>$ 2 and shrmoliereavg $<$ 9
-    \item trkfit $<$ 0.45 or subcluster $>$ 6
-    \item n\_showers\_contained = 1
-    \item tksh\_distance $<$ 3.5
-    \item shr\_tkfit\_2cm\_dedx\_Y $\in$ [0,4.0] and shr\_tkfit\_2cm\_dedx\_U $<$ 4.0 and shr\_tkfit\_2cm\_dedx\_V $<$ 4.0
-    \item shr\_tkfit\_gap10\_dedx\_Y $\in$ [0,4.5] and shr\_tkfit\_gap10\_dedx\_U $<$ 4.5 and shr\_tkfit\_gap10\_dedx\_V $<$ 4.5
-    \item secondshower\_Y\_nhit $\leq$ 8 or secondshower\_Y\_dot $\leq$ 0.8 or anglediff\_Y $\leq$ 40 or secondshower\_Y\_vtxdist $\geq$ 100
-    \item tksh\_angle $>$ -0.9 and tksh\_angle $<$ 0.7
-\end{itemize}
+\begin{table}[h!]
+\centering
+\setlength{\tabcolsep}{10pt}
+\renewcommand{\arraystretch}{1.25}
+ \begin{tabular}{| c | c |} 
+ \hline
+ Cut goal & Cut definition \\
+ \hline\hline
+\multirow{2}{*}{Cosmic~rejection} & CosmicIP $>$ 20. \si{\cm} \\
+& trkpid $<$ -0.02 \\
+ \hline
+\multirow{4}{*}{$\nu_\mu$~rejection} & hits\_ratio $>$ 0.60 \\
+ & shr\_score $<$ 0.275 \\
+& shrmoliereavg $>$ 2\si{\degree} and shrmoliereavg $<$ 9\si{\degree} \\
+& trkfit $<$ 0.45 or subcluster $>$ 6 \\
+ \hline
+\multirow{6}{*}{$\pi^0$~rejection} & n\_showers\_contained = 1 \\
+& tksh\_distance $<$ 3.5 \si{\cm} \\
+& shr\_tkfit\_2cm\_dedx\_Y $>$ 0 and shr\_tkfit\_2cm\_dedx\_\{U,V,Y\} $<$ 4.0 \si{\MeV}/\si{\cm} \\
+& shr\_tkfit\_gap10\_dedx\_Y $>$ 0 and shr\_tkfit\_gap10\_dedx\_\{U,V,Y\} $<$ 4.5 \si{\MeV}/\si{\cm} \\
+& (secondshower\_Y\_nhit $\leq$ 8 or secondshower\_Y\_dot $\leq$ 0.8 or \\
+&  anglediff\_Y $\leq$ 40 or secondshower\_Y\_vtxdist $\geq$ 100 \si{\cm}) \\
+ \hline
+Misreconstruction & tksh\_angle $>$ -0.9 and tksh\_angle $<$ 0.7 \\
+ \hline
+ \end{tabular}
+ \caption{\label{tab:1eNp:boxcut} Box cut requirements for the \npsel selection.}
+\end{table}
 
 \begin{figure}[ht]
 \begin{center}
@@ -824,19 +919,30 @@ For reference, the full list of cuts is:
 
 \subsubsection{BDT}
 
-Two BDTs are trained separately to reject backgrounds with and without $\pi^0$ in the final state. The same set of training variables is used in the two BDTs, corresponding to the list of variables used in the box-cut selection. 
-
-Both in the training and in the analysis, events are required to pass the preselection requirements plus a loose set of cuts intended to avoid considering events where one or more variables is clearly inconsistent with $\nu_e$ events. The list of cuts is:
-\begin{itemize}
-    \item CosmicIP $>$ 20.
-    \item trkpid $<$ 0.1
-    \item hits\_ratio $>$ 0.5
-    \item shr\_score $<$ 0.30
-    \item n\_showers\_contained = 1
-    \item tksh\_distance $<$ 6.0
-    \item shr\_tkfit\_2cm\_dedx\_Y $<$ 4.0
-    \item tksh\_angle $>$ -0.9
-\end{itemize}
+Alternatively to the box cut approach, a selection based on Boosted Decision Tree (BDT) algorithms has been developed. This selection is expected to be the most sensitive to low-energy \nue events since BDTs are able to learn additional information from the data and return a response variable that is highly discriminating between signal and background. \textcolor{red}{While the development of the BDT selection is fairly advanced, a few steps are needed before it is finalized. Current limitations are mainly related to the limited size of the samples that are available for training and to the ongoing calibration of the dEdx variables used in the BDT.} Because of these limitation we deemed safer to restrict both the BDT training and the analysis to events that pass the preselection requirements plus a loose set of cuts intended to avoid considering events where one or more variables is clearly inconsistent with $\nu_e$ events. The list of cuts is in Table~\ref{tab:1eNp:loosecut}.
+\begin{table}[h!]
+\centering
+\setlength{\tabcolsep}{10pt}
+\renewcommand{\arraystretch}{1.25}
+ \begin{tabular}{| c | c |} 
+ \hline
+ Cut goal & Cut definition \\
+ \hline\hline
+\multirow{2}{*}{Cosmic~rejection} & CosmicIP $>$ 20. \si{\cm} \\
+& trkpid $<$ 0.1 \\
+ \hline
+\multirow{2}{*}{$\nu_\mu$~rejection} & hits\_ratio $>$ 0.50 \\
+ & shr\_score $<$ 0.30 \\
+ \hline
+\multirow{2}{*}{$\pi^0$~rejection} & n\_showers\_contained = 1 \\
+& tksh\_distance $<$ 6.0 \si{\cm} \\
+& shr\_tkfit\_2cm\_dedx\_Y $<$ 4.0 \si{\MeV}/\si{\cm} \\
+ \hline
+Misreconstruction & tksh\_angle $>$ -0.9 \\
+ \hline
+ \end{tabular}
+ \caption{\label{tab:1eNp:loosecut} Loose cut requirements for the \npsel BDT selection.}
+\end{table}
 
 \begin{figure}[H]
 \begin{center}
@@ -845,7 +951,7 @@ Both in the training and in the analysis, events are required to pass the presel
 \end{center}
 \end{figure}
 
-Indeed the BDT is able to figure out during training which variables are most important for each background: shower quality variables (e.g. shr\_score, trkfit, subcluster) have higher ranking for the non-$\pi^0$ BDT, while variables such as tksh\_distance and the shower dEdx show higher importance for the $\pi^0$-BDT. It is interesting to note that the most discriminating variable is in both cases shrmoliereavg which may be useful to discriminate both muons in $\nu_\mu$ events (low values) and merged showers in $\pi^0$ events (large values).
+Two BDTs are trained separately to reject backgrounds with and without $\pi^0$ in the final state, and the same set of training variables is used in the two BDTs, corresponding to the list of variables used in the box-cut selection. Indeed the BDT training is able to figure out which variables are most important for each background: shower quality variables (e.g. shr\_score, trkfit, subcluster) have higher ranking for the non-$\pi^0$ BDT, while variables such as tksh\_distance and the shower dEdx show higher importance for the $\pi^0$-BDT. It is interesting to note that the most discriminating variable is in both cases shrmoliereavg which may be useful to discriminate both muons in $\nu_\mu$ events (low values) and merged showers in $\pi^0$ events (large values).
 
 \begin{figure}[H] 
 \begin{center}
@@ -1008,7 +1114,14 @@ At this stage a single BDT has been trained for this selection, which tries to s
 
 As input the BDT uses for the most part the same variables as the box cuts.  In all cases in the BDT, however, the full three plane information is used, while it was not always found to improve the performance when using box cuts.  More information from the second shower search is also included in the BDT, such as the distance from the vertex to the second shower, and the angle between the second shower and the initial shower. The full list of variables used to train the 0p BDT is: shrmoliererms, shrmoliereavg, shr\_score, CosmicIP, subcluster, secondshower\_(U,V,Y)\_nhit, secondshower\_(U,V,Y)\_vtxdist, secondshower\_(U,V,Y)\_dot, anglediff\_(U,V,Y), shr\_tkfit\_2cm\_dedx\_(U,V,Y), shr\_tkfit\_gap10\_dedx\_(U,V,Y), trkfit, and hits\_ratio.
 
-Plot XX shows the relative importance of each of these variables in the BDT. (Plot still missing)
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.45\textwidth]{1e0p/bdt_vars_Run3.png}
+\caption{\label{fig:1e0p:bdtvars:RUN3} Relative importance of each variable to BDT.}
+\end{center}
+\end{figure}
+
+Plot ~\ref{fig:1e0p:bdtvars:RUN3} shows the relative importance of each of these variables in the BDT.  The variables for which information from all three planes is used in the BDT are combined into one variable labeled "ALL" in this plot.  
 
 \begin{figure}[H] 
 \begin{center}
@@ -1378,7 +1491,7 @@ Theta\_Delta2Npi\_Genie       &  Interpolates angular distribution for $\Delta\t
 \end{center}
 \end{figure}
 
-\subsection{Hadronic Reinteraction Uncertainties \textcolor{red}{Sebastien}}
+\subsection{Hadronic Reinteraction Uncertainties \textcolor{green}{Sebastien}}
 An additional type of systematic uncertainty that can be included is that related to hadrons interacting strongly with argon nuclei~\cite{bib:reintslides}. These hadronic rescatterings can induce a large momentum transfer in the hadron and thus have an impact in the reconstruction and the selection of events. These uncertainties can be thought of as GEANT4 uncertainties in the cross section of a hadron with argon nuclei. The hadronic reinteraction uncertainties listed in Table~\ref{tab:fluxsyst} are technically readily available to the analysis but have not been investigated.
 
 
@@ -1432,7 +1545,7 @@ The procedure is recapped here:
     \item The p-value is typically converted to the number of sigma of a standard Gaussian that produces the same p-value, as outlined in \cite{bib:cowan}.
 \end{itemize}
 
-\subsection{Statistics-Only Sensitivities \textcolor{red}{Nico}}
+\subsection{Statistics-Only Sensitivities \textcolor{green}{Nico}}
 \label{subsec:teststats}
 
 Statistics-only sensitivities are computed using the SBNfit tool~\cite{bib:sbnfit20437} and a separate stand-alone tool that is primarily used to crosscheck and understand SBNfit (Nicolo's).
@@ -1440,7 +1553,7 @@ The SBNfit tool can currently estimate sensitivities using only one test statist
 
 To estimate the sensitivity of the MiniBooNE LEE unfolded signal, SBNfit uses the following $\Delta \chi^2$-like variable as test statistic:
 \begin{equation}
-
+\label{eqn:deltachi2}
 \Delta\chi^2 = \sum_{i=1}^{N}\left( \frac{(n^i - \mu^i_{H_1})^2}{\mu^i_{H_1}} - \frac{(n^i - \mu^i_{H_0})^2}{\mu^i_{H_0}} \right)
 \end{equation}
 where $i$ is the index of the bin, $n_i$ is the observed number of entries in that bin, whereas $\mu^i_{H_0, 1}$ is the expected number of entries under the null and alternative hypothesis, respectively.
@@ -1448,6 +1561,7 @@ where $i$ is the index of the bin, $n_i$ is the observed number of entries in th
 Using the stand-alone tool we tested the ratio of the likelihoods under the two hypotheses as test statistic.
 In fact, as the statistical test involves only simple hypothesis, it can be proven this is the most powerful test, that means the one with the highest purity for any given efficiency.
 \begin{equation}
+\label{eqn:llrpois}
 T_{LLR~Pois} = 2 \sum_{i=1}^{N}\left( \mu^i_{H_1} - \mu^i_{H_0} - n^i\log\left(\mu^i_{H_1} / \mu^i_{H_0}\right) \right)
 \end{equation}
 where LLR Pois stands for log-likelihood-ratio of the Poisson likelihoods, and the factor of two in front of the expression is just a convention, to make it analogous to the $\chi^2$.
@@ -1475,29 +1589,41 @@ One can see that the $\Delta \chi^2$-like variable is a log-likelihood-ratio, in
     \begin{subfigure}[b]{0.48\textwidth}
         \centering
         \includegraphics[width=1.\textwidth]{Sensitivity/SBNfit_Cls_nue_reco_e_genietune_run1_LEE_deltachi_statonly.pdf}
-        \caption{\label{fig:1eNp:box:statonlysensitivity} Statistics-only sensitivity estimation for the 1eNp box cut selection. Sample is taken from Monte Carlo Run 1 Data and scaled to $1.01\times10^{21}$ POT}
+        \caption{Statistics-only sensitivity estimation for the 1eNp box cut selection. Sample is taken from Monte Carlo Run 1 Data and scaled to $1.01\times10^{21}$ POT. It is obtained using SBNfit with the $\Delta \chi^2$ test statistic \ref{eqn:deltachi2}.}
     \end{subfigure}
         \begin{subfigure}[b]{0.48\textwidth}
         \centering
         \includegraphics[width=1.\textwidth]{Sensitivity/pois_llr_discovery_totalpot_1e+21_nosyst.png}
-        \caption{correlation matrix}
+        \caption{Statistics-only sensitivity estimation for the \nueccnopinp cut based selection. Sample is taken from Monte Carlo Run 1 Data and scaled to $1.01\times10^{21}$ POT. It is obtained using Nicol\`o's tool, with the LLR Pois test statistic \ref{eqn:llrpois}.}
     \end{subfigure}
-\caption{\label{fig:fluxmatrices} Neutrino interactions (GENIE) only systematics for the 1eNp selection separated by its sub-channels}
+\caption{Distribution of the test statistics under the null and alternative hypotheses for statistical-only sensitivities studies.}
+\label{fig:1eNp:box:statonlysensitivity}
 \end{center}
 \end{figure}
 
-\subsection{Sensitivities with systematic uncertainties}
-In the case in which systematic uncertainties are present, this definition can be expanded by adding the covariance matrix to account for these uncertainties.
+\subsection{Sensitivities with systematic uncertainties \textcolor{green}{Nico}}
+\label{subsec:sensitivity_syst_uncertainty}
+Two different studies have been performed to estimate the sensitivity in presence of systematic uncertainties.
+
+The first one is based on SBNfit and consists of two modification to the previous analysis: modifying the $\Delta \chi^2$ test statistic, and sampling according to the systematic uncertainties.
+The effect of the systematic uncertainties on the observables can be condensed in the covariance matrix, which is obtained by marginalising over the systematic uncertainties, as seen in \ref{sec:systematics}.
+
+The $\Delta \chi^2$ is modified as following taking into account the covariance matrix $E_{ij}$, which includes into account both statistical and systematic uncertainties.
+\begin{equation}
+\label{eqn:deltachi2_systematic}
+\Delta\chi^2 = \sum_{i,j=1}^{N}\left( (n^i - \mu^i_{H_1})E_{i,j}^{-1}(n^j - \mu^j_{H_1}) - (n^i - \mu^i_{H_0})E_{i,j}^{-1}(n^j - \mu^j_{H_0})\right)
+\end{equation}
 This second test statistic is more optimal in the case systematic uncertainties are present.
 
-SBNfit uses the covariance matrix to build on the systematics for the sensitivity. The toy experiments can be generated once the full covariance matrix is in hand. The procedure to generate these toy experiments is as follows:
+Secondly, SBNfit uses the covariance matrix to properly sample from the covariance matrix.
+The toy experiments can be generated once the full covariance matrix is in hand. The procedure to generate these toy experiments is as follows:
 \begin{enumerate}
     \item A Cholesky decomposition is performed on the covariance matrix: $$M = LL*$$,
     where $L$ is a lower triangular matrix.
     \item A vector $v$ is generated, where each of the $i$ elements of $v$ are drawn from a Gaussian distribution with mean 0 and variance 1.
     \item A Poisson fluctuated toy data histogram is given by
 $$x_{toy} = x_{CV} + Lv.$$
-    \item We follow the same procedure to test the LEE hypothesis as described in the Section~\ref{subsec:teststats}
+    % \item We follow the same procedure to test the LEE hypothesis as described in the Section~\ref{subsec:teststats}
 \end{enumerate}
 
 % Nico: added in the previous subsection
@@ -1507,6 +1633,7 @@ $$x_{toy} = x_{CV} + Lv.$$
 % \caption{\label{fig:1eNp:box:statonlysensitivity} Statistics-only sensitivity estimation for the 1eNp box cut selection. Sample is taken from Monte Carlo Run 1 Data and scaled to $1.01\times10^{21}$ POT}
 % \end{center}
 % \end{figure}
+The resulting plot of the test statistic described in \ref{eqn:deltachi2_systematic} is shown in figure \ref{fig:1eNp:box:statsystsensitivity}.
 
 \begin{figure}[H]
 \begin{center}
@@ -1514,6 +1641,11 @@ $$x_{toy} = x_{CV} + Lv.$$
 \caption{\label{fig:1eNp:box:statsystsensitivity} Statistics and Systematics (cross-section and flux) sensitivity estimation for the 1eNp box cut selection. Sample is taken from Monte Carlo Run 1 Data and scaled to $1.01\times10^21$ POT}
 \end{center}
 \end{figure}
+
+A second and simpler exercise is performed to get a rough understanding of the degradation of the sensitivity due to the presence of systematic uncertainties, using Nicol\`o's tool.
+The same procedure outlined before is repeated by adding a Gaussian sampling, independent for each bin, with mean the expected value of the bin content and standard deviation a fixed fraction of uncertainty (e.g. 20\%, which is about the average level of systematic uncertainty seen in the \numucc inclusive analysis).
+This process is equivalent to sample from a diagonal covariance matrix, with fractional uncertainties is set to the desired value.
+Results from this method are shown in figure \ref{fig:sensitivity_function_oot}.
 
 \subsection{How Constraints and Systematics are included in the 1$e$N$p$ Sensitivity Calculation}
 
@@ -1571,15 +1703,78 @@ Figure~\ref{fig:numuconstraintresult} demonstrates the effects of the $\nu_\mu$ 
 \end{figure}
 
 
-\subsection{Final Sensitivities \textcolor{red}{Nico}}
+\subsection{Final Sensitivities \textcolor{green}{Nico} \textcolor{red}{Do we need the final numbers from SBNfit?}}
+
+Using Nicol\`o's tool the expected significance as a function of the collected POT has been computed \ref{fig:sensitivity_function_pot}.
+This has been performed using the Poisson LLR test statistic, and including systematic uncertainties as explained in \ref{subsec:sensitivity_syst_uncertainty}.
 
 \begin{figure}[H]
     \begin{center}
-    \includegraphics[width=0.45\textwidth]{Sensitivity/sensitivity_vs_pot.png}
-    \caption{The final 1eNp selection used for the sensitivity estimate. Sample is taken from Monte Carlo Run 1 Data and scaled to $1.01\times10^{21}$ POT}
-    \label{fig:}
+    \includegraphics[width=0.7\textwidth]{Sensitivity/sensitivity_vs_pot.png}
+    \caption{Expected sensitivity to the LEE unfolded signal, of the \nueccnopinp cut based selection. The solid lines indicate the median values, whereas the shaded regions represent the regions containing 68\% probability.
+    The blue (orange) graph shows the case with no (20\%) systematic uncertainty, performed using Nicol\`o's tool as explained in \ref{subsec:sensitivity_syst_uncertainty}.
+    }
+    \label{fig:sensitivity_function_pot}
     \end{center}
 \end{figure}
+
+\subsection{Sensitivity to an oscillation signal \textcolor{green}{Nico}}
+
+In addition to the sensitivity to the MiniBooNE unfolded signal, sensitivity to an oscillation signal is quoted.
+The model under study is a simple extension of the standard with one sterile neutrino.
+The effective oscillation probability \numu $\rightarrow$ \nue is:
+\begin{equation}
+    P^{osc,~short~baseline}_{\mu \rightarrow e} = \sin^2(2\theta_{e \mu}) \sin^2 \left( 1.27 \Delta m_{14}^2 \frac{L}{E} \right)
+\end{equation}
+which is characterised by an effective mixing parameter $\sin^2(2\theta_{e \mu})$ and oscillation frequency $\Delta m_{14}^2$.
+The same framework is used to perform simple hypothesis test and compute expected statistical-only sensitivities.
+This means that no fit or extraction of these parameters is performed at this stage. 
+The parameters value of the best fit to the appearance experiments is chosen, as taken from \cite{bib:oscillation_parameters}.
+The parameters are $\sin^2(2\theta_{e \mu}) = 0.00697$ and $\Delta m_{14}^2 = 0.573 \text{eV}^2$.
+The contribution from the oscillation to the expected \nue flux and the oscillation probability and weights are shown in figure \ref{fig:weights_oscillation_prob} on the left and right plots, respectively.
+
+\begin{figure}[ht] 
+\begin{center}
+    \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{Sensitivity/oscillation/osc_plot_deltam2_0573_sin2theta2_000697.png}
+    \caption{BNB \nue flux at MicroBooNE}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{Sensitivity/oscillation/osc_plot_weights_deltam2_0573_sin2theta2_000697.png}
+    \caption{Weights and oscillation probability}
+    \end{subfigure}
+\caption{An additional sterile neutrino at masses much larger than the ordinary neutrinos would induce an effective muon neutrino to electron neutrino oscillation probability.
+The contribution to the flux (left plot) as well as the oscillation probability and weights to go from the \nue intrinsic to the oscillated flux (right plot), are shown for the oscillation parameters values $\sin^2(2\theta_{e \mu}) = 0.00697$ and $\Delta m_{14}^2 = 0.573 \text{eV}^2$.}
+\label{fig:weights_oscillation_prob}
+\end{center}
+\end{figure}
+
+The sensitivity is estimated using the \nuecc inclusive selection.
+The left plot in figure \ref{fig:oscillation_sensitivity} shows the expected reconstructed shower energy spectrum in the presence of the signal.
+The right plot shows the distribution of the Poisson LLR test statistic under the null hypothesis (blue) and oscillation-signal hypothesis (orange), with the expected significance to this signal.
+
+\begin{figure}[ht] 
+\begin{center}
+    \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{Sensitivity/oscillation/pois_llr_asimov_plot_1e+21_deltam2_0573_sin2theta2_000697.png}
+    \caption{Reconstructed energy spectrum of the electron candidate shower.}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{Sensitivity/oscillation/pois_llr_discovery_totalpot_1e+21_nosyst_deltam2_0573_sin2theta2_000697.png}
+    \caption{Poisson LLR test statistic distributions.}
+    \end{subfigure}
+\caption{The contribution of the presence of such a sterile neutrino to the spectrum of the reconstructed energy of the shower chosen as the electron candidate (left plot), is much smaller than the contribution to the flux, as the cross section and the efficiency are smaller at low energy.
+The distribution of the test statistic for the null and alternative hypothesis does not show a very relevant significance for these values of the oscillation parameters.}
+\label{fig:oscillation_sensitivity}
+\end{center}
+\end{figure}
+
+
+
 
 \newpage
 \section{Conclusions and Outlook}
@@ -1639,6 +1834,16 @@ MicroBooNE Collaboration, \emph{A Method to Determine the Electric Field of Liqu
 
 \bibitem{bib:cowan}
 Cowan, G., Cranmer, K., Gross, E. et al. Asymptotic formulae for likelihood-based tests of new physics. Eur. Phys. J. C 71, 1554 (2011) doi:10.1140/epjc/s10052-011-1554-0
+
+\bibitem{bib:oscillation_parameters}
+Dentler, M., Hernández-Cabezudo, Á., Kopp, J. et al. J. High Energ. Phys. (2018) 2018: 10. https://doi.org/10.1007/JHEP08(2018)010
+
+\bibitem{bib:POTscaling}
+Marco del Tutto, Nicolo' Foppiani. \emph{How to Normalise Data and MC}, \href{https://microboone-docdb.fnal.gov/cgi-bin/private/ShowDocument?docid=15204}{DocDB 15204}
+
+\bibitem{bib:truthfilters}
+Giuseppe Cerati, \emph{ilters for production of background samples for LEE} \href{https://microboone-docdb.fnal.gov/cgi-bin/private/ShowDocument?docid=27409}{DocDB 27409}
+
 \end{thebibliography}
 
 \end{document}
