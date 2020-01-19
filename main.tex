@@ -207,7 +207,7 @@ While reporting sensitivities for the MB-$\nu_e$ LEE model is useful, it is not 
 \end{center}
 \end{figure}
 Conceptual issues can be raised in association with the various assumptions made to generate the model. These include the strong reliance on MiniBooNE's simulation in order to unfold reconstructed to true neutrino energy, and the choice of such an unfolding procedure (performed as a function of $E_{\rm CCQE}$ rather then EM energy and $\theta$, for example).
-It is especially important to note that the chosen model strongly favors the interpretation of MiniBooNE events as originating from very low energies (200-400 MeV) for which achieving high sensitivity may come at the cost of omitting a robust analysis at higher energies. This is something the analysis tries to avoid by developing an inclusive and kinematically unbiased analysis workflow. At the same time, we explore additional models for sensitivity calculations, most notably a 3+1 sterile-neutrino oscillation model. This is discussed in more detail in section~\ref{sec:sensitivity}.
+It is especially important to note that the chosen model strongly favors the interpretation of MiniBooNE events as originating from very low energies (200-400 MeV) for which achieving high sensitivity may come at the cost of omitting a robust analysis at higher energies. This is something the analysis tries to avoid by developing an inclusive and kinematically unbiased analysis workflow. At the same time, we explore additional models for sensitivity calculations, most notably a 3+1 sterile-neutrino oscillation model. This is discussed in more detail in section~\ref{sec:Sensitivity2Osc}.
 \par Figure~\ref{fig:nuerate} shows the expected $\nu_e$ rate as a function of true neutrino energy split by final-state topology for the available MicroBooNE dataset of $10.1E20$ POT. % with a 10 cm FV. 
  MB-$\nu_e$ LEE signal events are shown in orange.
 \begin{figure}[H] 
@@ -236,7 +236,7 @@ It is especially important to note that the chosen model strongly favors the int
 
 \par Uncertainties in the expected $\nu_e$ rate are associated to reconstruction efficiencies (detector effects) as well as modeling uncertainties in both the $\nu_e$ flux  and neutrino-argon cross-section predictions. Here, we focus on describing the strategy to deal with the latter. In the case of a single detector experiment, %uncertainties in the intrinsic $\nu_e$ interaction rate are rather large:  and can limit the ability to associate a $\nu_e$ measurement with potential new physics if not a constraint through additional measurements is needed. 
 flux uncertainties for $\nu_e$ calculated from the beam simulation are $\mathcal{O}$(10\%) above 800 MeV and grow to 40\% at 200 MeV;  cross-section uncertainties are also large, due to the scarcity of $\nu$-Ar cross-sections measurements -- especially at low energy -- and due to the complex modeling of neutrino interactions on heavy targets such as argon. Combining all effects, the uncertainty on the $\nu_e$ interaction rate in the few-hundred MeV energy range in MicroBooNE could be as high as 100\%.
-\par To reduce modeling uncertainties on the expected rate of $\nu_e$ interactions, data-driven constraints are required. These can be performed through measurements of $\nu_{\mu}$ interactions \textcolor{blue}{\st{subject to the same uncertainties} impacted by the same underlying modeling uncertainties}. In order to constrain flux uncertainties, we rely on the fact that $\nu_e$ and $\nu_{\mu}$ intrinsic to the beam are produced by the decay of the same parent $\pi$ and $K$ flux. Similarly, we rely on the charged-current interaction mode $\nu_{l} + Ar \rightarrow l + X$ common to both $\nu_{\mu}$ and $\nu_e$ interactions to constrain the uncertainties on the $\nu_e$ interaction modeling.
+\par To reduce modeling uncertainties on the expected rate of $\nu_e$ interactions, data-driven constraints are required. These can be performed through measurements of $\nu_{\mu}$ interactions impacted by the same underlying modeling uncertainties. In order to constrain flux uncertainties, we rely on the fact that $\nu_e$ and $\nu_{\mu}$ intrinsic to the beam are produced by the decay of the same parent $\pi$ and $K$ flux. Similarly, we rely on the charged-current interaction mode $\nu_{l} + Ar \rightarrow l + X$ common to both $\nu_{\mu}$ and $\nu_e$ interactions to constrain the uncertainties on the $\nu_e$ interaction modeling.
 
 
 \begin{comment}
@@ -284,21 +284,20 @@ As examples, measurements of CC and NC $\pi^0$ production can be used to constra
 \subsection{Sensitivity Estimation \textcolor{green}{Nico/Maya}}
 In order to extract information from the selected events, a simple hypothesis test is performed.
 Given an observable quantity, such as a measurement of the energy deposited by the neutrino interaction, the hypothesis in which the observed spectrum of events is entirely due to the standard model, $H_0$, is tested against an alternative hypothesis $H_1$.
-This alternative hypothesis is typically chosen to consist of all the known background plus the LEE unfolded signal from MiniBooNE, but an oscillation signal has also been studied.
-The hypothesis test is simple in the sense no parameter is fitted from the data, but we limit ourselves to a comparison of two different hypotheses.
+The alternative hypothesis $H_1$ consists of all the known background plus the LEE unfolded signal from MiniBooNE (MB-$\nu_e$ LEE), though an oscillation signal has also been studied, as shown in section \ref{sec:Sensitivity2Osc}.
+For the MB-$\nu_e$ LEE signal, the hypothesis test is simple in that the comparison of two different hypotheses is performed and no parameter is inferred from the data.
 
-In order to perform the test a test statistic is chosen, in order to condensate all information of the observable in one number.
-Through toy experiments, the expected distributions of the test statistic under the two hypotheses is chosen, and the separation power is computed, by taking the median p-value with respect to $H_0$ one might observe if $H_1$ is true.
-This is the discovery sensitivity, the sensitivity to reject $H_0$ when $H_1$ is true.
+%The hypothesis test is simple in the sense no parameter is fitted from the data, but we limit ourselves to a comparison of two different hypotheses.
 
-We studied this problem in different cases.
-First by considering only statistical uncertainties, which are good approximation as we expect a handful of events in the exclusive selections.
-We also include systematic uncertainties using the covariance matrix formalism and the SBNfit package, as described in section \ref{subsec:sensitivity_syst_uncertainty}.
-Eventually, the observed spectra from the \nueccnopinp and the \numu selections are analysed simultaneously using a single covariance matrix to constraint the systematic uncertainties and thus increase the sensitivity.
+A test statistic is chosen in order to condensate all information of the observables in one number.
+Through toy experiments, the expected distributions of the test statistic under the two hypotheses is calculated; the separation power is computed by taking the median p-value with respect to $H_0$ under the assumption that %one might observe if 
+ $H_1$ is true. This is the discovery sensitivity, i.e. the sensitivity to reject $H_0$ when $H_1$ is true.
+We studied the sensitivity in different cases. First, we describe in detail the sensitivity calculation considering only statistical uncertainties. Given that only a handful of events pass the exclusive selections, the impact of statistical uncertainties plays a large role in determining the analysis' ultimate sensitivity. We also include systematic uncertainties using the covariance matrix formalism and the SBNfit package, as described in section \ref{subsec:sensitivity_syst_uncertainty}.
+Finally, the observed spectra from the \nueccnopinp and the \numu selections are analyzed simultaneously using a single covariance matrix to constraint the systematic uncertainties and thus increase the sensitivity.
 
 \subsection{Analysis Status \textcolor{red}{Elena/David/ Group discussion}}
 
-\par The \npsel channel achieves a $5-10$($5-15$)\% efficiency with a 73 (81)\% purity for the cut-based (BDT-based) selection which lead to $\mathcal{O}$(10) expected MB-$\nu_e$ LEE signal events and $40-70$ intrinsic $\nu_e$ events for the full Run $1-4$ dataset. For the box-cut selection this performance translates in a statistics-only sensitivity of $2.1-2.3\sigma$ depending on the test-statistic used. The low statistics of the predicted signals lead to significant fluctuations in the expected sensitivity, covering the range $1.5-3.1\sigma$. 
+\par As will be clear from section \ref{}, we have two selections for our most sensitive channel (\npsel): a cut-base selection and a BDT-based selection.  The \npsel channel achieves a $5-10$\% efficiency with a 73  purity for the cut-based  and a $5-15$\% efficiency with a 81\%  purity for the BDT-based selection. These selections lead to $\mathcal{O}$(10) expected MB-$\nu_e$ LEE signal events and $40-70$ intrinsic $\nu_e$ events for the full Run $1-4$ dataset. For the box-cut selection this performance translates in a statistics-only sensitivity of $2.1-2.3\sigma$ depending on the test-statistic used. The low statistics of the predicted signals lead to significant fluctuations in the expected sensitivity, covering the range $1.5-3.1\sigma$. 
 
 \begin{figure}[ht]
 \begin{center}
@@ -1465,7 +1464,7 @@ reinteractions\_piminus        & $\pi^-$ hadronic reinteractions  & ---\\
 \newpage
 
 \section{Sensitivity Estimation \textcolor{green}{Nico}}
-\label{sec:sensitivity}
+\label{sec:Sensitivity2Osc}
 The primary scope of the analysis is to be able to learn knew knowledge about the anomalous excess observed by MiniBooNE.
 For this reason, the sensitivity to this excess is estimated, as a metric of the power of the analysis.
 The model for the signal currently used is the MiniBooNE LEE unfolded signal \cite{bib:sbnfit20437}.
@@ -1670,7 +1669,7 @@ This has been performed using the Poisson LLR test statistic, and including syst
 \end{figure}
 
 \subsection{Sensitivity to an oscillation signal \textcolor{green}{Nico}}
-
+<
 In addition to the sensitivity to the MiniBooNE unfolded signal, sensitivity to an oscillation signal is quoted.
 The model under study is a simple extension of the standard with one sterile neutrino.
 The effective oscillation probability \numu $\rightarrow$ \nue is:
