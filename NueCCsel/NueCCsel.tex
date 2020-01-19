@@ -88,9 +88,17 @@ The three distributions of the variables used to characterise the d$E$/d$x$ at t
 
 \subsubsection{Other Daughters Identification}
 
-\textcolor{blue}{(comment by David) This section is not too clear. Is this BDT score computed per PFParticle, for all PFParticles that are not the electron candidate? What do you mean when you say that pions are not used? PFParticles from nue slices are classified as signal-like, PFParticles from numu/NC events are background like, and pions from all events are not classified at all?}
+%\textcolor{blue}{(comment by David) This section is not too clear. Is this BDT score computed per PFParticle, for all %PFParticles that are not the electron candidate? What do you mean when you say that pions are not used? PFParticles from %nue slices are classified as signal-like, PFParticles from numu/NC events are background like, and pions from all events %are not classified at all?}
 
-Apart of the electron candidate particle, there are other particles in the slice. These tracks and showers can be part of the $\nu_e$ CC event, but they can also help us to identify the event as background. The event should not contain a particle backtracked to cosmic overlay activity or simulated muons. On the other hand, particles that correspond to protons or split off parts of the electron shower should not lead to the rejection of the event. The more complicated situation arises when pions are present. Charged pions should be allowed in a $\nu_e$ CC search, but the mis-identification rate between charged pions and muons is large in this detector type. Photons coming from neutral pions, appart of the electron shower candidate, can be part of the $\nu_e$ CC event, but can also help to reduce the NC $\pi^0$ backgrounds. It was chosen therefore to not use pions in the BDT training and give them a neutral label. The input variables of the BDT are:
+Apart of the electron candidate particle, there are other particles in the slice. In this section we study each of those PFParticles separately, except the electron candidate shower described in the previous section. Particle by particle a BDT is used to split the particle into two categories:
+\begin{enumerate}
+    \item Positive if the particle is backtracked to a proton or a split-off part of the electron.
+    \item Negative if the particle is backtracked to cosmic overlay or a simulated muon. 
+\end{enumerate}
+The philosophy behind this is that we want to reject events which contain a particle which is overlay or muon like. On the other hand, particles that are backtracked to protons or electron bits are allowed and should not lead to the rejection of the event.
+\par The more complicated situation arises when pions are present. Charged pions should be allowed in a $\nu_e$ CC search, but the mis-identification rate between charged pions and muons is large in this detector type. Photons coming from neutral pions, apart of the electron shower candidate, can be part of the $\nu_e$ CC event, but can also help to reduce the NC $\pi^0$ backgrounds. It was chosen therefore to give them a neutral label. 
+
+The input variables of the BDT are:
 \begin{enumerate}
     \item trk\_llr\_pid\_score
     \item trk\_distance
