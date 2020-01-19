@@ -1535,7 +1535,7 @@ One can see that the $\Delta \chi^2$-like variable is a log-likelihood-ratio, in
 %     \item We also generate a large number of toy experiments under the LEE hypothesis. The $\Delta \chi^2 = \chi^2_{H0} - \chi^2_{H1}$ is computed for each toy experiment and this gives the $\Delta \chi^2_{H1}$ distribution.
 %     \item The quoted sensitivity for the discovery of the LEE is given by the p-value at the median of the $H1$ distribution.
 % \end{enumerate}
-\textcolor{blue}{The statistical-only sensitivity is measured using the result of the box-cut 1$e$N$p$ selection (figure~\ref{fig:1eNp:box:RUN1}). The distribution of the test-statistic computed with SBNFit ($\Delta\chi^2$) and  Figure~\ref{fig:1eNp:box:statonlysensitivity}.  The left panel shows the sensitivity estimated via SBNFit with the }
+\textcolor{blue}{The statistical-only sensitivity is measured using the result of the box-cut 1$e$N$p$ selection (figure~\ref{fig:1eNp:box:RUN1}). The distribution of the test-statistic computed with SBNFit ($\Delta\chi^2$, eq.~\ref{eqn:deltachi2}) and the stand-alone tool \emph{LLR Poisson} (eq.~\ref{eqn:llrpois}) are shown on the left and right-panel of figure~\ref{fig:1eNp:box:statonlysensitivity}, respectively. The stand-alone tool was also used to validate that, when using the $\delta\chi^2$ test-statistic, results from SBNFit's statistics-only sensitivity calculation can be fully reproduced.}
 
 \begin{comment}
 \begin{figure}[H]
@@ -1551,14 +1551,14 @@ One can see that the $\Delta \chi^2$-like variable is a log-likelihood-ratio, in
     \begin{subfigure}[b]{0.48\textwidth}
         \centering
         \includegraphics[width=1.\textwidth]{Sensitivity/SBNfit_Cls_nue_reco_e_genietune_run1_LEE_deltachi_statonly.pdf}
-        \caption{Statistics-only sensitivity estimation for the 1eNp box cut selection. Sample is taken from Monte Carlo Run 1 Data and scaled to $1.01\times10^{21}$ POT. It is obtained using SBNfit with the $\Delta \chi^2$ test statistic \ref{eqn:deltachi2}.}
+        \caption{SBNfit $\Delta \chi^2$ test statistic \ref{eqn:deltachi2}.}
     \end{subfigure}
         \begin{subfigure}[b]{0.48\textwidth}
         \centering
         \includegraphics[width=1.\textwidth]{Sensitivity/pois_llr_discovery_totalpot_1e+21_nosyst.png}
-        \caption{Statistics-only sensitivity estimation for the \nueccnopinp cut based selection. Sample is taken from Monte Carlo Run 1 Data and scaled to $1.01\times10^{21}$ POT. It is obtained using Nicol\`o's tool, with the LLR Pois test statistic \ref{eqn:llrpois}.}
+        \caption{Nicol\`o's tool, with the \emph{LLR Pois} test statistic \ref{eqn:llrpois}.}
     \end{subfigure}
-\caption{Distribution of the test statistics under the null and alternative hypotheses for statistical-only sensitivities studies.}
+\caption{Distribution of the test statistics under the null and alternative hypotheses for statistical-only sensitivities studies. These studies use Run1 samples scaled to $1.01\times10^{21}$ POT.}
 \label{fig:1eNp:box:statonlysensitivity}
 \end{center}
 \end{figure}
@@ -1570,7 +1570,7 @@ Two different studies have been performed to estimate the sensitivity in presenc
 The first one is based on SBNfit and consists of two modification to the previous analysis: modifying the $\Delta \chi^2$ test statistic, and sampling according to the systematic uncertainties.
 The effect of the systematic uncertainties on the observables can be condensed in the covariance matrix, which is obtained by marginalising over the systematic uncertainties, as seen in \ref{sec:systematics}.
 
-The $\Delta \chi^2$ is modified as following taking into account the covariance matrix $E_{ij}$, which includes into account both statistical and systematic uncertainties.
+The $\Delta \chi^2$ is modified as follows taking into account the covariance matrix $E_{ij}$, which includes both statistical and systematic uncertainties.
 \begin{equation}
 \label{eqn:deltachi2_systematic}
 \Delta\chi^2 = \sum_{i,j=1}^{N}\left( (n^i - \mu^i_{H_1})E_{i,j}^{-1}(n^j - \mu^j_{H_1}) - (n^i - \mu^i_{H_0})E_{i,j}^{-1}(n^j - \mu^j_{H_0})\right)
@@ -1580,7 +1580,7 @@ This second test statistic is more optimal in the case systematic uncertainties 
 Secondly, SBNfit uses the covariance matrix to properly sample from the covariance matrix.
 The toy experiments can be generated once the full covariance matrix is in hand. The procedure to generate these toy experiments is as follows:
 \begin{enumerate}
-    \item A Cholesky decomposition is performed on the covariance matrix: $$M = LL*$$,
+    \item A Cholesky decomposition \textcolor{red}{(add reference)} is performed on the covariance matrix: $$M = LL*$$,
     where $L$ is a lower triangular matrix.
     \item A vector $v$ is generated, where each of the $i$ elements of $v$ are drawn from a Gaussian distribution with mean 0 and variance 1.
     \item A Poisson fluctuated toy data histogram is given by
@@ -1595,7 +1595,7 @@ $$x_{toy} = x_{CV} + Lv.$$
 % \caption{\label{fig:1eNp:box:statonlysensitivity} Statistics-only sensitivity estimation for the 1eNp box cut selection. Sample is taken from Monte Carlo Run 1 Data and scaled to $1.01\times10^{21}$ POT}
 % \end{center}
 % \end{figure}
-The resulting plot of the test statistic described in \ref{eqn:deltachi2_systematic} is shown in figure \ref{fig:1eNp:box:statsystsensitivity}.
+The resulting plot of the test statistic described in \ref{eqn:deltachi2_systematic} is shown in figure \ref{fig:1eNp:box:statsystsensitivity}. \textcolor{red}{Clarify if this is with or without constraint}
 
 \begin{figure}[H]
 \begin{center}
@@ -1605,7 +1605,7 @@ The resulting plot of the test statistic described in \ref{eqn:deltachi2_systema
 \end{figure}
 
 A second and simpler exercise is performed to get a rough understanding of the degradation of the sensitivity due to the presence of systematic uncertainties, using Nicol\`o's tool.
-The same procedure outlined before is repeated by adding a Gaussian sampling, independent for each bin, with mean the expected value of the bin content and standard deviation a fixed fraction of uncertainty (e.g. 20\%, which is about the average level of systematic uncertainty seen in the \numucc inclusive analysis).
+The same procedure outlined before is repeated by adding a Gaussian sampling, independent for each bin, with mean equal to the expected value of the bin content and standard deviation set to a fixed fraction of uncertainty (e.g. 20\%, which is about the average level of systematic uncertainty seen in the MCC8 \numucc inclusive analysis~\cite{bib:numuCCincl}).
 This process is equivalent to sample from a diagonal covariance matrix, with fractional uncertainties is set to the desired value.
 Results from this method are shown in figure \ref{fig:sensitivity_function_oot}.
 
@@ -1997,6 +1997,9 @@ MicroBooNE Collaboration, \emph{Study of Space Charge Effects in MicroBooNE}, MI
 
 \bibitem{bib:SCEdata}
 MicroBooNE Collaboration, \emph{A Method to Determine the Electric Field of Liquid Argon Time Projection Chambers Using a UV Laser System and its Application in MicroBooNE},  arXiv:1910.01430.
+
+\bibitem{bib:numuCCincl}
+MicroBooNE Collaboration, \emph{First Measurement of Inclusive Muon Neutrino Charged Current Differential Cross Sections on Argon at $E_\nu ~\sim0.8$ GeV with the MicroBooNE Detector}, Phys.Rev.Lett. 123 (2019) no.13, 131801.
 
 \end{thebibliography}
 
