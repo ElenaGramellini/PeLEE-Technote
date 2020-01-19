@@ -270,12 +270,11 @@ As examples, measurements of CC and NC $\pi^0$ production can be used to constra
 \end{figure}
 
 \subsection{Systematics \textcolor{green}{David... (P.R. Elena)}}
-\textcolor{blue}{Some of the citation links are broken}
 \par This section gives a brief overview of how detector and modeling uncertainties are accounted for in the analysis. The estimation of systematics is performed in section~\ref{sec:systematics}.
 \par \noindent \textbf{Detector Systematics}: Detector modeling in MicroBooNE has undergone significant updates in the past year, in part as a result of the large impact that detector systematics have had on 2018 analyses \cite{bib:CCpi0, bib:CCincl}. Detector effects with significant impact on the analysis can be broken up into three main categories:
 \begin{itemize}
     \item[-] Wire-Response modeling: the response of MicroBooNE's electronics to drifting charge is a complex subject described in three past publications~\cite{bib:noise,bib:SP1,bib:SP2}. The work of these papers in improving the understanding and modeling of noise and field-response effects has been implemented in the current detector simulation and is expected to lead to a reduction in what for MCC8 analysis comprised the largest detector uncertainty.
-    \item[-] Space-Charge modeling: MicroBooNE's space-charge model has changed significantly since 2018, moving from a calculation-based~\cite{bib:SCETN} implementation of electric field distortions to a data-driven E-field map implemented in simulation and reconstruction. Due to the large position distortions (and, though smaller, charge distortions) SCE can significantly impact an analysis through the determination  of fiducial boundaries, tracking and energy resolution.
+    \item[-] Space-Charge modeling: MicroBooNE's space-charge model has changed significantly since 2018, moving from a calculation-based~\cite{bib:SCEsim} implementation of electric field distortions to a data-driven E-field map~\cite{bib:SCEdata} implemented in simulation and reconstruction. Due to the large position distortions (and, though smaller, charge distortions) SCE can significantly impact an analysis through the determination  of fiducial boundaries, tracking and energy resolution.
     \item[-] Scintillation light modeling: MicroBooNE's model of scintillation light production has not changed significantly since the beginning of data-taking, and has known limitations. Of particular importance to this analysis, which aims to use a dataset spanning four years, is the known and significant time-dependent variation of MicroBooNE's light response. This analysis takes several steps to correct for, and mitigate the impact of light mismodeling. Triggering on low-energy signal $\nu_e$ events, and cosmic-rejection are particularly sensitive to scintillation light detector effects.
 \end{itemize}
 \emph{An additional detector effects that needs to be accounted for is ion Recombination which impacts the detector's calorimetric response. Tailored studies and proton samples are being developed to assess ion recombination modeling accuracy in MCC9 but are not available at the time of writing of this note.}
@@ -804,7 +803,7 @@ At this stage most of the selected events contain neutrino-induced electromagnet
 
 The last cut aims at rejecting misreconstructed events and requires that the track and shower are not aligned. For reference, the full list of cuts is in Table~\ref{tab:1eNp:boxcut}.
 
-The resulting reconstructed \nue energy after the BDT selection is shown in Figure~\ref{fig:1eNp:box:RUN1}. Two events are found in the available $4.07E19$ POT dataset from Run1, with 
+The resulting reconstructed \nue energy after the BDT selection is shown in Figure~\ref{fig:1eNp:box:RUN1}. Two events are found in the available $4.07E19$ POT dataset from Run1, with an expectation of 2.3 from the simulation. Both events appear to be good $\nu_e$ candidates (consistent with the level of purity expected), and are reconstructed with $\sim 1.1$ GeV of energy
 
 \begin{table}[h!]
 \centering
@@ -1153,9 +1152,9 @@ The selection efficiency for the 1e0p cut-based and BDT selections are shown in 
 \section{Systematics \textcolor{red}{Maya, Nicolo, Sebastien}}
 \label{sec:systematics}
 
-Our selections are subject to some level of uncertainty, both statistical and systematic. The systematic uncertainties associated to the level of precision of the model used in the reconstruction (GENIE), knowledge of the neutrino beam (flux), and the limitation of our detector (detector systematics). These systematic uncertainties can be calculated for many parameters of the models and measured variables that we use to reconstruct our sample
+Our selections are subject to some level of uncertainty, both statistical and systematic. The systematic uncertainties are associated to the level of precision of the model used in the \textcolor{blue}{simulation of neutrino interactions \st{reconstruction}} (GENIE), knowledge of the neutrino beam (flux), and mismodeling of the detector response (detector systematics). These systematic uncertainties can be calculated for many parameters of the models and measured variables that we use to reconstruct our sample
 
-For each uncertainty, a covariance matrix of its effect on a given distribution is obtained. Two approaches are followed to obtain the covariance matrix, depending on the type of uncertainty: unisim or multisim.
+\textcolor{blue}{When treating systematic uncertainties, one wishes to take into account correlations between different bins of the distribution of a given reconstructed variable.} For each uncertainty, a covariance matrix \textcolor{blue}{correlating the variation in the measured number of events between two bins is calculated \st{of its effect on a given distribution is obtained}}. Two approaches are followed to obtain the covariance matrix, depending on the type of uncertainty: unisim or multisim.
 
 Unisim means that a single variation of a given analysis input parameter is performed according to its uncertainty. The difference in the number of selected events between this variation and the central value is taken as the uncertainty in that number of events.
 
@@ -1169,14 +1168,14 @@ where $N$ is the total number of universes, $N_i^k$ is the value in the
 $i$-th bin of the $k$-th universe and $N_i^{CV}$ is that of the central value. We utilized the SBNfit framework~\cite{bib:bib:sbnfit20437} to construct the covariance matrices and the associated correlation matrices for our selection.
 
 \subsection{Detector Systematics \textcolor{green}{David}}
-The details on detector systematics can be found in~\cite{bib:detsyssupportnote}. To asses the detector systematics uncertainties in the eLEE analysis, the following detector variations samples are used:
+Details on MicroBooNE's approach to handling detector systematics can be found in~\cite{bib:detsyssupportnote}. To assess detector systematic uncertainties in the eLEE analysis, the following detector variations samples are used:
 \begin{enumerate}
-    \item Waveform variations in examined variables ($x$, $yz$, $\theta_{XZ}$, $\theta_{YZ}$, $dE/dx$), where the waveform variations as function of $dE/dx$ may later be replaced. Samples are available for the $x$, $yz$, and angular wire-modification variations. These detector variations are constructed by profiling reconstructed hit variables of charge, amplitude and width as a function of the mentioned variables with data-driven samples, and re-scaling the simulation by the difference between data and simulation. By doing this, the samples cover the difference between data and simulation. 
+    \item Waveform variations in the examined variables ($x$, $yz$, $\theta_{XZ}$, $\theta_{YZ}$, $dE/dx$). Samples are available for the $x$, $yz$, and angular wire-modification variations. These detector variations are constructed by profiling reconstructed hit variables of charge, amplitude and width as a function of the mentioned variables with data-driven samples, and re-scaling the simulation by the difference between data and simulation. By doing this, the samples cover the difference between data and simulation. 
     \item Light response variations to estimate the light yield (LY) simulation uncertainty. Four variations are envisioned: (1) 10\% uniform and (2) 25\% uniform drop in LY to account for mis-modeling of the absolute LY in the detector. These samples are partially available. (3) 120 cm (compared to the simulation's 60 cm) Rayleigh scattering length and (4) 8 meter light attenuation length to account for drift-distance dependent mis-modeling. These samples are currently unavailable.
     \item Unisim for Space Charge Effects uncertainty. Currently not available.
 \end{enumerate}
 \par Detector systematics samples are generated as \emph{uni-sim} variations, meaning that, for each detector effect, a given MC event is re-simulated once with a change to a detector modeling parameter. This produces a new simulation of the same underlying neutrino interactions, which can be used to measure the impact of the detector effect being studied on efficiencies, reconstructed variables, and event pass-rates.
-\par In the context of a sensitivity calculation, detector systematics unisims can be used to calculate a covariance matrix for selected event rates in each bin used in the sensitivity calculation. This covariance is then added to the total uncertainty matrix. This procedure has several flaws, including the fact that the excursion in the number of measured events in a bin computed from a single variation is taken as the 1$\sigma$ excurions for the error estimation. 
+\par In the context of a sensitivity calculation, detector systematics unisims can be used to calculate a covariance matrix for selected event rates in each bin used in the sensitivity calculation. This covariance is then added to the total uncertainty matrix. The main drawback of this approach is the fact that the excursion in the number of measured events in a bin computed from a single variation is taken as the 1$\sigma$ excursion for the error estimation.
 \par Below, simple comparisons of distributions relevant to the analysis under different detector variation samples are shown, but the full inclusion of detector systematics in the sensitivity calculation has not been performed. For calorimetric variables such as electron d$E$/d$x$ and $\pi^0$ mass some clear differences, such as shifts in energy scale, are visible, though contained to within a few percent. These initial comparisons are promising in that they seem to suggest a relatively minor impact to the analysis from detector systematics. 
 
 \begin{figure}[H] 
@@ -1243,7 +1242,7 @@ The details on detector systematics can be found in~\cite{bib:detsyssupportnote}
 \end{figure}
 
 \subsection{Flux Uncertainties \textcolor{red}{Maya}}
-The flux and uncertainties for MCC9~\cite{bib:fluxmcc9,bib:fluxtechnote} are largely the same as MCC8~\cite{bib:fluxtechnote}. We use multisim technique to estimate the flux uncertainties. The various sources of uncertainties are taken as independent and are varied individually. They are listed in Table~\ref{tab:fluxsyst} along the number of universes considered for each. The fractional covariance matrix and correlation matrix for the 1eNp selection are presented in Figure~\ref{fig:fluxmatrices} which amount to 12\% in flux uncertainties. Meanwhile, Figure~\ref{fig:fluxsystvars} displays the effects of reweighting central value in each universe of an individual parameter of flux.
+The flux \textcolor{blue}{model} and \textcolor{blue}{its} uncertainties for MCC9~\cite{bib:fluxmcc9,bib:fluxtechnote} are largely the same as MCC8~\cite{bib:fluxtechnote}. We use the multisim technique to estimate the flux uncertainties. The various sources of uncertainties are taken as independent and are varied individually. They are listed in Table~\ref{tab:fluxsyst} along the number of universes considered for each. The fractional covariance matrix and correlation matrix for the 1eNp selection are presented in Figure~\ref{fig:fluxmatrices} which amount to 12\% in flux uncertainties. Meanwhile, Figure~\ref{fig:fluxsystvars} displays the effects of reweighting central value in each universe of an individual parameter of flux.
 
 \begin{table}[H]
 \centering
@@ -1464,13 +1463,22 @@ reinteractions\_piminus        & $\pi^-$ hadronic reinteractions  & ---\\
 \newpage
 
 \section{Sensitivity Estimation \textcolor{green}{Nico}}
+
 \label{sec:Sensitivity2Osc}
 The primary scope of the analysis is to be able to learn knew knowledge about the anomalous excess observed by MiniBooNE.
 For this reason, the sensitivity to this excess is estimated, as a metric of the power of the analysis.
 The model for the signal currently used is the MiniBooNE LEE unfolded signal \cite{bib:sbnfit20437}.
+
+\label{sec:sensitivity}
+
+\par \textcolor{blue}{In its current version, this Tech-Note estimates sensitivities using the 1$e$N$p$ box-cut selection (section~\ref{sec:nueselection:1eNp}). In future iterations the BDT-approach will be used to measure the estimated sensitivity, once this selection has been further developed and validated. The BDT's sensitivity is expected to be larger then that obtained through the box-cut approach.} 
+\par The primary scope of the analysis is to be able to \textcolor{blue}{understand the nature of \st{learn knew knowledge about}} the anomalous excess observed by MiniBooNE. \textcolor{blue}{In particular, MicroBooNE aims to determine whether a potential excess of events is caused by neutrino interactions with electron- or photon-like activity in the final state.}
+For this reason, the sensitivity to \textcolor{blue}{a $\nu_e$ electron-like \st{this}} excess is estimated, as a metric of the power of the analysis.
+The model for the signal currently used is the MB-$\nu_e$ LEE unfolded signal \cite{bib:sbnfit20437}.
+
 To construct this signal, the reconstructed energy distribution, under the CCQE hypothesis, of the excess observed by MiniBooNE, is unfolded to a distribution in true neutrino energy.
-Scale factors for the \nue flux are then derived, in order to make the BNB flux account for the LEE, as seen in figure \ref{fig:lee_unfolded_signal}.
-This additional flux is then propagated in the MicroBooNE simulation.
+Scale factors \textcolor{blue}{of excess events to \st{for}} the \textcolor{blue}{intrinsic} \nue flux are then derived \textcolor{blue}{\st{, in order to make the BNB flux account for the LEE}}, as seen in figure \ref{fig:lee_unfolded_signal}.
+This additional flux \textcolor{blue}{component} is then propagated in the MicroBooNE simulation.
 
 \begin{figure}[]
     \begin{center}
@@ -1484,13 +1492,13 @@ It is noteworthy that this method is not a perfect signal, as the cross section 
 
 The method used to estimate the sensitivity follows the standard prescription for a simple hypothesis test.
 In fact no parameter is extracted from the data at this stage: the hypothesis of background-only is tested against the \textit{simple} hypothesis of background-plus-signal, with signal being the LEE unfolded signal.
-The procedure is recapped here:
+The procedure is described below:
 \begin{itemize}
     \item Choice of the observables, typically one or more histograms. In the standard case it will consist of a reconstructed energy spectrum for a \nue selection plus a reconstructed energy spectrum of a \numu selection for the constraint of the systematic uncertainties.
-    \item Choice of the test statistic, which is a function of the observables only. It is in fact necessary to choose a variable that condensates all information of the observables in one number. Different choices are described in the following subsection.
+    \item Choice of the test statistic, which is a function of the observables only. It is in fact necessary to choose a variable that condenses all information of the observables in one number. Different choices are described in the following subsection.
     \item Definition of the two hypothesis. $H_0$ is the null hypothesis, where we do not observed any LEE signal, whereas $H_1$ is the hypothesis where we do observe the LEE signal.
     \item Toy-experiments or pseudo-experiments. The expected distributions of the test statistic under the two hypotheses are built by randomly sampling the observables from their expected distributions. In case of the statistical only sensitivities, the bins of the histograms are treated as independent Poisson variables. In case systematic uncertainties are considered, the bins of the histograms are treated as a Multivariate Gaussian distribution, determined by the mean values and by a covariance matrix, which is then convoluted with a Poisson sampling that accounts for the statistical fluctuations.
-    \item Once the experiment is performed, and a values of the histograms is observed, the discovery significance, i.e. reject $H_0$, can be computed. This is done by computing the value of the test statistic associated to the observation, and then the p-value with respect to the expected distribution of the test statistic under $H_0$.
+    \item Once each toy-experiment is performed, and a \textcolor{blue}{distribution for the bin contents \st{value}} of the histograms is observed, the discovery significance, i.e. reject $H_0$, can be computed. This is done by computing the value of the test statistic associated to the observation, and then the p-value with respect to the expected distribution of the test statistic under $H_0$.
     \item To compute the expected significance, in the case the LEE is present, we can consider the median value, and an interval which contain 68\% (or 95\%) of the distribution of the test statistic under $H_1$, and compute the p-values with respect to $H_0$.
     \item The p-value is typically converted to the number of sigma of a standard Gaussian that produces the same p-value, as outlined in \cite{bib:cowan}.
 \end{itemize}
@@ -1526,13 +1534,16 @@ One can see that the $\Delta \chi^2$-like variable is a log-likelihood-ratio, in
 %     \item We also generate a large number of toy experiments under the LEE hypothesis. The $\Delta \chi^2 = \chi^2_{H0} - \chi^2_{H1}$ is computed for each toy experiment and this gives the $\Delta \chi^2_{H1}$ distribution.
 %     \item The quoted sensitivity for the discovery of the LEE is given by the p-value at the median of the $H1$ distribution.
 % \end{enumerate}
+\textcolor{blue}{The statistical-only sensitivity is measured using the result of the box-cut 1$e$N$p$ selection (figure~\ref{fig:1eNp:box:RUN1}). Figure~\ref{fig:1eNp:box:statsystsensitivity}}
 
+\begin{commen}
 \begin{figure}[H]
     \begin{center}
     \includegraphics[width=0.45\textwidth]{Sensitivity/nue_reco_e_genietune_run1_nueStacked.pdf}
     \caption{\label{fig:1eNp:box:sensitivitysample} The final 1eNp selection used for the sensitivity estimate. Sample is taken from Monte Carlo Run 1 Data and scaled to $1.01\times10^{21}$ POT}
     \end{center}
 \end{figure}
+\end{commen}{}
 
 \begin{figure}[ht] 
 \begin{center}
@@ -1583,7 +1594,7 @@ $$x_{toy} = x_{CV} + Lv.$$
 % \caption{\label{fig:1eNp:box:statonlysensitivity} Statistics-only sensitivity estimation for the 1eNp box cut selection. Sample is taken from Monte Carlo Run 1 Data and scaled to $1.01\times10^{21}$ POT}
 % \end{center}
 % \end{figure}
-The resulting plot of the test statistic described in \ref{eqn:deltachi2_systematic} is shown in figure \ref{fig:1eNp:box:statsystsensitivity}.
+The resulting plot of the test statistic described in \ref{eqn:deltachi2_systematic} is shown in figure \ref{fig:1eNp:box:statsystsensitivity}. The left panel shows the sensitivity estimated via SBNFit with the 
 
 \begin{figure}[H]
 \begin{center}
@@ -1969,6 +1980,22 @@ Marco del Tutto, Nicolo' Foppiani. \emph{How to Normalise Data and MC}, \href{ht
 
 \bibitem{bib:truthfilters}
 Giuseppe Cerati, \emph{ilters for production of background samples for LEE} \href{https://microboone-docdb.fnal.gov/cgi-bin/private/ShowDocument?docid=27409}{DocDB 27409}
+
+\bibitem{bib:noise}
+MicroBooNE Collaboration, \emph{Noise Characterization and Filtering in the MicroBooNE Liquid Argon TPC}, JINST 12 (2017) no.08, P08003.
+
+\bibitem{bib:SP1}
+MicroBooNE Collaboration, \emph{Ionization electron signal processing in single phase LArTPCs. Part I. Algorithm Description and quantitative evaluation with MicroBooNE simulation}, JINST 13 (2018) no.07, P07006.
+
+
+\bibitem{bib:SP2}
+MicroBooNE Collaboration, \emph{Ionization electron signal processing in single phase LArTPCs. Part II. Data/simulation comparison and performance in MicroBooNE}, JINST 13 (2018) no.07, P07007.
+
+\bibitem{bib:SCEsim}
+MicroBooNE Collaboration, \emph{Study of Space Charge Effects in MicroBooNE}, MICROBOONE-NOTE-1018-PUB, \href{http://inspirehep.net/record/1763018}{DOI: 10.2172/1573050}.
+
+\bibitem{bib:SCEdata}
+MicroBooNE Collaboration, \emph{A Method to Determine the Electric Field of Liquid Argon Time Projection Chambers Using a UV Laser System and its Application in MicroBooNE},  arXiv:1910.01430.
 
 \end{thebibliography}
 

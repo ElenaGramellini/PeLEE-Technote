@@ -193,9 +193,76 @@
 
 \par The fiducial volume in this section differs slightly from other fiducial volumes, even in this analysis. Because the purpose of this selection is to leverage the high-statistics of the $\nu_{\mu}$ composition of the BNB, the fiducial volume is taken to be as large as possible while retaining high purity and efficiency at low-energies.
 
+\par With the exception of the downstream fiducial volume face, all the fiducial volume boundaries are chosen in order to retain as many signal events as possible. The SCE-correction procedure is quite effective and can recover the true value give or take a few centimeters, with slightly less resolution near the boundaries. The resolution is shown in fig \ref{fig:NuMUCCsel:ryan:sceres_x} for the x-direction; the performance is similar in the x, y, and z directions. 
+
+\begin{figure}
+    \centering
+    \includegraphics[height=6.5cm]{NuMuCCsel/Images/Ryan/sceresolution_x.jpg} \hspace{2mm}
+    \caption{Resolution of the spacecharge-corrected vertex positions. The spacehcarge-corrected x-coordinates are being compared to the truth values without spacecharge distortion. }
+    \label{fig:NuMUCCsel:ryan:sceres_x}
+\end{figure}
+
 \subsubsection{Performance}
 \label{sssec:NuMUCCsel:constr:performance}
 
 \par This selection has been done on the Run1 and the Run3 sets processed for this analysis. The advantage of the Run1 data-set is higher statistics (5E19 POT in Run1 and 1E19 POT in Run3), but Run3 has the cosmic ray tagging system for extra background rejection. Distributions shown in this section will be of variables pertaining to the muon candidate for each event that passes the selection; Run1 data will be preferentially shown due to the higher statistics. The power of the Run3 CRT system will be demonstrated at the end of this section.
 
-\par 
+\par Run3 data includes information from the CRT system which was unavailable for the first MicroBooNE run. 
+
+\begin{figure}[ht] 
+\begin{center}
+    \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{NuMuCCsel/Images/Ryan/Run1_trklen_sliceID.jpg}
+    \caption{\label{fig:NuMUCCsel:ryan:trklenSliceID} just sliceID}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{NuMuCCsel/Images/Ryan/Run1_trklen_evtsel.jpg}
+    \caption{\label{fig:NuMUCCsel:ryan:trklenEvt} just event-level preselection}
+    \end{subfigure} \newline
+    \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{NuMuCCsel/Images/Ryan/Run1_trklen_fullsel.jpg}
+    \caption{\label{fig:NuMUCCsel:ryan:trklenFull} Full selection}
+    \end{subfigure}
+\caption{Track length of muon candidates. Just statistical uncertainties shown.}
+\end{center}
+\end{figure}
+
+\begin{figure}[ht] 
+\begin{center}
+    \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{NuMuCCsel/Images/Ryan/Run1_costheta_sliceID.jpg}
+    \caption{\label{fig:NuMUCCsel:ryan:trklenSliceID} just sliceID}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{NuMuCCsel/Images/Ryan/Run1_costheta_evtsel.jpg}
+    \caption{\label{fig:NuMUCCsel:ryan:trklenEvt} just event-level preselection}
+    \end{subfigure} \newline
+    \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{NuMuCCsel/Images/Ryan/Run1_costheta_fullsel.jpg}
+    \caption{\label{fig:NuMUCCsel:ryan:trklenFull} Full selection}
+    \end{subfigure}
+\caption{Cosine of the track angle of muon candidates with respect to the beam-direction. Just statistical uncertainties shown.}
+\end{center}
+\end{figure}
+
+\begin{figure}[ht] 
+\begin{center}
+    \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{NuMuCCsel/Images/Ryan/Run3_costheta_noCRT.jpg}
+    \caption{\label{fig:NuMUCCsel:ryan:coswithCRT} with CRT}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{NuMuCCsel/Images/Ryan/Run3_costheta_withCRT.jpg}
+    \caption{\label{fig:NuMUCCsel:ryan:cosnoCRT} with CRT}
+    \end{subfigure}
+\caption{Angle with respect to the beam-direction of muon candidates for $\nu_{\mu}$ constraint. Just statistical uncertainties shown.}
+\end{center}
+\end{figure}
