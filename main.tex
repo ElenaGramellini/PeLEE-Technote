@@ -8,7 +8,7 @@
 \usepackage{subcaption}
 \usepackage[colorinlistoftodos]{todonotes}
 \usepackage{hyperref}
-\usepackage[noabbrev]{cleveref}
+\usepackage[noabbrev,capitalise]{cleveref}
 \usepackage{siunitx}
 \usepackage{setspace}
 \usepackage{soul}
@@ -24,6 +24,7 @@
 \usepackage{siunitx}
 \usepackage{rotating}
 \usepackage{makecell, tabularx}
+\usepackage{soul}
 \newcolumntype{C}{>{\centering\arraybackslash}X}
 \linenumbers
 \linespread{1.1}
@@ -116,7 +117,7 @@ Scaling factors for the EXT datasets to match the full $10.1E20$ POT are $\times
 All simulation samples in addition to the generic ``MC'' are used to boost statistics in channels that are sub-dominant in event rate but important for this analysis. In merging these samples in the analysis, we take care to remove the same events from the ``MC'' samples and weigh the high-stats special samples appropriately. 
 Even with this workflow, the statistics of several background categories is not sufficient for a careful evaluation of their impact on the selection, leading to large bin-by-bin fluctuations in expected events and therefore an unclear background estimation. To mitigate this, specific targeted truth-based filters have been developed (see DocDB 27409~\cite{bib:truthfilters}) to boost statistics in backgrounds for which current statistics are not sufficient. 
 
-\subsection{How to read plots in this tech-note} A large fraction of plots in this note are data-simulation comparison. This paragraph describes common features for these plots. All data-simulation comparisons up to Chapter~\ref{sec:systematics} show statistical errors only, denoted with error-bars for data. The statistical error on MC samples is denoted with a grey band. All plots, unless otherwise labeled, are absolutely normalized based on POT \textcolor{blue}{Jargon silly question: doesn't "absolutely normalized" corresponded to area normalized rather than POT? if so, I'd remove the world "absolutely" -- Elena }, following the procedure outlined in DocDB 15204~\cite{bib:POTscaling}. Data-simulation comparisons are accompanied by a legend which denotes the various event categories shown. Categories are described below:
+\subsection{How to read plots in this tech-note} A large fraction of plots in this note are data-simulation comparison. This paragraph describes common features for these plots. All data-simulation comparisons up to Chapter~\ref{sec:systematics} show statistical errors only, denoted with error-bars for data. The statistical error on MC samples is denoted with a grey band. All plots, unless otherwise labeled, are POT normalized, following the procedure outlined in DocDB 15204~\cite{bib:POTscaling}. Data-simulation comparisons are accompanied by a legend which denotes the various event categories shown. Categories are described below:
 \begin{itemize}
     \item \textbf{BNB}: On-beam contributions (data).
     \item \textbf{EXT}: Off-beam contributions (data).
@@ -138,11 +139,6 @@ For systematic studies, the latest GENIE and flux systematics are used to presen
 
 \section{Introduction to the $\nu_e$ analysis}
 In this section, we provide the big picture view of the complete Pandora $\nu_e$ analysis, starting from our selection philosophy and ending with our strategy regarding systematics. A deeper dive into on each topic is provided in note's following sections. 
-
-\begin{comment}
-\par The analysis presented in this note consists in a measurement of $\nu_e$ interactions from the BNB with MicroBooNE in the low-energy ($\lt 800$ MeV) regime aimed at addressing the electron or photon-like nature of MiniBooNE's recorded excess of events with EM activity in the final state. 
-This analysis focuses on being able to measure low-energy $\nu_e$ interactions. The reason for this is to have sensitivity to a potential signature of anomalous $\nu_e$ events which comprise MiniBooNE's Low Energy Excess (LEE). This excess was recorded below 800 MeV in reconstructed visible energy (most hadronic activity, especially protons, because below Cherenkov threshold). 
-\end{comment}
 
 \subsection{$\nu_e$ Selection Philosophy \textcolor{green}{David ... (P.R. Elena) }}
 \par Several proposals have been made to explain the nature of the MiniBooNE LEE anomaly. It is fair to say that a large amount of uncertainty remains in the community regarding what may have generated such an excess of EM events: this analysis works within the $\nu_e$ excess hypothesis.  To best explore the potential new physics in the $\nu_e$ channel at low energy, this analysis aims to perform an inclusive multi-channel measurement of $\nu_e$ interactions without relying on kinematic variables which depend upon neutrino-interaction models. A multi-channel approach can reduce systematic uncertainties dependent on the chosen interaction model in addition to building a stronger confidence against  issues in the MC simulation.
@@ -240,7 +236,7 @@ It is especially important to note that the chosen model strongly favors the int
 
 \par Uncertainties in the expected $\nu_e$ rate are associated to reconstruction efficiencies (detector effects) as well as modeling uncertainties in both the $\nu_e$ flux  and neutrino-argon cross-section predictions. Here, we focus on describing the strategy to deal with the latter. In the case of a single detector experiment, %uncertainties in the intrinsic $\nu_e$ interaction rate are rather large:  and can limit the ability to associate a $\nu_e$ measurement with potential new physics if not a constraint through additional measurements is needed. 
 flux uncertainties for $\nu_e$ calculated from the beam simulation are $\mathcal{O}$(10\%) above 800 MeV and grow to 40\% at 200 MeV;  cross-section uncertainties are also large, due to the scarcity of $\nu$-Ar cross-sections measurements -- especially at low energy -- and due to the complex modeling of neutrino interactions on heavy targets such as argon. Combining all effects, the uncertainty on the $\nu_e$ interaction rate in the few-hundred MeV energy range in MicroBooNE could be as high as 100\%.
-\par To reduce modeling uncertainties on the expected rate of $\nu_e$ interactions, data-driven constraints are required. These can be performed through measurements of $\nu_{\mu}$ interactions \textcolor{blue}{subject to the same uncertainties. I'm not sure what we mean here... Elena}. In order to constrain flux uncertainties, we rely on the fact that $\nu_e$ and $\nu_{\mu}$ intrinsic to the beam are produced by the decay of the same parent $\pi$ and $K$ flux. Similarly, we rely on the charged-current interaction mode $\nu_{l} + Ar \rightarrow l + X$ common to both $\nu_{\mu}$ and $\nu_e$ interactions to constrain the uncertainties on the $\nu_e$ interaction modeling.
+\par To reduce modeling uncertainties on the expected rate of $\nu_e$ interactions, data-driven constraints are required. These can be performed through measurements of $\nu_{\mu}$ interactions \textcolor{blue}{\st{subject to the same uncertainties} impacted by the same underlying modeling uncertainties}. In order to constrain flux uncertainties, we rely on the fact that $\nu_e$ and $\nu_{\mu}$ intrinsic to the beam are produced by the decay of the same parent $\pi$ and $K$ flux. Similarly, we rely on the charged-current interaction mode $\nu_{l} + Ar \rightarrow l + X$ common to both $\nu_{\mu}$ and $\nu_e$ interactions to constrain the uncertainties on the $\nu_e$ interaction modeling.
 
 
 \begin{comment}
@@ -256,7 +252,7 @@ As examples, measurements of CC and NC $\pi^0$ production can be used to constra
 
 
 
-\par To further motivate the need to study low energy $\nu_{\mu}$ interactions, we describe two important ways in which such a dataset can lead to a reduction of modeling uncertainties for $\nu_e$ interactions. Figure~\ref{fig:numuconstraint:flux} shows the flux correlation for $\nu_{\mu}$ (bottom left) and $\nu_e$ (top right) interactions. Red (blue) areas show large (anti-)correlation. The top-left or bottom-right quadrants show the strength of correlations between the two flavors. For $\nu_e$ energies below 1 GeV, correlations are strongest with $\nu_{\mu}$ interactions at low energy\textcolor{blue}{ should we add some more details on the assumptions behind this correlation matrix? or on how this correlation matrix is calculated (is it simply from the beam MC?) Elena}. Figure~\ref{fig:numuconstraint:xsec} shows different cross-section curves for $\nu_{\mu}$ and $\nu_e$ interactions. The dashed and solid curves represent the CCQE cross-section used in MCC8 vs. MCC9 respectively. Below 400 MeV, the difference in event rates for different models is larger then 100\%. The large differences between these curves, particularly at low energy, indicate the strong need to constrain cross-section uncertainties with MicroBooNE's own data. 
+\par To further motivate the need to study low energy $\nu_{\mu}$ interactions, we describe two important ways in which such a dataset can lead to a reduction of modeling uncertainties for $\nu_e$ interactions. Figure~\ref{fig:numuconstraint:flux} shows the flux correlation for $\nu_{\mu}$ (bottom left) and $\nu_e$ (top right) interactions obtained from MicroBooNE's adaptation of the BNB flux simulation developed by MiniBooNE~\cite{bib:fluxmcc9,bib:fluxtechnote}. Red (blue) areas show large (anti-)correlation. The top-left or bottom-right quadrants show the strength of correlations between the two flavors. For $\nu_e$ energies below 1 GeV, correlations are strongest with $\nu_{\mu}$ interactions at low energy \textcolor{blue}{should we add some more details on the assumptions behind this correlation matrix? or on how this correlation matrix is calculated (is it simply from the beam MC?) Elena}. Figure~\ref{fig:numuconstraint:xsec} shows different cross-section predictions for $\nu_{\mu}$ and $\nu_e$ interactions. The dashed and solid curves represent the CCQE cross-section used in MCC8 vs. MCC9 respectively. Below 400 MeV, the difference in event rates for different models is larger then 100\%. The large differences between these curves, particularly at low energy, indicate the strong need to constrain cross-section uncertainties with MicroBooNE's own data. 
 \begin{figure}[ht] 
 \begin{center}
     \begin{subfigure}[b]{0.42\textwidth}
@@ -282,8 +278,8 @@ As examples, measurements of CC and NC $\pi^0$ production can be used to constra
     \item[-] Space-Charge modeling: MicroBooNE's space-charge model has changed significantly since 2018, moving from a calculation-based~\cite{bib:SCETN} implementation of electric field distortions to a data-driven E-field map implemented in simulation and reconstruction. Due to the large position distortions (and, though smaller, charge distortions) SCE can significantly impact an analysis through the determination  of fiducial boundaries, tracking and energy resolution.
     \item[-] Scintillation light modeling: MicroBooNE's model of scintillation light production has not changed significantly since the beginning of data-taking, and has known limitations. Of particular importance to this analysis, which aims to use a dataset spanning four years, is the known and significant time-dependent variation of MicroBooNE's light response. This analysis takes several steps to correct for, and mitigate the impact of light mismodeling. Triggering on low-energy signal $\nu_e$ events, and cosmic-rejection are particularly sensitive to scintillation light detector effects.
 \end{itemize}
-An additional detector effects that needs to be accounted for are ion Recombination which impacts the detector's calorimetric response. Tailored studies and proton samples are being developed to assess ion recombination modeling accuracy in MCC9. \textcolor{blue}{if we don't have the ion recombination, this should go in italics -- Elena}
-\par \noindent \textbf{Flux and Cross-Section Modeling} Uncertainties in flux and cross-section modeling are treated through a \emph{multi-sim} approach, where underlying parameters that are input to the modeling are varied in a correlated way. Flux uncertainties are taken from the MiniBooNE BNB flux simulation adapted to MicroBooNE~\cite{bib:fluxmcc9}, while $\nu$ interaction uncertainties are handled within the \texttt{GENIE} reweighting package, as described in~\cite{bib:geniesupportnote}. \emph{We note that the \texttt{GENIE} event reweighting infrastructure is still in development and likely to be updated or further expanded on in the future. Finally, uncertainties associated with pion and proton re-interactions in argon were unavailable when this version of the Tech Note was produced and not included at this stage.} 
+\emph{An additional detector effects that needs to be accounted for is ion Recombination which impacts the detector's calorimetric response. Tailored studies and proton samples are being developed to assess ion recombination modeling accuracy in MCC9 but are not available at the time of writing of this note.}
+\par \noindent \textbf{Flux and Cross-Section Modeling} Uncertainties in flux and cross-section modeling are treated through a \emph{multi-sim} approach, where underlying parameters that are input to the modeling are varied in a correlated way. Flux uncertainties are taken from the MiniBooNE BNB flux simulation adapted to MicroBooNE~\cite{bib:fluxmcc9,bib:fluxtechnote}, while $\nu$ interaction uncertainties are handled within the \texttt{GENIE} reweighting package, as described in~\cite{bib:geniesupportnote}. \emph{We note that the \texttt{GENIE} event reweighting infrastructure is still in development and likely to be updated or further expanded on in the future. Finally, uncertainties associated with pion and proton re-interactions in argon were unavailable when this version of the Tech Note was produced and not included at this stage.} 
 
 \subsection{Sensitivity Estimation \textcolor{green}{Nico/Maya}}
 In order to extract information from the selected events, a simple hypothesis test is performed.
@@ -300,7 +296,17 @@ First by considering only statistical uncertainties, which are good approximatio
 We also include systematic uncertainties using the covariance matrix formalism and the SBNfit package, as described in section \ref{subsec:sensitivity_syst_uncertainty}.
 Eventually, the observed spectra from the \nueccnopinp and the \numu selections are analysed simultaneously using a single covariance matrix to constraint the systematic uncertainties and thus increase the sensitivity.
 
-\subsection{Money Plots and Takeaways \textcolor{red}{Elena/David/ Group discussion}}
+\subsection{Analysis Status \textcolor{red}{Elena/David/ Group discussion}}
+
+\par The \npsel channel achieves a $5-10$($5-15$)\% efficiency with a 73 (81)\% purity for the cut-based (BDT-based) selection which lead to $\mathcal{O}$(10) expected MB-$\nu_e$ LEE signal events and $40-70$ intrinsic $\nu_e$ events for the full Run $1-4$ dataset. For the box-cut selection this performance translates in a statistics-only sensitivity of $2.1-2.3\sigma$ depending on the test-statistic used. The low statistics of the predicted signals lead to significant fluctuations in the expected sensitivity, covering the range $1.5-3.1\sigma$. 
+
+\begin{figure}[ht]
+\begin{center}
+\includegraphics[width=0.45\textwidth]{1eNp/reco_e_01162020_box_RUN1.pdf}
+\caption{\label{fig:1eNp:box:RUN1}Box-cuts for \npsel channel.}
+\end{center}
+\end{figure}
+
 
 
 
@@ -322,14 +328,14 @@ Eventually, the observed spectra from the \nueccnopinp and the \numu selections 
 The output of Pandora~\cite{bib:pandoraub} is organized in a hierarchy of reconstructed Particle Flow Particles (``PFParticles''), which describes the particle content in an observed event as a parent-daughter relationship chain. Final state PFParticles are 3D objects matching clusters of hits in at least two different planes.
 Pandora classifies PFParticles as track-like or shower-like base on a Support Vector Machine (SVM) algorithm~\cite{bib:tkshsvm}, producing a score with values between 0 (shower-like) and 1 (track-like).
 
-Pandora processes track-like PFParticles with a sliding linear fit procedure (described in~\cite{bib:pandoraub}) that returns the 3D position and direction at each point along the trajectory (where each point corresponds to a 2D hit). For each point the d$Q$/d$x$ and distance from the track-start are recorded using MicroBooNE's Calorimetry module. This procedure allows to accurately measure d$x$, including small deflections due to the particle's trajectory and SCE offsets, and d$Q$, by incorporating MicroBooNE's full position- and field-dependent relative and absolute charge calibration. From d$Q$/d$x$, d$E$/d$x$ is calculated assuming a fixed recombination correction assuming 2.1 MeV/cm energy loss, but accounting for local variations in the electric field.
+Pandora processes track-like PFParticles with a sliding linear fit procedure (described in~\cite{bib:pandoraub}) that returns the 3D position and direction at each point along the trajectory (where each point corresponds to a 2D hit). For each point the d$Q$/d$x$ and distance from the track-start are recorded using MicroBooNE's Calorimetry module. This procedure allows to accurately measure d$x$, including small deflections due to the particle's trajectory and SCE offsets, and d$Q$, by incorporating MicroBooNE's full position- and field-dependent relative and absolute charge calibration. \textcolor{blue}{The conversion from d$Q$/d$x$ to d$E$/d$x$ is calculated differently for tracks and showers. For tracks, the conversion is performed by applying the inverse Modified Box recombination model. For showers, both for the calculation of the trunk d$E$/d$x$ as well as the total energy, a fixed recombination correction is applied assuming 2.1 MeV/cm energy loss. In both cases, local variations in the electric field are accounted for.}
 
 We evaluate the energy and 3D direction of shower-like PFParticles with the same algorithm used for the $\pi^0$ reconstruction paper~\cite{bib:pi0reco}. The energy reconstruction accounts for various detector effects, including gain and recombination; corrections for reconstruction effects (hit threshold and imperfect clustering) will be described in Sec.~\ref{sec:ereco}. We also fit showers using a Kalman filter-based procedure~\cite{bib:shrtrackfitter} which aims at identifying the main trunk of the shower by rejecting hits that are longitudinally or transversely displaced from it; the output of this fit is a track object so that the calorimetric tools described above become available for showers as well.
 
-By default, Pandora separates showers and tracks with a cut on the SVM score at 0.5; however, as will be described in later sections, in many cases we choose different cut values, i.e. tighter shower definition for the $\nu_e$ selection and looser for the pi0 control region.
+By default, Pandora separates showers and tracks with a cut on the SVM score at 0.5; however, as will be described in later sections, in many cases we choose different cut values, i.e. tighter shower definition for the $\nu_e$ selection and looser for the $\pi^0$ control region.
 
 \par The Efficiency of Pandora's reconstruction on $\nu_e$ interactions is evaluated in figure~\ref{fig:nuereco:eff} as a function of true neutrino energy and shows the efficiency for correctly identifying $\nu_e$s in the event in black, and the efficiency for reconstructing $\nu_e$ interactions with a final-state EM shower in blue. The efficiency has a sharp upturn between 100 and 200 MeV, especially in the case when an EM shower is required, and levels off at 80\% and 60\% respectively for the two curves. 
-\par At this stage in the analysis, the good efficiency for reconstructing $\nu_e$ events is offset by the very low signal-to-background for $\nu_e$ events in MicroBooNE's data, a consequence of the very small $\nu_e$ content of the beam. With no additional requirement on the reconstructed neutrino, the purity for $\nu_e$ interactions is 0.12\%. After imposing a requirement of one reconstructed shower, the purity grows by almost an order of magnitude, to 1\%. The $\nu$ background composition also changes significantly, with $\pi^0$ backgrounds moving from 14\% to 48\% of all backgrounds.
+\par At this stage in the analysis, the good efficiency for reconstructing $\nu_e$ events is offset by the very low signal-to-background for $\nu_e$ events in MicroBooNE's data, a consequence of the very small $\nu_e$ content of the beam. With no additional requirement on the reconstructed neutrino, the purity for $\nu_e$ interactions is 0.12\% (figure~\ref{fig:nuereco:sliceid}). After imposing a requirement of one reconstructed shower, the purity grows by almost an order of magnitude, to 1\% (figure~\ref{fig:nuereco:shower}). The $\nu$ background composition also changes significantly, with $\pi^0$ backgrounds moving from 14\% to 48\% of all backgrounds.
 
 \begin{figure}[ht] 
 \begin{center}
@@ -341,12 +347,12 @@ By default, Pandora separates showers and tracks with a cut on the SVM score at 
     \begin{subfigure}[b]{0.31\textwidth}
     \centering
     \includegraphics[width=1.00\textwidth]{nureco/NeutrinoEnergy2_01152020.pdf}
-    \caption{after SliceID}
+    \caption{\label{fig:nuereco:sliceid} after SliceID}
     \end{subfigure}
     \begin{subfigure}[b]{0.31\textwidth}
     \centering
     \includegraphics[width=1.00\textwidth]{nureco/reco_e_01152020.pdf}
-    \caption{\label{fig:egammasep:dedx} after shower requirement}
+    \caption{\label{fig:nuereco:shower} after shower requirement}
     \end{subfigure}
 \caption{\label{fig:nuereco}}
 \end{center}
@@ -354,7 +360,7 @@ By default, Pandora separates showers and tracks with a cut on the SVM score at 
 
 \par The next step in the analysis demands the development of a selection capable of isolating $\nu_e$ interactions rejecting the two order of magnitude larger background rates from $\nu_{\mu}$ neutrinos. This selection will make use of PID and topological information described in the next sections. The strong level of background rejection needed to isolate signal events will inevitably lead to a lower selection efficiency.
 
-\subsection{Particle Identification \textcolor{green}{Nico}}
+\subsection{Particle Identification \textcolor{green}{Nico, reviewed by David}}
 % GC: this part is now in the previous subsection
 %In the neutrino slice, every PFParticle is reconstructed in three different ways:
 %\begin{itemize}
@@ -362,40 +368,39 @@ By default, Pandora separates showers and tracks with a cut on the SVM score at 
 %    \item Shower, using the standard Pandora Shower reconstruction (is there any modification on top of this?)
 %    \item Track-fitted shower, using a dedicated track fitting tool which aims at identifying the main branch of %the shower and fit it as a track. As a result, all the tools developed for the track become available for the %tracks too. For example, for each track-fitted shower, a recob::track and a anab::calorimetry objects are available.
 %\end{itemize}
-Particle identification is performed with different tools depending the type of candidate a given PFParticle has been selected as.
-If the PFParticle has been selected as a muon or proton candidate, so as a track-like object, the identification is performed using the Calorimetry Likelihood tool, which results in the variable Log Likelihood Ratio PID  (section~\ref{subsec:loglikelihoodpid}).
+Particle identification is performed with different tools depending \textcolor{blue}{on whether the particle is selected as a track- or shower-candidate \st{the type of candidate a given PFParticle has been selected as}.
+If the PFParticle has been selected as a \st{muon or proton candidate, so as a} track-like object}, the identification is performed using the Calorimetry Likelihood tool, which results in the variable Log Likelihood Ratio PID  (section~\ref{subsec:loglikelihoodpid}).
 If the PFParticle has been selected as an electron or photon candidate, the identification is performed using several variables described in \ref{subsec:egammaspearation}.
 
-It is noteworthy that this particle identification consists of one or multiple variables, available for the specific PFParticle, that may or may not depend on the rest of the slice. 
-For example, the shower dE/dx depends only on the PFParticle itself, whereas the track-shower separation relies also on additional objects identified in the slice.
+It is noteworthy that this particle identification consists of one or multiple variables, available for the specific PFParticle, that may or may not depend on \textcolor{blue}{additional information from} the rest of the slice. 
+For example, the shower d$E$/d$x$ depends only on the PFParticle itself, whereas the track-shower separation relies also on additional objects identified in the slice.
 
 The value of the cuts applied on these variables depend not only on the general level of efficiency and mis-identification one may want to achieve in distinguishing two kind of particles (electrons from photons, for example), but also on the mixture of backgrounds, which eventually depends on the specific selection the analyser is performing.
 
 \subsubsection{Log Likelihood Ratio Particle ID \textcolor{green}{Nico}}
 \label{subsec:loglikelihoodpid}
 
-For track-like particles, the particle identification is performed looking at the profile of the deposited charge per unit length ($dE/dx$).
+For track-like particles, the particle identification is performed looking at the profile of the deposited charge per unit length (d$E$/d$x$).
 The scope of particle identification is to tell the type of particle a certain track was originated from.
 For what concerns this analysis, it has been decided to limit the problem to a binary classification problem, distinguishing protons from muons.
 In fact, kaons are produced rarely in neutrino interactions at this energy, whereas pions are very difficult to distinguish from muons, given the very similar mass and the current resolution of the detector.
-Additional information, such as possible hadronic reinteractions or Michel electrons, can be powerful to perform particle identification.
-No additional information is used in this analysis, as we believe the reconstruction is not precise enough to tag such reinteractions.
+Additional information, such as possible hadronic reinteractions or Michel electrons, can be powerful to perform particle identification \textcolor{blue}{but is not leveraged in this analysis. \st{No additional information is used in this analysis, as we believe the reconstruction is not precise enough to tag such reinteractions}}.
 
 The expected distribution of the $dE/dx$ is modeled for each particle type and for each plane, as a function of two variables: the residual range ($rr$), and the pitch.
 \[ p(dE/dx | \text{type}, \text{plane}, \text{rr}, \text{pitch}) \]
-The residual range is defined as the length of the track between a given trajectorty point of a track and the point where the track stops.
+\textcolor{blue}{\st{ The residual range is defined as the length of the track between a given trajectorty point of a track and the point where the track stops}}.
 The pitch is the length on which the charge measured on a given wire has been deposited.
-Given the angle $\gamma$ between the local direction of the track and the direction vector orthogonal to the wires and lying on the wire plane, the pitch is measured as $\text{pitch} = 0.3 cm / \cos(\gamma) $.
+\textcolor{blue}{ \st{Given the angle $\gamma$ between the local direction of the track and the direction vector orthogonal to the wires and lying on the wire plane, the pitch is measured as $\text{pitch} = 0.3 cm / \cos(\gamma) $.}}
 The expected distribution is modeled for each plane independently, and for the two kinds of particles under study, protons and muons.
 Multiple effects enter in the model of this distribution.
-First of all, the average $dE/dx$ at a given residual range depends on the physical mass, and this can be easily seen by integrating the Bethe-Bloch function for different masses.
-Secondly, the fluctuations of the $dE/dx$ depends on the pitch.
-In fact, these fluctuations are intrinsically stochastic, and the longer the length over which the charge is averaged, the smaller the fluctuations.
+First of all, the average d$E$/d$x$ at a given residual range depends on the physical mass, and this can be easily seen by integrating the Bethe-Bloch function for different masses.
+Secondly, the fluctuations of the d$E$/d$x$ depends on the pitch.
+In fact, these fluctuations are intrinsically stochastic\textcolor{blue}{:\st{, and}} the longer the length over which the charge is averaged, the smaller the fluctuations.
 On top of these, detector effects such as recombination, deconvolution of the signal, and hit reconstruction add a non-linear response and additional smearing, which is a complex function of the true deposited charge and of the pitch, for which a closed analytic formula is not available.
 For this reason, the expected distribution of $dE/dx$ is built starting from the simulation.
-This has the main advantage of containing all of these effects, as best of our knowledge.
+This has the main advantage of \textcolor{blue}{modeling \st{containing}} all of these effects,  \textcolor{blue}{to the best \st{as best}} of our knowledge.
 In fact, the performance of the particle identification become more and more optimal, the more accurate the model used for the distribution of $dE/dx$.
-The model for $dE/dx$ is built by considering well reconstructed tracks (completeness > 90\%, purity > 90\%), well contained within a fiducial volume, and backtracked to protons and muons.
+The model for $dE/dx$ is built by considering well reconstructed tracks (completeness $>$ 90\%, purity $>$ 90\%), well contained within a fiducial volume, and backtracked to protons and muons.
 The binning of the pdf (probability density function) is the following:
 \begin{itemize}
     \item $dE/dx$: $[0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 9, 10, 12, 15, 20, 25, 30, 35, 40, 45, 50]$ MeV/cm
@@ -420,14 +425,16 @@ A couple of examples of the pdf are provided in figure \ref{fig:llr_pid_pdf_exam
 \end{figure}
 
 For a given track, the three calorimetry objects, one per plane, are considered.
-For each of them, the vectors - one entry per hit - of the $dE/dx$, the residual range, and the pitch are considered to compute the likelihood of each particle type.
+For each of them, the vectors - one entry per hit - of the $dE/dx$, the residual range, and the pitch are used to compute the likelihood of each particle type.
 \[ \mathcal{L}(\text{type} | \text{plane}, dE/dx_{i = 1, ..., N},   \text{rr}_{i = 1, ..., N}, \text{pitch}_{i = 1, ..., N}) = \prod_{i=1}^N p(dE/dx_i | \text{type}, \text{plane}, \text{rr}_i, \text{pitch}_i) \]
 where $i=1, ..., N$ is the index that run on the hit number.
 The combination of the three planes happens in a straightforward way, by taking the product of the three likelihoods, or summing up the log-likelihoods.
 \[ p(dE/dx | \text{type}, \text{plane}, \text{rr}, \text{pitch}) \]
 In order to perform the classification task, the likelihood ratio test statistic is chosen:
 \[ T(dE/dx, \text{rr}, \text{pitch}) = \mathcal{L}(\text(muon)| dE/dx, \text{rr}, \text{pitch}) /  \mathcal{L}(\text(proton)| dE/dx, \text{rr}, \text{pitch}) \]
-An example of the distribution of these variable, normalised between -1 and 1, is given in figure \ref{fig:llr_pid_uvy_example}, for tracks contained in a fiducial volume, and backtracked to muon, proton, or cosmic.
+An example of the distribution of these variable, normalised between -1 and 1, is given in figure \ref{fig:llr_pid_uvy_example}, for tracks contained in a fiducial volume, and backtracked to muon, proton, or cosmic. \textcolor{blue}{\st{As long as the likelihood is correct, that means the model is correct, this} The likelihood ratio, as defined above, } can be proven to be the most powerful statistical test, i.e. the one with the smallest mis-identification rate for any given value of the efficiency.
+Any \textcolor{blue}{mis-modeling \st{imperfection}} in the simulation used to build the \textcolor{blue}{likelihood \st{model}} produces a loss of power, but does not add any systematic uncertainty.
+\textcolor{red}{quote example efficiency / separation power?}
 
 \begin{figure}[ht] 
     \centering
@@ -436,8 +443,7 @@ An example of the distribution of these variable, normalised between -1 and 1, i
     \label{fig:llr_pid_uvy_example}
 \end{figure}
 
-As long as the likelihood is correct, that means the model is correct, this can be proven to be the most powerful statistical test, i.e. the one with the smallest mis-identification rate for any given value of the efficiency.
-Any imperfection in the simulation used to build the model produces a loss of power, but does not add any systematic uncertainty.
+
 
 
 \subsubsection{$e$/$\gamma$ Separation \textcolor{green}{David}}
@@ -493,7 +499,7 @@ d$E$/d$x$ information at different distances from the shower start-point for $e$
 
 \subsection{Energy Reconstruction \textcolor{green}{Giuseppe + David}}
 \label{sec:ereco}
-\par Energy reconstruction is performed calorimetrically for EM showers and through a measurement of a track's range for contained muons and protons. For muons multiple Coulomb scattering (MCS) is also used to estimate the muon energy. The energy resolution obtained for different particles is reported in table~\ref{tab:eres}. More information on each particle specie's energy resolution is reported in figure~\ref{fig:eres:particle} where for each particle species the 2D reconstructed vs. true energy distribution (in log-scale) is shown on the left, next to a plot of energy resolution vs. true energy on the right. The energy resolution reported here is obtained from a Gaussian plus one-sided exponential fit to the distribution $[E_{\rm reco}-E_{\rm true}] / E_{\rm true}$. The resolution reported refers only to the Gaussian width $\sigma$ extracted in the fit, and therefore does not account for negative tails, which are significant in the case of EM shower energy reconstruction, and described below.
+\par Energy reconstruction is performed calorimetrically for EM showers and through a measurement of a track's range for contained muons and protons. For muons multiple Coulomb scattering (MCS) is also used to estimate the muon energy. The energy resolution obtained for different particles is reported in table~\ref{tab:eres}. More information on each particle's energy resolution is reported in figure~\ref{fig:eres:particle} where the 2D reconstructed vs. true energy distribution (in log-scale) is shown on the left, next to a plot of energy resolution vs. true energy on the right. The energy resolution reported here is obtained from a Gaussian plus one-sided exponential fit to the distribution $[E_{\rm reco}-E_{\rm true}] / E_{\rm true}$. The resolution reported refers only to the Gaussian width $\sigma$ extracted in the fit, and therefore does not account for negative tails, which are significant in the case of EM shower energy reconstruction, and described below.
 
 
 \begin{table}[H]
@@ -681,21 +687,17 @@ Figure~\ref{fig:eres:neutrino} shows the comparison between reconstructed energy
 \newpage
 
 \section{$\nu_e$ Selections}
-\par This chapter present the three $\nu_e$ selections which comprise the analysis. The starting point for the $\nu_e$ selections, including a description of efficiencies, are described in section~\ref{sec:nueselection:inputs} . The common variables and tools leveraged for the $\nu_e$ selection are presented in section~\ref{sec:nueselection:variables}. Following sections describe the three channels being targeted: $\nu_e$ inclusive (\ref{sec:nueselection:inclusive}),1$e$N$p$0$\pi$ (\ref{sec:nueselection:1eNp}), and 1$e$0$p$0$\pi$ (\ref{sec:nueselection:1e0p}).
+\par This chapter present the three $\nu_e$ selections which comprise the analysis. The chapter starts with the description of common variables and tools leveraged by all $\nu_e$ selections in section~\ref{sec:nueselection:variables}. Next the \npsel (sec.~\ref{sec:nueselection:1eNp}) and \zpsel (sec.~\ref{sec:nueselection:1e0p}) channel selections are presented, starting with a description of where the two selections branch off~\ref{sec:nueselection:inputs}. Finally, the $\nu_e$ inclusive selection is presented in~\ref{sec:nueselection:inclusive}.
 
 \subsection{Variable definitions \textcolor{green}{Elena}}
 \label{sec:nueselection:variables}
 \input{NueSelection-Ch5/SelectionNueVar-Ch5}
 \clearpage
-\subsection{$\nu_e$ CC Inclusive selection \textcolor{red}{Wouter}}
-\input{NueCCsel/NueCCsel}
-\clearpage
-
 
 \subsection{Input to \npsel and \zpsel and channel orthogonality \textcolor{green}{David + Sophie} }
 \label{sec:nueselection:inputs}
 
-The 1$e$N$p$ and 1$e$0$p$ selections rely on a common pre-selection which requires the presence of at least one reconstructed and contained EM shower (figure~\ref{fig:nue:presel:nshower}) with reconstructed energy above 70 MeV (figure~\ref{fig:nue:presel:shrenergy}). This second cut applies as a Michel-electron veto, as the majority of events which do not pass this cut are associated to cosmic or $\nu_{\mu}$ induced $\mu \rightarrow e$ Michel electrons. The two selections are subsequently split based on whether a proton candidate is (N$p$) or is not (0$p$) found. Events with a fully contained track must have a \texttt{trkpid} score $< 0$ and a value of \texttt{tksh\_angle} $> -0.9$. The first condition requires that the track be proton-like according to the PID tool~\ref{subsec:loglikelihoodpid}, while the second excludes tracks reconstructed back-to-back to the electron candidate, generally due to mis-reconstruction. For events with more than one reconstructed track, these requirements are applied on the longest track.
+The 1$e$N$p$ and 1$e$0$p$ selections rely on a common pre-selection which requires the presence of at least one reconstructed and contained EM shower (figure~\ref{fig:nue:presel:nshower}) with reconstructed energy above 70 MeV (figure~\ref{fig:nue:presel:shrenergy}). This second cut applies as a Michel-electron veto, as the majority of events which do not pass this cut are associated to cosmic or $\nu_{\mu}$ induced $\mu \rightarrow e$ Michel electrons. The two selections are subsequently split based on whether a proton candidate is (N$p$) or is not (0$p$) found. Reconstructed tracks (track-shower score $> 0.5$) are defined as proton-candidates if they are fully contained,  have a \texttt{trkpid} score $< 0$, and a value of \texttt{tksh\_angle} $> -0.9$. The second condition requires that the track be proton-like according to the PID tool~\ref{subsec:loglikelihoodpid}, while the third excludes tracks reconstructed back-to-back to the electron candidate, generally due to mis-reconstruction. For events with more than one reconstructed track, these requirements are applied on the longest track.
 
 \begin{figure}[H] 
 \begin{center}
@@ -718,7 +720,7 @@ The 1$e$N$p$ and 1$e$0$p$ selections rely on a common pre-selection which requir
 \end{center}
 \end{figure}
 
-\par The efficiencies of the 1$e$N$p$ and 1$e$0$p$ channels at the point where the selections diverge are shown in figure~\ref{fig:nue:presel:eff}. Efficiencies are presented as a function of true neutrino energy~\ref{fig:nue:presel:eff:nu}, proton KE~\ref{fig:nue:presel:eff:proton}, and electron energy~\ref{fig:nue:presel:eff:elec}. Each plot shows in black the efficiency for the common pre-selection (before a proton requirement is or is not imposed) and is reported relative to all intrinsic $\nu_e$ events. In blue and red respectively are shown the efficiencies for the  1$e$N$p$ and 1$e$0$p$ selections respectively, relative to true N$p$ and 0$p$ events. Shaded histograms in red and blue show the stacked truth-level distributions for N$p$ and 0$p$ events for the variables being plotted. An important observation to make is the fact that at this pre-selection stage the efficiency for 1$e$N$p$ events is significantly lower then that of 1$e$N$p$ events. This is caused by the additional requirement of the presence of a proton-like track in the final state. The strong energy dependence for the efficiency in tagging protons is shown in figure~\ref{fig:nue:presel:eff:proton}. While requiring the presence of a final-state proton lowers the efficiency, this requirement has a significant impact on the selection's ultimate purity.
+\par The efficiencies of the 1$e$N$p$ and 1$e$0$p$ channels at the point where the selections diverge are shown in figure~\ref{fig:nue:presel:eff}. Efficiencies are presented as a function of true neutrino energy (fig.~\ref{fig:nue:presel:eff:nu}), proton KE (fig.~\ref{fig:nue:presel:eff:proton}), and electron energy (fig.~\ref{fig:nue:presel:eff:elec}). Each plot shows in black the efficiency for the common pre-selection (before a proton requirement is or is not imposed) and is reported relative to all intrinsic $\nu_e$ events. In blue and red respectively are shown the efficiencies for the  1$e$N$p$ and 1$e$0$p$ selections respectively, relative to true N$p$ and 0$p$ events. Shaded histograms in red and blue show the stacked truth-level distributions for N$p$ and 0$p$ events for the variables being plotted. An important observation to make is the fact that at this pre-selection stage the efficiency for 1$e$N$p$ events is significantly lower then that of 1$e$N$p$ events. This is caused by the additional requirement of the presence of a proton-like track in the final state. The strong energy dependence for the efficiency in tagging protons is shown in figure~\ref{fig:nue:presel:eff:proton}. While requiring the presence of a final-state proton lowers the efficiency, this requirement has a significant impact on the selection's ultimate purity.
 
 \begin{figure}[H] 
 \begin{center}
@@ -799,9 +801,11 @@ In this section cuts are presented in different categories according to the back
 
 First, we aim at rejecting cosmic-induced events by requiring a large distance of the neutrino vertex from clear cosmic tracks and a proton-like track. The latter requirement in particular rejects more than 90\% of the cosmics that pass pre-selection. The next goal is to suppress events from $\nu_\mu$ charged current interactions, so for this purpose we require shower hits to be the dominant in the slice, as well as imposing tight quality requirements on the shower object. They rely on several variables aiming at separating electron or photon showers from single-particle tracks, i.e. shr\_score, shrmoliereavg, trkfit, subcluster. 
 
-At this stage most of the selected events contain neutrino-induced electromagnetic activity. The main background are $\pi^0$ events abd we reject them with a series of requirements based on the different topology and energy deposition of electrons and photons. We first require only one shower-like PFParticle in the event, and that its start point is at a short distance from the track start. Then, we require that the energy loss at the start of the electron shower is be compatible with a single MIP. Many possible dEdx variable definitions are possible, and information from all TPC planes can be used. However, due to detector and reconstruction limitations, there is not a single definition that provides a sharp separation between electrons and photons; therefore, in order to obtain a good background rejection without large efficiency losses, we choose to apply a loose MIP cut on two different dEdx definitions (described in Sec.~\ref{sec:nueselection:variables}). The loose MIP requirement enforces that there is at least one hit in the collection plane in the probed range, and that the dEdx is not consistent with two or more MIPs in any plane. Finally, the single shower requirement is reinforced with a 2nd shower veto based on clusters in the collection plane that are not matched to any PFParticle.
+At this stage most of the selected events contain neutrino-induced electromagnetic activity. The main background are $\pi^0$ events and we reject them with a series of requirements based on the different topology and energy deposition of electrons and photons. We first require only one shower-like PFParticle in the event, and that its start point is at a short distance from the track start. Then, we require that the energy loss at the start of the electron shower is be compatible with a single MIP. Many possible dEdx variable definitions are possible, and information from all TPC planes can be used. However, due to detector and reconstruction limitations, there is not a single definition that provides a sharp separation between electrons and photons; therefore, in order to obtain a good background rejection without large efficiency losses, we choose to apply a loose MIP cut on two different dEdx definitions (described in Sec.~\ref{sec:nueselection:variables}). The loose MIP requirement enforces that there is at least one hit in the collection plane in the probed range, and that the dEdx is not consistent with two or more MIPs in any plane. Finally, the single shower requirement is reinforced with a 2nd shower veto based on clusters in the collection plane that are not matched to any PFParticle.
 
 The last cut aims at rejecting misreconstructed events and requires that the track and shower are not aligned. For reference, the full list of cuts is in Table~\ref{tab:1eNp:boxcut}.
+
+The resulting reconstructed \nue energy after the BDT selection is shown in Figure~\ref{fig:1eNp:box:RUN1}. Two events are 
 
 \begin{table}[h!]
 \centering
@@ -911,7 +915,7 @@ Two BDTs are trained separately to reject backgrounds with and without $\pi^0$ i
 \end{center}
 \end{figure}
 
-The resulting response in Run1 open data are shown in Figures~\ref{fig:1eNp:bdt:nonpi0} and \ref{fig:1eNp:bdt:pi0} for the non-$\pi^0$ and $\pi^0$ BDT, respectively. The left panel shows the full response, while the right one zooms in in the high BDT score region and shows the signal enhancement in the bin with response $>$ 0.99. We cut separately on the output of the two BDTs, requiring the $\pi^0$ and non-$\pi^0$ responses to be greater than 0.995 and 0.9984, respectively. The resulting reconstructed \nue energy after the BDT selection is shown in Figure~\ref{fig:1eNp:box:RUN1}.
+The resulting response in Run1 open data are shown in Figures~\ref{fig:1eNp:bdt:nonpi0} and \ref{fig:1eNp:bdt:pi0} for the non-$\pi^0$ and $\pi^0$ BDT, respectively. The left panel shows the full response, while the right one zooms in in the high BDT score region and shows the signal enhancement in the bin with response $>$ 0.99. We cut separately on the output of the two BDTs, requiring the $\pi^0$ and non-$\pi^0$ responses to be greater than 0.995 and 0.9984, respectively. The resulting reconstructed \nue energy after the BDT selection is shown in Figure~\ref{fig:1eNp:bdt:RUN1}.
 
 \begin{figure}[H] 
 \begin{center}
@@ -1137,6 +1141,11 @@ The reconstructed energy distribution for selected 1e0p events that pass the BDT
 The selection efficiency for the 1e0p cut-based and BDT selections are shown in Fig.~\ref{fig:1e0p:eff:RUN3}.  The BDT selection is both more efficient and more pure. 
 
 \clearpage
+
+\subsection{$\nu_e$ CC Inclusive selection \textcolor{green}{Wouter}}
+\input{NueCCsel/NueCCsel}
+\clearpage
+
 \section{$\nu_{\mu}$ Selection \textcolor{red}{Ryan, Wouter}}
 \label{sec:numuselection}
 \input{NuMuCCsel/NuMuCCsel}
@@ -1235,7 +1244,7 @@ The details on detector systematics can be found in~\cite{bib:detsyssupportnote}
 \end{figure}
 
 \subsection{Flux Uncertainties \textcolor{red}{Maya}}
-The flux and uncertainties for MCC9~\cite{bib:fluxmcc9} are largely the same as MCC8~\cite{bib:fluxtechnote}. We use multisim technique to estimate the flux uncertainties. The various sources of uncertainties are taken as independent and are varied individually. They are listed in Table~\ref{tab:fluxsyst} along the number of universes considered for each. The fractional covariance matrix and correlation matrix for the 1eNp selection are presented in Figure~\ref{fig:fluxmatrices} which amount to 12\% in flux uncertainties. Meanwhile, Figure~\ref{fig:fluxsystvars} displays the effects of reweighting central value in each universe of an individual parameter of flux.
+The flux and uncertainties for MCC9~\cite{bib:fluxmcc9,bib:fluxtechnote} are largely the same as MCC8~\cite{bib:fluxtechnote}. We use multisim technique to estimate the flux uncertainties. The various sources of uncertainties are taken as independent and are varied individually. They are listed in Table~\ref{tab:fluxsyst} along the number of universes considered for each. The fractional covariance matrix and correlation matrix for the 1eNp selection are presented in Figure~\ref{fig:fluxmatrices} which amount to 12\% in flux uncertainties. Meanwhile, Figure~\ref{fig:fluxsystvars} displays the effects of reweighting central value in each universe of an individual parameter of flux.
 
 \begin{table}[H]
 \centering

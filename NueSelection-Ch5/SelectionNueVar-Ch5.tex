@@ -3,25 +3,23 @@
 \par \noindent  \textbf{Slice Variables}: these variables describe general features of the reconstructed neutrino interaction or event.
 \par \noindent  \textbf{Track Variables}: these variables describe the features of tracks objects.
 \par \noindent \textbf{Shower Variables}:  these variables describe the features of shower objects.
-\par \noindent \textbf{Shower and Track Variables}: these variables describe the interplay between track objects and the leading shower of the slice when at least one track and one shower are present in the event. 
+\par \noindent \textbf{Shower-Track Distance Variables}: these variables are used to measure the distance between the leading shower and the leading track, for events where at least one track and one shower are present in the slice. 
 \begin{itemize}
- \item[] \textbf{Shower-track distance} (variable: \emph{trksh\_distance}).  In the 1$e$N$p$ channel, a gap between the shower candidate and vertex activity is a powerful $\pi^0$ rejection discriminant.  Generally, this variable is the 3D distance between the shower start point and the reconstructed start point of the longest track in the slice. A 3D distance is abnormally large \textcolor{blue}{(up to several centimeters)... several cm seems ok for good reco'ed photons... am I missing something? Elena} can point to a failure of the reconstruction for either the 3D shower or track. In that case, a new quantity is calculated with 2D information from the collection plane defined as the smallest 2D distance between any hits associated with the shower candidate and any hits associated with the proton candidate. 
-%   Due to mis-reconstruction in the 3D shower and track reconstruction, sometimes the 3D distance just defined is reconstructed to be large (up to several centimeters) even if the individual track and shower are correctly clustered. This factors smears the track-shower separation of $\nu_e$ interactions therefore reducing the $e-\gamma$ separation power achievable. To overcome this failure specific to the 3D reconstruction, a new quantity is calculated with 2D information from the collection plane defined as the smallest 2D distance between any hits associated with the shower candidate and any hits associated with the proton candidate
+ \item[] \textbf{3D shower-track distance} (variable: \emph{tksh\_distance}).  This variable is the 3D distance between the shower start point and the reconstructed start point of the longest track in the slice. 
+ \item[] \textbf{2D track-shower distance} (variable: \emph{trkshrhitdist2}) Due to mis-reconstruction in the 3D shower and track reconstruction, sometimes the 3D distance just defined (\emph{tksh\_distance}) is significantly smeared (up to several centimeters) even if the individual track and shower are correctly clustered. This factors decreases the track-shower separation of $\nu_e$ interactions therefore reducing the $e-\gamma$ separation power achievable. To overcome this failure specific to the 3D reconstruction, a new quantity is calculated with 2D information from the collection plane defined as the smallest 2D distance between any hits associated with the shower candidate and any hits associated with the proton candidate. This variable is therefore complementary to the quantity \emph{tksh\_distance}.
 \end{itemize}
 
 
 
-\par \noindent \textbf{Shower-Track  Separation Variables}: The first step in track-shower separation relies on the topological score reconstructed by Pandora (variable: \emph{shr\_score}), which utilizes inputs such as the PCA component of 3D space-points to classify PFParticles. Nonetheless, this classification is not sufficient to obtain the track-shower separation needed. To improve on this, additional variables which leverage different aspects of shower topologies are devised:
+\par \noindent \textbf{Shower/Track-like  Classification Variables}: The first step in track-shower separation relies on the topological score reconstructed by Pandora (variable: \emph{shr\_score}), which utilizes inputs such as the PCA component of 3D space-points to classify PFParticles. Nonetheless, this classification is not sufficient to obtain the track-shower separation needed. To improve on this, additional variables which leverage different aspects of shower topologies are devised:
 
 \begin{itemize}
 
-    \item[] \textbf{Shower Track-Fitted Fraction} (variable: \emph{trkit}, figure~\ref{fig:nue:variables:trkfit}) This quantity is the fraction of the 3D spacepoints in a shower object that are successfully fit with the shower track-fitter algorithm. Tracks, comprised of a single contiguous segment, will be entirely fit, leading to a fraction of 1. Showers, with several branches and split charge deposition segments, will have a fraction that is less then one.
+    \item[] \textbf{Shower Track-Fitted Fraction} (variable: \emph{trfit}, figure~\ref{fig:nue:variables:trkfit}) This quantity is the fraction of the 3D spacepoints in a shower object that are successfully fit with the shower track-fitter algorithm. Tracks, comprised of a single contiguous segment, will be entirely fit, leading to a fraction of 1. Showers, with several branches and split charge deposition segments, will have a fraction that is less then one.
     \item[] \textbf{Shower Sub-Clusters} (variable: \emph{subcluster}, figure~\ref{fig:nue:variables:subcluster}) This quantity leverages the fact that EM showers are often comprised of several branches isolated by gaps caused by photons propagating through the detector medium. The variable is calculated by counting the number of isolated 2D segments of charge associated to reconstructed showers. This quantity is a sum of such clusters from all three planes.
     \item[] \textbf{Moliere ``Angle''} (variable: \emph{shrmoliereavg}, figure~\ref{fig:nue:variables:dedx}) This quantity aims to characterize the profile of reconstructed EM showers. It is computed using 3D spacepoints. For each 3D spacepoint, the angle between the shower's direction and the spacepoint is calculated. The average of all such angles is used as the variable.
     \item[] \textbf{dE/dx Variables} (variables: \emph{shr\_tkfit\_2cm\_dedx\_\{U,V,Y\}} and \emph{shr\_tkfit\_gap10\_dedx\_\{U,V,Y\}} )  These variables are computed using calorimetric information from each plane separately. The two different variables are calculated as the median d$E$/d$x$ computed over some segment of a shower's trunk. The two segments used are the first two centimeters, and the range [1,5] cm, respectively. Two reasons justify the us of both these variables. Firstly, there are cases where the first few hits of a shower merge activity from short protons, causing a large d$E$/d$x$ which hampes the ability to identify the shower as an electron. These cases are particularly relevant as backgrounds for the 1$e$0$p$ channel. Secondly, in case of photon showers, d$E$/d$x$ becomes more and more MIP-like as one moves further along the shower, especially at low energy (see figure~\ref{fig:dedxgammas:dist}).
 \end{itemize}{}
-
-
 
 \begin{figure}[H] 
 \begin{center}
@@ -51,14 +49,14 @@
     \begin{subfigure}[b]{0.35\textwidth}
     \centering
     \includegraphics[width=1.00\textwidth]{nueselection/variables/secondshowerevd.png}
-    \caption{\label{fig:nue:variables:secondshowerevd} ``trkfit'' variable }
+    \caption{\label{fig:nue:variables:secondshowerevd} unclustered shower }
     \end{subfigure}
     \begin{subfigure}[b]{0.35\textwidth}
     \centering
     \includegraphics[width=1.00\textwidth]{nueselection/variables/secondshower.png}
-    \caption{\label{fig:nue:variables:secondshower} ``subcluster'' variable }
+    \caption{\label{fig:nue:variables:secondshower}second-shower variables }
     \end{subfigure}
-\caption{\label{fig:nue:variables:secondshower} Visual representation of the second shower based $\pi^0$ rejection variables.}
+\caption{\label{fig:nue:variables:secondshower} Visual representation of the second shower based $\pi^0$ rejection variables. Left: example event where the second shower in a $\pi^0$ event is clustered in 2D (black hits) but not fully reconstructed in 3D. Right: reconstructed variables associated to the 2nd-shower search. The gray cone in the image represents the black cluster on the left image, for which only 2D information is accessible.}
 \end{center}
 \end{figure}
 
@@ -88,7 +86,7 @@ Category & Variable Name & Description  \\
 \multicolumn{1}{l|}{}  & \emph{tksh\_distance}  & Distance between leading shower and longest track start points.\\  \cline{2-3}
 \multicolumn{1}{l|}{} & \emph{tksh\_angle}  & Angle  between  leading  shower   and  longest  track directions.\\  \cline{2-3}
 \multicolumn{1}{l|}{} & \emph{merge\_bestdist}  & Distance between shower start point and track start (or end) point for the track in the slice that best matches the direction of the shower.\\  \cline{2-3}
-\multicolumn{1}{l|}{} & \emph{trkit} & Fraction of the 3D spacepoints successfully fitted with the shower track-fitter algorithm. \\  \cline{2-3}
+\multicolumn{1}{l|}{} & \emph{trfit} & Fraction of the 3D spacepoints successfully fitted with the shower track-fitter algorithm. \\  \cline{2-3}
 \multicolumn{1}{l|}{} & \emph{subcluster} & Number of isolated 2D segments of charge associated to a reconstructed shower on all three planes  \\  \cline{2-3}
 \multicolumn{1}{l|}{} & \emph{shrmoliereavg} &  Average angle between the shower’s direction and its 3D spacepoints.    \\ \cline{2-3}
 \multicolumn{1}{l|}{} & \emph{shr\_tkfit\_gap10\_dedx\_\{U,V,Y\}}  & Median dE/dx computed over the [1,5] cm of the shower’s  trunk. \\ \cline{2-3}
