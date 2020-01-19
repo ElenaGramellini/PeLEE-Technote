@@ -1,6 +1,6 @@
 \label{sec:nueselection:inclusive}
 
-The aim of the inclusive charged-current electron neutrino selection is to select electron neutrinos independently of their final state and energy. The selection performance is approximately 20\%, leading to 250-300 electron neutrino's in the Run 1-4 data-set. The purity without CRT is $\approx 35-40\%$ and with CRT $\approx 45-50\%$.
+The aim of the inclusive charged-current electron neutrino selection is to select electron neutrinos independently of their final state and energy. The selection efficiency is approximately 20\%, leading to 250-300 electron neutrino's in the Run 1-4 data-set. The purity without CRT is $\approx 35-40\%$ and with CRT $\approx 45-50\%$.
 
 \subsubsection{Pre-selection}
 The selection builds on top of the SliceID (\cref{sec:sliceID}). At first the following cuts are applied:
@@ -88,6 +88,8 @@ The three distributions of the variables used to characterise the d$E$/d$x$ at t
 
 \subsubsection{Other Daughters Identification}
 
+\textcolor{blue}{(comment by David) This section is not too clear. Is this BDT score computed per PFParticle, for all PFParticles that are not the electron candidate? What do you mean when you say that pions are not used? PFParticles from nue slices are classified as signal-like, PFParticles from numu/NC events are background like, and pions from all events are not classified at all?}
+
 Apart of the electron candidate particle, there are other particles in the slice. These tracks and showers can be part of the $\nu_e$ CC event, but they can also help us to identify the event as background. The event should not contain a particle backtracked to cosmic overlay activity or simulated muons. On the other hand, particles that correspond to protons or split off parts of the electron shower should not lead to the rejection of the event. The more complicated situation arises when pions are present. Charged pions should be allowed in a $\nu_e$ CC search, but the mis-identification rate between charged pions and muons is large in this detector type. Photons coming from neutral pions, appart of the electron shower candidate, can be part of the $\nu_e$ CC event, but can also help to reduce the NC $\pi^0$ backgrounds. It was chosen therefore to not use pions in the BDT training and give them a neutral label. The input variables of the BDT are:
 \begin{enumerate}
     \item trk\_llr\_pid\_score
@@ -125,12 +127,12 @@ The final event classification build on top of the particle identification perfo
 
 \begin{enumerate}
     \item Electron BDT response
-    \item Lowest BDT response of the other daughter BDT
+    \item Lowest BDT response of the other daughter BDT. \textcolor{blue}{(David) Lowest means the score for the least nue-like PFParticle? What happens if no additional PFParticle is present?}
     \item contained\_fraction
     \item Number of showers
     \item hits\_ratio
-    \item Mean BDT response of the other daughter BDT
-    \item Number of particles away from the vertex.
+    \item Mean BDT response of the other daughter BDT \textcolor{blue}{(David) If there are two PFParticles in addition to the electron candidate, this quantity is the average of their BDT response. What happens if there are no additional PFParticles?}
+    \item Number of particles away from the vertex. \textcolor{blue}{(David) Away from the vertex means how many cm?}
 \end{enumerate}
 The response of the event classification is given in the left panel \cref{fig:pre_event_score}. After the selection, the efficiency is 21\%, corresponding to 280 electron neutrino's in the Run 1-4 data-set. The distribution of the reconstructed electron energy is given in the right panel of \cref{fig:pre_event_score}. \cref{fig:nueccinc_eff} documents the efficiency of the SliceID, pre-selection and final inclusive selection for the three final state categories.
 
