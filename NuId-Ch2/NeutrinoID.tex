@@ -1,12 +1,30 @@
-\subsection{Event Slicing and Cosmic Removal in Pandora}
+%\subsection{Event Slicing and Cosmic Removal in Pandora}
 
-The work presented in this note relies on the Pandora approach for event reconstruction~\cite{bib:pandoraub}. The scope of Pandora is to do the low-level pattern-recognition step of the reconstruction, i.e. group hits into clusters, clusters into particles and particles into hierarchies. 
+The work presented in this note relies on the Pandora approach for event reconstruction~\cite{bib:pandoraub}. The scope of Pandora is to do the low-level pattern-recognition step of the reconstruction, i.e. group hits into clusters, clusters into particles and particles into hierarchies. This section describes how Pandora's pattern-recognition output is combined with scintillation light information to isolate possible candidate neutrino interactions in MicroBooNE events, a process illustrates in the three images of figure~\ref{fig:sliceid}. 
 
-\subsubsection{Slicing \textcolor{green}{Wouter ... P.R. Elena}}
-The creation of a ``slice" is the first step of the Pandora processing. A slice is a subset of hits  on a plane which are topological distinct:  it is assumed that different slices correspond to different particles. To produce slices, the Pandora Cosmic Pattern Recognition is first run over all hits, aiming to construct muon tracks and associated delta showers and producing slices under the cosmic hypothesis. At this stage, obvious cosmic activity is tagged using geometric information. The obvious cosmic tagged hits are discarded; the filtered hit collection is used as input to the Pandora Neutrino Pattern Recognition which reconstruct slices under the neutrino hypothesis. 
-Each slice is now reconstructed both under the cosmic hypothesis and the neutrino hypothesis. A typical event contains approximately 5 slices.
+\begin{figure}[ht] 
+\begin{center}
+    \begin{subfigure}[b]{0.7\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{NuId-Ch2/Images/slice00.png}
+    \caption{\label{fig:slcieid:00} Typical event with multiple interactions isolated by Pandora in \emph{slices}.}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.7\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{NuId-Ch2/Images/slice01.png}
+    \caption{\label{fig:slcieid:01} Event after the removal of \emph{obvious cosmics} tagged geometrically by Pandora.}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.7\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{NuId-Ch2/Images/slice02.png}
+    \caption{\label{fig:slcieid:01} Implementation of the \texttt{SiceID} tool to isolate possible candidate $\nu$ interactions.}
+    \end{subfigure}
+\caption{\label{fig:sliceid} Succession of steps in cosmic removal performed using Pandora's topological pattern recognition combined with scintillation light information through the \texttt{SliceID} tool.}
+\end{center}
+\end{figure}
 
-%After the hit creation, the Pandora Cosmic Pattern Recognition is run over all hits, aiming to construct muon tracks and associated delta showers. At this stage, obvious cosmic activity is tagged using geometric information. Now, the obvious cosmic tagged hits are discarded and the filtered hit collection enters a next stage, slicing. A "slice" is a subset of hits which are topological distinct. It is assumed that different slices correspond to different particle hierarchies. Each slice is now reconstructed both under the cosmic hypothesis and the neutrino hypothesis. A typical event contains approximately 5 slices.
+\subsection{Slicing \textcolor{green}{Wouter ... P.R. Elena}}
+The creation of a ``slice" is the first step of the Pandora processing. A slice \textcolor{blue}{is a collection of distinct reconstructed particles which belong to the same interaction (such as a cosmic muon and its Michel electron, or the muon and proton in a 1$\mu$1$p$ neutrino interaction) \st{is a combination of hits on the three different planes which are topological distinct:  it is assumed that different slices correspond to a distinct group of activity in the TPC}}. To produce slices, the Pandora Cosmic Pattern Recognition is first run over all hits, aiming to construct muon tracks and associated $\delta$-rays and Michel electrons under the cosmic hypothesis (fig.~\ref{fig:sliceid:00}). At this stage, obvious cosmic activity (through-going or out-of-time muons) is tagged using geometric information. The obvious cosmic tagged hits are discarded (fig.~\ref{fig:sliceid:01}); the filtered hit collection is used as input to the Pandora Consolidated Pattern Recognition which reconstruct slices under the neutrino hypothesis. Each slice is now reconstructed both under the cosmic hypothesis and the neutrino hypothesis. A typical event contains approximately 5 slices. 
 
 \subsubsection{Clustering and Vertex Finding \textcolor{green}{Wouter}} 
 Pandora computes the 2D clustering on the hits in each slice and in each plane separately. Then, a number of 3D candidate vertices is created by finding positions that project down on to the ends of the available 2D clusters. All of the possible candidates are fed into the support vector machine (SVM) vertex selection, and the most appropriate one is chosen. This 3D vertex is used to split any existing clusters that straddle the vertex. Then, the cluster matching algorithms are run, where the clusters are compared between views and modified to improve the matching.
@@ -28,14 +46,18 @@ To select the neutrino slice, or reject the event at this stage, the following p
     \item If the slice with the largest topological score in the event remains, then select it as the neutrino.
     \item If not, then choose the remaining slice with the largest flash-matching score.
 \end{itemize}
-\begin{figure}
+Further details on the \texttt{SliceID} tool are available in DocDB 23854 and 22519. Additional documentation for this tool is in preparation.
+
+The performance of the SliceID for electron neutrino simulated events is given in~\cref{fig:sliceid}.
+
+\begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{NuId-Ch2/Images/efficiency_cat_0.pdf}
     \caption{The performance of the SliceID in function of the true neutrino energy for the channel with protons (left), the channel without vertex activity (middle) and events with pions in the final state (right).}
     \label{fig:sliceid}
 \end{figure}
 
-The performance of the SliceID for electron neutrino simulated events is given in~\cref{fig:sliceid}.
+
 
 \subsection{CRT Veto and Distance Tagger \textcolor{green}{Elena}}
 \label{sec:sliceID:CRT}
@@ -65,12 +87,12 @@ Further details and a preliminary study of the CRT  impact on an electron neutri
 
 \begin{figure}[ht] 
 \begin{center}
-    \begin{subfigure}[b]{0.45\textwidth}
+    \begin{subfigure}[b]{0.4\textwidth}
     \centering
     \includegraphics[width=1.00\textwidth]{NuId-Ch2/Images/flash_time_01152020.pdf}
     \caption{\label{fig:crt:pre} no CRT tools.}
     \end{subfigure}
-    \begin{subfigure}[b]{0.45\textwidth}
+    \begin{subfigure}[b]{0.4\textwidth}
     \centering
     \includegraphics[width=1.00\textwidth]{NuId-Ch2/Images/flash_time_01152020_CRT.pdf}
     \caption{\label{fig:crt:post} with CRT tools.}

@@ -1,9 +1,11 @@
 \label{sec:NuMUCCsel}
 
-\par This chapter presents the two $\nu_{\mu}$ selections of the analysis. Both are inclusive selections, but with different distributions. The first selection (sec \ref{ssec:NuMUCCsel:INC}) provides a pure, high-statistics sample of $\nu_{\mu}$s and the second selection (sec \ref{ssec:NuMUCCsel:constr}) is optimized to be used as a constraining tool in the $\nu_e$ analysis. 
+\par This chapter presents the two $\nu_{\mu}$ selections of the analysis; both are inclusive selections, but with different distributions. The first selection (sec \ref{ssec:NuMUCCsel:INC}) provides a pure, high-statistics sample of $\nu_{\mu}$s and the second selection (sec \ref{ssec:NuMUCCsel:constr}) is optimized to be used as a constraining tool in the $\nu_e$ analysis. 
 
-\subsubsection{Variable Definitions}
-\label{sssec:NuMUCCsel:sel:vars}
+\subsection{Variable Definitions}
+\label{ssec:NuMUCCsel:sel:vars}
+
+\par Below are a concise list of variables used in the $\nu_{\mu}$ selections. The variables are organized into \textit{slice} and \textit{track}-level descriptors, used for preselection and muon-candidate selection respectively. There is some redundancy between this list and the list in sec \ref{sec:nueselection:variables}, but this list below should serve as a quick reference to a reader of this chapter.
 
 \par \noindent \textbf{Slice variables}: These variables generally describe the reconstructed neutrino interaction, i.e. the confluence of data gathered from all the PFParticles in the slice.
 \begin{itemize}
@@ -24,6 +26,7 @@
     \item \emph{pfp\_generation}: The generation of the PFParticle according to Pandora, i.e. how many parents the object on interest has in the slice.
 \end{itemize}
 
+\begin{comment}
 \subsubsection{Backgrounds}
 \label{sssec:NuMUCCsel:sel:bkgrnds}
 
@@ -33,6 +36,7 @@
 \label{sssec:NuMUCCsel:sel:FVandSCE}
 
 \par Coming soon...
+\end{comment}
 
 \begin{figure}
     \centering
@@ -107,9 +111,9 @@
 
 \subsection{$\nu_{\mu}$ Constraint \textcolor{red}{Ryan}}
 \label{ssec:NuMUCCsel:constr}
-\par The purpose of this $\nu_{\mu}$ side-band is to constrain the systematic uncertainties in the $\nu_{e}$ analysis. This is able to be done because the $\nu_{\mu}$s and $\nu_{e}$s of the BNB are subject to similar uncertainties, namely flux and cross-section modelling uncertainties. The $\nu_{e}$ selection is subject to higher uncertainties due to its low statistics. The $\nu_{\mu}$ component benefits from an order-of-magnitude advantage in absolute flux at MicroBooNE (Docdb 1031) and is exploited to constrain the uncertainties on the $\nu_{e}$s.
+\par The purpose of this $\nu_{\mu}$ side-band is to constrain the systematic uncertainties in the $\nu_{e}$ analysis. This is able to be done because the $\nu_{\mu}$s and $\nu_{e}$s of the BNB are subject to similar, correlated uncertainties, namely flux and cross-section modelling uncertainties. The $\nu_{e}$ selection is subject to higher uncertainties due to its low statistics. The $\nu_{\mu}$ component benefits from an order-of-magnitude advantage in absolute flux at MicroBooNE (Docdb 1031) and is exploited to constrain the uncertainties on the $\nu_{e}$s. For more information regarding the philosophy and goals of this constraint see sec \ref{ssec:goalsofnumusel}.
 
-This selection prioritizes higher efficiencies in the lower-energy region that is the interest to the LEE analysis. The flux and cross-section $\nu_{e}$ are more uncertain in the few-hundreds MeV energy region. Fortunately, the absolute $\nu_{\mu}$ flux (fig \ref{fig:bnb_absoluteflux}) and the cross-species flux correlation is greatest below 1 GeV (figs \ref{fig:numuconstraint:flux}). 
+\par This selection prioritizes higher efficiencies and purities in the low-energy region that is the interest to the LEE analysis. Unfortunately, the flux and cross-section predictions for $\nu_{e}$ are most uncertain in the few-hundreds MeV energy region. Fortunately, the absolute $\nu_{\mu}$ flux (fig \ref{fig:bnb_absoluteflux}) and the cross-species flux correlation is greatest below 1 GeV (see figs \ref{fig:numuconstraint:flux}, \ref{fig:numuconstraint}).
 
 \begin{figure}
     \centering
@@ -119,19 +123,15 @@ This selection prioritizes higher efficiencies in the lower-energy region that i
 \end{figure}
 
 \subsubsection{Signal Definition}
-\label{sssec:NuMUCCsel:INC:signaldef}
-\par A $\nu_{\mu}$ event is identified by the presence of, at least, one muon candidate originating from inside the fiducial volume of the detector. Additional tracks and showers may accompany the muon candidate; these assist in reconstruction but are not necessary in the inclusive selection.
+\label{sssec:NuMUCCsel:constr:signaldef}
+\par A $\nu_{\mu}$ event is identified by the presence of one muon candidate originating from inside the fiducial volume of the detector. Additional tracks and showers may accompany the muon candidate; these assist in reconstruction but are not necessary in the inclusive selection. Future studies of the $\nu_{\mu}$ side-band may require the presence of proton candidates to further constrain interaction models.
 
-\subsubsection{Event Selection and Muon Candidate Tagging}
-\label{sssec:NuMUCCsel:sel}
+\subsubsection{Event Preselection}
+\label{sssec:NuMUCCsel:constr:preselec}
 
-\par The selection of $\nu_{\mu}$ events is built from the SliceID preselection (see sec. \ref{sec:sliceID:SliceID}) and a combination of cuts on slice-level and track-level observable values. The $\nu_{\mu}$ selection has this prescription: first, perform SliceID preselection; second, perform slice-level cuts to remove backgrounds; finally, perform track-level cuts to select one muon candidate.
-\par Below is a summary of the variables used in this selection. There is some redundancy between this list and the lists given for the $\nu_e$ selection; this is intentional, as an overlap in phase space of the $\nu_{\mu}$ and $\nu_{e}$ selections improves constraining power.
+\par The selection of $\nu_{\mu}$ events is built from the groundwork of the SliceID tool (see sec. \ref{sec:sliceID:SliceID}) and a combination of cuts on event-level and track-level observable values. The cuts in this section are primarily designed to eliminate cosmic and dirt backgrounds and select slices that are $\nu_{\mu}$-like. The methodology of this selection is similar to the selections in sec \ref{fig:nueselections} where first, the common SliceID filter is applied; next, event-level cuts are applied to select $\nu_{\mu}$-like events; finally, track-level cuts are applied to screen for muon-like candidates. The muon-candidate selection is described in sec \ref{sssec:NuMUCCsel:sel:muonsel}.
 
-\subsubsection{Event Selection}
-\label{sssec:NuMUCCsel:sel:evt}
-
-\par The cuts in this section are primarily designed to eliminate cosmic and dirt backgrounds and select slices that are $\nu_{\mu}$-like. The SliceID cut and the requirement of at least one reconstructed track are pursuant of $\nu_{\mu}$-like slices. The requirement that the reconstructed vertex be contained inside the fiducial volume and that the slice have a sufficiently high topological score favor $\nu_{\mu}$ CC events and disfavor activity that is cosmogenic or dirt-like. Those cuts, specifically, are:
+\par The requirement that the reconstructed vertex be contained inside the fiducial volume and that the slice have a sufficiently high topological score favor $\nu_{\mu}$ CC events and disfavor activity that is cosmogenic or dirt-like. Those cuts, specifically, are:
 
 \begin{itemize}
     \item \emph{nslice} = 1.
@@ -143,9 +143,9 @@ This selection prioritizes higher efficiencies in the lower-energy region that i
     \item \emph{reco\_nu\_vtx\_sce\_z} $\not\in$ [675,775] cm.
 \end{itemize}
 
-\par \noindent The final cuto on the $z$ coordinate is to ensure that it is not in the region of `dead wires' in the MicroBooNE detector. \textcolor{pink}{include some plot/statistic to motivate this further}
+\par \noindent This selection defines a unique fiducial volume compared to other selections, even in this analysis. See sec \ref{sssec:NuMUCCsel:constr:FV} for discussion of the determination of this boundary. The final cut on the $z$ coordinate is to ensure that it is not in the region of `dead wires' in the MicroBooNE detector, this is common practice within this analysis and the larger collaboration.
 
-\par Run 3 has the additional power to leverage the CRT system to further limit cosmic contamination of the signal.
+\par \noindent Run 3 has the additional power to leverage the CRT system to further limit cosmic contamination in the signal.
 
 \textbf{Run 3 only:}
 \begin{itemize}
@@ -154,9 +154,9 @@ This selection prioritizes higher efficiencies in the lower-energy region that i
 \end{itemize}
 
 \subsubsection{Muon Selection}
-\label{sssec:NuMUCCsel:sel:muonsel}
+\label{sssec:NuMUCCsel:constr:muonsel}
 
-\par After the slice-level cuts are applied, the tracks in the slice are further analyzed to identify a muon candidate.
+\par After the event-level cuts are applied, the tracks in the slice are further analyzed to identify muon candidates. At least one reconstructed track in the event must satisfy all these criterion for the event to pass the selection. If an event has more than one muon candidate, then the longest is taken. Of the muon candidates that pass this selection, $\approx 94\%$ are, in simulation, muons from $\nu_{\mu}$ CC interactions.
 
 \begin{itemize}
     \item \emph{trk\_sce\_start\_x} $\in$ [5,251] cm.
@@ -172,9 +172,30 @@ This selection prioritizes higher efficiencies in the lower-energy region that i
     \item \emph{pfp\_generation} = 2.
 \end{itemize}
 
-\par \noindent The cuts made on the start and end points of the reconstructed tracks require that the track is fully contained inside the fiducial volume of the detector. This cut further limits the primary background for this selection which is cosmic muons, originating from outside the detector. The containment requirement also allows for the use of range-based momentum calculations on the muons; this has been shown to have a high resolution (see fig \ref{fig:numusel:momres}). The cut on the track distance requires that the reconstructed track be sufficiently close to the interaction vertex, this removes many in-time cosmics from the selection that are reconstructed as part of the slice. 
+\par \noindent The cuts made on the start and end points of the reconstructed tracks require that the track is fully contained inside the fiducial volume of the detector. This containment cut further reduces the primary background for this selection are is cosmic muons, originating from outside the detector. The containment requirement also motivates the use of range-based momentum calculations on all the muon candidates. Range-based momentum has been shown to have a high resolution, the independently calculated MCS-based momentum can be used as a quality check (see fig \ref{fig:numusel:momres}). The containment condition rejects many higher-energy $\nu_{\mu}$ events that might leave the detector, but it has a high efficiency in the lower energies.
+
+\par The cut on the track distance requires that the reconstructed track be sufficiently close to the interaction vertex, this removes many in-time cosmic muons that are reconstructed as part of the event.
+
 \par The cut on the log likelihood ratio pid score is to separate the muons from the protons among the PFParticle tracks in the passing slices. The track length cut further separates the muons from the protons which tend to have shorter track lengths. 
 
 \par The track score cut ensures that the selected tracks are particularly track-like and this removes many particularly high energy, track-like electrons from the selection. Finally the PFParticle generation cut ensures that pandora recognizes that the track is a first daughter of the parent neutrino interaction. 
 
+\begin{figure}
+    \centering
+    \includegraphics[height=6.5cm]{NuMuCCsel/Images/Ryan/containedMomentumRes.png} \hspace{2mm}
+    \includegraphics[height=6.5cm]{NuMuCCsel/Images/Ryan/muoncandidate_pquality.jpg} \hspace{2mm}
+    \caption{The performance of range-based $\mu$ momentum calculation for contained tracks.}
+    \label{fig:numusel:momres}
+\end{figure}
 
+\subsubsection{Determination of Fiducial Volume}
+\label{sssec:NuMUCCsel:constr:FV}
+
+\par The fiducial volume in this section differs slightly from other fiducial volumes, even in this analysis. Because the purpose of this selection is to leverage the high-statistics of the $\nu_{\mu}$ composition of the BNB, the fiducial volume is taken to be as large as possible while retaining high purity and efficiency at low-energies.
+
+\subsubsection{Performance}
+\label{sssec:NuMUCCsel:constr:performance}
+
+\par This selection has been done on the Run1 and the Run3 sets processed for this analysis. The advantage of the Run1 data-set is higher statistics (5E19 POT in Run1 and 1E19 POT in Run3), but Run3 has the cosmic ray tagging system for extra background rejection. Distributions shown in this section will be of variables pertaining to the muon candidate for each event that passes the selection; Run1 data will be preferentially shown due to the higher statistics. The power of the Run3 CRT system will be demonstrated at the end of this section.
+
+\par 
