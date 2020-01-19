@@ -70,14 +70,14 @@ Category & Variable Name & Description  \\
 \hline
 
 \multicolumn{1}{l|}{} & \emph{nslice} &  Number of neutrino slices identified by the \emph{SliceID}. Values are  0 or 1.\\  \cline{2-3}
-\multicolumn{1}{l|}{} & \emph{reco\_nu\_vtx\_sce\_\{x,y,z\}} & Reconstructed space charged corrected neutrino interaction vertex in (x,y,z) coordinates.  \\  \cline{2-3}
+\multicolumn{1}{l|}{} & \emph{reco\_nu\_vtx\_sce\_\{x,y,z\}} & Reconstructed neutrino interaction vertex in (x,y,z) coordinates. The space charged correction is applied.  \\  \cline{2-3}
 \multicolumn{1}{l|}{} & \emph{n\_showers\_contained} & Number of showers with a starting point within the fiducial volume. \\  \cline{2-3}
 \multicolumn{1}{l|}{} & \emph{n\_tracks\_contained} & Number of tracks fully contained in the fiducial volume.  \\  \cline{2-3}
 \multicolumn{1}{l|}{} & \emph{contained\_fraction} & Hits in PFParticles contained in the fiducial volume over the total number of clustered hits in the slice.  \\  \cline{2-3}
-\parbox[t]{2mm}{\multirow{4}{*}{\rotatebox[origin=c]{90}{Slice}}} & \emph{hits\_ratio} & Ratio between hits from showers and total number of hits. \\  \cline{2-3}
+\parbox[t]{2mm}{\multirow{4}{*}{\rotatebox[origin=c]{90}{Slice}}} & \emph{hits\_ratio} & Ratio between hits from showers and total number of hits in the slice. \\  \cline{2-3}
 \multicolumn{1}{l|}{} & \emph{CosmicIP} & Closest distance between shower start and space points associated to tracks flagged as cosmics. \\  \cline{2-3}
-\multicolumn{1}{l|}{} & \emph{crtveto} & Boolean variable checking whether the event passes the CRT veto or not. \\  \cline{2-3}
-\multicolumn{1}{l|}{} & \emph{\_closestNuCosmicDist} & Minimum 3D distance of the reconstructed neutrino vertex from a CRT-tagged cosmic track. \\  \cline{2-3}
+\multicolumn{1}{l|}{} & \emph{crtveto} & Boolean variable checking if the event passes the CRT veto. \\  \cline{2-3}
+\multicolumn{1}{l|}{} & \emph{\_closestNuCosmicDist} &  3D distance between the reconstructed neutrino vertex and the closest CRT-tagged cosmic track. \\  \cline{2-3}
 \multicolumn{1}{l|}{} & \emph{slclustfrac} & Fraction of hits in the slice that are fully reconstructed to 3D particles. \\  \cline{2-3}
 \hline
 
@@ -85,8 +85,8 @@ Category & Variable Name & Description  \\
 \multicolumn{1}{l|}{} & \emph{trkpid}  &  Proton-muon LLR particle identification. \\  \cline{2-3}
 \parbox[t]{2mm}{\multirow{4}{*}{\rotatebox[origin=c]{90}{Track, Shower and Their Separation}}}  & \emph{shr\_energy\_tot\_cali}  & Sum  of  the  energy  of  the  calibrated  showers  (in  GeV). Used  only  at pre-selection as a ``Michel veto”.\\  \cline{2-3}
 \multicolumn{1}{l|}{} & \emph{shr\_score} & Pandora  SVM track/shower score for the leading shower.\\  \cline{2-3}
-\multicolumn{1}{l|}{}  & \emph{tksh\_distance}  & distance between leading shower vertex and longest track vertex.\\  \cline{2-3}
-\multicolumn{1}{l|}{} & \emph{tksh\_angle}  & angle  between  leading  shower  vertex  and  longest  track  vertex.\\  \cline{2-3}
+\multicolumn{1}{l|}{}  & \emph{tksh\_distance}  & Distance between leading shower vertex and longest track vertex.\\  \cline{2-3}
+\multicolumn{1}{l|}{} & \emph{tksh\_angle}  & Angle  between  leading  shower  vertex  and  longest  track  vertex.\\  \cline{2-3}
 \multicolumn{1}{l|}{} & \emph{merge\_bestdist}  & Distance between shower start point and track start (or end) point for the track in the slice that best matches the direction of the shower.\\  \cline{2-3}
 \multicolumn{1}{l|}{} & \emph{trkit} & Fraction of the 3D spacepoints successfully fit with the shower track-fitter algorithm. \\  \cline{2-3}
 \multicolumn{1}{l|}{} & \emph{subcluster} & Number of isolated 2D segments of charge associated to a reconstructed shower on all three planes  \\  \cline{2-3}
