@@ -177,6 +177,7 @@ It is especially important to note that the chosen model strongly favors the int
 \end{figure}
 
 \subsection{Goals of the $\nu_{\mu}$ Selection \textcolor{green}{David}}
+\label{ssec:goalsofnumusel}
 \begin{comment}
 \par For the purpose of this analysis, measurements of $\nu_{\mu}$ interactions are aimed at reducing modeling uncertainties for intrinsic $\nu_e$ events and backgrounds, with the goal of reducing systematic uncertainties in order to be able to claim the observation of new physics were a measurement of $\nu_e$ interactions differ significantly from the expected intrinsic rate. This section describes why such a data-driven constraint is needed and what are the choices which motivate the approach taken in this analysis.
 \end{comment}
@@ -244,7 +245,7 @@ Eventually, the observed spectra from the \nueccnopinp and the \numu selections 
 
 \subsection{Money Plots and Takeaways \textcolor{red}{Elena/David/ Group discussion}}
 
-\subsection{Technical Overview on the Content of this Note}
+\subsection{Technical Overview on the Content of this Note \textcolor{red}{David}}
 \subsubsection{Samples}
 \par This analysis attempts to use all the latest available data and simulation samples for the MicroBooNE LEE analysis. This section briefly describes what samples are used.
 \par MicroBooNE's available dataset for the LEE analysis consists of $10.1E20$ POT of BNB data taken over four Runs. This number takes into account run periods discarded due to data-quality requirements. Small subsets of this data is available for analyzers to use, as described below.
@@ -264,6 +265,7 @@ For on-beam data, three samples are used in this note: the ``5E19'' Run1 open da
     \item \textbf{NC}: NC events (all flavors) with no final state $\pi^0$s.
 \end{itemize}{}
 
+\subsubsection{Tech-note versioning: current status and recent/expected changes }
 
 
 \newpage
@@ -555,9 +557,11 @@ Figure~\ref{fig:eres:neutrino} shows the comparison between reconstructed energy
 \newpage
 
 \section{Control Samples and Analysis Input Validation}
+\label{sec:controls}
 \par The selections and analysis described below rely on well understood detector, simulation, calibration, and analysis tools performance. This section is dedicated to evaluating the performance of detector modeling through data-mc comparisons of targeted sidebands. The sidebands developed for this analysis are a high-stats $\pi^0$ selection, and an \emph{anti-BDT} filter which targets the selection of $\nu_e$ like backgrounds. Currently comparisons for the \emph{anti-BDT} filter are not available and will be documented in a future iteration of this note.
 \par It is important to note that in addition to detector simulation and reconstruction effects, $\nu$-Ar modeling can impact the level of data-mc agreement in various variables. We will try to point out when this might be the case.
 \subsection{$\pi^0$ control sample \textcolor{green}{David}}
+\label{sec:controls:pi0}
 \par A $\pi^0$ selection has been developed in order to obtain high-stats samples of $\pi^0$ events and $\gamma$ EM showers which can constrain $\pi^0$ production modeling uncertainties as well as validate the analyis' ability to reconstruct and select EM showers.
 \par Figure~\ref{fig:pi0:mass} shows the reconstructed $M\gamma\gamma$ for candidate $\pi^0$ events, with a calibrated but uncorrected (i.e. not accounting for biases in shower energy reconstruction caused by the incompleteness in charge clustering) energy reconstruction. Overall there is good data-MC agreement, apart from an apparent normalization difference. To account for this normalization difference we measure a flat scaling factor needed for CC and NC $\pi^0$ events needed to obtain  consitent rate in data and MC. This factor is found to be 72.4\% in Run1 and 72.7\% in Run3. We repeat the exercise applying a tighter $\pi^0$ selection enhancing the $\pi^0$ purity and obtain scaling factors of 70\% for both Run1 and Run3. While this procedure is far from rigorous, it allows us to study detector-related and specifically shower-related variables removing a large normalization difference. \textcolor{red}{A more rigorous data-driven constrain of our $\pi^0$ rate, performed accounting for detector and flux systematics, and considering a broader range of $\pi^0$ modeling, will need to be performed.}
 
@@ -644,9 +648,6 @@ Figure~\ref{fig:eres:neutrino} shows the comparison between reconstructed energy
 
 \subsection{Variable definitions \textcolor{green}{Elena}}
 \label{sec:nueselection:variables}
-%\input{SelectionVariablesOriginal}
-\input{SelectionNueVar-Ch5}
-
 \clearpage
 \subsection{$\nu_e$ CC Inclusive selection \textcolor{red}{Wouter}}
 \input{NueCCsel/NueCCsel}
@@ -702,7 +703,7 @@ The 1$e$N$p$ and 1$e$0$p$ selections rely on a common pre-selection which requir
 \end{center}
 \end{figure}
 
-\subsection{\npsel Channel \textcolor{red}{David + Giuseppe}}
+\subsection{\npsel Channel \textcolor{green}{David + Giuseppe}}
 \label{sec:nueselection:1eNp}
 
 The 1$e$N$p$ channel is the most sensitive to the MiniBooNE eLEE signal as it contains a large fraction of the signal events and allows for selection requirements based both on showers and tracks. 
@@ -735,7 +736,7 @@ Michel rejection & shr\_energy\_tot\_cali $>$ 0.07 \\
  \caption{\label{tab:1eNp:presel} Preselection requirements for the \npsel selection.}
 \end{table}
 
-The relative fraction of EXT events at this stage is roughly 25\%, so we can look at all selection variables in data and MC in a neutrino-dominated sample with the open Run1 and Run3 data sets. We typically see very good agreement, which rules out major problems related to POT-scaling, detector modeling, inclusive cross-section. The full list of plots can be found in Appendix~\ref{sec:datamc:plots}. Figure~\ref{fig:1eNp:prsel} shows the level of agreement for the reconstructed neutrino energy variable. \textcolor{red}{We should probably discuss variables with not so great data-MC agreement here (in case they are not already discussed elsewhere).}
+The relative fraction of EXT events at this stage is roughly 25\%, so we can look at all selection variables in data and MC in a neutrino-dominated sample with the open Run1 and Run3 data sets. We typically see very good agreement, which rules out major problems related to POT-scaling, detector modeling, inclusive cross-section. \textcolor{red}{The main exception are dEdx variables that show some tension due to the incomplete calibration (see Sec.~\ref{sec:controls:pi0} for more details).} The full list of plots can be found in Appendix~\ref{sec:datamc:plots}. Figure~\ref{fig:1eNp:prsel} shows the level of agreement for the reconstructed neutrino energy variable. 
 
 \begin{figure}[ht] 
 \begin{center}
@@ -818,7 +819,11 @@ Misreconstruction & tksh\_angle $>$ -0.9 and tksh\_angle $<$ 0.7 \\
 
 \subsubsection{BDT}
 
-Alternatively to the box cut approach, a selection based on Boosted Decision Tree (BDT) algorithms has been developed. This selection is expected to be the most sensitive to low-energy \nue events since BDTs are able to learn additional information from the data and return a response variable that is highly discriminating between signal and background. \textcolor{red}{While the development of the BDT selection is fairly advanced, a few steps are needed before it is finalized. Current limitations are mainly related to the limited size of the samples that are available for training and to the ongoing calibration of the dEdx variables used in the BDT.} Because of these limitation we deemed safer to restrict both the BDT training and the analysis to events that pass the preselection requirements plus a loose set of cuts intended to avoid considering events where one or more variables is clearly inconsistent with $\nu_e$ events. The list of cuts is in Table~\ref{tab:1eNp:loosecut}.
+Alternatively to the box cut approach, a selection based on Boosted Decision Tree (BDT) algorithms has been developed. This selection is expected to be the most sensitive to low-energy \nue events since BDTs are able to learn additional information from the data and return a response variable that is highly discriminating between signal and background. 
+
+\textcolor{red}{While the development of the BDT selection is fairly advanced, a few steps are needed before it is finalized. Current limitations are mainly related to the limited size of the samples that are available for training and to the ongoing calibration of the dEdx variables used in the BDT. The limited sample size can lead to overtraining and suboptimal performance, while the missing calibration can induce small data-MC disagreements.} 
+
+In part because of these limitation we deemed safer to consider only events that pass a loose set of cuts (Table~\ref{tab:1eNp:loosecut}) intended to reject events where one or more variables is clearly inconsistent with \nuecc interactions. The loose cuts are applied on top the of the preselection both before the BDT training and before the application of the BDT in the analysis. This selection enhances the relative population of \nuecc in the BNB overlay sample from about 1\% to more than 25\% (Fig.~\ref{fig:1eNp:loosesel}). In the final implementation of the BDT selection the loose selection cuts may be revisited or removed.
 \begin{table}[h!]
 \centering
 \setlength{\tabcolsep}{10pt}
@@ -850,7 +855,7 @@ Misreconstruction & tksh\_angle $>$ -0.9 \\
 \end{center}
 \end{figure}
 
-Two BDTs are trained separately to reject backgrounds with and without $\pi^0$ in the final state, and the same set of training variables is used in the two BDTs, corresponding to the list of variables used in the box-cut selection. Indeed the BDT training is able to figure out which variables are most important for each background: shower quality variables (e.g. shr\_score, trkfit, subcluster) have higher ranking for the non-$\pi^0$ BDT, while variables such as tksh\_distance and the shower dEdx show higher importance for the $\pi^0$-BDT. It is interesting to note that the most discriminating variable is in both cases shrmoliereavg which may be useful to discriminate both muons in $\nu_\mu$ events (low values) and merged showers in $\pi^0$ events (large values).
+Two BDTs are trained separately to reject backgrounds with and without $\pi^0$ in the final state. The same set of training variables is used in the two BDTs, corresponding to the list of variables used in the box-cut selection. The BDT training is able to figure out which variables are most important for each background. Figure~\ref{ffig:1eNp:bdt:var} shows that shower quality variables (e.g. shr\_score, trkfit, subcluster) have higher ranking for the non-$\pi^0$ BDT, while variables such as tksh\_distance and the shower dEdx have higher importance for the $\pi^0$-BDT. It is interesting to note that the most discriminating variable in both cases is shrmoliereavg, since it can be useful to discriminate both muons in $\nu_\mu$ events (low values) and merged showers in $\pi^0$ events (large values).
 
 \begin{figure}[H] 
 \begin{center}
@@ -868,10 +873,7 @@ Two BDTs are trained separately to reject backgrounds with and without $\pi^0$ i
 \end{center}
 \end{figure}
 
-We then cut separately on the output of the two BDTs, requiring pi0\_score $>$ 0.995 and nonpi0\_score $>$ 0.9984.
-
-\par 
-Topics to discuss: selection efficiency and purity, expected number of events in open data and in full sample.
+The resulting response in Run1 open data are shown in Figures~\ref{fig:1eNp:bdt:nonpi0} and \ref{fig:1eNp:bdt:pi0} for the non-$\pi^0$ and $\pi^0$ BDT, respectively. The left panel shows the full response, while the right one zooms in in the high BDT score region and shows the signal enhancement in the bin with response $>$ 0.99. We cut separately on the output of the two BDTs, requiring the $\pi^0$ and non-$\pi^0$ responses to be greater than 0.995 and 0.9984, respectively. The resulting reconstructed \nue energy after the BDT selection is shown in Figure~\ref{fig:1eNp:box:RUN1}.
 
 \begin{figure}[H] 
 \begin{center}
@@ -885,10 +887,9 @@ Topics to discuss: selection efficiency and purity, expected number of events in
     \includegraphics[width=1.00\textwidth]{1eNp/nonpi0_score_zoom_01162020_RUN1.pdf}
     \caption{\label{fig:1eNp:bdt:nonpi0:zoom}}
     \end{subfigure}
-\caption{\label{ffig:1eNp:bdt:nonpi0}BDT response for non-$\pi^0$ BDT after \npsel pre-selection}
+\caption{\label{fig:1eNp:bdt:nonpi0}BDT response for non-$\pi^0$ BDT after \npsel pre-selection}
 \end{center}
 \end{figure}
-
 
 \begin{figure}[H] 
 \begin{center}
@@ -902,26 +903,30 @@ Topics to discuss: selection efficiency and purity, expected number of events in
     \includegraphics[width=1.00\textwidth]{1eNp/pi0_score_zoom_01162020_RUN1.pdf}
     \caption{\label{fig:1eNp:bdt:pi0:zoom}}
     \end{subfigure}
-\caption{\label{ffig:1eNp:bdt:pi0}BDT response for $\pi^0$ BDT after \npsel pre-selection}
+\caption{\label{fig:1eNp:bdt:pi0}BDT response for $\pi^0$ BDT after \npsel pre-selection}
 \end{center}
 \end{figure}
 
 \begin{figure}[H]
 \begin{center}
 \includegraphics[width=0.45\textwidth]{1eNp/reco_e_01162020_bdt_RUN1.pdf}
-\caption{\label{fig:1eNp:box:RUN1}BDT-based selection for \npsel with cuts at 0.995 and 0.9984 for the $\pi^0$ and non-$\pi^0$ variables respectively.}
+\caption{\label{fig:1eNp:bdt:RUN1}BDT-based selection for \npsel with cuts at 0.995 and 0.9984 for the $\pi^0$ and non-$\pi^0$ variables respectively.}
 \end{center}
 \end{figure}
 
 \subsubsection{Performance of \npsel selections}
 
+Figure~\ref{fig:1eNp:effpur:RUN1} shows the efficiency of the \npsel selections as a function of the neutrino energy and reports the corresponding intrinsic \npsel purity in the range 0.2$<$reco\_e$<$1.0 \si{\GeV}. The efficiency is already low at preselection level, especially for neutrino energies below 0.8 \si{\GeV}. This demonstrates how challenging it is to properly identify and reconstruct such events. The loose cuts then are able to improve the purity by one order of magnitude at the price of a 50\% reduction in efficiency. The BDT (box cut) selection then further improve the purity by a factor 7.4 (6.6) with a $\sim$30\% (50\%) reduction in efficiency. With the full 10.1e20 POT dataset, the expected number of MiniBooNE LEE signal events identified with the box cut selection is about 8, and increase to almost 11 with the BDT selection.
+
+\textcolor{red}{Figures~\ref{fig:1eNp:box:RUN1} and \ref{fig:1eNp:bdt:RUN1} show that the background to the \npsel events is in large fraction constituted by single events with large weight. This due to the relatively small size of the inclusive BNB sample. Note instead the the $\pi^0$ backgrounds are smoother since they come from larger dedicated samples. Additional background samples have been produced by the collaboration and they currently being processed by us. We thus plan to revisit the box cut and BDT selections after such sample will become available and after a residual calibration is applied to the dEdx variables.}
+
+
 \begin{figure}[H]
 \begin{center}
 \includegraphics[width=0.45\textwidth]{1eNp/effpur_1eNp_cut_bdt.pdf}
-\caption{\label{fig:1eNp:effpur:RUN1} Efficiency of different selections for true \npsel events. The legend quotes the purity of intrinsic\npsel in the range 0.2$<$reco\_e$<1.0$ GeV (where a possible MiniBooNE LEE signal is not considered).}
+\caption{\label{fig:1eNp:effpur:RUN1} Efficiency of different selections for true contained \npsel events. The legend quotes the purity of intrinsic \npsel in the range 0.2$<$reco\_e$<1.0$ GeV (where a possible MiniBooNE LEE signal is not considered).}
 \end{center}
 \end{figure}
-
 
 \subsection{1$e$0$p$ Channel \textcolor{red}{Sophie, Ivan}}
 \label{sec:nueselection:1e0p}
@@ -1191,7 +1196,7 @@ The details on detector systematics can be found in~\cite{bib:detsyssupportnote}
 \end{center}
 \end{figure}
 
-\subsection{Flux Uncertainties \textcolor{green}{Maya}}
+\subsection{Flux Uncertainties \textcolor{red}{Maya}}
 The flux and uncertainties for MCC9~\cite{bib:fluxmcc9} are largely the same as MCC8~\cite{bib:fluxtechnote}. We use multisim technique to estimate the flux uncertainties. The various sources of uncertainties are taken as independent and are varied individually. They are listed in Table~\ref{tab:fluxsyst} along the number of universes considered for each. The fractional covariance matrix and correlation matrix for the 1eNp selection are presented in Figure~\ref{fig:fluxmatrices} which amount to 12\% in flux uncertainties. Meanwhile, Figure~\ref{fig:fluxsystvars} displays the effects of reweighting central value in each universe of an individual parameter of flux.
 
 \begin{table}[H]
@@ -1258,7 +1263,7 @@ piplus\_PrimaryHadronSWCentralSplineVariation     &  Primary Hadron Sanford Wang
 \end{center}
 \end{figure}
 
-\subsection{Neutrino Interaction Modeling Uncertainties \textcolor{green}{Maya/Sebastien}}
+\subsection{Neutrino Interaction Modeling Uncertainties \textcolor{red}{Maya/Sebastien}}
 We use genie event reweighting framework with the standard reweighting parameters, also known as "knobs", to model the neutrino cross section and final states uncertainties. Document~\cite{bib:geniesupportnote} describes the GENIE cross-section model, recommended central-value tune, and the recommended uncertainties for MCC9 analyses. 
 
 The updated Genie central value is guided on fits to the T2K data which increase the MA CCQE and scale up the MEC normalization.
@@ -1546,7 +1551,7 @@ The same procedure outlined before is repeated by adding a Gaussian sampling, in
 This process is equivalent to sample from a diagonal covariance matrix, with fractional uncertainties is set to the desired value.
 Results from this method are shown in figure \ref{fig:sensitivity_function_oot}.
 
-\subsection{How Constraints and Systematics are included in the 1$e$N$p$ Sensitivity Calculation}
+\subsection{How Constraints and Systematics are included in the 1$e$N$p$ Sensitivity Calculation \textcolor{red}{Maya}}
 
 The multiple selections described in  ~\ref{sec:nueselection}-\ref{sec:numuselection} share the same neutrino flux and cross-section and therefore the measurements between them are highly correlated. We can exploit these correlations to reduce the systematics uncertainties when performing the combined side-by-side fit of the different channel for the sensitivity results.
 
@@ -1694,6 +1699,177 @@ The distribution of the test statistic for the null and alternative hypothesis d
 
 \section{Data-MC Comparisons}
 \label{sec:datamc:plots}
+
+Figure~\ref{fig:1eNp:dataMCRun1:reco_nu_vtx}-\ref{fig:1eNp:dataMCRun1:pi02} show the data-MC comparison for all \npsel variables in Run1 open data after \npsel preselection.
+
+\begin{figure}[H] 
+\begin{center}
+    \begin{subfigure}[b]{0.3\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{1eNp/dataMCRun1/reco_nu_vtx_x01152020.pdf}
+    \caption{\label{fig:1eNp:dataMCRun1:reco_nu_vtx_x} reco\_nu\_vtx\_x }
+    \end{subfigure}
+    \begin{subfigure}[b]{0.3\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{1eNp/dataMCRun1/reco_nu_vtx_y01152020.pdf}
+    \caption{\label{fig:1eNp:dataMCRun1:reco_nu_vtx_y} reco\_nu\_vtx\_y}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.3\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{1eNp/dataMCRun1/reco_nu_vtx_z01152020.pdf}
+    \caption{\label{fig:1eNp:dataMCRun1:reco_nu_vtx_z} reco\_nu\_vtx\_z}
+    \end{subfigure}
+\caption{\label{fig:1eNp:dataMCRun1:reco_nu_vtx}Data-MC comparison in the Run1 open data after the \npsel preselection.}
+\end{center}
+\end{figure}
+
+\begin{figure}[H] 
+\begin{center}
+    \begin{subfigure}[b]{0.3\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{1eNp/dataMCRun1/CosmicIP01152020.pdf}
+    \caption{\label{fig:1eNp:dataMCRun1:CosmicIP} CosmicIP }
+    \end{subfigure}
+    \begin{subfigure}[b]{0.3\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{1eNp/dataMCRun1/trkpid01152020.pdf}
+    \caption{\label{fig:1eNp:dataMCRun1:trkpid} trkpid }
+    \end{subfigure}
+    \begin{subfigure}[b]{0.3\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{1eNp/dataMCRun1/hits_ratio01152020.pdf}
+    \caption{\label{fig:1eNp:dataMCRun1:hits_ratio} hits\_ratio }
+    \end{subfigure}
+\caption{\label{fig:1eNp:dataMCRun1:cosmic}Data-MC comparison in the Run1 open data after the \npsel preselection.}
+\end{center}
+\end{figure}
+
+\begin{figure}[H] 
+\begin{center}
+    \begin{subfigure}[b]{0.3\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{1eNp/dataMCRun1/shr_score01152020.pdf}
+    \caption{\label{fig:1eNp:dataMCRun1:shr_score} shr\_score }
+    \end{subfigure}
+    \begin{subfigure}[b]{0.3\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{1eNp/dataMCRun1/trkfit01152020.pdf}
+    \caption{\label{fig:1eNp:dataMCRun1:trkfit} trkfit }
+    \end{subfigure}
+    \begin{subfigure}[b]{0.3\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{1eNp/dataMCRun1/subcluster01152020.pdf}
+    \caption{\label{fig:1eNp:dataMCRun1:subcluster} subcluster }
+    \end{subfigure}
+\caption{\label{fig:1eNp:dataMCRun1:numu1}Data-MC comparison in the Run1 open data after the \npsel preselection.}
+\end{center}
+\end{figure}
+
+\begin{figure}[H] 
+\begin{center}
+    \begin{subfigure}[b]{0.3\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{1eNp/dataMCRun1/shrmoliereavg01152020.pdf}
+    \caption{\label{fig:1eNp:dataMCRun1:shrmoliereavg} shrmoliereavg }
+    \end{subfigure}
+    \begin{subfigure}[b]{0.3\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{1eNp/dataMCRun1/n_showers_contained01152020.pdf}
+    \caption{\label{fig:1eNp:dataMCRun1:n_showers_contained} n\_showers\_contained }
+    \end{subfigure}
+    \begin{subfigure}[b]{0.3\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{1eNp/dataMCRun1/n_tracks_contained01152020.pdf}
+    \caption{\label{fig:1eNp:dataMCRun1:n_tracks_contained} n\_tracks\_contained }
+    \end{subfigure}
+\caption{\label{fig:1eNp:dataMCRun1:numu2}Data-MC comparison in the Run1 open data after the \npsel preselection.}
+\end{center}
+\end{figure}
+
+\begin{figure}[H] 
+\begin{center}
+    \begin{subfigure}[b]{0.3\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{1eNp/dataMCRun1/shr_tkfit_2cm_dedx_U01152020.pdf}
+    \caption{\label{fig:1eNp:dataMCRun1:shr_tkfit_2cm_dedx_U} shr\_tkfit\_2cm\_dedx\_U }
+    \end{subfigure}
+    \begin{subfigure}[b]{0.3\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{1eNp/dataMCRun1/shr_tkfit_2cm_dedx_V01152020.pdf}
+    \caption{\label{fig:1eNp:dataMCRun1:shr_tkfit_2cm_dedx_V} shr\_tkfit\_2cm\_dedx\_V }
+    \end{subfigure}
+    \begin{subfigure}[b]{0.3\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{1eNp/dataMCRun1/shr_tkfit_2cm_dedx_Y01152020.pdf}
+    \caption{\label{fig:1eNp:dataMCRun1:shr_tkfit_2cm_dedx_Y} shr\_tkfit\_2cm\_dedx\_Y }
+    \end{subfigure}
+\caption{\label{fig:1eNp:dataMCRun1:shr_tkfit_2cm_dedx}Data-MC comparison in the Run1 open data after the \npsel preselection.}
+\end{center}
+\end{figure}
+
+\begin{figure}[H] 
+\begin{center}
+    \begin{subfigure}[b]{0.3\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{1eNp/dataMCRun1/shr_tkfit_gap10_dedx_U01152020.pdf}
+    \caption{\label{fig:1eNp:dataMCRun1:shr_tkfit_gap10_dedx_U} shr\_tkfit\_gap10\_dedx\_U }
+    \end{subfigure}
+    \begin{subfigure}[b]{0.3\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{1eNp/dataMCRun1/shr_tkfit_gap10_dedx_V01152020.pdf}
+    \caption{\label{fig:1eNp:dataMCRun1:shr_tkfit_gap10_dedx_V} shr\_tkfit\_gap10\_dedx\_V }
+    \end{subfigure}
+    \begin{subfigure}[b]{0.3\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{1eNp/dataMCRun1/shr_tkfit_gap10_dedx_Y01152020.pdf}
+    \caption{\label{fig:1eNp:dataMCRun1:shr_tkfit_gap10_dedx_Y} shr\_tkfit\_gap10\_dedx\_Y }
+    \end{subfigure}
+\caption{\label{fig:1eNp:dataMCRun1:shr_tkfit_gap10_dedx}Data-MC comparison in the Run1 open data after the \npsel preselection.}
+\end{center}
+\end{figure}
+
+\begin{figure}[H] 
+\begin{center}
+    \begin{subfigure}[b]{0.3\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{1eNp/dataMCRun1/tksh_distance01152020.pdf}
+    \caption{\label{fig:1eNp:dataMCRun1:tksh_distance} tksh\_distance }
+    \end{subfigure}
+    \begin{subfigure}[b]{0.3\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{1eNp/dataMCRun1/secondshower_Y_vtxdist01152020.pdf}
+    \caption{\label{fig:1eNp:dataMCRun1:secondshower_Y_vtxdist} secondshower\_Y\_vtxdist }
+    \end{subfigure}
+    \begin{subfigure}[b]{0.3\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{1eNp/dataMCRun1/secondshower_Y_nhit01152020.pdf}
+    \caption{\label{fig:1eNp:dataMCRun1:secondshower_Y_nhit} secondshower\_Y\_nhit }
+    \end{subfigure}
+\caption{\label{fig:1eNp:dataMCRun1:pi01}Data-MC comparison in the Run1 open data after the \npsel preselection.}
+\end{center}
+\end{figure}
+
+\begin{figure}[H] 
+\begin{center}
+    \begin{subfigure}[b]{0.3\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{1eNp/dataMCRun1/secondshower_Y_dot01152020.pdf}
+    \caption{\label{fig:1eNp:dataMCRun1:secondshower_Y_dot} secondshower\_Y\_dot }
+    \end{subfigure}
+    \begin{subfigure}[b]{0.3\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{1eNp/dataMCRun1/anglediff_Y01152020.pdf}
+    \caption{\label{fig:1eNp:dataMCRun1:anglediff_Y} anglediff\_Y }
+    \end{subfigure}
+    \begin{subfigure}[b]{0.3\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{1eNp/dataMCRun1/tksh_angle01152020.pdf}
+    \caption{\label{fig:1eNp:dataMCRun1:tksh_angle} tksh\_angle }
+    \end{subfigure}
+\caption{\label{fig:1eNp:dataMCRun1:pi02}Data-MC comparison in the Run1 open data after the \npsel preselection.}
+\end{center}
+\end{figure}
+
 
 \section{Code Repositories}
 

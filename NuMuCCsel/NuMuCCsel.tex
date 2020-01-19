@@ -1,10 +1,6 @@
 \label{sec:NuMUCCsel}
 
-\subsection{Event Selection and Muon Candidate Tagging}
-\label{ssec:NuMUCCsel:sel}
-
-\par The selection of $\nu_{\mu}$ events is built from the SliceID preselection (see sec. \ref{sec:sliceID:SliceID}) and a combination of cuts on slice-level and track-level observable values. The $\nu_{\mu}$ selection has this prescription: first, perform SliceID preselection; second, perform slice-level cuts to remove backgrounds; finally, perform track-level cuts to select one muon candidate.
-\par Below is a summary of the variables used in this selection. There is some redundancy between this list and the lists given for the $\nu_e$ selection; this is intentional, as an overlap in phase space of the $\nu_{\mu}$ and $\nu_{e}$ selections improves constraining power.
+\par This chapter presents the two $\nu_{\mu}$ selections of the analysis. Both are inclusive selections, but with different distributions. The first selection (sec \ref{ssec:NuMUCCsel:INC}) provides a pure, high-statistics sample of $\nu_{\mu}$s and the second selection (sec \ref{ssec:NuMUCCsel:constr}) is optimized to be used as a constraining tool in the $\nu_e$ analysis. 
 
 \subsubsection{Variable Definitions}
 \label{sssec:NuMUCCsel:sel:vars}
@@ -85,8 +81,6 @@
 \subsubsection{Run3}
 \label{sssec:NuMUCCsel:INC:Run3}
 
-\par Coming soon...
-
 \begin{figure}
     \centering
     \includegraphics[width=0.85\textwidth]{NuMuCCsel/Images/run3/numu_efficiency_run3.pdf}
@@ -112,12 +106,27 @@
 \end{figure}
 
 \subsection{$\nu_{\mu}$ Constraint \textcolor{red}{Ryan}}
+\label{ssec:NuMUCCsel:constr}
+\par The purpose of this $\nu_{\mu}$ side-band is to constrain the systematic uncertainties in the $\nu_{e}$ analysis. This is able to be done because the $\nu_{\mu}$s and $\nu_{e}$s of the BNB are subject to similar uncertainties, namely flux and cross-section modelling uncertainties. The $\nu_{e}$ selection is subject to higher uncertainties due to its low statistics. The $\nu_{\mu}$ component benefits from an order-of-magnitude advantage in absolute flux at MicroBooNE (Docdb 1031) and is exploited to constrain the uncertainties on the $\nu_{e}$s.
 
-\par 
+This selection prioritizes higher efficiencies in the lower-energy region that is the interest to the LEE analysis. The flux and cross-section $\nu_{e}$ are more uncertain in the few-hundreds MeV energy region. Fortunately, the absolute $\nu_{\mu}$ flux (fig \ref{fig:bnb_absoluteflux}) and the cross-species flux correlation is greatest below 1 GeV (figs \ref{fig:numuconstraint:flux}). 
+
+\begin{figure}
+    \centering
+    \includegraphics[height=6.5cm]{NuMuCCsel/Images/Ryan/absoluteFlux_uBooNE.png} \hspace{2mm}
+    \caption{The absolute neutrino flux prediction through the MicroBooNE detector as calculated by the beam simulation. Shown is the flux for $\nu_{\mu}$, $\overline{\nu_{\mu}}$, $\nu_{e}$, and $\overline{\nu_{e}}$ averaged through the TPC volume with dimensions 2.56m×2.33m×10.37m. DocDb #1031}
+    \label{fig:bnb_absoluteflux}
+\end{figure}
 
 \subsubsection{Signal Definition}
 \label{sssec:NuMUCCsel:INC:signaldef}
-\par A $\nu_{\mu}$ event is identified by, at least, one muon candidate originating from inside the fiducial volume of the detector. Additional tracks and showers may accompany the muon candidate; these assist in reconstruction but are not necessary in the inclusive selection. In the event selection detailed below, only one track per slice must satisfy the criterion in order to be included in this selection.
+\par A $\nu_{\mu}$ event is identified by the presence of, at least, one muon candidate originating from inside the fiducial volume of the detector. Additional tracks and showers may accompany the muon candidate; these assist in reconstruction but are not necessary in the inclusive selection.
+
+\subsubsection{Event Selection and Muon Candidate Tagging}
+\label{sssec:NuMUCCsel:sel}
+
+\par The selection of $\nu_{\mu}$ events is built from the SliceID preselection (see sec. \ref{sec:sliceID:SliceID}) and a combination of cuts on slice-level and track-level observable values. The $\nu_{\mu}$ selection has this prescription: first, perform SliceID preselection; second, perform slice-level cuts to remove backgrounds; finally, perform track-level cuts to select one muon candidate.
+\par Below is a summary of the variables used in this selection. There is some redundancy between this list and the lists given for the $\nu_e$ selection; this is intentional, as an overlap in phase space of the $\nu_{\mu}$ and $\nu_{e}$ selections improves constraining power.
 
 \subsubsection{Event Selection}
 \label{sssec:NuMUCCsel:sel:evt}
