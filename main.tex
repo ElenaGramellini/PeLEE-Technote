@@ -280,7 +280,7 @@ As examples, measurements of CC and NC $\pi^0$ production can be used to constra
 \emph{An additional detector effects that needs to be accounted for is ion Recombination which impacts the detector's calorimetric response. Tailored studies and proton samples are being developed to assess ion recombination modeling accuracy in MCC9 but are not available at the time of writing of this note.}
 \par \noindent \textbf{Flux and Cross-Section Modeling} Uncertainties in flux and cross-section modeling are treated through a \emph{multi-sim} approach, where underlying parameters that are input to the modeling are varied in a correlated way. Flux uncertainties are taken from the MiniBooNE BNB flux simulation adapted to MicroBooNE~\cite{bib:fluxmcc9,bib:fluxtechnote}, while $\nu$ interaction uncertainties are handled within the \texttt{GENIE} reweighting package, as described in~\cite{bib:geniesupportnote}. \emph{We note that the \texttt{GENIE} event reweighting infrastructure is still in development and likely to be updated or further expanded on in the future. Finally, uncertainties associated with pion and proton re-interactions in argon were unavailable when this version of the Tech Note was produced and not included at this stage.} 
 
-\subsection{Sensitivity Estimation \textcolor{green}{Nico/Maya}}
+\subsection{Sensitivity Estimation \textcolor{green}{Nico/Maya... (P.R Elena)}}
 In order to extract information from the selected events, a simple hypothesis test is performed.
 Given an observable quantity, such as a measurement of the energy deposited by the neutrino interaction, the hypothesis in which the observed spectrum of events is entirely due to the standard model, $H_0$, is tested against an alternative hypothesis $H_1$.
 The alternative hypothesis $H_1$ consists of all the known background plus the LEE unfolded signal from MiniBooNE (MB-$\nu_e$ LEE), though an oscillation signal has also been studied, as shown in section \ref{sec:Sensitivity2Osc}.
@@ -1536,14 +1536,14 @@ One can see that the $\Delta \chi^2$-like variable is a log-likelihood-ratio, in
 % \end{enumerate}
 \textcolor{blue}{The statistical-only sensitivity is measured using the result of the box-cut 1$e$N$p$ selection (figure~\ref{fig:1eNp:box:RUN1}). Figure~\ref{fig:1eNp:box:statsystsensitivity}}
 
-\begin{commen}
+\begin{comment}
 \begin{figure}[H]
     \begin{center}
     \includegraphics[width=0.45\textwidth]{Sensitivity/nue_reco_e_genietune_run1_nueStacked.pdf}
     \caption{\label{fig:1eNp:box:sensitivitysample} The final 1eNp selection used for the sensitivity estimate. Sample is taken from Monte Carlo Run 1 Data and scaled to $1.01\times10^{21}$ POT}
     \end{center}
 \end{figure}
-\end{commen}{}
+\end{comment}{}
 
 \begin{figure}[ht] 
 \begin{center}
