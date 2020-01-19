@@ -22,6 +22,9 @@
 \usepackage{lineno}
 \usepackage{array}
 \usepackage{siunitx}
+\usepackage{rotating}
+\usepackage{makecell, tabularx}
+\newcolumntype{C}{>{\centering\arraybackslash}X}
 \linenumbers
 \linespread{1.1}
 
@@ -109,7 +112,6 @@ This analysis focuses on being able to measure low-energy $\nu_e$ interactions. 
 \begin{table}[ht]
 \caption{\label{tab:selectionsNue} Schematic of the three $\nu_e$ selections, outlining the definition and goals of each. In this work, the threshold for a visible proton at truth-level proton is 40 MeV of KE. N refers to one or more and X to any number of final state particles of a given category.}
 \centering
-%\begin{tabular}{*{3}{ m{0.1\textwidth} }}
 \begin{tabular}{ m{0.1\textwidth} | m{0.2\textwidth}  m{0.45\textwidth}  }
 Channel & Description & Goal \\
 \hline
@@ -179,14 +181,26 @@ It is especially important to note that the chosen model strongly favors the int
 \begin{comment}
 \par For the purpose of this analysis, measurements of $\nu_{\mu}$ interactions are aimed at reducing modeling uncertainties for intrinsic $\nu_e$ events and backgrounds, with the goal of reducing systematic uncertainties in order to be able to claim the observation of new physics were a measurement of $\nu_e$ interactions differ significantly from the expected intrinsic rate. This section describes why such a data-driven constraint is needed and what are the choices which motivate the approach taken in this analysis.
 \end{comment}
-\par In the context of this analysis, measurements of $\nu_{\mu}$ interactions are aimed at reducing modeling uncertainties for intrinsic $\nu_e$ events and backgrounds. Event reconstruction and $\nu_e$ identification are only one of the challenges in this analysis:  in order to make statements on whether the observed $\nu_e$ rate indicates a presence of new physics, a well understood prediction of the intrinsic $\nu_e$ rate is needed. 
+\par In the context of this analysis, measurements of $\nu_{\mu}$ interactions are aimed at reducing modeling uncertainties for intrinsic $\nu_e$ events and backgrounds. Event reconstruction and $\nu_e$ identification are only one of the challenges in this analysis:  in order to make statements on whether the observed $\nu_e$ rate indicates the presence of new physics, a well understood prediction of the intrinsic $\nu_e$ rate is needed. 
 
-\par Uncertainties in the expected $\nu_e$ rate are associated to reconstruction efficiencies (detector effects) as well as modeling uncertainties in both the $\nu_e$ flux  and neutrino-argon cross-section predictions. Here, we focus on describing the strategy employed to deal with the latter. In the case of a single detector experiment, %uncertainties in the intrinsic $\nu_e$ interaction rate are rather large:  and can limit the ability to associate a $\nu_e$ measurement with potential new physics if not a constraint through additional measurements is needed. 
-flux uncertainties for $\nu_e$ as calculated from the beam simulation are $\mathcal{O}$(10\%) above 800 MeV and grow to 40\% at 200 MeV; cross-section uncertainties are also large -- a consequence of the lack of measurements of $\nu$-Ar cross-sections, particularly at low energy, and of the complex modeling of neutrino interactions on a heavy target such as argon. Combining all effects, the uncertainty on the $\nu_e$ interaction rate in the few-hundred MeV energy range in MicroBooNE's could be as high as 100\%.
+\par Uncertainties in the expected $\nu_e$ rate are associated to reconstruction efficiencies (detector effects) as well as modeling uncertainties in both the $\nu_e$ flux  and neutrino-argon cross-section predictions. Here, we focus on describing the strategy to deal with the latter. In the case of a single detector experiment, %uncertainties in the intrinsic $\nu_e$ interaction rate are rather large:  and can limit the ability to associate a $\nu_e$ measurement with potential new physics if not a constraint through additional measurements is needed. 
+flux uncertainties for $\nu_e$ calculated from the beam simulation are $\mathcal{O}$(10\%) above 800 MeV and grow to 40\% at 200 MeV;  cross-section uncertainties are also large, due to the scarcity of $\nu$-Ar cross-sections measurements -- especially at low energy -- and due to the complex modeling of neutrino interactions on heavy targets such as argon. Combining all effects, the uncertainty on the $\nu_e$ interaction rate in the few-hundred MeV energy range in MicroBooNE's could be as high as 100\%.
 \par To reduce modeling uncertainties on the expected rate of $\nu_e$ interactions, data-driven constraints are required. These can be performed through measurements of $\nu_{\mu}$ interactions subject to the same uncertainties. In order to constrain flux uncertainties, we rely on the fact that $\nu_e$ and $\nu_{\mu}$ intrinsic to the beam are produced by the decay of the same parent $\pi$ and $K$ flux. Similarly, we rely on the charged-current interaction mode $\nu_{l} + Ar \rightarrow l + X$ common to both $\nu_{\mu}$ and $\nu_e$ interactions to constrain the uncertainties on the $\nu_e$ interaction modeling.
 
-\par The complexity of $\nu$-Ar interactions and of hadronic interactions in the beamline mean that many different handles and measurements of $\nu_{\mu}$ interactions can play a role in constraining different uncertainties. As examples, measurement of CC and NC $\pi^0$ production constrain resonant interactions and thus $\pi^0$ backgrounds to the $\nu_e$ selection, and measurements of high-energy $\nu_{\mu}$ interactions can help constrain the kaon flux in the beam, which contributes substantially to the production of intrinsic $\nu_e$s. Likewise, measurements of low-energy $\nu_{\mu}$s can help constrain poorly understood $\nu$-Ar interaction models in the few-hundred MeV energy regime, a critical requirement for this analysis. The neutrino identification work developed for this analysis, referred to as \emph{SliceID} and described in section~\ref{sec:sliceID}, is a highly efficient and topology agnostic selection that enables a vast program of $\nu_{\mu}$ measurements, allowing for flexibility in selecting topologies that may have the strongest constraining power and thus most benefit the $\nu_e$ analysis. At the current time, as described in the remainder of this section and in section~\ref{sec:systematics}, the emphasis is on the measurement of low-energy $\nu_{\mu}$ interactions with the goal of constraining the large uncertainties in low-energy $\nu_e$ events which significantly impact the analysis.
-\par To further motivate the need for low energy $\nu_{\mu}$ interactions, we describe two important ways in which such a dataset can benefit the reduction of modeling uncertainties for $\nu_e$ interactions. Figure~\ref{fig:numuconstraint:flux} shows the flux correlation for $\nu_{\mu}$ (bottom left) and $\nu_e$ (top right) interactions. Red (blue) areas show large (anti-)correlation. The top-left or bottom-right quadrants show the strength of correlations between the two flavors. For $\nu_e$ energies below 1 GeV, correlations are strongest with $\nu_{\mu}$ interactions at low energy. Figure~\ref{fig:numuconstraint:xsec} shows different cross-section curves for $\nu_{\mu}$ and $\nu_e$ interactions. The dashed and solid curves represent the CCQE cross-section used in MCC8 vs. MCC9 respectively. Below 400 MeV, the difference in event rates for different models is larger then 100\%. The large differences between these curves, particularly at low energy, indicate the strong need to constrain cross-section uncertainties with MicroBooNE's own data. 
+
+\begin{comment}
+
+The complexity of $\nu$-Ar interactions and of hadronic interactions in the beamline mean that many different handles and measurements of $\nu_{\mu}$ interactions can play a role in constraining different uncertainties. As examples, measurement of CC and NC $\pi^0$ production constrain resonant interactions and thus $\pi^0$ backgrounds to the $\nu_e$ selection, and measurements of high-energy $\nu_{\mu}$ interactions can help constrain the kaon flux in the beam, which contributes substantially to the production of intrinsic $\nu_e$s. Likewise, measurements of low-energy $\nu_{\mu}$s can help constrain poorly understood $\nu$-Ar interaction models in the few-hundred MeV energy regime, a critical requirement for this analysis. The neutrino identification work developed for this analysis, referred to as \emph{SliceID} and described in section~\ref{sec:sliceID}, is a highly efficient and topology agnostic selection that enables a vast program of $\nu_{\mu}$ measurements, allowing for flexibility in selecting topologies that may have the strongest constraining power and thus most benefit the $\nu_e$ analysis. At the current time, as described in the remainder of this section and in section~\ref{sec:systematics}, the emphasis is on the measurement of low-energy $\nu_{\mu}$ interactions with the goal of constraining the large uncertainties in low-energy $\nu_e$ events which significantly impact the analysis.
+\par To further motivate the need for low energy $\nu_{\mu}$ interactions, we describe two important ways in which such a dataset can benefit the reduction of modeling uncertainties for $\nu_e$ interactions.
+\end{comment}
+\par The richness of $\nu$-Ar interactions and of hadronic interactions in the beamline offers a number of different handles 
+to constraint different uncertainties via the measurements of $\nu_{\mu}$ interactions.
+As examples, measurements of CC and NC $\pi^0$ production can be used to constrain resonant interactions and thus $\pi^0$ backgrounds to the $\nu_e$ selection;  measurements of high-energy $\nu_{\mu}$ interactions can help constrain the kaon flux in the beam, which contributes substantially to the production of intrinsic $\nu_e$s. Likewise, measurements of low-energy $\nu_{\mu}$s can help constrain poorly understood $\nu$-Ar interaction models in the few-hundred MeV energy regime, a critical requirement for this analysis.  At the current time, our effort is focused on the measurement of low-energy $\nu_{\mu}$ interactions with the goal of constraining the large uncertainties in low-energy $\nu_e$ events which significantly impact the analysis; a detailed  description of this constraint is shown in the remainder of this section and in section~\ref{sec:systematics}.
+However, it should be noted that the neutrino identification work described in section~\ref{sec:sliceID} results in a highly efficient and topology agnostic selection: such a flexible selection allows for a number of $\nu_{\mu}$ measurements and their associated constraints to be implemented in case the $\nu_e$ analysis needs a stronger constraining power. 
+
+
+
+\par To further motivate the need to study low energy $\nu_{\mu}$ interactions, we describe two important ways in which such a dataset can lead to a reduction of modeling uncertainties for $\nu_e$ interactions. Figure~\ref{fig:numuconstraint:flux} shows the flux correlation for $\nu_{\mu}$ (bottom left) and $\nu_e$ (top right) interactions. Red (blue) areas show large (anti-)correlation. The top-left or bottom-right quadrants show the strength of correlations between the two flavors. For $\nu_e$ energies below 1 GeV, correlations are strongest with $\nu_{\mu}$ interactions at low energy. Figure~\ref{fig:numuconstraint:xsec} shows different cross-section curves for $\nu_{\mu}$ and $\nu_e$ interactions. The dashed and solid curves represent the CCQE cross-section used in MCC8 vs. MCC9 respectively. Below 400 MeV, the difference in event rates for different models is larger then 100\%. The large differences between these curves, particularly at low energy, indicate the strong need to constrain cross-section uncertainties with MicroBooNE's own data. 
 \begin{figure}[ht] 
 \begin{center}
     \begin{subfigure}[b]{0.42\textwidth}
@@ -257,6 +271,7 @@ For on-beam data, three samples are used in this note: the ``5E19'' Run1 open da
 \newpage
 
 \section{Overview of Neutrino Identification: Pandora SliceID}
+\label{sec:sliceID}
 \input{NuId-Ch2/NeutrinoID}
 
 
@@ -631,134 +646,15 @@ Figure~\ref{fig:eres:neutrino} shows the comparison between reconstructed energy
 \section{$\nu_e$ Selections}
 \par This chapter present the three $\nu_e$ selections which comprise the analysis. The starting point for the $\nu_e$ selections, including a description of efficiencies, are described in section~\ref{sec:nueselection:inputs} . The common variables and tools leveraged for the $\nu_e$ selection are presented in section~\ref{sec:nueselection:variables}. Following sections describe the three channels being targeted: $\nu_e$ inclusive (\ref{sec:nueselection:inclusive}),1$e$N$p$0$\pi$ (\ref{sec:nueselection:1eNp}), and 1$e$0$p$0$\pi$ (\ref{sec:nueselection:1e0p}).
 
-\subsection{Variable definitions \textcolor{red}{Elena}}
+\subsection{Variable definitions \textcolor{green}{Elena}}
 \label{sec:nueselection:variables}
-\par Variables used for the $\nu_e$ selections aim to isolate features in the neutrino interaction that are specific to events with final-state electrons. These features are split in several categories which leverage calorimetric and topological information that characterizes $\nu_e$ interactions. This section will describe the variables used in the $\nu_e$ selections. Table [\textcolor{red}{TABLE}] summarizes all variables used, with a brief description. Variables that warrant a longer introduction are described below.
-
-\begin{figure}[H]
-\begin{center}
-\includegraphics[width=0.6\textwidth]{nueselection/tools.png}
-\caption{\label{fig:nue:variables}Categories of variables leveraged in the $\nu_e$ selections.}
-\end{center}
-\end{figure}
-
-\par \noindent \textbf{track-shower separation} The first step in track-shower separation relies on the topological score reconstructed by Pandora, which utilizes inputs such as the PCA component of 3D space-points to classify PFParticles. Nonetheless, this classification is not sufficient to obtain the track-shower separation needed. To improve on this, additional variables which leverage different aspects of shower topologies are devised:
-
-\begin{itemize}
-    \item \textbf{shower track-fitted fraction} (variable: \emph{trfit}, figure~\ref{fig:nue:variables:trkfit}) This quantity is calculated as the fraction of all 3D spacepoints in a shower that are successfully fit with the shower track-fitter algorithm. Tracks, comprised of a single contiguous segment, will be fit in their entire length, leading to a fraction of 1. Showers, with several branches and split charge deposition segments, will have a fraction that is less then one.
-    \item \textbf{shower sub-clusters} (variable: \emph{subcluster}, figure~\ref{fig:nue:variables:subcluster}) This quantity leverages the fact that EM showers are often comprised of several branches isolated by gaps caused by photons propagating through the detector medium. The variable is calculated by counting the number of isolated 2D segments of charge associated to reconstructed showers. This quantity is a sum of such clusters from all three planes.
-    \item \textbf{Moliere ``angle''} (variable: \emph{shrmoliereavg}, figure~\ref{fig:nue:variables:dedx}) This quantity aims to characterize the profile of reconstructed EM showers. It is computed using 3D spacepoints. For each 3D spacepoint, the angle between the shower's direction and the spacepoint is calculated. The average of all such angles is used as the variable.
-    \item \textbf{dE/dx variables} (variable: \emph{shr\_tkfit\_gap10\_dedx\_\{U,V,Y\}} and \emph{shr\_tkfit\_2cm\_dedx\_\{U,V,Y\}} )  These variables, computed using calorimetric information from each plane. The two different variables are calculated as the median d$E$/d$x$ computed over some segment of a shower's trunk. The two segments used are the first two centimeters, and the range [1,5] cm. The choice to leverage both these variables  is motivated by: (a) Sometimes - especially for the 1$e$0$p$ channel - the first few hits of a shower merge activity from short protons, causing a large d$E$/d$x$ which hampes the ability to identify the event as an electron. (b) For photon showers, especially at low energy, d$E$/d$x$ becomes more and more MIP-like as one moves further along the shower (see figure~\ref{fig:dedxgammas:dist}).
-\end{itemize}{}
-
-\begin{figure}[H] 
-\begin{center}
-    \begin{subfigure}[b]{0.3\textwidth}
-    \centering
-    \includegraphics[width=1.00\textwidth]{nueselection/variables/trkfit.png}
-    \caption{\label{fig:nue:variables:trkfit} ``trkfit'' variable }
-    \end{subfigure}
-    \begin{subfigure}[b]{0.3\textwidth}
-    \centering
-    \includegraphics[width=1.00\textwidth]{nueselection/variables/nbranch.png}
-    \caption{\label{fig:nue:variables:subcluster} ``subcluster'' variable }
-    \end{subfigure}
-    \begin{subfigure}[b]{0.3\textwidth}
-    \centering
-    \includegraphics[width=1.00\textwidth]{nueselection/variables/dedx.png}
-    \caption{\label{fig:nue:variables:dedx} d$E$/d$x$ variables }
-    \end{subfigure}
-\caption{\label{fig:nue:presel:eff} Additional shower variables defined by the analysis to improve track-shower separation.}
-\end{center}
-\end{figure}
-
-
-\par \noindent \textbf{second-shower variables} Often in $\pi^0$ events one of the two EM $\gamma$ showers is not fully reconstructed by Pandora. In many cases, these second $\gamma$ showers are correctly identified by Pandora as belonging to the neutrino slice (reconstructed in 2D), but never fully reconstructed in 3D (see fig.~\ref{fig:nue:variables:secondshowerevd}). To improve on our $\pi^0$ rejection, we exploit this 2D-only information to reconstruct several variables which store information associated to the largest 2D cluster belonging to the slice on each plane. At the moment, only collection-plane variables are used. The variables, shown graphically in figure~\ref{fig:nue:variables:secondshower}, are described below. In the example event of figure~\ref{fig:nue:variables:secondshowerevd} these quantities are computed for the circles black cluster of charge.
-\begin{itemize}
-    \item \emph{secondshower\_Y\_nhit}: number of hits in the collection plane of the largest cluster associated to the  recovered 2nd shower
-    \item \emph{secondshower\_Y\_dot}: dot product between the vector connecting the vertex to the closest hit in cluster and the charge-weighted cluster direction w.r.t. closest hit in cluster
-    \item \emph{anglediff\_Y}: 2D angle difference in the collection plane between the 2nd shower and the 1st shower cluster  (cluster direction defined as charge-weighted direction of cluster w.r.t. vertex)
-    \item \emph{secondshower\_Y\_vtxdist}: 2D distance from vertex for the largest 2D cluster associated to the  recovered 2nd shower in the collection plane
-\end{itemize}{}
-
-\begin{figure}[H] 
-\begin{center}
-    \begin{subfigure}[b]{0.35\textwidth}
-    \centering
-    \includegraphics[width=1.00\textwidth]{nueselection/variables/secondshowerevd.png}
-    \caption{\label{fig:nue:variables:secondshowerevd} second shower recovery example }
-    \end{subfigure}
-    \begin{subfigure}[b]{0.35\textwidth}
-    \centering
-    \includegraphics[width=1.00\textwidth]{nueselection/variables/secondshower.png}
-    \caption{\label{fig:nue:variables:secondshower} second shower variables }
-    \end{subfigure}
-\caption{\label{fig:nue:variables:secondshower} Second shower recovery example and variables.}
-\end{center}
-\end{figure}
-
-\par \noindent \textbf{track-shower separation} In the \npsel channel, a gap between the shower candidate and vertex activity is a powerful $\pi^0$ rejection discriminant. We primarily rely on the measured 3D distance between the shower start point and the reconstructed start point of the longest track in the slice (variable: \emph{tksh\_distance}). Due to mis-reconstruction in the 3D shower and track reconstruction, sometimes the 3D distance just defined is reconstructed to be large (up to several centimeters) even if the individual track and shower are correctly clustered. This factors smears the track-shower separation of $\nu_e$ interactions therefore reducing the $e-\gamma$ separation power achievable. To overcome this failure specific to the 3D reconstruction, a new quantity is calculated with 2D information from the collection plane defined as the smallest 2D distance between any hits associated with the shower candidate and any hits associated with the proton candidate.
-
-
-\par \noindent  \textbf{Slice variables}: these are variables associated to general features of the reconstructed neutrino interaction or event.
-
-\begin{itemize}
-    \item \emph{nslice}: number of neutrino slices identified by the SliceId (possible values are 0 and 1);
-    \item \emph{reco\_nu\_vtx\_sce\_\{x,y,z\}}: Reconstructed space charged corrected neutrino interaction vertex in (x,y,z) coordinates.
-    \item \emph{n\_showers\_contained}: number of showers with a starting point within the fiducial volume;
-    \item \emph{n\_tracks\_contained}: number of tracks fully contained in the fiducial volume;
-    \item \emph{contained\_fraction}: fraction of hits in PFParticles contained in the fiducial volume (according to definitions above) with respect to the total number of clustered hits in the slice;
-    \item \emph{hits\_ratio}: ratio between hits from showers and total number of hits;
-    \item \emph{CosmicIP}: closest distance between shower start and space points associated to tracks flagged as cosmics.
-    \item \emph{crtveto}: boolean variable checking whether the event passes the CRT veto or not
-    \item \emph{\_closestNuCosmicDist}: minimum 3D distance of the reconstructed neutrino vertex from a CRT-tagged cosmic track
-    \item \emph{slclustfrac}: fraction of hits in the slice that are fully reconstructed to 3D particles.
-\end{itemize}
-
-\par \noindent \textbf{Shower and Track variables}:
-
-\begin{itemize}
-    \item \emph{tksh\_distance}: distance between leading shower vertex and longest track vertex;
-    \item \emph{tksh\_angle}: angle between leading shower vertex and longest track vertex;
-    item \emph{merge\_bestdist}: Distance between shower start point and track start (or end) point for the track in the slice that best matches the direction of the shower. 
-\end{itemize}
-
-\par \noindent \textbf{Shower variables}:
-
-\begin{itemize}
-    \item \emph{shr\_energy\_tot\_cali}: sum of the energy of the calibrated showers (in GeV). This variable is used only at pre-selection as a ``Michel veto'';
-    \item \emph{shr\_tkfit\_2cm\_dedx\_\{U,V,Y\}}: dE/dx in the first 2 cm of the leading shower on plane (U,V,Y) with the track fitting;
-    \item \emph{shr\_tkfit\_gap10\_dedx\_\{U,V,Y\}}: dE/dx in the [1,5] cm range of the leading shower on plane (U,V,Y) with the track fitting;
-    \item \emph{shr\_score}: Pandora SVM track/shower score for the leading shower;
-    \item \emph{shrmoliereavg}: average angle between the vector connecting the shower start to each shower space point and the shower direction vector
-    \item \emph{subcluster}: number of subclusters (counted in all planes) for the leading shower.
-    \item \emph{trkfit}: ratio of hits fitted in the track fit to the shower to all hits in the shower.
-\end{itemize}
-
-\par \noindent  \textbf{Track variables}:
-
-\begin{itemize}
-    \item \emph{trkpid}: proton-muon LLR particle identification 
-\end{itemize}
-
-\par \noindent  \textbf{2nd shower-based $\pi^0$ rejection variables}:
-
-\begin{itemize}
-    \item \emph{secondshower\_Y\_nhit}: number of hits in the collection plane of the largest cluster associated to the  recovered 2nd shower
-    \item \emph{secondshower\_Y\_dot}: dot product between the vector connecting the vertex to the closest hit in cluster and the charge-weighted cluster direction w.r.t. closest hit in cluster
-    \item \emph{anglediff\_Y}: 2D angle difference in the collection plane between the 2nd shower and the 1st shower cluster  (cluster direction defined as charge-weighted direction of cluster w.r.t. vertex)
-    \item \emph{secondshower\_Y\_vtxdist}: 2D distance from vertex for the largest 2D cluster associated to the  recovered 2nd shower in the collection plane
-\end{itemize}
-
-
 \clearpage
 \subsection{$\nu_e$ CC Inclusive selection \textcolor{red}{Wouter}}
 \input{NueCCsel/NueCCsel}
 \clearpage
 
 
-
-\subsection{Input to \npsel and \opsel and channel orthogonality \textcolor{green}{David + Sophie}}
+\subsection{Input to \npsel and \zpsel and channel orthogonality \textcolor{green}{David + Sophie} }
 \label{sec:nueselection:inputs}
 
 The 1$e$N$p$ and 1$e$0$p$ selections rely on a common pre-selection which requires the presence of at least one reconstructed and contained EM shower (figure~\ref{fig:nue:presel:nshower}) with reconstructed energy above 70 MeV (figure~\ref{fig:nue:presel:shrenergy}). This second cut applies as a Michel-electron veto, as the majority of events which do not pass this cut are associated to cosmic or $\nu_{\mu}$ induced $\mu \rightarrow e$ Michel electrons. The two selections are subsequently split based on whether a proton candidate is (N$p$) or is not (0$p$) found. Events with a fully contained track must have a \texttt{trkpid} score $< 0$ and a value of \texttt{tksh\_angle} $> -0.9$. The first condition requires that the track be proton-like according to the PID tool~\ref{subsec:loglikelihoodpid}, while the second excludes tracks reconstructed back-to-back to the electron candidate, generally due to mis-reconstruction. For events with more than one reconstructed track, these requirements are applied on the longest track.
