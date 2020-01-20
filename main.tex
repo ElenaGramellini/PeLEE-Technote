@@ -82,20 +82,19 @@
 \newpage
 \section{Technical Overview on the Content of this Note \textcolor{red}{David+Elena}}
 \input{Tech-Ch1/Tech.tex}
+\newpage
 
 \section{Introduction to the $\nu_e$ analysis}
 \input{Intro-Ch2/Intro.tex}
+\newpage
 
 \section{Overview of Neutrino Identification}
 \label{sec:sliceID}
 \input{NuId-Ch2/NeutrinoID}
-
-
-
 \newpage
 
 \section{Neutrino Event Reconstruction}
-
+This section highlights the key aspects of the event reconstruction which allow for the classification of neutrino interactions: the track and shower reconstruction, the particle identification and the energy reconstruction.
 \subsection{Track and Shower Reconstruction \textcolor{green}{Giuseppe}}
 \label{sec:tkshreco}
 The output of Pandora~\cite{bib:pandoraub} is organized in a hierarchy of reconstructed Particle Flow Particles (``PFParticles''), which describes the particle content in an observed event as a parent-daughter relationship chain. Final state PFParticles are 3D objects matching clusters of hits in at least two different planes.
