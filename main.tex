@@ -100,9 +100,10 @@ This section highlights the key aspects of the event reconstruction which allow 
 The output of Pandora~\cite{bib:pandoraub} is organized in a hierarchy of reconstructed Particle Flow Particles (``PFParticles''), which describes the particle content in an observed event as a parent-daughter relationship chain. Final state PFParticles are 3D objects matching clusters of hits in at least two different planes.
 Pandora classifies PFParticles as track-like or shower-like base on a Support Vector Machine (SVM) algorithm~\cite{bib:tkshsvm}, producing a score with values between 0 (shower-like) and 1 (track-like).
 
-Pandora processes track-like PFParticles with a sliding linear fit procedure (described in~\cite{bib:pandoraub}) that returns the 3D position and direction at each point along the trajectory (where each point corresponds to a 2D hit). For each point the d$Q$/d$x$ and distance from the track-start are recorded using MicroBooNE's Calorimetry module. This procedure allows to accurately measure d$x$, including small deflections due to the particle's trajectory and SCE offsets, and d$Q$, by incorporating MicroBooNE's full position- and field-dependent relative and absolute charge calibration. \textcolor{blue}{The conversion from d$Q$/d$x$ to d$E$/d$x$ is calculated differently for tracks and showers. For tracks, the conversion is performed by applying the inverse Modified Box recombination model. For showers, both for the calculation of the trunk d$E$/d$x$ as well as the total energy, a fixed recombination correction is applied assuming 2.1 MeV/cm energy loss. In both cases, local variations in the electric field are accounted for.}
+Pandora processes track-like PFParticles with a sliding linear fit procedure (described in~\cite{bib:pandoraub}) that returns the 3D position and direction at each point along the trajectory (where each point corresponds to a 2D hit). For each point the d$Q$/d$x$ and distance from the track-start are recorded using MicroBooNE's Calorimetry module. This procedure allows to accurately measure d$x$, including small deflections due to the particle's trajectory and SCE offsets, and d$Q$, by incorporating MicroBooNE's full position- and field-dependent relative and absolute charge calibration. \textcolor{blue}{\st{The conversion from d$Q$/d$x$ to d$E$/d$x$ is calculated differently for tracks and showers. For tracks, the conversion is performed by applying the inverse Modified Box recombination model. For showers, both for the calculation of the trunk d$E$/d$x$ as well as the total energy, a fixed recombination correction is applied assuming 2.1 MeV/cm energy loss. In both cases, local variations in the electric field are accounted for.}}
+\textcolor{blue}{For tracks, the conversion from d$Q$/d$x$ to d$E$/d$x$ is performed by applying the inverse Modified Box recombination model.}
 
-We evaluate the energy and 3D direction of shower-like PFParticles with the same algorithm used for the $\pi^0$ reconstruction paper~\cite{bib:pi0reco}. The energy reconstruction accounts for various detector effects, including gain and recombination; corrections for reconstruction effects (hit threshold and imperfect clustering) will be described in Sec.~\ref{sec:ereco}. We also fit showers using a Kalman filter-based procedure~\cite{bib:shrtrackfitter} which aims at identifying the main trunk of the shower by rejecting hits that are longitudinally or transversely displaced from it; the output of this fit is a track object so that the calorimetric tools described above become available for showers as well.
+We evaluate the energy and 3D direction of shower-like PFParticles with the same algorithm used for the $\pi^0$ reconstruction paper~\cite{bib:pi0reco}. The energy reconstruction accounts for various detector effects, including gain and recombination; corrections for reconstruction effects (hit threshold and imperfect clustering) will be described in Sec.~\ref{sec:ereco}. We also fit showers using a Kalman filter-based procedure~\cite{bib:shrtrackfitter} which aims at identifying the main trunk of the shower by rejecting hits that are longitudinally or transversely displaced from it; the output of this fit is a track object so that the calorimetric tools described above become available for showers as well, \textcolor{blue}{the only difference being in the conversion from d$Q$/d$x$ to d$E$/d$x$. For showers, both for the calculation of the trunk d$E$/d$x$ as well as the total energy, a fixed recombination correction is applied assuming 2.1 MeV/cm energy loss. In all cases, local variations in the electric field are accounted for.}
 
 By default, Pandora separates showers and tracks with a cut on the SVM score at 0.5; however, as will be described in later sections, in many cases we choose different cut values, i.e. tighter shower definition for the $\nu_e$ selection and looser for the $\pi^0$ control region.
 
@@ -207,6 +208,7 @@ In order to perform the classification task, the likelihood ratio test statistic
 An example of the distribution of these variable, normalised between -1 and 1, is given in figure \ref{fig:llr_pid_uvy_example}, for tracks contained in a fiducial volume, and backtracked to muon, proton, or cosmic. \textcolor{blue}{\st{As long as the likelihood is correct, that means the model is correct, this} The likelihood ratio, as defined above, } can be proven to be the most powerful statistical test, i.e. the one with the smallest mis-identification rate for any given value of the efficiency.
 Any \textcolor{blue}{mis-modeling \st{imperfection}} in the simulation used to build the \textcolor{blue}{likelihood \st{model}} produces a loss of power, but does not add any systematic uncertainty.
 \textcolor{red}{quote example efficiency / separation power?}
+\textcolor{red}{why it does not add any systematic uncertainty? if there is a loss of rejection power in data, than the cut efficiency is different in data and MC, so this is a systematic effect.}
 
 \begin{figure}[ht] 
     \centering
@@ -236,7 +238,7 @@ Any \textcolor{blue}{mis-modeling \st{imperfection}} in the simulation used to b
     \end{subfigure}
     \begin{subfigure}[b]{0.31\textwidth}
     \centering
-    \includegraphics[width=1.00\textwidth]{egamma/shr_tkfit_dedx_Y_01022020.pdf}
+    \includegraphics[width=1.00\textwidth]{egamma/shr_tkfit_dedx_Y_01192020.pdf}
     \caption{\label{fig:egammasep:dedx} reconstructed shower $dE$/$dx$}
     \end{subfigure}
 \caption{\label{fig:egammasep}Comparison of simulated $\nu_e$ (green) vs. $\nu_{\mu} \rightarrow \pi^0 + X$ (blue) for the three discriminating variables of (a) number of showers, (b) vertex distance, and (c) $dE$/$dx$. Distributions are POT-normalized but do not conatain non-$\nu_e$ or non-$\pi^0$ events, nor on/off-beam data distributions.}
@@ -1016,8 +1018,8 @@ Details on MicroBooNE's approach to handling detector systematics can be found i
 \end{center}
 \end{figure}
 
-\subsection{Flux Uncertainties \textcolor{red}{Maya}}
-The flux \textcolor{blue}{model} and \textcolor{blue}{its} uncertainties for MCC9~\cite{bib:fluxmcc9,bib:fluxtechnote} are largely the same as MCC8~\cite{bib:fluxtechnote}. We use the multisim technique to estimate the flux uncertainties. The various sources of uncertainties are taken as independent and are varied individually. They are listed in Table~\ref{tab:fluxsyst} along the number of universes considered for each. The fractional covariance matrix and correlation matrix for the 1eNp selection are presented in Figure~\ref{fig:fluxmatrices} which amount to 12\% in flux uncertainties. Meanwhile, Figure~\ref{fig:fluxsystvars} displays the effects of reweighting central value in each universe of an individual parameter of flux.
+\subsection{Flux Uncertainties \textcolor{green}{Maya}}
+The flux \textcolor{blue}{model} and \textcolor{blue}{its} uncertainties for MCC9~\cite{bib:fluxmcc9,bib:fluxtechnote} are largely the same as MCC8~\cite{bib:fluxtechnote}. We use the multisim technique to estimate the flux uncertainties. The various sources of uncertainties are taken as independent and are varied individually around the central value. They are listed in Table~\ref{tab:fluxsyst} along the number of universes considered for each. The fractional covariance matrix and correlation matrix for the 1eNp selection are presented in Figure~\ref{fig:fluxmatrices} which amount to 2\% in flux uncertainties. Meanwhile, Figure~\ref{fig:fluxsystvars} displays the effects of reweighting central value in each universe of an individual parameter of flux.
 
 \begin{table}[H]
 \centering
@@ -1049,15 +1051,15 @@ piplus\_PrimaryHadronSWCentralSplineVariation     &  Primary Hadron Sanford Wang
 \begin{center}
     \begin{subfigure}[b]{0.45\textwidth}
     \centering
-    \includegraphics[width=1.00\textwidth]{CovarianceMatrices/SBNfit_fractional_covariance_matrix_nue_reco_e_genietune_run1_fluxonly.pdf}
+    \includegraphics[width=1.00\textwidth]{CovarianceMatrices/SBNfit_fractional_covariance_matrix_nue_reco_e_genietune_run1_fluxonly_mc_collapsed.pdf}
     \caption{fractional covariance matrix}
     \end{subfigure}
     \begin{subfigure}[b]{0.45\textwidth}
     \centering
-    \includegraphics[width=1.00\textwidth]{CovarianceMatrices/SBNfit_correlation_matrix_nue_reco_e_genietune_run1_fluxonly.pdf}
+    \includegraphics[width=1.00\textwidth]{CovarianceMatrices/SBNfit_correlation_matrix_nue_reco_e_genietune_run1_fluxonly_mc_collapsed.pdf}
     \caption{correlation matrix}
     \end{subfigure}
-\caption{\label{fig:fluxmatrices} Flux only systematics for the 1eNp selection separated by its sub-channels}
+\caption{\label{fig:fluxmatrices} Flux only systematics for the 1eNp selection}
 \end{center}
 \end{figure}
 
@@ -1066,33 +1068,39 @@ piplus\_PrimaryHadronSWCentralSplineVariation     &  Primary Hadron Sanford Wang
 \begin{center}
     \begin{subfigure}[b]{0.33\textwidth}
     \centering
-    \includegraphics[width=1.00\textwidth]{systvariations/Variation_nue_reco_e_genietune_run1_kplus_PrimaryHadronFeynmanScaling_nu_uBooNE_nue_intrinsic.pdf}
+    \includegraphics[width=1.00\textwidth]{systvariations/Variation_nue_reco_e_genietune_run1_fluxonly_kplus_PrimaryHadronFeynmanScaling_nu_uBooNE_nue_intrinsic.pdf}
     %\caption{\label{fig:numuconstraint:flux}$\nu_{\mu}$-$\nu_e$flux correlation matrix}
     \end{subfigure}
     \begin{subfigure}[b]{0.33\textwidth}
     \centering
-    \includegraphics[width=1.00\textwidth]{systvariations/Variation_nue_reco_e_genietune_run1_nucleonqexsec_FluxUnisim_nu_uBooNE_nue_intrinsic.pdf}
+    \includegraphics[width=1.00\textwidth]{systvariations/Variation_nue_reco_e_genietune_run1_fluxonly_nucleonqexsec_FluxUnisim_nu_uBooNE_nue_intrinsic.pdf}
     %\caption{\label{fig:numuconstraint:xsec}different xsec models for CC interactions.}
     \end{subfigure}
     \begin{subfigure}[b]{0.33\textwidth}
     \centering
-    \includegraphics[width=1.00\textwidth]{systvariations/Variation_nue_reco_e_genietune_run1_piplus_PrimaryHadronSWCentralSplineVariation_nu_uBooNE_nue_intrinsic.pdf}
+    \includegraphics[width=1.00\textwidth]{systvariations/Variation_nue_reco_e_genietune_run1_fluxonly_piplus_PrimaryHadronSWCentralSplineVariation_nu_uBooNE_nue_intrinsic.pdf}
     %\caption{ }
     \end{subfigure}
 \caption{\label{fig:fluxsystvars}. The effects of individual flux variations on the intrinsic $\nu_e$ sub-channel of the 1eNp selection. Given above are the three leading sources of flux uncertainties. The black crosses show the central value and each multicolored line shows a separate universe's reweighing of the central value. The magnitude of the  uncertainty in each bin corresponds to the average difference between each shifted universe and the central value in that bin.}
 \end{center}
 \end{figure}
 
-\subsection{Neutrino Interaction Modeling Uncertainties \textcolor{red}{Maya/Sebastien}}
+\subsection{Neutrino Interaction Modeling Uncertainties \textcolor{green}{Maya/Sebastien}}
 We use genie event reweighting framework with the standard reweighting parameters, also known as "knobs", to model the neutrino cross section and final states uncertainties. Document~\cite{bib:geniesupportnote} describes the GENIE cross-section model, recommended central-value tune, and the recommended uncertainties for MCC9 analyses. 
 
-The updated Genie central value is guided on fits to the T2K data which increase the MA CCQE and scale up the MEC normalization.
+The updated Genie central value tune is guided on fits to the T2K data which increase the MA CCQE and scale up the MEC normalization.
 
-A total of 55 sources of uncertainties are considered. The majority of them, 49, are varied in a multisim way. Their variations are simultaneous to take into account their correlations. This simultaneous variation is given the name All\_Genie. They are listed in Table~\ref{tab:AllGenie}. The variations of the remaining six sources cover the full range of the parameter values: they are varied from 0 to 1. Table~\ref{tab:geniesyst} lists the uncertainties that are used in the analysis and the number of universes investigated.
+A total of 55 sources of uncertainties are considered. The majority of them, 49, are varied in a multisim way around the updated Genie central value tune. Their variations are simultaneous to take into account their correlations. This simultaneous variation is given the name All\_Genie. They are listed in Table~\ref{tab:AllGenie}. The variations of the remaining six sources cover the full range of the parameter values: they are varied from 0 to 1. Table~\ref{tab:geniesyst} lists the uncertainties that are used in the analysis and the number of universes investigated.
 
-\textit{Note on the cross section systematics: The genie variations are currently not treated correctly during the reweighting. The current genie cross sections variations are thrown around the tuned genie central value and therefore already have the tuned central value weight folded in. Meanwhile the old central value has to be multiplied with the tune cv weight to update it to the new cv value. The framework that we are using has limitations on the handling of the different weights that need to be applied to the central value and the universes. As we can only provide one weight to the framework, and we have to correct primarily for the central value, the cross section variations are currently double counting the genie tune weight, and therefore the average distributions of the universes in each genie reweighting parameters do not centered at the central value as shown in Figure~\ref{fig:geniesystvars}. This excursion from the central value resulted in the overestimation of the cross section uncertainty where the uncertainties average around 15\%, and up to 800\% in the lowest neutrino energy bin. 
-The work to fix the handling of the tuning when constructing the covariance matrix is on-going and we will update these set of plots when the fix is committed.}
-
+\textit{Note on the cross section systematics: The genie systematics is currently still under investigation. 
+As mentioned above, the cross sections variations are thrown around the tuned genie central value and therefore already have the tuned central value weight folded in. 
+Meanwhile, the default central value has to be multiplied with the genie central value tune weight to update it to the new cv value. 
+We have to properly account for the Genie tuned central value that is already folded in into the Genie cross section weights so that the shift between the value in each universe of a variation and 
+the central value in a bin is calculated correctly for systematics.
+We observed a few number of large weights in the XSecShape\_CCMEC\_Genie knob which is also associated with a large weights for the Genie central value tune. Due to these large weights, the procedure to correct out the Genie tuned central value cause the weights to not be centered around the central value, for example in RPA\_CCQE\_Genie variations (see Figure~\ref{fig:genievarsRPA}).
+The fractional covariance matrix and correlation matrix for the 1eNp0$\pi$ selection are presented in Figure~\ref{fig:geniematrices} which is estimated to be ~20\% in average and up to 45\% at around 0.2 - 0.4 GeV. Meanwhile, Figure~\ref{fig:geniesystvars} displays the effects of reweighting central value in each universe of an individual parameter of flux.}
+%The framework that we are using has limitations on the handling of the different weights that need to be applied to the central value and the universes. As we can only provide one weight to the framework, and we have to correct primarily for the central value, the cross section variations are currently double counting the genie tune weight, and therefore the average distributions of the universes in each genie reweighting parameters do not centered at the central value as shown in Figure~\ref{fig:geniesystvars}. This excursion from the central value resulted in the overestimation of the cross section uncertainty where the uncertainties average around 15\%, and up to 800\% in the lowest neutrino energy bin. 
+%The work to fix the handling of the tuning when constructing the covariance matrix is on-going and we will update these set of plots when the fix is committed.}
 
 \begin{table}[H]
 \centering
@@ -1182,15 +1190,15 @@ Theta\_Delta2Npi\_Genie       &  Interpolates angular distribution for $\Delta\t
 \begin{center}
     \begin{subfigure}[b]{0.45\textwidth}
     \centering
-    \includegraphics[width=1.00\textwidth]{CovarianceMatrices/SBNfit_fractional_covariance_matrix_nue_reco_e_genietune_run1_genieonly.pdf}
+    \includegraphics[width=1.00\textwidth]{CovarianceMatrices/SBNfit_fractional_covariance_matrix_nue_reco_e_genietune_run1_genieonly_mc_collapsed.pdf}
     \caption{fractional covariance matrix}
     \end{subfigure}
     \begin{subfigure}[b]{0.45\textwidth}
     \centering
-    \includegraphics[width=1.00\textwidth]{CovarianceMatrices/SBNfit_correlation_matrix_nue_reco_e_genietune_run1_genieonly.pdf}
+    \includegraphics[width=1.00\textwidth]{CovarianceMatrices/SBNfit_correlation_matrix_nue_reco_e_genietune_run1_genieonly_mc_collapsed.pdf}
     \caption{correlation matrix}
     \end{subfigure}
-\caption{\label{fig:fluxmatrices} Neutrino interactions (GENIE) only systematics for the 1eNp selection separated by its sub-channels}
+\caption{\label{fig:geniematrices} Cross Section model (GENIE) only systematics for the 1eNp0$\pi$ selection.}
 \end{center}
 \end{figure}
 
@@ -1198,20 +1206,20 @@ Theta\_Delta2Npi\_Genie       &  Interpolates angular distribution for $\Delta\t
 \begin{center}
     \begin{subfigure}[b]{0.33\textwidth}
     \centering
-    \includegraphics[width=1.00\textwidth]{systvariations/Variation_nue_reco_e_genietune_run1_All_Genie_nu_uBooNE_nue_intrinsic.pdf}
-    %\caption{\label{fig:numuconstraint:flux}$\nu_{\mu}$-$\nu_e$flux correlation matrix}
+    \includegraphics[width=1.00\textwidth]{systvariations/Variation_nue_reco_e_genietune_run1_genieonly_All_Genie_nu_uBooNE_nue_intrinsic.pdf}
+    \caption{\label{fig:genievarsallgenie}All\_Genie variations}
     \end{subfigure}
     \begin{subfigure}[b]{0.33\textwidth}
     \centering
-    \includegraphics[width=1.00\textwidth]{systvariations/Variation_nue_reco_e_genietune_run1_RPA_CCQE_Genie_nu_uBooNE_nue_intrinsic.pdf}
-    %\caption{\label{fig:numuconstraint:xsec}different xsec models for CC interactions.}
+    \includegraphics[width=1.00\textwidth]{systvariations/Variation_nue_reco_e_genietune_run1_genieonly_RPA_CCQE_Genie_nu_uBooNE_nue_intrinsic.pdf}
+    \caption{\label{fig:genievarsRPA}RPA\_CCQE\_Genie variations}
     \end{subfigure}
     \begin{subfigure}[b]{0.33\textwidth}
     \centering
-    \includegraphics[width=1.00\textwidth]{systvariations/Variation_nue_reco_e_genietune_run1_XSecShape_CCMEC_Genie_nu_uBooNE_nue_intrinsic.pdf}
-    %\caption{ }
+    \includegraphics[width=1.00\textwidth]{systvariations/Variation_nue_reco_e_genietune_run1_genieonly_XSecShape_CCMEC_Genie_nu_uBooNE_nue_intrinsic.pdf}
+    \caption{\label{fig:genievarsCCMEC} XSecShape\_CCMEC\_Genie variations}
     \end{subfigure}
-\caption{\label{fig:geniesystvars} The effects of individual genie parameters variations on the intrinsic $\nu_e$ sub-channel of the 1eNp selection. Given above are the three leading sources of the neutrino interaction uncertainties. The black crosses show the central value and each multicolored line shows a separate universe's reweighing of the central value. The magnitude of the  uncertainty in each bin corresponds to the average difference between each shifted universe and the central value in that bin. The large uncertainties in cross section is driven by the large shift of the universe in the XSecShape\_CCMEC\_Genie variation from the central value.}
+\caption{\label{fig:geniesystvars} The effects of individual genie parameters variations on the intrinsic $\nu_e$ sub-channel of the 1eNp selection. Given above are the three leading sources of the neutrino interaction uncertainties. The black crosses show the central value and each multicolored line shows a separate universe's reweighing of the central value. The magnitude of the  uncertainty in each bin corresponds to the average difference between each shifted universe and the central value in that bin. The excursion of the universes from the central value in \ref{fig:genievarsRPA} is due to the large correction factor for the tuned Genie central value. This correction factors are driven by the large weights in the XSecShape\_CCMEC\_Genie variation.}
 \end{center}
 \end{figure}
 
@@ -1369,7 +1377,7 @@ $$x_{toy} = x_{CV} + Lv.$$
 % \caption{\label{fig:1eNp:box:statonlysensitivity} Statistics-only sensitivity estimation for the 1eNp box cut selection. Sample is taken from Monte Carlo Run 1 Data and scaled to $1.01\times10^{21}$ POT}
 % \end{center}
 % \end{figure}
-The resulting plot of the test statistic described in \ref{eqn:deltachi2_systematic} is shown in figure \ref{fig:1eNp:box:statsystsensitivity}. \textcolor{red}{Clarify if this is with or without constraint}
+The resulting plot of the test statistic for the 1eNp0$pi$ selection described in \ref{eqn:deltachi2_systematic} before applying any constraint is shown in figure \ref{fig:1eNp:box:statsystsensitivity}. 
 
 \begin{figure}[H]
 \begin{center}
@@ -1916,6 +1924,9 @@ MicroBooNE Collaboration, \emph{A Method to Determine the Electric Field of Liqu
 
 \bibitem{bib:numuCCincl}
 MicroBooNE Collaboration, \emph{First Measurement of Inclusive Muon Neutrino Charged Current Differential Cross Sections on Argon at $E_\nu ~\sim0.8$ GeV with the MicroBooNE Detector}, Phys.Rev.Lett. 123 (2019) no.13, 131801.
+
+\bibitem{bib:cholesky}
+Press W H, Teukolsky S A, Vetterling W T and Flannery B P, \emph{Numerical Recipes in C++ 2nd edn}, Phys.Rev.Lett. 123 (2019) no.13, 131801.
 
 \end{thebibliography}
 
