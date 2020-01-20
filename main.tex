@@ -133,7 +133,7 @@ By default, Pandora separates showers and tracks with a cut on the SVM score at 
 
 \par The next step in the analysis demands the development of a selection capable of isolating $\nu_e$ interactions rejecting the two order of magnitude larger background rates from $\nu_{\mu}$ neutrinos. This selection will make use of PID and topological information described in the next sections. The strong level of background rejection needed to isolate signal events will inevitably lead to a lower selection efficiency.
 
-\subsection{Particle Identification \textcolor{green}{Nico, reviewed by David}}
+\subsection{Particle Identification \textcolor{green}{Nico, reviewed by David,Elena}}
 % GC: this part is now in the previous subsection
 %In the neutrino slice, every PFParticle is reconstructed in three different ways:
 %\begin{itemize}
@@ -142,13 +142,20 @@ By default, Pandora separates showers and tracks with a cut on the SVM score at 
 %    \item Track-fitted shower, using a dedicated track fitting tool which aims at identifying the main branch of %the shower and fit it as a track. As a result, all the tools developed for the track become available for the %tracks too. For example, for each track-fitted shower, a recob::track and a anab::calorimetry objects are available.
 %\end{itemize}
 Particle identification is performed with different tools depending \textcolor{blue}{on whether the particle is selected as a track- or shower-candidate \st{the type of candidate a given PFParticle has been selected as}.
-If the PFParticle has been selected as a \st{muon or proton candidate, so as a} track-like object}, the identification is performed using the Calorimetry Likelihood tool, which results in the variable Log Likelihood Ratio PID  (section~\ref{subsec:loglikelihoodpid}).
+If the PFParticle has been selected as a \st{muon or proton candidate, so as a} track-like object}, the identification is performed using the Calorimetry Likelihood tool, which results in the variable Log Likelihood Ratio PID (LLR), see section~\ref{subsec:loglikelihoodpid}.
 If the PFParticle has been selected as an electron or photon candidate, the identification is performed using several variables described in \ref{subsec:egammaspearation}.
+%It is noteworthy that this particle identification consists of one or multiple variables, available for the specific PFParticle, that may or may not depend on \textcolor{blue}{additional information from} the rest of the slice. 
+%For example, the shower d$E$/d$x$ depends only on the PFParticle itself, whereas the track-shower separation relies also on additional objects identified in the slice.
+Notably, additional information provided by the rest of the slice may be used for the particle identification 
+depending on the specific PFParticle. For example, while the shower d$E$/d$x$ depends only on the PFParticle itself, the track-shower separation relies also on additional objects identified in the slice.
 
-It is noteworthy that this particle identification consists of one or multiple variables, available for the specific PFParticle, that may or may not depend on \textcolor{blue}{additional information from} the rest of the slice. 
-For example, the shower d$E$/d$x$ depends only on the PFParticle itself, whereas the track-shower separation relies also on additional objects identified in the slice.
+When choosing the cut values for PID variables, we account not only for the efficiency and mis-identification achievable to distinguish two kinds of particles (e.g. electrons from photons), but also for the mixture of backgrounds specific to the considered topology: e.g. \textcolor{blue}{add example}. 
 
-The value of the cuts applied on these variables depend not only on the general level of efficiency and mis-identification one may want to achieve in distinguishing two kind of particles (electrons from photons, for example), but also on the mixture of backgrounds, which eventually depends on the specific selection the analyser is performing.
+%The value of the cuts applied on these variables depends not only on the general level of efficiency and mis-identification achievable to distinguish two kind of particles (electrons from photons, for example), but also on the mixture of backgrounds specific to selection the analyzer is performing.
+
+
+
+
 
 \subsubsection{Log Likelihood Ratio Particle ID \textcolor{green}{Nico}}
 \label{subsec:loglikelihoodpid}
