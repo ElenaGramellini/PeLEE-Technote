@@ -1059,7 +1059,7 @@ piplus\_PrimaryHadronSWCentralSplineVariation     &  Primary Hadron Sanford Wang
     \includegraphics[width=1.00\textwidth]{CovarianceMatrices/SBNfit_correlation_matrix_nue_reco_e_genietune_run1_fluxonly_mc_collapsed.pdf}
     \caption{correlation matrix}
     \end{subfigure}
-\caption{\label{fig:fluxmatrices} Flux only systematics for the 1eNp selection}
+\caption{\label{fig:fluxmatrices} Flux only correlation and fractional covariance matrix for the 1eNp selection as a function of reconstructed visible energy. The global bin number starts from 0.2 GeV up to 1.5 GeV, in bins of 0.1 GeV.}
 \end{center}
 \end{figure}
 
@@ -1097,7 +1097,7 @@ As mentioned above, the cross sections variations are thrown around the tuned ge
 Meanwhile, the default central value has to be multiplied with the genie central value tune weight to update it to the new cv value. 
 We have to properly account for the Genie tuned central value that is already folded in into the Genie cross section weights so that the shift between the value in each universe of a variation and 
 the central value in a bin is calculated correctly for systematics.
-We observed a few number of large weights in the XSecShape\_CCMEC\_Genie knob which is also associated with a large weights for the Genie central value tune. Due to these large weights, the procedure to correct out the Genie tuned central value cause the weights to not be centered around the central value, for example in RPA\_CCQE\_Genie variations (see Figure~\ref{fig:genievarsRPA}).
+We observed a few number of large weights in the XSecShape\_CCMEC\_Genie knob which is also associated with a large weights for the Genie central value tune. Due to these large weights and other issues that currently not understood yet, the procedure to correct out the Genie tuned central value cause the genie cross section weights to not be centered around the central value, for example in RPA\_CCQE\_Genie variations (see Figure~\ref{fig:genievarsRPA}).
 The fractional covariance matrix and correlation matrix for the 1eNp0$\pi$ selection are presented in Figure~\ref{fig:geniematrices} which is estimated to be ~20\% in average and up to 45\% at around 0.2 - 0.4 GeV. Meanwhile, Figure~\ref{fig:geniesystvars} displays the effects of reweighting central value in each universe of an individual parameter of flux.}
 %The framework that we are using has limitations on the handling of the different weights that need to be applied to the central value and the universes. As we can only provide one weight to the framework, and we have to correct primarily for the central value, the cross section variations are currently double counting the genie tune weight, and therefore the average distributions of the universes in each genie reweighting parameters do not centered at the central value as shown in Figure~\ref{fig:geniesystvars}. This excursion from the central value resulted in the overestimation of the cross section uncertainty where the uncertainties average around 15\%, and up to 800\% in the lowest neutrino energy bin. 
 %The work to fix the handling of the tuning when constructing the covariance matrix is on-going and we will update these set of plots when the fix is committed.}
@@ -1198,7 +1198,7 @@ Theta\_Delta2Npi\_Genie       &  Interpolates angular distribution for $\Delta\t
     \includegraphics[width=1.00\textwidth]{CovarianceMatrices/SBNfit_correlation_matrix_nue_reco_e_genietune_run1_genieonly_mc_collapsed.pdf}
     \caption{correlation matrix}
     \end{subfigure}
-\caption{\label{fig:geniematrices} Cross Section model (GENIE) only systematics for the 1eNp0$\pi$ selection.}
+\caption{\label{fig:geniematrices} Cross Section model (GENIE) only systematics for the 1eNp0$\pi$ selection. The global bin number starts from 0.2 GeV up to 1.5 GeV, in steps of 0.1 GeV.}
 \end{center}
 \end{figure}
 
@@ -1360,11 +1360,11 @@ The $\Delta \chi^2$ is modified as follows taking into account the covariance ma
 This second test statistic is more optimal in the case systematic uncertainties are present.
 
 Secondly, SBNfit uses the covariance matrix to properly sample from the covariance matrix.
-The toy experiments can be generated once the full covariance matrix is in hand. The procedure to generate these toy experiments is as follows:
+The toy experiments can be generated once the full covariance matrix is in hand. Assuming that the covariance matrix is a symmetric, positive-definite matrix, the procedure to generate these toy experiments is as follows:
 \begin{enumerate}
-    \item A Cholesky decomposition \textcolor{red}{(add reference)} is performed on the covariance matrix: $$M = LL*$$,
+    \item A Cholesky decomposition \cite{bib:cholesky} is performed on the covariance matrix: $$M = LL^{T}$$,
     where $L$ is a lower triangular matrix.
-    \item A vector $v$ is generated, where each of the $i$ elements of $v$ are drawn from a Gaussian distribution with mean 0 and variance 1.
+    \item A vector $v$ with length equal to the number of bins as the selection is generated, where each of the $i$ elements of $v$ are drawn from a Gaussian distribution.
     \item A Poisson fluctuated toy data histogram is given by
 $$x_{toy} = x_{CV} + Lv.$$
     % \item We follow the same procedure to test the LEE hypothesis as described in the Section~\ref{subsec:teststats}
@@ -1912,7 +1912,6 @@ MicroBooNE Collaboration, \emph{Noise Characterization and Filtering in the Micr
 \bibitem{bib:SP1}
 MicroBooNE Collaboration, \emph{Ionization electron signal processing in single phase LArTPCs. Part I. Algorithm Description and quantitative evaluation with MicroBooNE simulation}, JINST 13 (2018) no.07, P07006.
 
-
 \bibitem{bib:SP2}
 MicroBooNE Collaboration, \emph{Ionization electron signal processing in single phase LArTPCs. Part II. Data/simulation comparison and performance in MicroBooNE}, JINST 13 (2018) no.07, P07007.
 
@@ -1926,7 +1925,7 @@ MicroBooNE Collaboration, \emph{A Method to Determine the Electric Field of Liqu
 MicroBooNE Collaboration, \emph{First Measurement of Inclusive Muon Neutrino Charged Current Differential Cross Sections on Argon at $E_\nu ~\sim0.8$ GeV with the MicroBooNE Detector}, Phys.Rev.Lett. 123 (2019) no.13, 131801.
 
 \bibitem{bib:cholesky}
-Press W H, Teukolsky S A, Vetterling W T and Flannery B P, \emph{Numerical Recipes in C++ 2nd edn}, Phys.Rev.Lett. 123 (2019) no.13, 131801.
+Press W H, Teukolsky S A, Vetterling W T and Flannery B P, \emph{Numerical Recipes in C++ 2nd edn}, Cambridge: Cambridge University Press (2002) pp 99–101.
 
 \end{thebibliography}
 
