@@ -1612,6 +1612,7 @@ This process is equivalent to sample from a diagonal covariance matrix, with fra
 Results from this method are shown in figure \ref{fig:sensitivity_function_oot}.
 
 \subsection{How Constraints and Systematics are included in the 1$e$N$p$ Sensitivity Calculation \textcolor{red}{Maya}}
+\label{ssec:finalSensitivityCalc}
 
 The multiple selections described in  ~\ref{sec:nueselection}-\ref{sec:numuselection} share the same neutrino flux and cross-section and therefore the measurements between them are highly correlated. We can exploit these correlations to reduce the systematics uncertainties when performing the combined side-by-side fit of the different channel for the sensitivity results. \textcolor{blue}{It is important to point out that the constraint procedure currently applied requires that the $\nu_{\mu} - \nu_e$ correlations exploited (and more generally the correlations between the $\nu_e$ channel and any other sideband) represent the underlying truth correlations between these different event categories. A mis-modeling of these correlations can lead to an incorrect estimation of the expected $\nu_e$ rate and its uncertainties. Ensuring that such correlations are modeled correctly is not a simple task. At a minimum, it requires a robust validation of MicroBooNE's simulation through a detailed studies of data-simulation comparisons in a broad range of variables and phase space.}
 
@@ -1759,6 +1760,8 @@ The distribution of the test statistic for the null and alternative hypothesis d
 
 \section{Data-MC Comparisons}
 \label{sec:datamc:plots}
+
+\subsection{\npsel pre-selection}
 
 Figure~\ref{fig:1eNp:dataMCRun1:reco_nu_vtx}-\ref{fig:1eNp:dataMCRun1:pi02} show the data-MC comparison for all \npsel variables in Run1 open data after \npsel preselection.
 
@@ -1930,6 +1933,145 @@ Figure~\ref{fig:1eNp:dataMCRun1:reco_nu_vtx}-\ref{fig:1eNp:dataMCRun1:pi02} show
 \end{center}
 \end{figure}
 
+\subsection{$\pi^0$ filter}
+\par Figures show the distribution of reconstructed quantities for inputs to the $\pi^0$ selection. Figures refer to Run1. Figures refer to Run3. As a reminder, these comparisons are performed after a 0.7 scaling is applied to CC and NC $\pi^0$ events based on the normalization differences found in the $\pi^0$ mass distributions shown in section~\ref{sec:controls:pi0}.
+
+\begin{figure}[H] 
+\begin{center}
+    \begin{subfigure}[b]{0.3\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{pi0/pi0_shrscore1_01152020_inputs_RUN1.pdf}
+    \caption{\label{fig:pi0:inputs:shrscore1:RUN1} pi0\_shrscore1 - Run 1 }
+    \end{subfigure}
+    \begin{subfigure}[b]{0.3\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{pi0/pi0_shrscore2_01152020_inputs_RUN1.pdf}
+    \caption{\label{fig:pi0:inputs:shrscore2:RUN1} pi0\_shrscore2 - Run 1 }
+    \end{subfigure}
+    \begin{subfigure}[b]{0.3\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{pi0/pi0_gammadot_01152020_inputs_RUN1.pdf}
+    \caption{\label{fig:pi0:inputs:gammadot:RUN1} pi0\_gammadot - Run 1.}
+    \end{subfigure}
+\end{center}
+\end{figure}
+
+\begin{figure}[H] 
+\begin{center}
+    \begin{subfigure}[b]{0.3\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{pi0/pi0_energy1_Y_01152020_inputs_RUN1.pdf}
+    \caption{\label{fig:pi0:inputs:energy1:RUN1} pi0\_energy1\_Y - RUN 1 }
+    \end{subfigure}
+    \begin{subfigure}[b]{0.3\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{pi0/pi0_energy2_Y_01152020_inputs_RUN1.pdf}
+    \caption{\label{fig:pi0:inputs:energy12:RUN1} pi0\_energy2\_Y - Run 1 }
+    \end{subfigure}
+    \begin{subfigure}[b]{0.3\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{pi0/pi0_dedx1_fit_Y_01152020_inputs_RUN1.pdf}
+    \caption{\label{fig:pi0:inputs:gammadot:RUN1} pi0\_dedx1\_fit\_Y - Run 1.}
+    \end{subfigure}
+\end{center}
+\end{figure}
+
+\begin{figure}[H] 
+\begin{center}
+    \begin{subfigure}[b]{0.3\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{pi0/pi0_dedx2_fit_Y_01152020_inputs_RUN1.pdf}
+    \caption{\label{fig:pi0:inputs:dedx2:RUN1} pi0\_dedx2\_fit\_Y - RUN 1 }
+    \end{subfigure}
+    \begin{subfigure}[b]{0.3\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{pi0/pi0_dot1_01152020_inputs_RUN1.pdf}
+    \caption{\label{fig:pi0:inputs:dot1:RUN1} pi0\_dot1 - Run 1 }
+    \end{subfigure}
+    \begin{subfigure}[b]{0.3\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{pi0/pi0_dot2_01152020_inputs_RUN1.pdf}
+    \caption{\label{fig:pi0:inputs:dot2:RUN1} pi0\_dot2 - Run 1.}
+    \end{subfigure}
+\end{center}
+\end{figure}
+
+\par Run3:
+
+\begin{figure}[H] 
+\begin{center}
+    \begin{subfigure}[b]{0.3\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{pi0/pi0_shrscore1_01152020_inputs_RUN3.pdf}
+    \caption{\label{fig:pi0:inputs:shrscore1:RUN1} pi0\_shrscore1 - Run 3}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.3\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{pi0/pi0_shrscore2_01152020_inputs_RUN3.pdf}
+    \caption{\label{fig:pi0:inputs:shrscore2:RUN1} pi0\_shrscore2 - Run 3}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.3\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{pi0/pi0_gammadot_01152020_inputs_RUN3.pdf}
+    \caption{\label{fig:pi0:inputs:gammadot:RUN1} pi0\_gammadot - Run 3}
+    \end{subfigure}
+\end{center}
+\end{figure}
+
+\begin{figure}[H] 
+\begin{center}
+    \begin{subfigure}[b]{0.3\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{pi0/pi0_energy1_Y_01152020_inputs_RUN3.pdf}
+    \caption{\label{fig:pi0:inputs:energy1:RUN1} pi0\_energy1\_Y - RUN 3}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.3\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{pi0/pi0_energy2_Y_01152020_inputs_RUN3.pdf}
+    \caption{\label{fig:pi0:inputs:energy12:RUN1} pi0\_energy2\_Y - Run 3}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.3\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{pi0/pi0_dedx1_fit_Y_01152020_inputs_RUN3.pdf}
+    \caption{\label{fig:pi0:inputs:gammadot:RUN1} pi0\_dedx1\_fit\_Y - Run 3.}
+    \end{subfigure}
+\end{center}
+\end{figure}
+
+\begin{figure}[H] 
+\begin{center}
+    \begin{subfigure}[b]{0.3\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{pi0/pi0_dedx2_fit_Y_01152020_inputs_RUN3.pdf}
+    \caption{\label{fig:pi0:inputs:dedx2:RUN1} pi0\_dedx2\_fit\_Y - RUN 3 }
+    \end{subfigure}
+    \begin{subfigure}[b]{0.3\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{pi0/pi0_dot1_01152020_inputs_RUN3.pdf}
+    \caption{\label{fig:pi0:inputs:dot1:RUN1} pi0\_dot1 - Run 3 }
+    \end{subfigure}
+    \begin{subfigure}[b]{0.3\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{pi0/pi0_dot2_01152020_inputs_RUN3.pdf}
+    \caption{\label{fig:pi0:inputs:dot2:RUN1} pi0\_dot2 - Run 3.}
+    \end{subfigure}
+\end{center}
+\end{figure}
+
+\begin{figure}[H] 
+\begin{center}
+    \begin{subfigure}[b]{0.3\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{pi0/pi0_radlen1_01152020_inputs_RUN1.pdf}
+    \caption{\label{fig:pi0:inputs:radlen1:RUN1} pi0\_radlen1 - RUN 1 }
+    \end{subfigure}
+    \begin{subfigure}[b]{0.3\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{pi0/pi0_radlen2_01152020_inputs_RUN1.pdf}
+    \caption{\label{fig:pi0:inputs:radlen2:RUN1} pi0\_radlen2 - Run 1 }
+    \end{subfigure}
+\end{center}
+\end{figure}
 
 \section{Code Repositories}
 
