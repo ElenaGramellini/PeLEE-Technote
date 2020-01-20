@@ -1362,7 +1362,7 @@ This second test statistic is more optimal in the case systematic uncertainties 
 Secondly, SBNfit uses the covariance matrix to properly sample from the covariance matrix.
 The toy experiments can be generated once the full covariance matrix is in hand. The procedure to generate these toy experiments is as follows:
 \begin{enumerate}
-    \item A Cholesky decomposition \textcolor{red}{(add reference)} is performed on the covariance matrix: $$M = LL*$$,
+    \item A Cholesky decomposition \ref{bib:cholesky} is performed on the covariance matrix: $$M = LL*$$,
     where $L$ is a lower triangular matrix.
     \item A vector $v$ is generated, where each of the $i$ elements of $v$ are drawn from a Gaussian distribution with mean 0 and variance 1.
     \item A Poisson fluctuated toy data histogram is given by
@@ -1912,7 +1912,6 @@ MicroBooNE Collaboration, \emph{Noise Characterization and Filtering in the Micr
 \bibitem{bib:SP1}
 MicroBooNE Collaboration, \emph{Ionization electron signal processing in single phase LArTPCs. Part I. Algorithm Description and quantitative evaluation with MicroBooNE simulation}, JINST 13 (2018) no.07, P07006.
 
-
 \bibitem{bib:SP2}
 MicroBooNE Collaboration, \emph{Ionization electron signal processing in single phase LArTPCs. Part II. Data/simulation comparison and performance in MicroBooNE}, JINST 13 (2018) no.07, P07007.
 
@@ -1926,7 +1925,7 @@ MicroBooNE Collaboration, \emph{A Method to Determine the Electric Field of Liqu
 MicroBooNE Collaboration, \emph{First Measurement of Inclusive Muon Neutrino Charged Current Differential Cross Sections on Argon at $E_\nu ~\sim0.8$ GeV with the MicroBooNE Detector}, Phys.Rev.Lett. 123 (2019) no.13, 131801.
 
 \bibitem{bib:cholesky}
-Press W H, Teukolsky S A, Vetterling W T and Flannery B P, \emph{Numerical Recipes in C++ 2nd edn}, Phys.Rev.Lett. 123 (2019) no.13, 131801.
+Press W H, Teukolsky S A, Vetterling W T and Flannery B P, \emph{Numerical Recipes in C++ 2nd edn}, Cambridge: Cambridge University Press (2002) pp 99–101.
 
 \end{thebibliography}
 
