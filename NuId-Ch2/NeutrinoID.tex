@@ -1,6 +1,6 @@
 %\subsection{Event Slicing and Cosmic Removal in Pandora}
 
-The work presented in this note relies on the Pandora approach for event reconstruction~\cite{bib:pandoraub}. The scope of Pandora is to do the low-level pattern-recognition step of the reconstruction, i.e. group hits into clusters, clusters into particles and particles into hierarchies. This section describes how Pandora's pattern-recognition output is combined with scintillation light information to isolate possible candidate neutrino interactions in MicroBooNE events, a process illustrates in the three images of figure~\ref{fig:sliceid}. 
+The work presented in this note relies on the Pandora approach for event reconstruction~\cite{bib:pandoraub}. The scope of Pandora is to do the low-level pattern-recognition step of the reconstruction, i.e. group hits into clusters, clusters into particles and particles into hierarchies. This section focuses on the cosmic rejection aspect of the analysis workflow. We describe here how Pandora's pattern-recognition output is combined with scintillation light information to isolate possible candidate neutrino interactions in MicroBooNE events, a process illustrates in the three images of figure~\ref{fig:sliceid}. Moreover, we describe how the additional information from the Cosmic Ray Tagger (CRT) can improve cosmic rejection. 
 
 \begin{figure}[ht] 
 \begin{center}
@@ -23,13 +23,14 @@ The work presented in this note relies on the Pandora approach for event reconst
 \end{center}
 \end{figure}
 
-\subsection{Slicing, Clustering and Vertexing \textcolor{green}{Wouter ... P.R. Elena}}
+%\subsection{Slicing, Clustering and Vertexing \textcolor{green}{Wouter ... P.R. Elena}}
+\subsection{Pandora Slicing, Clustering and Vertexing \textcolor{green}{Wouter ... P.R. Elena}}
 The creation of a ``slice" is the first step of the Pandora processing. A slice is a collection of distinct reconstructed particles which belong to the same interaction (such as a cosmic muon and its Michel electron, or the muon and proton in a 1$\mu$1$p$ neutrino interaction). To produce slices, the Pandora Cosmic Pattern Recognition is first run over all hits, aiming to construct muon tracks and associated $\delta$-rays and Michel electrons under the cosmic hypothesis (fig.~\ref{fig:slcieid:00}). At this stage, obvious cosmic activity (through-going or out-of-time muons) is tagged using geometric information and discarded (fig.~\ref{fig:slcieid:01}). The remaining hit collection is used as input to the Pandora Consolidated Pattern Recognition which reconstruct slices under the neutrino hypothesis. Each slice is now reconstructed both under the cosmic hypothesis and the neutrino hypothesis. A typical event contains approximately 5 slices. 
 
 %\subsubsection{Clustering and Vertex Finding \textcolor{green}{Wouter}} 
 \par In order to reconstruct the interactions in 3D, Pandora needs to match the information from at least two different views and create a neutrino vertex. Pandora computes the 2D clustering on the hits in each slice and in each plane separately. Then, a number of 3D candidate vertices is created by finding positions that project down on to the ends of the available 2D clusters. All the possible vertex candidates are fed into the support vector machine (SVM) vertex selection, and the candidate with the highest SVM score is chosen. This 3D vertex is used to split any existing clusters that straddle the vertex. Then, the cluster matching algorithms are run, where the clusters are compared between views and modified to improve the matching.
 
-\subsection{SliceID : Cosmic Removal through topology and scintillation-light \textcolor{green}{Wouter... P.R. Elena}}
+\subsection{Pandora SliceID: Cosmic Removal Via Topology and Scintillation Light \textcolor{green}{Wouter... P.R. Elena}}
 \label{sec:sliceID:SliceID}
 \par After the Pandora pattern-recognition algorithm suite has isolated individual interactions into reconstructed \emph{slices} and removed the obvious cosmics, the remaining task is to identify which (if any) slice is associated to a neutrino interaction. Scintillation light information is used to reject slices incompatible with light recorded in-time with the beam. Additionally, topological cuts aimed at rejecting stopping-muon events which enter the TPC are used. The \texttt{SliceID} is at the core of all neutrino selections performed in this analysis; this first, common step is responsible for the majority of cosmic-rejection.
 \\
@@ -71,7 +72,7 @@ Further details on the \texttt{SliceID} tool are available in DocDB 23854 and 22
 
 \subsection{CRT Veto and Distance Tagger \textcolor{green}{Elena}}
 \label{sec:sliceID:CRT}
-Contrary to  $\nu_\mu$ interactions and cosmic rays, the charged particles associated to $\nu_e$ interactions are unlikely to deposit energy in the Cosmic Ray Tagger (CRT). Building upon this discriminating factor, the CRT Veto and CRT Distance Tagger are preselection tools which leverage the additional CRT information available for Run 3+ data.
+Contrary to  $\nu_\mu$ interactions and cosmic rays, the charged particles associated to $\nu_e$ interactions are unlikely to deposit energy in the CRT. Building upon this discriminating factor, the CRT Veto and CRT Distance Tagger are preselection tools which leverage the additional CRT information available for Run 3+ data.
 When used, these CRT tools are applied at the pre-selection stage in the following order: CRT Veto, \texttt{SliceID}, CRT Distance Tagger. The CRT tools are especially impactful for the 1e0p channel, where discrimination handles based on the proton PID are obviously missing. \\
 
 
