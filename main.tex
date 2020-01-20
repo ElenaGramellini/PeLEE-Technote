@@ -121,7 +121,7 @@ Even with this workflow, the statistics of several background categories is not 
 \begin{itemize}
     \item \textbf{BNB}: On-beam contributions (data).
     \item \textbf{EXT}: Off-beam contributions (data).
-    \item \textbf{Cosmic}: Events from MC overlay where a cosmic instead of a neutrino interaction have been selected as the neutrino candidate by Pandora's SliceID.
+    \item \textbf{Cosmic}: Events from MC overlay where a cosmic instead of a neutrino interaction have been selected as the neutrino candidate by Pandora's \texttt{SliceID}.
     \item \textbf{Out. fid. vol.}: Events from MC overlay where a neutrino was tagged, but the neutrino interaction vertex is outside of the defined TPC fiducial volume.
     \item \textbf{MiniBooNE LEE}: Events from the MB-$\nu_e$ LEE model.
     \item \textbf{$\nu_e$}: CC $\nu_e$ events, split by final state (\zpsel, \npsel, and N$\pi$).
@@ -241,7 +241,7 @@ flux uncertainties for $\nu_e$ calculated from the beam simulation are $\mathcal
 
 \begin{comment}
 
-The complexity of $\nu$-Ar interactions and of hadronic interactions in the beamline mean that many different handles and measurements of $\nu_{\mu}$ interactions can play a role in constraining different uncertainties. As examples, measurement of CC and NC $\pi^0$ production constrain resonant interactions and thus $\pi^0$ backgrounds to the $\nu_e$ selection, and measurements of high-energy $\nu_{\mu}$ interactions can help constrain the kaon flux in the beam, which contributes substantially to the production of intrinsic $\nu_e$s. Likewise, measurements of low-energy $\nu_{\mu}$s can help constrain poorly understood $\nu$-Ar interaction models in the few-hundred MeV energy regime, a critical requirement for this analysis. The neutrino identification work developed for this analysis, referred to as \emph{SliceID} and described in section~\ref{sec:sliceID}, is a highly efficient and topology agnostic selection that enables a vast program of $\nu_{\mu}$ measurements, allowing for flexibility in selecting topologies that may have the strongest constraining power and thus most benefit the $\nu_e$ analysis. At the current time, as described in the remainder of this section and in section~\ref{sec:systematics}, the emphasis is on the measurement of low-energy $\nu_{\mu}$ interactions with the goal of constraining the large uncertainties in low-energy $\nu_e$ events which significantly impact the analysis.
+The complexity of $\nu$-Ar interactions and of hadronic interactions in the beamline mean that many different handles and measurements of $\nu_{\mu}$ interactions can play a role in constraining different uncertainties. As examples, measurement of CC and NC $\pi^0$ production constrain resonant interactions and thus $\pi^0$ backgrounds to the $\nu_e$ selection, and measurements of high-energy $\nu_{\mu}$ interactions can help constrain the kaon flux in the beam, which contributes substantially to the production of intrinsic $\nu_e$s. Likewise, measurements of low-energy $\nu_{\mu}$s can help constrain poorly understood $\nu$-Ar interaction models in the few-hundred MeV energy regime, a critical requirement for this analysis. The neutrino identification work developed for this analysis, referred to as \texttt{SliceID} and described in section~\ref{sec:sliceID}, is a highly efficient and topology agnostic selection that enables a vast program of $\nu_{\mu}$ measurements, allowing for flexibility in selecting topologies that may have the strongest constraining power and thus most benefit the $\nu_e$ analysis. At the current time, as described in the remainder of this section and in section~\ref{sec:systematics}, the emphasis is on the measurement of low-energy $\nu_{\mu}$ interactions with the goal of constraining the large uncertainties in low-energy $\nu_e$ events which significantly impact the analysis.
 \par To further motivate the need for low energy $\nu_{\mu}$ interactions, we describe two important ways in which such a dataset can benefit the reduction of modeling uncertainties for $\nu_e$ interactions.
 \end{comment}
 \par The richness of $\nu$-Ar interactions and of hadronic interactions in the beamline offers a number of different handles 
@@ -312,7 +312,7 @@ Finally, the observed spectra from the \nueccnopinp and the \numu selections are
 
 \newpage
 
-\section{Overview of Neutrino Identification: Pandora SliceID}
+\section{Overview of Neutrino Identification: Pandora \texttt{SliceID}}
 \label{sec:sliceID}
 \input{NuId-Ch2/NeutrinoID}
 
@@ -346,7 +346,7 @@ By default, Pandora separates showers and tracks with a cut on the SVM score at 
     \begin{subfigure}[b]{0.31\textwidth}
     \centering
     \includegraphics[width=1.00\textwidth]{nureco/NeutrinoEnergy2_01152020.pdf}
-    \caption{\label{fig:nuereco:sliceid} after SliceID}
+    \caption{\label{fig:nuereco:sliceid} after \texttt{SliceID}}
     \end{subfigure}
     \begin{subfigure}[b]{0.31\textwidth}
     \centering
@@ -1238,7 +1238,7 @@ Details on MicroBooNE's approach to handling detector systematics can be found i
     \includegraphics[width=1.00\textwidth]{detsys/nu_e01162020_numu_slice_eff.pdf}
     %\caption{\label{fig:numuconstraint:xsec}different xsec models for CC interactions.}
     \end{subfigure}
-\caption{\label{fig:detsys:dedx:eLEElow}Variation in efficiency for the $\nu_e$ pre-selection (left), $\nu_e$ loose box-cuts (center) and $\nu_{\mu}$ SliceID (right) for different detector variation samples.}
+\caption{\label{fig:detsys:dedx:eLEElow}Variation in efficiency for the $\nu_e$ pre-selection (left), $\nu_e$ loose box-cuts (center) and $\nu_{\mu}$ \texttt{SliceID} (right) for different detector variation samples.}
 \end{center}
 \end{figure}
 

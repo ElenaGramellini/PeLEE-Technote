@@ -17,28 +17,30 @@ The work presented in this note relies on the Pandora approach for event reconst
     \begin{subfigure}[b]{0.7\textwidth}
     \centering
     \includegraphics[width=1.00\textwidth]{NuId-Ch2/Images/slice02.png}
-    \caption{\label{fig:slcieid:01} Implementation of the \texttt{SiceID} tool to isolate possible candidate $\nu$ interactions.}
+    \caption{\label{fig:slcieid:02} Implementation of the \texttt{SiceID} tool to isolate possible candidate $\nu$ interactions.}
     \end{subfigure}
 \caption{\label{fig:sliceid} Succession of steps in cosmic removal performed using Pandora's topological pattern recognition combined with scintillation light information through the \texttt{SliceID} tool.}
 \end{center}
 \end{figure}
 
-\subsection{Slicing \textcolor{green}{Wouter ... P.R. Elena}}
-The creation of a ``slice" is the first step of the Pandora processing. A slice \textcolor{blue}{is a collection of distinct reconstructed particles which belong to the same interaction (such as a cosmic muon and its Michel electron, or the muon and proton in a 1$\mu$1$p$ neutrino interaction) \st{is a combination of hits on the three different planes which are topological distinct:  it is assumed that different slices correspond to a distinct group of activity in the TPC}}. To produce slices, the Pandora Cosmic Pattern Recognition is first run over all hits, aiming to construct muon tracks and associated $\delta$-rays and Michel electrons under the cosmic hypothesis (fig.~\ref{fig:sliceid:00}). At this stage, obvious cosmic activity (through-going or out-of-time muons) is tagged using geometric information. The obvious cosmic tagged hits are discarded (fig.~\ref{fig:sliceid:01}); the filtered hit collection is used as input to the Pandora Consolidated Pattern Recognition which reconstruct slices under the neutrino hypothesis. Each slice is now reconstructed both under the cosmic hypothesis and the neutrino hypothesis. A typical event contains approximately 5 slices. 
+\subsection{Slicing, Clustering and Vertexing \textcolor{green}{Wouter ... P.R. Elena}}
+The creation of a ``slice" is the first step of the Pandora processing. A slice is a collection of distinct reconstructed particles which belong to the same interaction (such as a cosmic muon and its Michel electron, or the muon and proton in a 1$\mu$1$p$ neutrino interaction). To produce slices, the Pandora Cosmic Pattern Recognition is first run over all hits, aiming to construct muon tracks and associated $\delta$-rays and Michel electrons under the cosmic hypothesis (fig.~\ref{fig:slcieid:00}). At this stage, obvious cosmic activity (through-going or out-of-time muons) is tagged using geometric information and discarded (fig.~\ref{fig:slcieid:01}). The remaining hit collection is used as input to the Pandora Consolidated Pattern Recognition which reconstruct slices under the neutrino hypothesis. Each slice is now reconstructed both under the cosmic hypothesis and the neutrino hypothesis. A typical event contains approximately 5 slices. 
 
-\subsubsection{Clustering and Vertex Finding \textcolor{green}{Wouter}} 
-Pandora computes the 2D clustering on the hits in each slice and in each plane separately. Then, a number of 3D candidate vertices is created by finding positions that project down on to the ends of the available 2D clusters. All of the possible candidates are fed into the support vector machine (SVM) vertex selection, and the most appropriate one is chosen. This 3D vertex is used to split any existing clusters that straddle the vertex. Then, the cluster matching algorithms are run, where the clusters are compared between views and modified to improve the matching.
+%\subsubsection{Clustering and Vertex Finding \textcolor{green}{Wouter}} 
+\par In order to reconstruct the interactions in 3D, Pandora needs to match the information from at least two different views and create a neutrino vertex. Pandora computes the 2D clustering on the hits in each slice and in each plane separately. Then, a number of 3D candidate vertices is created by finding positions that project down on to the ends of the available 2D clusters. All the possible vertex candidates are fed into the support vector machine (SVM) vertex selection, and the candidate with the highest SVM score is chosen. This 3D vertex is used to split any existing clusters that straddle the vertex. Then, the cluster matching algorithms are run, where the clusters are compared between views and modified to improve the matching.
 
 \subsection{SliceID : Cosmic Removal through topology and scintillation-light \textcolor{green}{Wouter}}
 \label{sec:sliceID:SliceID}
-\par After the Pandora pattern-recognition algorithm suite has isolated individual interactions into reconstructed \emph{slices} and removed those that are either through-going or out-of-time, the remaining task is to identify which (if any) slice is associated to a neutrino interaction. This is done by relying on scintillation light information to reject slices incompatible with light recorded in-time with the beam. Additionally, topological cuts aimed at rejecting stopping-muon events which enter the TPC are used. The SliceID is at the core of all neutrino selections performed in this analysis, and serves as the first, common step in the analysis, responsible for the majority of cosmic-rejection.
+\par After the Pandora pattern-recognition algorithm suite has isolated individual interactions into reconstructed \emph{slices} and removed the obvious cosmics, the remaining task is to identify which (if any) slice is associated to a neutrino interaction. Scintillation light information is used to reject slices incompatible with light recorded in-time with the beam. Additionally, topological cuts aimed at rejecting stopping-muon events which enter the TPC are used. The \texttt{SliceID} is at the core of all neutrino selections performed in this analysis; this first, common step is responsible for the majority of cosmic-rejection.
 \\
-\par We have three handles that we use to distinguish between neutrino and cosmic-ray slices.
+\par We leverage three handles to distinguish between neutrino and cosmic-ray slices:
 \begin{enumerate}
-    \item Simple optical pre-selection cuts - is the slice totally inconsistent with the beam flash?
-    \item Topological score - to what extent does the slice look like a neutrino interaction in the TPC?
-    \item Flash-matching score - to what extent does our flash-hypothesis for this slice match the beam flash?
+    \item simple optical pre-selection cuts, which remove slices totally inconsistent with the beam flash;
+    \item a topological score, which assesses to what extent the slice look like a neutrino interaction in the TPC;
+    \item a flash-matching score, which assesses how well the flash-hypothesis for the slice matches the beam flash.
 \end{enumerate}
+
+\begin{comment}
 To select the neutrino slice, or reject the event at this stage, the following procedure is followed:
 \begin{itemize}
     \item Insist that there is a beam-triggered flash in the beam window.
@@ -47,13 +49,21 @@ To select the neutrino slice, or reject the event at this stage, the following p
     \item If not, then choose the remaining slice with the largest flash-matching score.
 \end{itemize}
 Further details on the \texttt{SliceID} tool are available in DocDB 23854 and 22519. Additional documentation for this tool is in preparation.
+\end{comment}
 
-The performance of the SliceID for electron neutrino simulated events is given in~\cref{fig:sliceid}.
+To select the neutrino slice, we first require a beam-triggered flash in the beam window. 
+Then, we apply the optical pre-selection cuts: if no slice passes optical pre-selection, the event is rejected. 
+If the slice with the largest topological score passes the optical pre-selection, the slice forms the neutrino candidate; otherwise, the slice with the largest flash-matching score forms the neutrino candidate.
+The performance of the \texttt{SliceID} for electron neutrino simulated events is given in~\cref{fig:sliceid}.
+
+Further details on the \texttt{SliceID} tool are available in DocDB 23854 and 22519. Additional documentation for this tool is in preparation.
+
+
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{NuId-Ch2/Images/efficiency_cat_0.pdf}
-    \caption{The performance of the SliceID in function of the true neutrino energy for the channel with protons (left), the channel without vertex activity (middle) and events with pions in the final state (right).}
+    \caption{The performance of the \texttt{SliceID} as a function of the true neutrino energy for the topologies considered in the $\nu_e$ selection: the \npsel (left), the  \zpsel (middle) and inclusive (right) channels.}
     \label{fig:sliceid}
 \end{figure}
 
@@ -62,7 +72,7 @@ The performance of the SliceID for electron neutrino simulated events is given i
 \subsection{CRT Veto and Distance Tagger \textcolor{green}{Elena}}
 \label{sec:sliceID:CRT}
 Contrary to  $\nu_\mu$ interactions and cosmic rays, the charged particles associated to $\nu_e$ interactions are unlikely to deposit energy in the Cosmic Ray Tagger (CRT). Building upon this discriminating factor, the CRT Veto and CRT Distance Tagger are preselection tools which leverage the additional CRT information available for Run 3+ data.
-When used, these CRT tools are applied at the pre-selection stage in the following order: CRT Veto, SliceID, CRT Distance Tagger. The CRT tools are especially impactful for the 1e0p channel, where discrimination handles based on the proton PID are obviously missing. \\
+When used, these CRT tools are applied at the pre-selection stage in the following order: CRT Veto, \texttt{SliceID}, CRT Distance Tagger. The CRT tools are especially impactful for the 1e0p channel, where discrimination handles based on the proton PID are obviously missing. \\
 
 
 \emph{CRT Veto.} %On average, only one in six events passing the MicroBooNE common optical filter is associated to beam-induced activity. The remaining events are triggered by activity that originates outside the TPC: either external beam induced activity or cosmic rays. %Given the $\mathcal{O}(10)$ cosmic ray muons in each drift window, this equates to a starting signal-to-background of $\sim 1 : 60$.
@@ -82,7 +92,7 @@ To perform this association, the track projection to the CRT is calculated under
 \label{fig:crtdist00}
 \end{figure}
 
-An overview of the impact of the CRT on cosmic rejection can be seen in Figure~\ref{fig:crt} where the beam-time distribution for the $8E18$ POT Run 3 open dataset is shown after SliceID (left), and after SliceID and CRT cosmic-tagging tools (both CRT veto and distance tagger) have been applied (right), with EXT backgrounds dropping by more than a factor of 3.
+An overview of the impact of the CRT on cosmic rejection can be seen in Figure~\ref{fig:crt} where the beam-time distribution for the $8E18$ POT Run 3 open dataset is shown after \texttt{SliceID} (left), and after \texttt{SliceID} and CRT cosmic-tagging tools (both CRT veto and distance tagger) have been applied (right), with EXT backgrounds dropping by more than a factor of 3.
 Further details and a preliminary study of the CRT  impact on an electron neutrino preselection can be found in \cite{bib:CRTPresel_Technote}. 
 
 \begin{figure}[ht] 
