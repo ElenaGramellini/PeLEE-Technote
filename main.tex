@@ -686,6 +686,7 @@ Figure~\ref{fig:eres:neutrino} shows the comparison between reconstructed energy
 \newpage
 
 \section{$\nu_e$ Selections}
+\label{sec:nueselection}
 \par This chapter present the three $\nu_e$ selections which comprise the analysis. The chapter starts with the description of common variables and tools leveraged by all $\nu_e$ selections in section~\ref{sec:nueselection:variables}. Next the \npsel (sec.~\ref{sec:nueselection:1eNp}) and \zpsel (sec.~\ref{sec:nueselection:1e0p}) channel selections are presented, starting with a description of where the two selections branch off~\ref{sec:nueselection:inputs}. Finally, the $\nu_e$ inclusive selection is presented in~\ref{sec:nueselection:inclusive}.
 
 \subsection{Variable definitions \textcolor{green}{Elena}}
@@ -738,7 +739,7 @@ The 1$e$N$p$ and 1$e$0$p$ selections rely on a common pre-selection which requir
     \includegraphics[width=1.00\textwidth]{nueselection/elec_RUN1.pdf}
     \caption{\label{fig:nue:presel:eff:elec} }
     \end{subfigure}
-\caption{\label{fig:nue:presel:eff} $\nu_e$ pre-selection efficiencies split by final-state topology as a function of different truth variables.}
+\caption{\label{fig:nue:presel:eff} $\nu_e$ pre-selection efficiencies split by final-state topology as a function of different truth variables. \textcolor{red}{(update plots to not read ``pre-selection''.)}}
 \end{center}
 \end{figure}
 
@@ -1611,9 +1612,9 @@ Results from this method are shown in figure \ref{fig:sensitivity_function_oot}.
 
 \subsection{How Constraints and Systematics are included in the 1$e$N$p$ Sensitivity Calculation \textcolor{red}{Maya}}
 
-The multiple selections described in  ~\ref{sec:nueselection}-\ref{sec:numuselection} share the same neutrino flux and cross-section and therefore the measurements between them are highly correlated. We can exploit these correlations to reduce the systematics uncertainties when performing the combined side-by-side fit of the different channel for the sensitivity results.
+The multiple selections described in  ~\ref{sec:nueselection}-\ref{sec:numuselection} share the same neutrino flux and cross-section and therefore the measurements between them are highly correlated. We can exploit these correlations to reduce the systematics uncertainties when performing the combined side-by-side fit of the different channel for the sensitivity results. \textcolor{blue}{It is important to point out that the constraint procedure currently applied requires that the $\nu_{\mu} - \nu_e$ correlations exploited (and more generally the correlations between the $\nu_e$ channel and any other sideband) represent the underlying truth correlations between these different event categories. A mis-modeling of these correlations can lead to an incorrect estimation of the expected $\nu_e$ rate and its uncertainties. Ensuring that such correlations are modeled correctly is not a simple task. At a minimum, it requires a robust validation of MicroBooNE's simulation through a detailed studies of data-simulation comparisons in a broad range of variables and phase space.}
 
-The different selections described in Section~\ref{sec:nueselection}-\ref{sec:numuselection} provide constraints to different energy range of the 1eNp selection as well as the kinematics and topology. The inclusive $\nu_e$ selection can be used to constrain the high energy $\nu_e$. We explore the prospect of adding the inclusive $\nu_e$ selection to constrain the high energy $\nu_e$. Given the non-orthogonality of this selection to the 1eNp0$\pi$ selection, we still need to explore other variables that can provide orthogonality in order to exercise the constraint. The 1e0p0$\pi$ channel can provide constraint to the less understood proton reconstruction and kinematics. The $CC\pi0$ sample can be utilized to constrain the uncertainties coming from shower. Finally, we can use the $\nu_\mu$ selection to constrain the flux and cross section at low energy $\nu_e$ and Section~\ref{subsec:constraintfromnumu} describes this in more details.
+The different selections described in Section~\ref{sec:nueselection}-\ref{sec:numuselection} provide constraints to different energy range of the 1eNp selection as well as the kinematics and topology. The inclusive $\nu_e$ selection can be used to constrain the high energy $\nu_e$. We explore the prospect of adding the inclusive $\nu_e$ selection to constrain the high energy $\nu_e$. Given the non-orthogonality of this selection to the 1eNp0$\pi$ selection, we still need to explore other variables that can provide orthogonality in order to exercise the constraint. The 1e0p0$\pi$ channel can provide constraint to the less understood proton reconstruction and kinematics. The CC and NC $\pi0$ samples can be utilized to constrain the uncertainties coming from shower. Finally, we can use the $\nu_\mu$ selection to constrain the flux and cross section at low energy $\nu_e$ and Section~\ref{subsec:constraintfromnumu} describes this in more details. \textcolor{blue}{In its current state, the analysis utilizes solely the  $\nu_{\mu}$ channel as a constraint for $\nu_e$ systematics. Constraints employing the \zpsel and $\pi^0$ channels will be implemented in future iterations of this work.}
 
 \subsubsection{Constraint from Muon Neutrino}
 \label{subsec:constraintfromnumu}
@@ -1622,7 +1623,7 @@ This constraint takes advantage of the high statistics $\nu_{\mu}$ data and know
 The constraint is exercised through the covariance matrix constructed in the energy spectrum of $\nu_e$ and $\nu_{\mu}$. 
 The correlation between the elements in the matrix provides constraint when we perform the combined fits between the two channels. 
 This constraint comes from the minimization of the $\chi^2$ when we fit both the 1eNp $\nu_e$ and the inclusive $\nu_{\mu}$ selection to the MiniBooNE unfolded LEE signal. 
-Figure~\cite{fig:numuconstraint} displayed the cross section (genie) and flux correlation matrix between the two channels. 
+Figure~\cite{fig:numuconstraint} displayed the cross section (genie) and flux correlation matrix between the two channels \textcolor{red}{(are these truth-level correlations?)}. 
 
 \textit{Note that work on getting the numu constraint channel with the new genie tuned CV is still underway. 
 The matrices are shown here to demonstrate the effect of the constraint which will be updated once the new $\nu_{\mu}$ constraint channel is available. 

@@ -193,13 +193,30 @@
 
 \par The fiducial volume in this section differs slightly from other fiducial volumes, even in this analysis. Because the purpose of this selection is to leverage the high-statistics of the $\nu_{\mu}$ composition of the BNB, the fiducial volume is taken to be as large as possible while retaining high purity and efficiency at low-energies.
 
-\par With the exception of the downstream fiducial volume face, all the fiducial volume boundaries are chosen in order to retain as many signal events as possible. The SCE-correction procedure is quite effective and can recover the true value give or take a few centimeters, with slightly less resolution near the boundaries. The resolution is shown in fig \ref{fig:NuMUCCsel:ryan:sceres_x} for the x-direction; the performance is similar in the x, y, and z directions. 
+\par With the exception of the downstream fiducial volume face, all the fiducial volume boundaries are chosen in order to retain as many signal events as possible. The SCE-correction procedure is quite effective and can recover the true value give or take a few centimeters, with slightly less resolution near the boundaries. The resolution is shown in fig \ref{fig:NuMUCCsel:ryan:sceres_y} for the x-direction; the performance is similar in the x, y, and z directions. See fig \ref{fig:NuMUCCsel:ryan:FVhighy} for an example of signal purity near a boundary using the spacecharge-corrected coordinates. 
 
 \begin{figure}
     \centering
-    \includegraphics[height=6.5cm]{NuMuCCsel/Images/Ryan/sceresolution_x.jpg} \hspace{2mm}
-    \caption{Resolution of the spacecharge-corrected vertex positions. The spacehcarge-corrected x-coordinates are being compared to the truth values without spacecharge distortion. }
-    \label{fig:NuMUCCsel:ryan:sceres_x}
+    \includegraphics[height=6.5cm]{NuMuCCsel/Images/Ryan/sceresolution_y.jpg} \hspace{2mm}
+    \caption{Resolution of the spacecharge-corrected vertex positions. The spacehcarge-corrected y-coordinates are being compared to the truth values without spacecharge distortion. }
+    \label{fig:NuMUCCsel:ryan:sceres_y}
+\end{figure}
+
+\begin{figure}[ht] 
+\begin{center}
+    \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{NuMuCCsel/Images/Ryan/Run3_MCData_highy.jpg}
+    \caption{\label{fig:NuMUCCsel:ryan:FVhighyMC} Data-MC distribution near top of detector.}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{NuMuCCsel/Images/Ryan/SignalPurity_highy.png}
+    \caption{\label{fig:NuMUCCsel:ryan:FVhighyPur} Signal Purity}
+    \end{subfigure}
+\caption{Example of signal composition near boundary.}
+\label{fig:NuMUCCsel:ryan:FVhighy}
+\end{center}
 \end{figure}
 
 \subsubsection{Performance}
@@ -207,7 +224,7 @@
 
 \par This selection has been done on the Run1 and the Run3 sets processed for this analysis. The advantage of the Run1 data-set is higher statistics (5E19 POT in Run1 and 1E19 POT in Run3), but Run3 has the cosmic ray tagging system for extra background rejection. Distributions shown in this section will be of variables pertaining to the muon candidate for each event that passes the selection; Run1 data will be preferentially shown due to the higher statistics. The power of the Run3 CRT system will be demonstrated at the end of this section.
 
-\par Run3 data includes information from the CRT system which was unavailable for the first MicroBooNE run. 
+\par Run3 data includes information from the CRT system which was unavailable for the first MicroBooNE run. See fig \ref{fig:NuMUCCsel:ryan:Run3CRTcomp} for an example of the impact of the CRT. The CRT veto will eliminate more than 70$\%$ of the cosmics while suffering onnly a 14
 
 \begin{figure}[ht] 
 \begin{center}
@@ -256,13 +273,14 @@
     \begin{subfigure}[b]{0.45\textwidth}
     \centering
     \includegraphics[width=1.00\textwidth]{NuMuCCsel/Images/Ryan/Run3_costheta_noCRT.jpg}
-    \caption{\label{fig:NuMUCCsel:ryan:coswithCRT} with CRT}
+    \caption{\label{fig:NuMUCCsel:ryan:coswithCRT} without CRT}
     \end{subfigure}
     \begin{subfigure}[b]{0.45\textwidth}
     \centering
     \includegraphics[width=1.00\textwidth]{NuMuCCsel/Images/Ryan/Run3_costheta_withCRT.jpg}
-    \caption{\label{fig:NuMUCCsel:ryan:cosnoCRT} with CRT}
+    \caption{\label{fig:NuMUCCsel:ryan:cosnoCRT} with CRT veto}
     \end{subfigure}
 \caption{Angle with respect to the beam-direction of muon candidates for $\nu_{\mu}$ constraint. Just statistical uncertainties shown.}
+\label{fig:NuMUCCsel:ryan:Run3CRTcomp}
 \end{center}
 \end{figure}
