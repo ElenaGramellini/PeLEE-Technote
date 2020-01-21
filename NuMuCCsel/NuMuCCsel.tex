@@ -16,6 +16,9 @@ Category & Variable Name & Description  \\
 \hline
 
 \multicolumn{1}{l|}{} & \emph{nslice} &  Number of neutrino slices identified by the \emph{SliceID}. Values are  0 or 1.\\  \cline{2-3}
+\multicolumn{1}{l|}{} & \emph{slpdg} &  PDG code of the event as assigned by Pandora, 12 if the object with the most hits over all planes is shower-like, 14 if track-like.\\  \cline{2-3}
+\multicolumn{1}{l|}{} & \emph{all\_{start,end}\_contained} &  PDG code of the event as assigned by Pandora, 12 if the object with the most hits over all planes is shower-like, 14 if track-like.\\  \cline{2-3}
+\multicolumn{1}{l|}{} & \emph{slpdg} &  PDG code of the event as assigned by Pandora, 12 if the object with the most hits over all planes is shower-like, 14 if track-like.\\  \cline{2-3}
 \multicolumn{1}{l|}{} & \emph{n\_tracks\_contained} &  number of tracks fully contained in the fiducial volume.\\  \cline{2-3}
 \multicolumn{1}{l|}{} & \emph{reco\_nu\_vtx\_sce\_\{x,y,z\}} & Reconstructed neutrino interaction vertex in (x,y,z) coordinates. The space charged correction is applied.  \\  \cline{2-3}
 \parbox[t]{2mm}{\multirow{4}{*}{\rotatebox[origin=c]{90}{Slice}}} & \emph{hits\_ratio} & Ratio between hits from showers and total number of hits in the slice. \\  \cline{2-3}
@@ -55,7 +58,7 @@ Category & Variable Name & Description  \\
     \item \emph{trk\_score}: A machine-learned quantity that describes how `track-like' the reconstructed object is (possible values between 0 and 1).
     \item \emph{trk\_len}: The length of the reconstructed track (in cm).
     \item \emph{trk\_distance}: The distance from the start-point of the reconstructed track to the reconstructed neutrino vertex (in cm).
-    \item \emph{pfp\_generation}: The generation of the PFParticle according to Pandora, i.e. how many parents the object on interest has in the slice.
+    \item \emph{pfp\_generation}: The generation of the PFParticle according to Pandora, i.e. the neutrino has generation 1, its direct daughters generation 2 and further decay products have generation 3.
 \end{itemize}
 \end{comment}
 
@@ -80,6 +83,41 @@ Category & Variable Name & Description  \\
 
 \subsection{Inclusive Selection}
 \label{ssec:NuMUCCsel:INC}
+The $\nu_\mu$ CC Inclusive selection is an update from the selection that is currently be used as a filter and described in an internal note~\cite{bib:numuccfilter}. This selection aims to be as similar as possible to the $\nu_e$ CC Inclusive selection described in \cref{sec:nueselection:inclusive}, with the ultimate goal to perform a $\nu_\mu$ constrained BNB electron neutrino measurement. 
+
+\paragraph{$\nu_\mu$ CC inclusive signal definition}
+\begin{itemize}
+    \item One final state muon with a kinetic energy above \SI{20}{\MeV}.
+    \item True neutrino vertex inside a fiducial volume defined with borders: \SI{10}{\cm} in $x$ and $y$ and $[ \SI{20}{\cm}, \SI{50}{\cm}]$ in $z$.
+\end{itemize}
+The cut on the true energy corresponds to a track length of \SI{\approx 2.5}{\cm}.
+
+\paragraph{Event selection}
+Before identifying the muon, some event level cuts are applied:
+
+\begin{itemize}
+    \item \textit{slpdg==14}
+    \item \textit{CosmicIP} > \SI{20}{\cm}
+    \item \textit{topological\_score>0.1}
+    \item \textit{all\_start\_contained}
+\end{itemize}
+reco_fid_vol & CosmicIP>20 & slpdg==14 &  & all_start_contained
+
+\paragraph{Muon candidate identification} 
+\begin{itemize}
+    \item \textit{trk\_score > 0.8}
+    \item \textit{trk\_len} > \SI{10}{\cm}
+    \item \textit{trk\_llr\_pid\_score_v>0.2}
+    \item \textit{pfp\_generation==2}
+    \item \textit{trk\_distance} < \SI{4}{\cm}
+\end{itemize}
+The cut on the reconstructed length corresponds to a muon kinetic energy of \SI{\approx 47}{\MeV} kinetic energy or a muon momentum of \SI{0.11}{GeV/c}. Therefore, this selection aim to have a lower neutrino energy threshold of \SI{\approx 153}{\MeV}. Therefore, efficiency plots will be shown in a range from \SIrange{0.15}{1.65}{\GeV} in this section.
+
+
+
+%q_event_select = "(reco_fid_vol & muon_candidate  & CosmicIP>20 & slpdg==14 & topological_score>0.1 & %all_start_contained)"
+%q_preselect_tracks = "(reco_fid_vol & trk_score_v>0.8 & trk_len_v>20 & pfp_generation_v==2 & trk_distance_v<4 & %CosmicIP>20 & slpdg==14 & all_start_contained)"
+%q_crt = "(~(crtveto & crthitpe>100) & _closestNuCosmicDist>5 & all_end_contained)"
 
 \subsubsection{Run 1}
 \label{sssec:NuMUCCsel:INC:Run1}
