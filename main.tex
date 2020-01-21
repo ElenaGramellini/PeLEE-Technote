@@ -270,9 +270,9 @@ d$E$/d$x$ information at different distances from the shower start-point for $e$
 
 \newpage
 
-\subsection{Energy Reconstruction \textcolor{green}{Giuseppe + David}}
+\subsection{Energy Reconstruction \textcolor{green}{Giuseppe + David... (PR Elena)}}
 \label{sec:ereco}
-\par Energy reconstruction is performed calorimetrically for EM showers and through a measurement of a track's range for contained muons and protons. For muons multiple Coulomb scattering (MCS) is also used to estimate the muon energy. The energy resolution obtained for different particles is reported in table~\ref{tab:eres}. More information on each particle's energy resolution is reported in figure~\ref{fig:eres:particle} where the 2D reconstructed vs. true energy distribution (in log-scale) is shown on the left, next to a plot of energy resolution vs. true energy on the right. The energy resolution reported here is obtained from a Gaussian plus one-sided exponential fit to the distribution $[E_{\rm reco}-E_{\rm true}] / E_{\rm true}$. The resolution reported refers only to the Gaussian width $\sigma$ extracted in the fit, and therefore does not account for negative tails, which are significant in the case of EM shower energy reconstruction, and described below.
+\par Energy reconstruction is performed thought calorimetry for EM showers and through a measurement of a track's range for contained muons and protons. For \textcolor{blue}{should we add "uncontained"} muons, multiple Coulomb scattering (MCS) is also used to estimate the muon energy. The energy resolution obtained for different particles is reported in table~\ref{tab:eres}. More information on each particle's energy resolution is reported in figure~\ref{fig:eres:particle} where the 2D reconstructed vs. true energy distribution (in log-scale) is shown on the left, next to a plot of energy resolution vs. true energy on the right. The energy resolution reported here is obtained from a Gaussian plus one-sided exponential fit to the distribution $[E_{\rm reco}-E_{\rm true}] / E_{\rm true}$, see figures \ref{fig:eres:elec:binned}. The resolution reported refers only to the Gaussian width $\sigma$ extracted in the fit, and therefore does not account for negative tails, which are significant in the case of EM shower energy reconstruction, and described below.
 
 
 \begin{table}[H]
@@ -282,7 +282,7 @@ d$E$/d$x$ information at different distances from the shower start-point for $e$
     particle & kinetic energy resolution  \\ \hline
     proton & 4\% at 100 MeV 1\% at 200 MeV \\ \hline
     muon (range) & 3\%  \\ \hline
-    muon (MCS) & $\frac{4.7\%}{\sqrt{E/{\rm GeV}}} \otimes \frac{2.8\%}{E/{\rm GeV}} \otimes 0.0\%$  \\ \hline
+    muon (MCS) & $\frac{4.7\%}{\sqrt{E/{\rm GeV}}} \otimes \frac{2.8\%}{E/{\rm GeV}} \otimes 0.0\% \text{\textcolor{blue}{this is fairly confusing, especially the 0.0\%, can we add a reference, or an explaination?}}$  \\ \hline
     electron & 15\%  \\
     \hline
     
@@ -339,20 +339,20 @@ d$E$/d$x$ information at different distances from the shower start-point for $e$
 
 \newpage
 
-\subsubsection{Neutrino Energy Reconstruction \textcolor{green}{Giuseppe + David}}
+\subsubsection{Neutrino Energy Reconstruction \textcolor{green}{Giuseppe + David, P.R. Elena}}
 
-\par In this analysis, the energy reconstruction for neutrino interactions is performed through a sum of the visible energy of the various reconstructed final-state particles in the interaction. For $\nu_e$ events the reconstructed energy is defined as:
+\par In this analysis, the energy reconstruction for neutrino interactions is performed through a sum of the visible energy of the various reconstructed final-state particles in the interaction. For $\nu_e$ events, the reconstructed energy is defined as:
 \begin{equation}
-    E_{\rm reco}^{\nu_e} = E_{\rm corrected}^{\rm electron} + \sum_{\rm tracks} E_{\rm range}^{\rm proton}
+    E_{\rm reco}^{\nu_e} = E_{\rm corrected}^{\rm electron} + \sum_{\rm tracks} E_{\rm range}^{\rm proton}.
 \end{equation}{}
-
+\textcolor{blue}{is this true also for nue inclusive?}.
 For contained $\nu_{\mu}$ interactions, the reconstructed energy is defined as:
 
 \begin{equation}
     E_{\rm reco}^{\nu_{\mu}} = E_{\rm range}^{\rm muon} + \sum_{\rm protons} E_{\rm range}^{\rm proton} + 0.105 \; GeV
 \end{equation}{}
 
-Figure~\ref{fig:eres:neutrino} shows the comparison between reconstructed energy and truth visible energy, which is defined as the sum of the lepton energy, pion energy (if present), and proton energy (for all protons above 40 MeV of KE). This comparison shows very accurate energy reconstruction for $\nu_{\mu}$ events. For $\nu_e$ interactions, with smearing dominated by the worse energy resolution of electron showers.
+Figure~\ref{fig:eres:neutrino} shows the comparison between reconstructed energy and truth visible energy, which is defined as the sum of the lepton energy, pion energy (if present), and proton energy (for all protons above 40 MeV of KE). This comparison shows very accurate energy reconstruction for $\nu_{\mu}$ events \textcolor{blue}{uhm.... this is true up to a point: there's a tail for high numu visible and log numu range: does this come from events w/ non-contained muons?}. For $\nu_e$ interactions, with smearing dominated by the worse energy resolution of electron showers \textcolor{blue}{This sentence misses a verb}.
 
 \begin{figure}[H] 
 \begin{center}
