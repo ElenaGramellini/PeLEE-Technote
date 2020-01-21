@@ -100,14 +100,14 @@ Before identifying the muon, some event level cuts are applied:
     \item \textit{CosmicIP} > \SI{20}{\cm}
     \item \textit{topological\_score>0.1}
     \item \textit{all\_start\_contained}
-\end{itemize}
-reco_fid_vol & CosmicIP>20 & slpdg==14 &  & all_start_contained
+    \item reco\_fid\_vol \& CosmicIP>20 \& slpdg==14 \& all\_start\_contained
+\end{itemize} 
 
 \paragraph{Muon candidate identification} 
 \begin{itemize}
     \item \textit{trk\_score > 0.8}
     \item \textit{trk\_len} > \SI{10}{\cm}
-    \item \textit{trk\_llr\_pid\_score_v>0.2}
+    \item \textit{trk\_llr\_pid\_score\_v>0.2}
     \item \textit{pfp\_generation==2}
     \item \textit{trk\_distance} < \SI{4}{\cm}
 \end{itemize}

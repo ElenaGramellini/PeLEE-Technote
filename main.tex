@@ -166,10 +166,10 @@ Shaded histograms in red and blue show the stacked truth-level distributions for
 \subsection{\npsel Channel \textcolor{green}{David + Giuseppe}}
 \label{sec:nueselection:1eNp}
 
-The 1$e$N$p$ channel is the most sensitive to the MiniBooNE eLEE signal as it contains a large fraction of the signal events and allows for selection requirements based both on showers and tracks. 
-Given the large cosmic background and that $\nu_e$ charge-current interactions are O(1\%) in the BNB, a high-purity selection is needed to achieve a sizeable signal sensitivity; the necessary trade-off is that the final signal efficiency will be low.
+The 1$e$N$p$ channel is the most sensitive to the MiniBooNE eLEE signal as it contains a large fraction of the signal events and allows for selection requirements based both on showers and tracks. Since $\nu_e$ charge-current interactions are O(1\%) in the BNB and a large cosmic background is present, a high-purity selection is needed to achieve a sizeable signal sensitivity; the necessary trade-off is that the final signal efficiency will be low.
 
-The section is organized as follows. We first define a set of minimal requirements ("preselection") to obtain a high statistics sample (dominated by cosmic and neutrino backgrounds) that is used to monitor the data-MC agreement of the selection variables. We then define two alternative selections, respectively based on a simple box-cut approach and on boosted decision trees (BDT); the BDT approach is expected to be the most sensitive, while box-cuts provide a robust reference selection. Finally we compare all presented selections in terms for their signal efficiency and purity.
+The section is organized as follows. We first define a set of minimal requirements (``preselection") to obtain a high statistics sample used to monitor the data-MC agreement of the selection variables;
+the events at the preselection stage are dominated by cosmic and neutrino backgrounds. We then define two alternative selections, one based on a simple box-cut approach and one on boosted decision trees (BDT); the BDT approach is expected to be the most sensitive, while box-cuts provide a robust reference selection. Finally, we compare all presented selections in terms for their signal efficiency and purity.
 
 \subsubsection{Preselection}
 
@@ -190,13 +190,13 @@ Cosmic rejection & nslice = 1 \\
  \hline
 Containment & contained\_fraction $>$ 0.9 \\
  \hline
-Michel rejection & shr\_energy\_tot\_cali $>$ 0.07 \\
+Michel rejection & shr\_energy\_tot\_cali $>$ 0.07 GeV \\
  \hline
  \end{tabular}
  \caption{\label{tab:1eNp:presel} Preselection requirements for the \npsel selection.}
 \end{table}
 
-The relative fraction of EXT events at this stage is roughly 25\%, so we can look at all selection variables in data and MC in a neutrino-dominated sample with the open Run1 and Run3 data sets. We typically see very good agreement, which rules out major problems related to POT-scaling, detector modeling, inclusive cross-section. \textcolor{red}{The main exception are dEdx variables that show some tension due to the incomplete calibration (see Sec.~\ref{sec:controls:pi0} for more details).} The full list of plots can be found in Appendix~\ref{sec:datamc:plots}. Figure~\ref{fig:1eNp:prsel} shows the level of agreement for the reconstructed neutrino energy variable. 
+The relative fraction of EXT events at this stage is roughly 25\%, so we can look at all selection variables in data and MC in a neutrino-dominated sample with the open Run1 and Run3 data sets. We typically see very good agreement, which rules out major problems related to POT-scaling, detector modeling, inclusive cross-section. \emph{The main exception are dEdx variables that show some tension due to the incomplete calibration (\textcolor{blue}{see figure [add dedx figure]} and  Sec.~\ref{sec:controls:pi0} for more details) to be finalized the near future.} The full list of plots can be found in Appendix~\ref{sec:datamc:plots}. Figure~\ref{fig:1eNp:prsel} shows the level of agreement for the reconstructed neutrino energy variable. 
 
 \begin{figure}[ht] 
 \begin{center}
@@ -216,10 +216,11 @@ The relative fraction of EXT events at this stage is roughly 25\%, so we can loo
 
 \subsubsection{Box-cuts}
 
-On top of preselection requirements we define a robust selection based on box cuts targeting high $\nu_e$ purity, especially at lower energy.
-In this section cuts are presented in different categories according to the background they primarily suppress; however, to the extent that some variables are effective against multiple backgrounds, the following description should be regarded as a simplification.
+On top of preselection requirements, we define a robust selection based on box cuts targeting high $\nu_e$ purity, especially at lower energy.
+We present here cuts in different categories according to the background they primarily suppress; however,  the following description should be regarded as a simplification since some variables are effective against multiple backgrounds.
 
-First, we aim at rejecting cosmic-induced events by requiring a large distance of the neutrino vertex from clear cosmic tracks and a proton-like track. The latter requirement in particular rejects more than 90\% of the cosmics that pass pre-selection. The next goal is to suppress events from $\nu_\mu$ charged current interactions, so for this purpose we require shower hits to be the dominant in the slice, as well as imposing tight quality requirements on the shower object. They rely on several variables aiming at separating electron or photon showers from single-particle tracks, i.e. shr\_score, shrmoliereavg, trkfit, subcluster. 
+
+The requirement of a proton-like track is a very effective tool for cosmic rejection: this requirement rejects more than 90\% of the cosmics that pass pre-selection. We aim at rejecting more cosmic-induced events by requiring a large distance of the neutrino vertex from clear cosmic tracks. . The next goal is to suppress events from $\nu_\mu$ charged current interactions, so for this purpose we require shower hits to be the dominant in the slice, as well as imposing tight quality requirements on the shower object. They rely on several variables aiming at separating electron or photon showers from single-particle tracks, i.e. shr\_score, shrmoliereavg, trkfit, subcluster. 
 
 At this stage most of the selected events contain neutrino-induced electromagnetic activity. The main background are $\pi^0$ events and we reject them with a series of requirements based on the different topology and energy deposition of electrons and photons. We first require only one shower-like PFParticle in the event, and that its start point is at a short distance from the track start. Then, we require that the energy loss at the start of the electron shower is be compatible with a single MIP. Many possible dEdx variable definitions are possible, and information from all TPC planes can be used. However, due to detector and reconstruction limitations, there is not a single definition that provides a sharp separation between electrons and photons; therefore, in order to obtain a good background rejection without large efficiency losses, we choose to apply a loose MIP cut on two different dEdx definitions (described in Sec.~\ref{sec:nueselection:variables}). The loose MIP requirement enforces that there is at least one hit in the collection plane in the probed range, and that the dEdx is not consistent with two or more MIPs in any plane. Finally, the single shower requirement is reinforced with a 2nd shower veto based on clusters in the collection plane that are not matched to any PFParticle.
 
