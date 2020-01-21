@@ -74,12 +74,7 @@ Category & Variable Name & Description  \\
 \par Coming soon...
 \end{comment}
 
-\begin{figure}
-    \centering
-    \includegraphics[width=\textwidth]{NuMuCCsel/Images/run1/numu_pret_run1.pdf}
-    \caption{Caption}
-    \label{fig:numu_topo_pid}
-\end{figure}
+
 
 \subsection{Inclusive Selection}
 \label{ssec:NuMUCCsel:INC}
@@ -103,12 +98,6 @@ Before identifying the muon, some event level cuts are applied:
     \item reco\_fid\_vol \& CosmicIP>20 \& slpdg==14 \& all\_start\_contained
 \end{itemize} 
 
-\paragraph{Muon candidate identification} 
-\begin{itemize}
-    \item \textit{trk\_score > 0.8}
-    \item \textit{trk\_len} > \SI{10}{\cm}
-    \item \textit{trk\_llr\_pid\_score\_v>0.2}
-\end{itemize}
 The next step is to identify a muon track.
 \paragraph{Muon candidate identification} 
 \begin{itemize}
@@ -120,29 +109,36 @@ The next step is to identify a muon track.
 \end{itemize}
 At this point, the amount of muon candidate tracks in signal events is:
 \begin{itemize}
-    \item 0 (10\%
+    \item 0 (10\%), the event gets rejected.
+    \item 1 (70\%), the event gets selected.
+    \item 2 (18\%) or $>2$ (2\%), the particle with the highest \textit{trk\_llr\_pid\_score} is picked as muon and the event is selected.
 \end{itemize}
-
-
 
 The cut on the reconstructed length corresponds to a muon kinetic energy of \SI{\approx 47}{\MeV} kinetic energy or a muon momentum of \SI{0.11}{GeV/c}. Therefore, this selection aim to have a lower neutrino energy threshold of \SI{\approx 153}{\MeV}. Therefore, efficiency plots will be shown in a range from \SIrange{0.15}{1.65}{\GeV} in this section.
 
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{NuMuCCsel/Images/run1/numu_pret_run1.pdf}
+    \caption{Topological score and track PID likelihood distributions after all other cuts are applied in the $\nu_\mu$ CC inclusive selection.}
+    \label{fig:numu:topo_pid}
+\end{figure}
 
+The distribution of the topological score and the track muon likelihood after applying all cuts except these two is given in \cref{fig:numu:topo_pid}.
 
-%q_event_select = "(reco_fid_vol & muon_candidate  & CosmicIP>20 & slpdg==14 & topological_score>0.1 & %all_start_contained)"
-%q_preselect_tracks = "(reco_fid_vol & trk_score_v>0.8 & trk_len_v>20 & pfp_generation_v==2 & trk_distance_v<4 & %CosmicIP>20 & slpdg==14 & all_start_contained)"
-%q_crt = "(~(crtveto & crthitpe>100) & _closestNuCosmicDist>5 & all_end_contained)"
-
-\subsubsection{Run 1}
-\label{sssec:NuMUCCsel:INC:Run1}
-
+\paragraph{Event selection performance}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.85\textwidth]{NuMuCCsel/Images/run1/numu_efficiency_run1.pdf}
-    \caption{Caption}
-    \label{fig:numu_eff_r1}
+    \includegraphics[width=0.65\textwidth]{NuMuCCsel/Images/run1/numu_efficiency_run1.pdf}
+    \caption{Efficiency of the $\nu_\mu$ CC inclusive selection for different interaction categories (left) and final states (right) in function of the true neutrino energy. }
+    \label{fig:numu:eff_r1}
 \end{figure}
+
+\cref{fig:numu:eff_r1} shows the efficiency in function of the true neutrino energy, integrated over all energies for all singal event categories, the efficiency is 51.1\%. It can be seen that the selection is truly inclusive in both interaction type and final states. non-zero efficiencies are reached from \SI{150}{\MeV} and the efficiency flattens out at \SI{\approx 700}{\MeV}. The overall purity of the selection is 65.9\% with the in-time cosmic activity as dominant background. 
+
+
+
+
 
 \begin{figure}[H]
     \centering
