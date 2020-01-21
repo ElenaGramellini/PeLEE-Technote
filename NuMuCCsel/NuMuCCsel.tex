@@ -17,7 +17,7 @@ Category & Variable Name & Description  \\
 
 \multicolumn{1}{l|}{} & \emph{nslice} &  Number of neutrino slices identified by the \emph{SliceID}. Values are  0 or 1.\\  \cline{2-3}
 \multicolumn{1}{l|}{} & \emph{slpdg} &  PDG code of the event as assigned by Pandora, 12 if the object with the most hits over all planes is shower-like, 14 if track-like.\\  \cline{2-3}
-\multicolumn{1}{l|}{} & \emph{all\_{start,end}\_contained} &  PDG code of the event as assigned by Pandora, 12 if the object with the most hits over all planes is shower-like, 14 if track-like.\\  \cline{2-3}
+\multicolumn{1}{l|}{} & \emph{all\_\{start,end\}\_contained} &  The start/end points of all PFParticles are volume defined with borders: \SI{5}{\cm} in $x$ and \SI{6}{\cm} $y$ and \SI{10}{\cm} $z$.\\  \cline{2-3}
 \multicolumn{1}{l|}{} & \emph{slpdg} &  PDG code of the event as assigned by Pandora, 12 if the object with the most hits over all planes is shower-like, 14 if track-like.\\  \cline{2-3}
 \multicolumn{1}{l|}{} & \emph{n\_tracks\_contained} &  number of tracks fully contained in the fiducial volume.\\  \cline{2-3}
 \multicolumn{1}{l|}{} & \emph{reco\_nu\_vtx\_sce\_\{x,y,z\}} & Reconstructed neutrino interaction vertex in (x,y,z) coordinates. The space charged correction is applied.  \\  \cline{2-3}
@@ -97,19 +97,18 @@ Before identifying the muon, some event level cuts are applied:
 
 \begin{itemize}
     \item \textit{slpdg==14}
-    \item \textit{CosmicIP} > \SI{20}{\cm}
-    \item \textit{topological\_score>0.1}
+    \item \textit{CosmicIP} $>$ \SI{20}{\cm}
+    \item \textit{topological\_score $>$ 0.1}
     \item \textit{all\_start\_contained}
 \end{itemize}
-reco_fid_vol & CosmicIP>20 & slpdg==14 &  & all_start_contained
 
 \paragraph{Muon candidate identification} 
 \begin{itemize}
-    \item \textit{trk\_score > 0.8}
-    \item \textit{trk\_len} > \SI{10}{\cm}
-    \item \textit{trk\_llr\_pid\_score_v>0.2}
+    \item \textit{trk\_score $>$ 0.8}
+    \item \textit{trk\_len} $>$ \SI{10}{\cm}
+    \item \textit{trk\_llr\_pid\_score $>$ 0.2}
     \item \textit{pfp\_generation==2}
-    \item \textit{trk\_distance} < \SI{4}{\cm}
+    \item \textit{trk\_distance} $<$ \SI{4}{\cm}
 \end{itemize}
 The cut on the reconstructed length corresponds to a muon kinetic energy of \SI{\approx 47}{\MeV} kinetic energy or a muon momentum of \SI{0.11}{GeV/c}. Therefore, this selection aim to have a lower neutrino energy threshold of \SI{\approx 153}{\MeV}. Therefore, efficiency plots will be shown in a range from \SIrange{0.15}{1.65}{\GeV} in this section.
 
