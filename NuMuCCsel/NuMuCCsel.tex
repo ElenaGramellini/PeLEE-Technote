@@ -134,10 +134,9 @@ The distribution of the topological score and the track muon likelihood after ap
     \label{fig:numu:eff_r1}
 \end{figure}
 
-\cref{fig:numu:eff_r1} shows the efficiency in function of the true neutrino energy, integrated over all energies for all singal event categories, the efficiency is 51.1\%. It can be seen that the selection is truly inclusive in both interaction type and final states. non-zero efficiencies are reached from \SI{150}{\MeV} and the efficiency flattens out at \SI{\approx 700}{\MeV}. The overall purity of the selection is 65.9\% with the in-time cosmic activity as dominant background. 
+\cref{fig:numu:eff_r1} shows the efficiency in function of the true neutrino energy, integrated over all energies for all singal event categories, the efficiency is 51.1\%. It can be seen that the selection is truly inclusive in both interaction type and final states. non-zero efficiencies are reached from \SI{150}{\MeV} and the efficiency flattens out at \SI{\approx 700}{\MeV}. The overall purity of the selection is 65.9\% with the in-time cosmic activity as dominant background. In 94.7\% of the events, the track identified as muon is backtracked to the muon correctly. Most mis-identification cases correspond to charged pions (3.6\%).
 
-
-
+Because this selection contains both contained and uncontained events, multiple coulomb scattering is used to measure the muon momentum. \cref{fig:numu:mcs,fig:numu:angles,fig:numu:vtx} show the 
 
 
 \begin{figure}[H]
@@ -145,7 +144,7 @@ The distribution of the topological score and the track muon likelihood after ap
     \includegraphics[width=0.495\textwidth]{NuMuCCsel/Images/run1/numu_mcsmom_run1.pdf} \hfill
     \includegraphics[width=0.495\textwidth]{NuMuCCsel/Images/run1/numu_vtxntrack_cat_run1.pdf}
     \caption{Caption}
-    \label{fig:numu_mcs}
+    \label{fig:numu:mcs}
 \end{figure}
 
 \begin{figure}[H]
@@ -153,14 +152,14 @@ The distribution of the topological score and the track muon likelihood after ap
     \includegraphics[height=6.5cm]{NuMuCCsel/Images/run1/numu_theta_run1.pdf} \hspace{2mm}
     \includegraphics[height=6.5cm]{NuMuCCsel/Images/run1/numu_phi_run1.pdf}
     \caption{Caption}
-    \label{fig:numu_angles}
+    \label{fig:numu:angles}
 \end{figure}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{NuMuCCsel/Images/run1/numu_recovtx_run1.pdf}
     \caption{Caption}
-    \label{fig:numu_vtx}
+    \label{fig:numu:vtx}
 \end{figure}
 
 \subsubsection{Run3}
@@ -269,6 +268,24 @@ The distribution of the topological score and the track muon likelihood after ap
     \label{fig:numusel:momres}
 \end{figure}
 
+\begin{figure}[ht] 
+\begin{center}
+    \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{NuMuCCsel/Images/Ryan/Run1_recoErange_FullSel.jpg}
+    \caption{\label{fig:NuMUCCsel:ryan:noPQuality} After full selection.}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{NuMuCCsel/Images/Ryan/Run3_costheta_withCRT.jpg}
+    \caption{\label{fig:NuMUCCsel:ryan:withPQuality} After full selection and momentum quality.}
+    \end{subfigure}
+\caption{The distribution of range-based energy calcula for each slice .}
+\label{fig:NuMUCCsel:ryan:Run3CRTcomp}
+\end{center}
+\end{figure}
+
+
 \subsubsection{Determination of Fiducial Volume}
 \label{sssec:NuMUCCsel:constr:FV}
 
@@ -324,17 +341,17 @@ The distribution of the topological score and the track muon likelihood after ap
 \begin{center}
     \begin{subfigure}[b]{0.3\textwidth}
     \centering
-    \includegraphics[width=1.00\textwidth]{NuMuCCsel/Images/Ryan/Run1_trklen_sliceID.jpg}
+    \includegraphics[width=1.00\textwidth]{NuMuCCsel/Images/Ryan/Run1_trklen_justSlice.jpg}
     \caption{\label{fig:NuMUCCsel:ryan:trklenSliceID} after SliceID}
     \end{subfigure}
     \begin{subfigure}[b]{0.3\textwidth}
     \centering
-    \includegraphics[width=1.00\textwidth]{NuMuCCsel/Images/Ryan/Run1_trklen_evtsel.jpg}
+    \includegraphics[width=1.00\textwidth]{NuMuCCsel/Images/Ryan/Run1_trklen_justEvtsel.jpg}
     \caption{\label{fig:NuMUCCsel:ryan:trklenEvt} after event-level preselection}
     \end{subfigure} %\newline
     \begin{subfigure}[b]{0.3\textwidth}
     \centering
-    \includegraphics[width=1.00\textwidth]{NuMuCCsel/Images/Ryan/Run1_trklen_fullsel.jpg}
+    \includegraphics[width=1.00\textwidth]{NuMuCCsel/Images/Ryan/Run1_trklen_fullSel.jpg}
     \caption{\label{fig:NuMUCCsel:ryan:trklenFull}  With muon-tagging}
     \end{subfigure}
 \caption{Track length of muon candidates. Just statistical uncertainties shown.}
@@ -345,17 +362,17 @@ The distribution of the topological score and the track muon likelihood after ap
 \begin{center}
     \begin{subfigure}[b]{0.3\textwidth}
     \centering
-    \includegraphics[width=1.00\textwidth]{NuMuCCsel/Images/Ryan/Run1_costheta_sliceID.jpg}
+    \includegraphics[width=1.00\textwidth]{NuMuCCsel/Images/Ryan/Run1_costheta_justSlice.jpg}
     \caption{\label{fig:NuMUCCsel:ryan:trklenSliceID} after SliceID}
     \end{subfigure}
     \begin{subfigure}[b]{0.3\textwidth}
     \centering
-    \includegraphics[width=1.00\textwidth]{NuMuCCsel/Images/Ryan/Run1_costheta_evtsel.jpg}
+    \includegraphics[width=1.00\textwidth]{NuMuCCsel/Images/Ryan/Run1_costheta_justEvtsel.jpg}
     \caption{\label{fig:NuMUCCsel:ryan:trklenEvt} after event-level preselection}
     \end{subfigure} %\newline
     \begin{subfigure}[b]{0.3\textwidth}
     \centering
-    \includegraphics[width=1.00\textwidth]{NuMuCCsel/Images/Ryan/Run1_costheta_fullsel.jpg}
+    \includegraphics[width=1.00\textwidth]{NuMuCCsel/Images/Ryan/Run1_costheta_fullSel.jpg}
     \caption{\label{fig:NuMUCCsel:ryan:trklenFull} With muon-tagging}
     \end{subfigure}
 \caption{Cosine of the track angle of muon candidates with respect to the beam-direction. Just statistical uncertainties shown.}

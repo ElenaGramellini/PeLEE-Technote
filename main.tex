@@ -393,7 +393,7 @@ Figure~\ref{fig:1eNp:effpur:RUN1} shows the efficiency of the \npsel selections 
 \end{center}
 \end{figure}
 
-\subsection{1$e$0$p$ Channel \textcolor{red}{Sophie, Ivan}}
+\subsection{1$e$0$p$ Channel \textcolor{green}{Sophie, Ivan}}
 \label{sec:nueselection:1e0p}
 The 1e0p channel is an important sideband sample that can be used to constrain uncertainties associated with the 1eNp selection.  In particular it can be used to constrain uncertainties associated with low energy protons, such as the modeling of the proton multiplicity and kinematics produced by neutrino interactions and their reconstruction efficiencies.  This sample is very sensitive to the neutrino interaction modeling, which makes it a useful way to constrain these systematics with data.  In MCC8 there were twice as many events in this channel as in MCC9, and half of the low energy neutrinos (below 0.8 GeV), were in this channel.
 
@@ -1175,10 +1175,13 @@ The distribution of the test statistic for the null and alternative hypothesis d
 \subsection{Remaining Steps in the Analysis}
 \par There are several known remaining steps to be completed by the analysis. We list them below, trying to give a timeline for each. 
 \begin{enumerate}
-    \item \textbf{MC Statistics} Larger MC statistics for specific background categories are needed to be able to better train the \npsel BDT as well as obtain a generally .
+    \item \textbf{MC Statistics} Larger MC statistics for specific background categories are needed to be able to better train the \npsel BDT as well as obtain a more accurate estimation of expected backgrounds from different background neutrino categories. Initial samples for specific background categories have been generated (with $\times2-8$ the stats from the default BNB simulation, depending on the sample). It is expected that these will be included in the analysis by the Feb. 2020 collaboration meeting.
     \item apply common optical filter to simulation events. Important for Run3.
-    \item finalize charge re-calibration for trk PID and shower dE/dx
-    \item implement LLR-PID for e/gamma separation.
+    \item \textbf{Charge re-calibration} A discrepancy in d$E$/d$x$ measured for both tracks and showers indicates a few-percent mis-calibration. In order to further improve data-simulation agreement. This re-calibration, outlined in \textcolor{red}{DocDB XXX} is being implemented in the analysis code and should be implemeneted in the analysis by the February collaboration meeting.
+    \item \textbf{LLR-PID $e-\gamma$ Separation} The analysis team is exploring applying a log-likelihood based PID for $e-\gamma$ separation, in a similar way to that developed for tracks (see~\ref{subsec:loglikelihoodpid}). The goal is to further improve the rejection power for photons in the $\nu_e$ selections. Preliminary work on this will be reported at the February collaboration meeting but possibly will not be integrated in the full analysis until later in the spring.
+    \item \textbf{Detector Systematics} Not all available. Those available processed. Their full inclusion in the sensitivity estimation is dependent on certain development needed in SBNFit. Likely completed by Feb. meeting.
+    \item \textbf{$\nu_{\mu}$ Constraint Implementation} New selection developed. Selected events being now input to excercise constraint. Result of this work, including the full GENIE systematics, will be ready by the Feb. collaboration meeting.
+    \item \textbf{Additional Sideband Constraints}
     \item MCS fitter for better efficiency for low-energy showers.
 
 \end{enumerate}{}
