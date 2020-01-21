@@ -109,7 +109,7 @@ Before identifying the muon, some event level cuts are applied:
     \item \textit{trk\_len} > \SI{10}{\cm}
     \item \textit{trk\_llr\_pid\_score\_v>0.2}
 \end{itemize}
-
+The next step is to identify a muon track.
 \paragraph{Muon candidate identification} 
 \begin{itemize}
     \item \textit{trk\_score $>$ 0.8}
@@ -118,6 +118,13 @@ Before identifying the muon, some event level cuts are applied:
     \item \textit{pfp\_generation==2}
     \item \textit{trk\_distance} $<$ \SI{4}{\cm}
 \end{itemize}
+At this point, the amount of muon candidate tracks in signal events is:
+\begin{itemize}
+    \item 0 (10\%
+\end{itemize}
+
+
+
 The cut on the reconstructed length corresponds to a muon kinetic energy of \SI{\approx 47}{\MeV} kinetic energy or a muon momentum of \SI{0.11}{GeV/c}. Therefore, this selection aim to have a lower neutrino energy threshold of \SI{\approx 153}{\MeV}. Therefore, efficiency plots will be shown in a range from \SIrange{0.15}{1.65}{\GeV} in this section.
 
 
