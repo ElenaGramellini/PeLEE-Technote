@@ -280,7 +280,7 @@ Misreconstruction & tksh\_angle $>$ -0.9 and tksh\_angle $<$ 0.7 \\
     \includegraphics[width=1.00\textwidth]{1eNp/1eNp_box_evd2.png}
     \caption{\label{fig:1eNp:box:evd2}1.15 GeV [reco] $\nu_e$ candidate}
     \end{subfigure}
-\caption{\label{ffig:1eNp:box:evd} \npsel candidates from the open $4eE19$ Run1 open dataset. Two data events are found when }
+\caption{\label{ffig:1eNp:box:evd} \npsel candidates from the open $4eE19$ Run1 open dataset. Two data events are found when this selection is applied.}
 \end{center}
 \end{figure}
 
@@ -434,7 +434,7 @@ The \zpsel pre-selection is summarized in table \ref{tab:1e0p:presel}. Similarly
  & slpdg = 12 \\
  \hline
 \multirow{3}{*}{Signal~topology} & n\_showers\_contained = 1 \\
- & n\_tracks\_contained = 0 or \\ &n\_tracks\_contained =1 \& merge\_bestdist $<$2 cm\& (tksh\_angle$<$-0.9 or trkpid $>$ 0.1) \\
+ & n\_tracks\_contained = 0 or \\ &n\_tracks\_contained = 1 \& merge\_bestdist $<$2 cm\& (tksh\_angle$<$-0.9 or trkpid $>$ 0.1) \\
  \hline
 Michel rejection & shr\_energy\_tot\_cali $>$ 0.07 GeV \\
  \hline
@@ -447,7 +447,7 @@ Michel rejection & shr\_energy\_tot\_cali $>$ 0.07 GeV \\
 
 \subsubsection{Box cut selection}
 
-A box cut selection has been developed to select \zpsel events. The selection cuts are designed to target the main backgrounds.  The fiducial volume from the CC inclusive analysis \cite{bib:numuCCincl} has been implemented to reduce the backgrounds associated with dirt and single showers entering the fiducial volume.   Cosmic rejection includes the addition of cuts on CRT variables and on CosmicIP.  In order to remove muon neutrino and non-showering backgrounds, cuts on the shower profile and the number of sub-clusters in the shower are applied.  A second shower search for hits in the Y plane is used to remove events where the second shower of a pi0 may have initially been missed.  dE/dx is also used to remove pi0 backgrounds.  Two calculations are used, one which looks at the first 2 cm of the shower, and one which starts the calculation after 1 cm so that any hits from a low energy proton that may have been merged with the shower are not included in the calculation.
+A box cut selection has been developed to select \zpsel events. The selection cuts are designed to target the main backgrounds.  The fiducial volume from the CC inclusive analysis \cite{bib:numuCCincl} has been implemented to reduce the backgrounds associated with dirt and single showers entering the fiducial volume.   Cosmic rejection includes the addition of cuts on CRT variables and on CosmicIP.  In order to remove muon neutrino and non-showering backgrounds, cuts on the shower profile and the number of sub-clusters in the shower are applied.  A second shower search for hits on the Y plane is used to remove events where the second shower of a $\pi^{0}$ may have initially been missed.  dE/dx is also used to remove $\pi^{0}$ backgrounds.  Two calculations are used, one which looks at the first 2 cm of the shower, and one which starts the calculation after 1 cm so that any hits from a low energy proton that may have been merged with the shower are not included in the calculation.
 
 The \zpsel box cuts are summarized in table \ref{tab:1e0p:cutbased}.
 
@@ -464,7 +464,7 @@ The \zpsel box cuts are summarized in table \ref{tab:1e0p:cutbased}.
  \hline
 \multirow{2}{*}{$\nu_\mu$~rejection} & shr\_score $<$ 0.10 \\ & shrmoliereavg $>$ 2 and shrmoliereavg $<$ 9\\ &trkfit $<$ 0.45 or subcluster $>$ 6\\
  \hline
-\multirow{3}{*}{Strict Fiducial Volume} & 22 \si{\cm} $<$ reco\_nu\_vtx\_sce\_x$<$ 234.35 \si{\cm} \\
+\multirow{3}{*}{Fiducial Volume} & 22 \si{\cm} $<$ reco\_nu\_vtx\_sce\_x$<$ 234.35 \si{\cm} \\
 & -75.1 \si{\cm} $<$ reco\_nu\_vtx\_sce\_y$<$ 75.1 \si{\cm} \\ & 35 \si{\cm} $<$ reco\_nu\_vtx\_sce\_z$<$ 665 \si{\cm}  or 785 \si{\cm} $<$ reco\_nu\_vtx\_sce\_z $<$ 941.8 \si{\cm})\\
  \hline
  \multirow{3}{*}{$\pi^0$ \& proton~rejection} & secondshower\_Y\_nhit$<$25 \\ & shr\_tkfit\_2cm\_dedx\_Y $<$ 4 and shr\_tkfit\_2cm\_dedx\_Y $>$ 0.5 \\ & shr\_tkfit\_gap10\_dedx\_Y$>$1 and shr\_tkfit\_gap10\_dedx\_Y$<$ 3.5\\
@@ -474,9 +474,8 @@ The \zpsel box cuts are summarized in table \ref{tab:1e0p:cutbased}.
 \end{table}
 
 
-\begin{itemize}
-    \item shr\_energy\_tot\_cali $>$ 0.1 \textcolor{blue}{Do you cut twice on this? One in the pre-selection and one here? They have different values (0.07 in pre-sel, 0.1 here)}
-\end{itemize}
+%%%shr_energy_tot_cali: Do you cut twice on this? Once in pre-selection and one here? They have differernt values (0.07 in pre-sel,  0.1 here).
+%Response: Yes, in the box cuts I am cutting more strictly on this variable than in the pre-selection, or in the loose cuts that I use to train the BDT. I want to revisit this when optimizing the selection, and do not plan for the cut to stay here.
 
 \begin{figure}[H]
 \begin{center}
@@ -485,13 +484,13 @@ The \zpsel box cuts are summarized in table \ref{tab:1e0p:cutbased}.
 \end{center}
 \end{figure}
 
-The reconstructed energy distribution after this selection is shown in Fig.~\ref{fig:1e0p:cutbased:RUN3}.  \emph{Note that this plot uses the new Genie model, but the cuts have not yet been optimized for the new MC -- an improvement currently in the works.  This selection predicts 9.8 true 1e0p events in the full data set and is 27\% pure in Run 3 for electron neutrinos and the LEE.  This selection will be tuned and the work expanded to include Run 1.}
+The reconstructed energy distribution after this selection is shown in Fig.~\ref{fig:1e0p:cutbased:RUN3}.  \emph{Note that this plot uses the new Genie model, but the cuts have not yet been optimized for the new MC -- an improvement currently in the works.  This selection predicts 9.8 true \zpsel events in the full data set and is 27\% pure in Run 3 for electron neutrinos and the LEE.  This selection will be tuned and the work expanded to include Run 1.}
 
 \subsubsection{BDT}
 
-A selection has also been developed by training a BDT for the 1e0p events, using a similar method to the one employed by the 1eNp analysis.  At this stage the BDT has only been trained for Run 3 events, and includes a cut on the CRT variables before training to remove cosmics.  \emph{This work will be expanded to include Run 1.}
+A selection has also been developed by training a BDT for the \zpsel events, with a similar method to the one used by the \npsel analysis.  At this stage the BDT has only been trained for Run 3 events, and includes a cut on the CRT variables before training to remove cosmic backgrounds.  \emph{This work will be expanded to include Run 1.}
 
-The BDT is trained on a loose selection of 1e0p events, which includes the pre-selection cuts as well as several additional requirements that comprise a ``loose selection" to focus on identifying electron neutrinos, summarized in \ref{tab:1e0p:loosecut}.
+The BDT is trained on a loose selection of \zpsel events, which includes the pre-selection cuts as well as several additional requirements that comprise a ``loose selection" to focus on identifying electron neutrinos, summarized in \ref{tab:1e0p:loosecut}.
 
 
 \begin{table}[h!]
@@ -507,7 +506,7 @@ The BDT is trained on a loose selection of 1e0p events, which includes the pre-s
  \hline
 \multirow{1}{*}{$\nu_\mu$~rejection} & shr\_score $<$ 0.30 \\
  \hline
-\multirow{3}{*}{Strict Fiducial Volume} & 22 \si{\cm} $<$ reco\_nu\_vtx\_sce\_x$<$ 234.35 \si{\cm} \\
+\multirow{3}{*}{Fiducial Volume} & 22 \si{\cm} $<$ reco\_nu\_vtx\_sce\_x$<$ 234.35 \si{\cm} \\
 & -75.1 \si{\cm} $<$ reco\_nu\_vtx\_sce\_y$<$ 75.1 \si{\cm} \\ & 35 \si{\cm} $<$ reco\_nu\_vtx\_sce\_z$<$ 665 \si{\cm}  or 785 \si{\cm} $<$ reco\_nu\_vtx\_sce\_z $<$ 941.8 \si{\cm})\\
  \hline
  \multirow{1}{*}{$\pi^0$ ~rejection} & shr\_tkfit\_2cm\_dedx\_Y $<$ 4 \\
@@ -518,9 +517,9 @@ The BDT is trained on a loose selection of 1e0p events, which includes the pre-s
 
 
 Note that even this initial selection is somewhat strict, resulting in a drop of overall electron neutrino efficiency.
-\emph{This is an initial study of the BDT performance: it may be possible to loosen these cuts and regain efficiency without compromising the BDT selection performance. At this stage, a single BDT which tries to separate all backgrounds from electron neutrino signals has been trained for this selection.  Performance may be improved by using multiple BDTs which are trained for specific background topologies as done in the 1eNp selection. }
+\emph{This is an initial study of the BDT performance. It may be possible to loosen these cuts and regain efficiency without compromising the BDT selection performance. At this stage, a single BDT which tries to separate all backgrounds from electron neutrino signals has been trained for this selection.  Performance may be improved by using multiple BDTs which are trained for specific background topologies as done in the \npsel selection. }
 
-The BDT inputs are for the most part the same variables as the box cuts.  In all cases in the BDT, however, the full three planes information is used, while it was not always found to improve the performance when using box cuts.   More information from the second shower search is also included in the BDT, such as the distance from the vertex to the second shower, and the angle between the second shower and the initial shower. The full list of variables used to train the \zpsel BDT is: shrmoliererms, shrmoliereavg, shr\_score, CosmicIP, subcluster, secondshower\_(U,V,Y)\_nhit, secondshower\_(U,V,Y)\_vtxdist, secondshower\_(U,V,Y)\_dot, anglediff\_(U,V,Y), shr\_tkfit\_2cm\_dedx\_(U,V,Y), shr\_tkfit\_gap10\_dedx\_(U,V,Y), trkfit, and hits\_ratio. Plot ~\ref{fig:1e0p:bdtvars:RUN3} shows the relative importance of each of these variables in the BDT.  The variables for which information from all three planes is used in the BDT are combined into one variable labeled ``ALL" in this plot.  
+The BDT inputs are for the most part the same variables as those used in the box cuts.  In the BDT, however, the information from all three planes is used, while it was not always found to improve the performance of the box cuts.   More information from the second shower search is also included in the BDT, such as the distance from the vertex to the second shower, and the angle between the second shower and the initial shower. The full list of variables used to train the \zpsel BDT is: shrmoliererms, shrmoliereavg, shr\_score, CosmicIP, subcluster, secondshower\_(U,V,Y)\_nhit, secondshower\_(U,V,Y)\_vtxdist, secondshower\_(U,V,Y)\_dot, anglediff\_(U,V,Y), shr\_tkfit\_2cm\_dedx\_(U,V,Y), shr\_tkfit\_gap10\_dedx\_(U,V,Y), trkfit, and hits\_ratio. Plot ~\ref{fig:1e0p:bdtvars:RUN3} shows the relative importance of each of these variables in the BDT.  The variables for which information from all three planes is used in the BDT are combined into one variable labeled ``ALL" in this plot.  
 
 
 \begin{figure}[H]
@@ -543,7 +542,7 @@ The BDT inputs are for the most part the same variables as the box cuts.  In all
     \includegraphics[width=1.00\textwidth]{1e0p/bkg_score_01162020_RUN3_presel.pdf}
     \caption{\label{fig:1e0p:bdt:bkgscore:presel} After pre-selection.}
     \end{subfigure}
-\caption{\label{fig:1e0p:bdt:bkgscore} BDT response for background BDT.\textcolor{blue}{I'm confused by this caption--Elena}}
+\caption{\label{fig:1e0p:bdt:bkgscore} BDT response for \zpsel BDT.}
 \end{center}
 \end{figure}
 
@@ -553,7 +552,7 @@ The BDT inputs are for the most part the same variables as the box cuts.  In all
     \begin{subfigure}[b]{0.45\textwidth}
     \centering
     \includegraphics[width=1.00\textwidth]{1e0p/bkg_score_01162020_RUN3_loosesel.pdf}
-    \caption{\label{fig:1e0p:bdt:bkgscore:loose} Full response.}
+    \caption{\label{fig:1e0p:bdt:bkgscore:loosenozoom} Full response.}
     \end{subfigure}
     \begin{subfigure}[b]{0.45\textwidth}
     \centering
@@ -566,45 +565,48 @@ The BDT inputs are for the most part the same variables as the box cuts.  In all
 
 The good data-MC agreement on run 3 data of the BDT response after a slice and after the \zpsel pre-selection is shown in Fig.~\ref{fig:1e0p:bdt:bkgscore}.  
 
-The BDT response after the loose selection that is used for training, and to cut on for the selection is shown in Fig.~\ref{fig:1e0p:bdt:bkgscore:loose} \textcolor{blue}{I'm confused by this wording}.  Based on this plot events above 0.96 in BDT response are selected as signal.\\
+The BDT response after the loose selection is shown in Fig.~\ref{fig:1e0p:bdt:bkgscore:loose}.  Based on this plot events above 0.96 in BDT response are selected as signal.  The final BDT selection is the loose cuts defined in Table~\ref{tab:1e0p:loosecut} with the addition of this cut on the BDT response. 
+%This is the selection of events that is used to train the BDT, and these cuts are also applied before cutting on the BDT response for the BDT selection. 
+%\textcolor{blue}{I'm confused by this wording}. 
+\\
 
-
-\textcolor{blue}{Elena's Note: aren't these the same cuts with the addition of the the bkg\_score? If so, I believe we can remove this.
-The full set of BDT selection cuts is:
-\begin{itemize}
-    \item nslice = 1
-    \item slpdg = 12
-    \item n\_showers\_contained = 1
-    \item n\_tracks\_contained == 0 or (n\_tracks\_contained==1 and (tksh\_angle<-0.9 or trkpid > 0.1) and merge\_bestdist<2)
-    \item shr\_energy\_tot\_cali $>$ 0.07
-    \item Shr\_tkfit\_2cm\_dedx\_Y$<$4
-    \item Shr\_score$<$0.3
-    \item cosmicIP$>$20
-    \item (crtveto!=1) and (\_closestNuCosmicDist $>$ 20.)
-    \item (reco\_nu\_vtx\_sce\_x$>$22 and reco\_nu\_vtx\_sce\_x $<$234.35)
-    \item (reco\_nu\_vtx\_sce\_y $>$ -75.1 and reco\_nu\_vtx\_sce\_y$<$75.1)
-    \item ((reco\_nu\_vtx\_sce\_z$>$35 and reco\_nu\_vtx\_sce\_z$<$665) or (reco\_nu\_vtx\_sce\_z$>$785 and reco\_nu\_vtx\_sce\_z$<$941.8))
-    \item bkg\_score $>$ 0.96
-\end{itemize}
-}
+%Response: Sure, we can reemove the below
+%\textcolor{blue}{Elena's Note: aren't these the same cuts with the addition of the the bkg\_score? If so, I believe we can remove this.
+%The full set of BDT selection cuts is:
+%\begin{itemize}
+ %   \item nslice = 1
+  %  \item slpdg = 12
+   % \item n\_showers\_contained = 1
+    %\item n\_tracks\_contained == 0 or %(n\_tracks\_contained==1 and (tksh\_angle<-0.9 or trkpid > 0.1) and merge\_bestdist<2)
+    %\item shr\_energy\_tot\_cali $>$ 0.07
+    %\item Shr\_tkfit\_2cm\_dedx\_Y$<$4
+    %\item Shr\_score$<$0.3
+    %\item cosmicIP$>$20
+    %\item (crtveto!=1) and (\_closestNuCosmicDist $>$ 20.)
+    %\item (reco\_nu\_vtx\_sce\_x$>$22 and reco\_nu\_vtx\_sce\_x $<$234.35)
+   % \item (reco\_nu\_vtx\_sce\_y $>$ -75.1 and reco\_nu\_vtx\_sce\_y$<$75.1)
+   % \item ((reco\_nu\_vtx\_sce\_z$>$35 and reco\_nu\_vtx\_sce\_z$<$665) or (reco\_nu\_vtx\_sce\_z$>$785 and reco\_nu\_vtx\_sce\_z$<$941.8))
+   % \item bkg\_score $>$ 0.96
+%\end{itemize}
+%}
 
 \begin{figure}[H]
 \begin{center}
 \includegraphics[width=0.45\textwidth]{1e0p/reco_e_01162020_RUN3_bgbdt.pdf}
-\caption{\label{fig:1e0p:bdt:RUN3} BDT selection for 1e0p events, scaled up to full data set 10.1e20 POT.}
+\caption{\label{fig:1e0p:bdt:RUN3} BDT selection for \zpsel events, scaled up to the full 10.1e20 POT data set.}
 \end{center}
 \end{figure}
 
-The reconstructed energy distribution for selected 1e0p events that pass the BDT selection are shown in Fig.~\ref{fig:1e0p:bdt:RUN3}.  Note that one event in the run 3 open data passes this selection, but it is omitted from the plot because it is scaled up to the full data set.  This selection predicts 10 true 1e0p events in the full data set, and is 49\% pure in Run 3 for electron neutrinos and the LEE.
+The reconstructed energy distribution for selected \zpsel events that pass the BDT selection are shown in Fig.~\ref{fig:1e0p:bdt:RUN3}.  Note that one event in the run 3 open data passes this selection, but it is omitted from the plot because it is scaled up to the full data set.  This selection predicts 10 true \zpsel events in the full data set, and is 49\% pure in Run 3 for electron neutrinos and the LEE from 0-2 GeV in reconstructed neutrino energy.  This selection is 44\% pure in the low energy range from 0.2-1 GeV reconstructed neutrino energy.   
 
 \begin{figure}[H]
 \begin{center}
 \includegraphics[width=0.45\textwidth]{1e0p/efficiency_RUN3.pdf}
-\caption{\label{fig:1e0p:eff:RUN3} Efficiency of 1e0p selections.  The purity quoted in the legend is calculated from 0-2 GeV in reconstructed neutrino energy.}
+\caption{\label{fig:1e0p:eff:RUN3} Efficiency of \zpsel selections.  The purity quoted in the legend is calculated from 0-2 GeV in reconstructed neutrino energy.}
 \end{center}
 \end{figure}
 
-The selection efficiency for the 1e0p cut-based and BDT selections are shown in Fig.~\ref{fig:1e0p:eff:RUN3}.  The BDT selection is both more efficient and more pure. 
+The selection efficiency for the \zpsel cut-based and BDT selections are shown in Fig.~\ref{fig:1e0p:eff:RUN3}.  The BDT selection is both more efficient and more pure. 
 
 \clearpage
 
@@ -620,7 +622,7 @@ The selection efficiency for the 1e0p cut-based and BDT selections are shown in 
 \section{Systematics \textcolor{red}{Maya, Nicolo, Sebastien}}
 \label{sec:systematics}
 
-Our selections are subject to some level of uncertainty, both statistical and systematic. The systematic uncertainties are associated to the level of precision of the model used in the \textcolor{blue}{simulation of neutrino interactions \st{reconstruction}} (GENIE), knowledge of the neutrino beam (flux), and mismodeling of the detector response (detector systematics). These systematic uncertainties can be calculated for many parameters of the models and measured variables that we use to reconstruct our sample
+Our selections are subject to some level of uncertainty, both statistical and systematic. The systematic uncertainties are associated to the level of precision of the model used in the \textcolor{blue}{simulation of neutrino interactions \st{reconstruction}} (GENIE), knowledge of the neutrino beam (flux), and mis-modeling of the detector response (detector systematics). These systematic uncertainties can be calculated for many parameters of the models and measured variables that we use to reconstruct our sample
 
 \textcolor{blue}{When treating systematic uncertainties, one wishes to take into account correlations between different bins of the distribution of a given reconstructed variable.} For each uncertainty, a covariance matrix \textcolor{blue}{correlating the variation in the measured number of events between two bins is calculated \st{of its effect on a given distribution is obtained}}. Two approaches are followed to obtain the covariance matrix, depending on the type of uncertainty: unisim or multisim.
 
@@ -1079,26 +1081,26 @@ The resulting plot of the test statistic for the 1eNp0$pi$ selection described i
 \end{figure}
 
 A second and simpler exercise is performed to get a rough understanding of the degradation of the sensitivity due to the presence of systematic uncertainties, using Nicol\`o's tool.
-The same procedure outlined before is repeated by adding a Gaussian sampling, independent for each bin, with mean equal to the expected value of the bin content and standard deviation set to a fixed fraction of uncertainty (e.g. 20\%, which is about the average level of systematic uncertainty seen in the MCC8 \numucc inclusive analysis~\cite{bib:numuCCincl}).
+The sampling of toy-experiments is performed by adding, in addition to the statistical bin content fluctuations, a Gaussian sampling independent for each bin with mean equal to the expected value of the bin content and standard deviation set to a fixed fraction of uncertainty. We choose a value of 20\%: the average level of systematic uncertainty seen in the MCC8 \numucc inclusive analysis~\cite{bib:numuCCincl}.
 This process is equivalent to sample from a diagonal covariance matrix, with fractional uncertainties is set to the desired value.
-Results from this method are shown in figure \ref{fig:sensitivity_function_oot}.
+Results from this method are shown in figure \ref{fig:sensitivity_function_pot}.
 
 \subsection{How Constraints and Systematics are included in the 1$e$N$p$ Sensitivity Calculation \textcolor{red}{Maya}}
 \label{ssec:finalSensitivityCalc}
 
 The multiple selections described in  ~\ref{sec:nueselection}-\ref{sec:numuselection} share the same neutrino flux and cross-section and therefore the measurements between them are highly correlated. We can exploit these correlations to reduce the systematics uncertainties when performing the combined side-by-side fit of the different channel for the sensitivity results. \textcolor{blue}{It is important to point out that the constraint procedure currently applied requires that the $\nu_{\mu} - \nu_e$ correlations exploited (and more generally the correlations between the $\nu_e$ channel and any other sideband) represent the underlying truth correlations between these different event categories. A mis-modeling of these correlations can lead to an incorrect estimation of the expected $\nu_e$ rate and its uncertainties. Ensuring that such correlations are modeled correctly is not a simple task. At a minimum, it requires a robust validation of MicroBooNE's simulation through a detailed studies of data-simulation comparisons in a broad range of variables and phase space.}
 
-The different selections described in Section~\ref{sec:nueselection}-\ref{sec:numuselection} provide constraints to different energy range of the 1eNp selection as well as the kinematics and topology. The inclusive $\nu_e$ selection can be used to constrain the high energy $\nu_e$. We explore the prospect of adding the inclusive $\nu_e$ selection to constrain the high energy $\nu_e$. Given the non-orthogonality of this selection to the 1eNp0$\pi$ selection, we still need to explore other variables that can provide orthogonality in order to exercise the constraint. The 1e0p0$\pi$ channel can provide constraint to the less understood proton reconstruction and kinematics. The CC and NC $\pi0$ samples can be utilized to constrain the uncertainties coming from shower. Finally, we can use the $\nu_\mu$ selection to constrain the flux and cross section at low energy $\nu_e$ and Section~\ref{subsec:constraintfromnumu} describes this in more details. \textcolor{blue}{In its current state, the analysis utilizes solely the  $\nu_{\mu}$ channel as a constraint for $\nu_e$ systematics. Constraints employing the \zpsel and $\pi^0$ channels will be implemented in future iterations of this work.}
+The different selections described in Section~\ref{sec:nueselection} provide constraints to different energy range of the 1eNp selection as well as the kinematics and topology. The inclusive $\nu_e$ selection can be used to constrain the high energy $\nu_e$. We explore the prospect of adding the inclusive $\nu_e$ selection to constrain the high energy $\nu_e$. Given the non-orthogonality of this selection to the 1eNp0$\pi$ selection, we still need to explore other variables that can provide orthogonality in order to exercise the constraint. The 1e0p0$\pi$ channel can provide constraint to the less understood proton reconstruction and kinematics. The CC and NC $\pi0$ samples can be utilized to constrain the uncertainties coming from shower. Finally, we can use the $\nu_\mu$ selection to constrain the flux and cross section at low energy $\nu_e$ and Section~\ref{subsec:constraintfromnumu} describes this in more details. \textcolor{blue}{In its current state, the analysis utilizes solely the  $\nu_{\mu}$ channel as a constraint for $\nu_e$ systematics. Constraints employing the \zpsel and $\pi^0$ channels will be implemented in future iterations of this work.}
 
 
-\subsubsection{Constraint from Muon Neutrino}
+\subsubsection{Constraint from Muon Neutrinos}
 \label{subsec:constraintfromnumu}
-Using the measured $\nu_{\mu}$ energy spectrum interactions to constrain $\nu_e$ systematics is a common approach in oscillation experiments. 
-This constraint takes advantage of the high statistics $\nu_{\mu}$ data and known correlations between electron and muon neutrino fluxes and cross sections. 
+Using the measured $\nu_{\mu}$ channel to constrain $\nu_e$ systematics is an approach used in several accelerator-based neutrino oscillation experiments. 
+This constraint takes advantage of the high statistics $\nu_{\mu}$ data and modeled correlations between electron and muon neutrino fluxes and cross sections. 
 The constraint is exercised through the covariance matrix constructed in the energy spectrum of $\nu_e$ and $\nu_{\mu}$. 
 The correlation between the elements in the matrix provides constraint when we perform the combined fits between the two channels. 
 This constraint comes from the minimization of the $\chi^2$ when we fit both the 1eNp $\nu_e$ and the inclusive $\nu_{\mu}$ selection to the MiniBooNE unfolded LEE signal. 
-Figure~\cite{fig:numuconstraint} displayed the cross section (genie) and flux correlation matrix between the two channels \textcolor{red}{(are these truth-level correlations?)}. 
+Figure~\cite{fig:numuconstraint} displayed the truth-level cross section (genie) and flux correlation matrix between the two channels \textcolor{red}. 
 
 \textit{Note that work on getting the numu constraint channel with the new genie tuned CV is still underway. 
 The matrices are shown here to demonstrate the effect of the constraint which will be updated once the new $\nu_{\mu}$ constraint channel is available. 
@@ -1109,15 +1111,15 @@ Therefore, we observed less correlation between the $\nu_e$ and the $\nu_{\mu}$ 
 \begin{center}
     \begin{subfigure}[b]{0.45\textwidth}
     \centering
-    \includegraphics[width=1.00\textwidth]{Sensitivity/numuconstraint/SBNfit_correlation_matrix_nuenumu_reco_e_genieonly_mc_collapsed.pdf}
+    \includegraphics[width=1.00\textwidth]{Sensitivity/numuconstraint-truth/SBNfit_correlation_matrix_nuenumu_nu_e_truth_1eNp_genieonly_mc_collapsed.pdf}
     \caption{cross section systematics}
     \end{subfigure}
     \begin{subfigure}[b]{0.45\textwidth}
     \centering
-    \includegraphics[width=1.00\textwidth]{Sensitivity/numuconstraint/SBNfit_correlation_matrix_nuenumu_reco_e_fluxonly_mc_collapsed.pdf}
+    \includegraphics[width=1.00\textwidth]{Sensitivity/numuconstraint-truth/SBNfit_correlation_matrix_nuenumu_nu_e_truth_1eNp_fluxonly_mc_collapsed.pdf}
     \caption{flux systematics}
     \end{subfigure}
-\caption{\label{fig:numuconstraint} Correlation matrices between the $\nu_e$ and $\nu_\mu$. The correlation in (a) is dominated by the resonance systematics due to missing CCQE knobs. The correlation matrix for (b) is consistent with what is shown in the MCC8 Flux tech note ~\cite{bib:fluxtechnote}}.
+\caption{\label{fig:numuconstraint} Truth-level correlation matrices between the $\nu_e$ and $\nu_\mu$. The correlation in (a) is dominated by the resonance systematics due to missing CCQE knobs ~\cite{bib:fluxtechnote}}.
 \end{center}
 \end{figure}
 
@@ -1128,15 +1130,15 @@ Figure~\ref{fig:numuconstraintresult} demonstrates the effects of the $\nu_\mu$ 
 \begin{center}
     \begin{subfigure}[b]{0.45\textwidth}
     \centering
-    \includegraphics[width=1.00\textwidth]{Sensitivity/numuconstraint/nuenumu_reco_e1_before_constraint.pdf}
+    \includegraphics[width=1.00\textwidth]{Sensitivity/numuconstraint-truth/nuenumu_nu_e_truth_1eNp_before_constraint.pdf}
     \caption{before constraint}
     \end{subfigure}
     \begin{subfigure}[b]{0.45\textwidth}
     \centering
-    \includegraphics[width=1.00\textwidth]{Sensitivity/numuconstraint/nuenumu_reco_e1_after_constraint.pdf}
+    \includegraphics[width=1.00\textwidth]{Sensitivity/numuconstraint-truth/nuenumu_nu_e_truth_1eNp_after_constraint.pdf}
     \caption{after constraint}
     \end{subfigure}
-\caption{\label{fig:numuconstraintresult} The final 1eNp selection from run 1 scaled to $1.01\times10^{21}$. The shaded pink band on the top and bottom half of plots (a) and (b) is the systematic uncertainty associated to each bin. Overall we see ~50\% reduction in systematics at the low $\nu_e$ energy bin.}
+\caption{\label{fig:numuconstraintresult} The truth-level 1eNp selection . The shaded pink band on the top and bottom half of plots (a) and (b) is the systematic uncertainty associated to each bin. Overall we see ~50\% reduction in systematics at the low $\nu_e$ energy bin. \textit{Note that the reduction is only seen in the cross section and flux systematics error, and the MC statistical error is not taken into account}.}
 \end{center}
 \end{figure}
 
@@ -1152,7 +1154,7 @@ This has been performed using the Poisson LLR test statistic, and including syst
 
 \begin{figure}[H]
     \begin{center}
-    \includegraphics[width=0.7\textwidth]{Sensitivity/sensitivity_vs_pot.png}
+    \includegraphics[width=0.5\textwidth]{Sensitivity/sensitivity_vs_pot.png}
     \caption{Expected sensitivity to the LEE unfolded signal, of the \nueccnopinp cut based selection. The solid lines indicate the median values, whereas the shaded regions represent the regions containing 68\% probability.
     The blue (orange) graph shows the case with no (20\%) systematic uncertainty, performed using Nicol\`o's tool as explained in \ref{subsec:sensitivity_syst_uncertainty}.
     }
@@ -1160,23 +1162,54 @@ This has been performed using the Poisson LLR test statistic, and including syst
     \end{center}
 \end{figure}
 
+\begin{table}[h!]
+\centering
+\setlength{\tabcolsep}{10pt}
+\renewcommand{\arraystretch}{1.25}
+ \begin{tabular}{| c | c | c | c | c |} 
+ \hline
+ channel & signal events / $10.1E20$ POT & stat. $\sigma$  & stat+syst. $\sigma$ & constrained $\sigma$ \\
+ \hline
+box-cut \npsel & 7.8 & $2.1-2.3$ & $1.8$ & N.A. \\
+BDT-based \npsel & 10.7 & N.A. & N.A. & N.A. \\
+ \hline
+ \end{tabular}
+ \caption{\label{tab:sensitivity}Expected sensitivities.}
+\end{table}
 
+\begin{figure}[H]
+    \begin{center}
+    \includegraphics[width=0.5\textwidth]{Sensitivity}
+    \caption{
+    }
+    \label{fig:sensitivity_function_pot}
+    \end{center}
+\end{figure}
 
-\subsection{Sensitivity to an oscillation signal \textcolor{green}{Nico}}
-<
-In addition to the sensitivity to the MiniBooNE unfolded signal, sensitivity to an oscillation signal is quoted.
+\subsection{Sensitivity to a 3+1 $\nu_s$ oscillation signal \textcolor{green}{Nico}}
+In addition to quoting the sensitivity to the MiniBooNE unfolded signal model, sensitivity to a 3+1 $\sim$eV sterile-neutrino oscillation signal is studied. The nature of this analysis, and the strong connection of past short baseline anomalies to sterile neutrino models, makes the investigation of such a hypothesis interesting and relevant for the results' interpretation. While strong tension exists in global fits to 3+1 signals, this model is less dependent on MiniBooNE's detector and neutrino interaction modeling and therefore provides complementary information enriching the analysis as a whole.
 The model under study is a simple extension of the standard with one sterile neutrino.
-The effective oscillation probability \numu $\rightarrow$ \nue is:
+\par The effective oscillation probability \numu $\rightarrow$ \nue is:
 \begin{equation}
     P^{osc,~short~baseline}_{\mu \rightarrow e} = \sin^2(2\theta_{e \mu}) \sin^2 \left( 1.27 \Delta m_{14}^2 \frac{L}{E} \right)
 \end{equation}
 which is characterised by an effective mixing parameter $\sin^2(2\theta_{e \mu})$ and oscillation frequency $\Delta m_{14}^2$.
-The same framework is used to perform simple hypothesis test and compute expected statistical-only sensitivities.
+The same framework is used to perform a simple hypothesis test and compute expected statistical-only sensitivities.
 This means that no fit or extraction of these parameters is performed at this stage. 
 The parameters value of the best fit to the appearance experiments is chosen, as taken from \cite{bib:oscillation_parameters}.
 The parameters are $\sin^2(2\theta_{e \mu}) = 0.00697$ and $\Delta m_{14}^2 = 0.573 \text{eV}^2$.
-The contribution from the oscillation to the expected \nue flux and the oscillation probability and weights are shown in figure \ref{fig:weights_oscillation_prob} on the left and right plots, respectively.
+The contribution from the oscillation to the expected \nue flux is shown in figure \ref{fig:weights_oscillation_prob}.% on the left and right plots, respectively.
 
+\begin{figure}[H]
+    \begin{center}
+    \includegraphics[width=0.45\textwidth]{Sensitivity/oscillation/osc_plot_deltam2_0573_sin2theta2_000697.png}
+    \caption{An additional sterile neutrino at masses much larger than the ordinary neutrinos would induce an effective muon neutrino to electron neutrino oscillation probability.
+The contribution to the flux from the \nue intrinsic are shown for the oscillation parameters values $\sin^2(2\theta_{e \mu}) = 0.00697$ and $\Delta m_{14}^2 = 0.573 \text{eV}^2$.}
+    \label{fig:weights_oscillation_prob}
+    \end{center}
+\end{figure}
+
+\begin{comment}
 \begin{figure}[ht] 
 \begin{center}
     \begin{subfigure}[b]{0.45\textwidth}
@@ -1194,9 +1227,10 @@ The contribution to the flux (left plot) as well as the oscillation probability 
 \label{fig:weights_oscillation_prob}
 \end{center}
 \end{figure}
+\end{comment}{}
 
-The sensitivity is estimated using the $\nu_e$ CC inclusive selection.
-The left plot in figure \ref{fig:oscillation_sensitivity} shows the expected reconstructed shower energy spectrum in the presence of the signal.
+The sensitivity is estimated using the $\nu_e$ CC inclusive selection (sec.~\ref{sec:nueselection:inclusive}).
+The left plot in figure \ref{fig:oscillation_sensitivity} shows the expected reconstructed shower energy spectrum in the presence of the signal. The blue distribution $H_0$ inclues both $\nu_e$ as well as background events (which can be seen individually in figure~\ref{fig:pre_event_score}).
 The right plot shows the distribution of the Poisson LLR test statistic under the null hypothesis (blue) and oscillation-signal hypothesis (orange), with the expected significance to this signal.
 
 \begin{figure}[ht] 
@@ -1204,7 +1238,7 @@ The right plot shows the distribution of the Poisson LLR test statistic under th
     \begin{subfigure}[b]{0.45\textwidth}
     \centering
     \includegraphics[width=1.00\textwidth]{Sensitivity/oscillation/pois_llr_asimov_plot_1e+21_deltam2_0573_sin2theta2_000697.png}
-    \caption{Reconstructed energy spectrum of the electron candidate shower.}
+    \caption{$E_{\rm reco}$ of the electron candidate shower.}
     \end{subfigure}
     \begin{subfigure}[b]{0.45\textwidth}
     \centering
