@@ -117,9 +117,9 @@ Reconstruction quality & \makecell{\textit{ismerged} \\ Checks if a proton is me
 %    \label{fig:e_cand_secondshower}
 %\end{figure}
 
-\subsubsection{Other Daughters Identification}other-daughters
+\subsubsection{Other Daughters Identification}
 Besides the electron candidate, the slice includes a number of particles which can be leveraged to improve background rejection. We classify each PFParticle using the ``other-daughters-BDT". This BDT is trained on three labeled categories: \emph{signal-like}, \emph{neutral}, \emph{background-like}. The signal-like particles are those PFParticles that are backtracked to a proton or a split-off part of the electron associated to $\nu_e$ interactions: we want to keep events with a high content of signal-like particles. The background-like particles are those PFParticles that are backtracked to a simulated muon or cosmic activity.
-The ``neutral" label accounts for tricker cases: this label is given to PFParticles backtracked to charged pions or photons. Charged pions should be allowed in a $\nu_e$ CC search, but the mis-identification rate between charged pions and muons is large in LArTPCs. \textcolor{blue}{Photons coming from neutral pions are allowed in a  $\nu_e$ CC inclusive search, but they can also constitute a pernicious background.REALLY? We assign neutral scores to gammas?} 
+The ``neutral" label accounts for tricker cases: this label is given to PFParticles backtracked to charged pions or photons. Charged pions should be allowed in a $\nu_e$ CC search, but the mis-identification rate between charged pions and muons is large in LArTPCs. Photons coming from neutral pions are allowed in a  $\nu_e$ CC inclusive search, but they can also constitute a pernicious background.
 
 The input variables of the other-daughters-BDT are listed in \cref{tab:nuecc:other_bdt}.
 The three most important distributions of the variables used are given in \cref{fig:pre_daughter_1}.  
