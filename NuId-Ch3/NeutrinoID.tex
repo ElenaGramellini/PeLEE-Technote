@@ -56,15 +56,19 @@ To select the neutrino slice, we first require a beam-triggered flash in the bea
 Then, we apply the optical pre-selection cuts: if no slice passes optical pre-selection, the event is rejected. 
 If the slice with the largest topological score passes the optical pre-selection, the slice forms the neutrino candidate; otherwise, the slice with the largest flash-matching score forms the neutrino candidate.
 The performance of the \texttt{SliceID} for electron neutrino simulated events is given in~\cref{fig:sliceid}.
-
+Integrated over all final states and neutrino energies, the efficiency is:
+\begin{itemize}
+    \item $\nu_\mu$ charged-current: \SI{83.0}{\%}
+    \item $\nu_e$ charged-current: \SI{83.3}{\%}
+\end{itemize}
 Further details on the \texttt{SliceID} tool are available in DocDB 23854 and 22519. Additional documentation for this tool is in preparation.
 
 
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.85\textwidth]{NuId-Ch3/Images/sliceID.pdf}
-    \caption{The performance of the \texttt{SliceID} as a function of the true neutrino energy for the topologies considered in the $\nu_e$ selection: the \npsel (left), the  \zpsel (middle) and inclusive (right) channels.}
+    \includegraphics[width=0.75\textwidth]{NuId-Ch3/Images/sliceID.pdf}
+    \caption{The performance of the \texttt{SliceID} as a function of the true neutrino energy for the topologies considered in the \nuecc selection: the \zpsel (left), the  \npsel (middle) and inclusive (right) channels. The energy range is \SIrange{0.15}{1.75}{\GeV}, the bin size is \SI{200}{\MeV}.}
     \label{fig:sliceid}
 \end{figure}
 
