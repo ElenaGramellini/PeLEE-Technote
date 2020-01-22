@@ -77,7 +77,7 @@
 \begin{document}
 \maketitle
 
-\abstract{The analysis presented in this note uses data from the MicroBooNE Experiment to measure  $\nu_e$ interactions from the Booster Neutrino Beamline using the Pandora reconstruction framework. Our goal is addressing the nature of the anomalous excess of low-energy events with EM activity in the final state as recorded by the MiniBooNE experiment. In this document, we outline the analysis strategy, focusing on the reconstruction and event selections performed, the evaluation of systematics associated to detector, flux, and neutrino-interaction modeling, and the expected sensitivity to the MB-$\nu_e$ LEE model utilizing the available BNB dataset of 10.1$\times 10^{20}$ POT. }
+\abstract{The analysis presented in this note uses data from the MicroBooNE Experiment to measure  $\nu_e$ interactions from the Booster Neutrino Beamline (BNB) using the Pandora reconstruction framework. Our goal is to address the nature of the anomalous excess of low-energy events (LEE) with electro-magnetic activity in the final state as recorded by the MiniBooNE experiment. In this document, we outline the analysis strategy, focusing on the reconstruction and event selections performed, the evaluation of systematics associated to detector, flux, and neutrino-interaction modeling, and the expected sensitivity to the MiniBooNE-$\nu_e$ LEE model using the available BNB dataset of 10.1$\times 10^{20}$ POT. }
 
 \tableofcontents
 
@@ -1179,10 +1179,32 @@ BDT-based \npsel & 10.7 & N.A. & N.A. & N.A. \\
 
 \begin{figure}[H]
     \begin{center}
-    \includegraphics[width=0.5\textwidth]{Sensitivity}
-    \caption{
+     \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{Sensitivity/numuconstraint-truth/SBNfit_Cls_nue_nu_e_truth_1eNp_LEE_deltachi_statonly.pdf}
+    \label{fig:nue_statonly}
+    \caption{statistical only sensitivity estimate for 1eNp truth level selection (without constraint)}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{Sensitivity/numuconstraint-truth/SBNfit_Cls_nue_nu_e_truth_1eNp_LEE_syst.pdf}
+    \label{fig:nue_statonly}
+    \caption{statistical and systematics sensitivity estimate for 1eNp truth level selection (without constraint)}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=1.00\textwidth]{Sensitivity/numuconstraint-truth/SBNfit_Cls_nuenumu_nu_e_truth_1eNp_LEE_deltachi_statonly.pdf}
+    \caption{statistical only sensitivity estimate for 1eNp truth level selection}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{Sensitivity/numuconstraint-truth/SBNfit_Cls_nuenumu_nu_e_truth_1eNp_LEE_syst.pdf}
+    \caption{statistical and systematics sensitivity estimate for 1eNp truth level selection with the $\nu_{\mu} constraint$}
+    \end{subfigure}
+    \caption{The sensitivity estimate for the 1eNp truth level selection for statistical only estimate and the statistical+systematics estimate.}.
     }
-    \label{fig:sensitivity_function_pot}
+    \label{fig:sensitivity_numuconst}
+    \caption{Truth-level sensitivity estimate comparisons for the 1eNp selection before constraint is included }.
+    }
     \end{center}
 \end{figure}
 
