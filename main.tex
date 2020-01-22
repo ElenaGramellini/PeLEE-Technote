@@ -941,22 +941,23 @@ reinteractions\_piminus        & $\pi^-$ hadronic reinteractions  & ---\\
 \section{Sensitivity Estimation \textcolor{green}{Nico}}
 
 \label{sec:Sensitivity2Osc}
-The primary scope of the analysis is to be able to learn knew knowledge about the anomalous excess observed by MiniBooNE.
-For this reason, the sensitivity to this excess is estimated, as a metric of the power of the analysis.
-The model for the signal currently used is the MiniBooNE LEE unfolded signal \cite{bib:sbnfit20437}.
-
 \label{sec:sensitivity}
-
-In its current version, this Tech-Note estimates sensitivities using the 1$e$N$p$ box-cut selection (section~\ref{sec:nueselection:1eNp}). In future iterations the BDT-approach will be used to measure the estimated sensitivity, once this selection has been further developed and validated. The BDT's sensitivity is expected to be larger then that obtained through the box-cut approach.
 
 The primary scope of the analysis is to be able to understand the nature of the anomalous excess observed by MiniBooNE. In particular, MicroBooNE aims to determine whether a potential excess of events is caused by neutrino interactions with electron- or photon-like activity in the final state.
 For this reason, the sensitivity to a \nue electron-like excess is estimated, as a metric of the power of the analysis.
 The model for the signal currently used is the MB-$\nu_e$ LEE unfolded signal~\cite{C2}.
 
 To construct this signal, the reconstructed energy distribution, under the CCQE hypothesis, of the excess observed by MiniBooNE, is unfolded to a distribution in true neutrino energy.
-Scale factors of excess events to the intrinsic \nue flux are then derived, as seen in figure \ref{fig:lee_unfolded_signal}.
+Scale factors of excess events to the intrinsic \nue flux are then derived, as seen in figure \ref{fig:minibooneunfolded}.
 This additional flux component is then propagated in the MicroBooNE simulation.
 
+It is noteworthy that this method has significant limitations, as the cross section model used by MiniBooNE and MicroBooNE are different, implying that the signal, as modeled by the MicroBooNE simulation, will not identically match the MiniBooNE LEE events.
+
+In its current version, this Tech-Note estimates sensitivities using the 1$e$N$p$ box-cut selection (section~\ref{sec:nueselection:1eNp}). In future iterations the BDT-approach will be used to measure the estimated sensitivity, once this selection has been further developed and validated. The BDT's sensitivity is expected to be larger then that obtained through the box-cut approach.
+
+
+
+\begin{comment}
 \begin{figure}[]
     \begin{center}
     \includegraphics[width=0.45\textwidth]{Sensitivity/lee_unfolded_signal.png}
@@ -964,15 +965,15 @@ This additional flux component is then propagated in the MicroBooNE simulation.
     \label{fig:lee_unfolded_signal}
     \end{center}
 \end{figure}
+\end{comment}{}
 
-It is noteworthy that this method is not a perfect signal, as the cross section model used by MiniBooNE and MicroBooNE are different, implying that the signal, as in the MicroBooNE simulation, will not explain the MiniBooNE LEE.
 
 The method used to estimate the sensitivity follows the standard prescription for a simple hypothesis test.
 In fact no parameter is extracted from the data at this stage: the hypothesis of background-only is tested against the \textit{simple} hypothesis of background-plus-signal, with signal being the LEE unfolded signal.
 The procedure is described below:
 \begin{itemize}
-    \item Choice of the observables, typically one or more histograms. In the standard case it will consist of a reconstructed energy spectrum for a \nue selection plus a reconstructed energy spectrum of a \numu selection for the constraint of the systematic uncertainties.
-    \item Choice of the test statistic, which is a function of the observables only. It is in fact necessary to choose a variable that condenses all information of the observables in one number. Different choices are described in the following subsection.
+    \item Choice of the observables, typically one or more histograms. For this analysis, this consists in the reconstructed energy spectrum for a \nue selection plus a reconstructed energy spectrum of a \numu selection for the constraint of the systematic uncertainties.
+    \item Choice of the test statistic, which is a function of the observables only. This variable condenses all information of the observables in one number. Different choices are described in the following subsection.
     \item Definition of the two hypothesis. $H_0$ is the null hypothesis, where we do not observed any LEE signal, whereas $H_1$ is the hypothesis where we do observe the LEE signal.
     \item Toy-experiments or pseudo-experiments. The expected distributions of the test statistic under the two hypotheses are built by randomly sampling the observables from their expected distributions. In case of the statistical only sensitivities, the bins of the histograms are treated as independent Poisson variables. In case systematic uncertainties are considered, the bins of the histograms are treated as a Multivariate Gaussian distribution, determined by the mean values and by a covariance matrix, which is then convoluted with a Poisson sampling that accounts for the statistical fluctuations.
     \item Once each toy-experiment is performed, and a distribution for the bin contents of the histograms is observed, the discovery significance, i.e. reject $H_0$, can be computed. This is done by computing the value of the test statistic associated to the observation, and then the p-value with respect to the expected distribution of the test statistic under $H_0$.
@@ -1088,9 +1089,9 @@ Results from this method are shown in figure \ref{fig:sensitivity_function_pot}.
 \subsection{How Constraints and Systematics are included in the 1$e$N$p$ Sensitivity Calculation \textcolor{red}{Maya}}
 \label{ssec:finalSensitivityCalc}
 
-The multiple selections described in  ~\ref{sec:nueselection}-\ref{sec:numuselection} share the same neutrino flux and cross-section and therefore the measurements between them are highly correlated. We can exploit these correlations to reduce the systematics uncertainties when performing the combined side-by-side fit of the different channel for the sensitivity results. \textcolor{blue}{It is important to point out that the constraint procedure currently applied requires that the $\nu_{\mu} - \nu_e$ correlations exploited (and more generally the correlations between the $\nu_e$ channel and any other sideband) represent the underlying truth correlations between these different event categories. A mis-modeling of these correlations can lead to an incorrect estimation of the expected $\nu_e$ rate and its uncertainties. Ensuring that such correlations are modeled correctly is not a simple task. At a minimum, it requires a robust validation of MicroBooNE's simulation through a detailed studies of data-simulation comparisons in a broad range of variables and phase space.}
+The multiple selections described in  ~\ref{sec:nueselection}-\ref{sec:numuselection} share the same neutrino flux and cross-section and therefore the measurements between them are highly correlated. We can exploit these correlations to reduce the systematics uncertainties when performing the combined side-by-side fit of the different channel for the sensitivity results. It is important to point out that the constraint procedure currently applied requires that the $\nu_{\mu} - \nu_e$ correlations exploited (and more generally the correlations between the $\nu_e$ channel and any other sideband) represent the underlying truth correlations between these different event categories. A mis-modeling of these correlations can lead to an incorrect estimation of the expected $\nu_e$ rate and its uncertainties. Ensuring that such correlations are modeled correctly is not a simple task. At a minimum, it requires a robust validation of MicroBooNE's simulation through a detailed studies of data-simulation comparisons in a broad range of variables and phase space.
 
-The different selections described in Section~\ref{sec:nueselection} provide constraints to different energy range of the 1eNp selection as well as the kinematics and topology. The inclusive $\nu_e$ selection can be used to constrain the high energy $\nu_e$. We explore the prospect of adding the inclusive $\nu_e$ selection to constrain the high energy $\nu_e$. Given the non-orthogonality of this selection to the 1eNp0$\pi$ selection, we still need to explore other variables that can provide orthogonality in order to exercise the constraint. The 1e0p0$\pi$ channel can provide constraint to the less understood proton reconstruction and kinematics. The CC and NC $\pi0$ samples can be utilized to constrain the uncertainties coming from shower. Finally, we can use the $\nu_\mu$ selection to constrain the flux and cross section at low energy $\nu_e$ and Section~\ref{subsec:constraintfromnumu} describes this in more details. \textcolor{blue}{In its current state, the analysis utilizes solely the  $\nu_{\mu}$ channel as a constraint for $\nu_e$ systematics. Constraints employing the \zpsel and $\pi^0$ channels will be implemented in future iterations of this work.}
+The different selections described in Section~\ref{sec:nueselection} provide constraints to different energy range of the 1eNp selection as well as the kinematics and topology. The inclusive $\nu_e$ selection can be used to constrain the high energy $\nu_e$. We explore the prospect of adding the inclusive $\nu_e$ selection to constrain the high energy $\nu_e$. Given the non-orthogonality of this selection to the 1eNp0$\pi$ selection, we still need to explore other variables that can provide orthogonality in order to exercise the constraint. The 1e0p0$\pi$ channel can provide constraint to the less understood proton reconstruction and kinematics. The CC and NC $\pi0$ samples can be utilized to constrain the uncertainties coming from shower. Finally, we can use the $\nu_\mu$ selection to constrain the flux and cross section at low energy $\nu_e$ and Section~\ref{subsec:constraintfromnumu} describes this in more details. In its current state, the analysis utilizes solely the  $\nu_{\mu}$ channel as a constraint for $\nu_e$ systematics. Constraints employing the \zpsel and $\pi^0$ channels will be implemented in future iterations of this work.
 
 
 \subsubsection{Constraint from Muon Neutrinos}
@@ -1098,14 +1099,16 @@ The different selections described in Section~\ref{sec:nueselection} provide con
 Using the measured $\nu_{\mu}$ channel to constrain $\nu_e$ systematics is an approach used in several accelerator-based neutrino oscillation experiments. 
 This constraint takes advantage of the high statistics $\nu_{\mu}$ data and modeled correlations between electron and muon neutrino fluxes and cross sections. 
 The constraint is exercised through the covariance matrix constructed in the energy spectrum of $\nu_e$ and $\nu_{\mu}$. 
-The correlation between the elements in the matrix provides constraint when we perform the combined fits between the two channels. 
-This constraint comes from the minimization of the $\chi^2$ when we fit both the 1eNp $\nu_e$ and the inclusive $\nu_{\mu}$ selection to the MiniBooNE unfolded LEE signal. 
-Figure~\cite{fig:numuconstraint} displayed the truth-level cross section (genie) and flux correlation matrix between the two channels \textcolor{red}. 
+The correlation between the elements in the matrix allow to constrain $\nu_e$ uncertainties through the measurements of correlated $\nu_{\mu}$ events. 
+%This constraint comes from the minimization of the $\chi^2$ when we fit both the 1eNp $\nu_e$ and the inclusive $\nu_{\mu}$ selection to the MiniBooNE unfolded LEE signal. 
+Figure~\cite{fig:numuconstrainttruth} displays the truth-level cross section (genie) and flux correlation matrix between the two channels \textcolor{red}. 
 
+\begin{comment}
 \textit{Note that work on getting the numu constraint channel with the new genie tuned CV is still underway. 
 The matrices are shown here to demonstrate the effect of the constraint which will be updated once the new $\nu_{\mu}$ constraint channel is available. 
 At the time of the plots creation, the CCQE-related knobs are not included in the systematics, hence the cross section uncertainties are mostly dominated by the resonance uncertainties. 
 Therefore, we observed less correlation between the $\nu_e$ and the $\nu_{\mu}$ channels at low $\nu_e$ energy.}
+\end{comment}{}
 
 \begin{figure}[ht] 
 \begin{center}
@@ -1119,13 +1122,14 @@ Therefore, we observed less correlation between the $\nu_e$ and the $\nu_{\mu}$ 
     \includegraphics[width=1.00\textwidth]{Sensitivity/numuconstraint-truth/SBNfit_correlation_matrix_nuenumu_nu_e_truth_1eNp_fluxonly_mc_collapsed.pdf}
     \caption{flux systematics}
     \end{subfigure}
-\caption{\label{fig:numuconstraint} Truth-level correlation matrices between the $\nu_e$ and $\nu_\mu$. The correlation in (a) is dominated by the resonance systematics due to missing CCQE knobs ~\cite{bib:fluxtechnote}}.
+\caption{\label{fig:numuconstrainttruth} Truth-level correlation matrices between the $\nu_e$ and $\nu_\mu$. The correlation in (a) is dominated by the resonance systematics due to missing CCQE knobs ~\cite{bib:fluxtechnote}}.
 \end{center}
 \end{figure}
 
-\par We follow the procedures described in Document~\ref{bib:muonconstraint} to include the $\nu_\mu$ constraint to the covariance matrix. We make an assumption that the $N_{MC}$ is approximately the same as the $N_{signal}$.
-Figure~\ref{fig:numuconstraintresult} demonstrates the effects of the $\nu_\mu$ constraint on the systematics of the 1eNp $\nu_e$ selection. 
+\par We follow the procedures described in Document~\ref{bib:muonconstraint} to include the $\nu_\mu$ constraint to the covariance matrix. We make an assumption that the $N_{MC}$ is approximately the same as the $N_{signal}$. The constraint technique leads to, in this excercise, a reduction in systematic uncertainties of $\sim50$\%.
+Figure~\ref{fig:numuconstraintresult} shows the effects of the $\nu_\mu$ constraint on the systematics of the 1eNp $\nu_e$ selection. \emph{This study, is performed with the samples and muon selection developed in December 2019. This excercise will be completed with the updated central-value simulation, modeling of systematic uncertainties, and updated muon selection (sec.~\ref{ssec:NuMUCCsel:constr}).} 
 
+\begin{comment}
 \begin{figure}[ht] 
 \begin{center}
     \begin{subfigure}[b]{0.45\textwidth}
@@ -1141,13 +1145,47 @@ Figure~\ref{fig:numuconstraintresult} demonstrates the effects of the $\nu_\mu$ 
 \caption{\label{fig:numuconstraintresult} The truth-level 1eNp selection . The shaded pink band on the top and bottom half of plots (a) and (b) is the systematic uncertainty associated to each bin. Overall we see ~50\% reduction in systematics at the low $\nu_e$ energy bin. \textit{Note that the reduction is only seen in the cross section and flux systematics error, and the MC statistical error is not taken into account}.}
 \end{center}
 \end{figure}
+\end{comment}{}
+
+\begin{figure}[ht] 
+\begin{center}
+    \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{Sensitivity/numuconstraint/nuenumu_reco_e1_before_constraint.pdf}
+    \caption{before constraint}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{Sensitivity/numuconstraint/nuenumu_reco_e1_after_constraint.pdf}
+    \caption{after constraint}
+    \end{subfigure}
+\caption{\label{fig:numuconstraintresult} The final 1eNp selection from run 1 scaled to $1.01 \times 10^{21}$. The shaded pink band on the top and bottom half of plots (a) and (b) is the systematic uncertainty associated to each bin. Overall we see 50\% reduction in systematics at the low $\nu_e$ energy bin.}
+\end{center}
+\end{figure}
+
+
+%\begin{figure}[ht] 
+%\begin{center}
+%    \begin{subfigure}[b]{0.45\textwidth}
+%    \centering
+%    \includegraphics[width=1.00\textwidth]{Sensitivity/numuconstraint-truth/nuenumu_nu_e_truth_1eNp_before_constraint.pdf}
+%    \caption{before constraint}
+%    \end{subfigure}
+%    \begin{subfigure}[b]{0.45\textwidth}
+%    \centering
+%    \includegraphics[width=1.00\textwidth]{Sensitivity/numuconstraint-truth/nuenumu_nu_e_truth_1eNp_after_constraint.pdf}
+%    \caption{after constraint}
+%    \end{subfigure}
+%\caption{\label{fig:numuconstraintresult} The truth-level 1eNp selection . The shaded pink band on the top and bottom half of plots (a) and (b) is the systematic uncertainty associated to each bin. Overall we see ~50\% reduction in systematics at the low $\nu_e$ energy bin. \textit{Note that the reduction is only seen in the cross section and flux systematics error, and the MC statistical error is not taken into account}.}
+%\end{center}
+%\end{figure}
 
 \subsubsection{Constraint from the \zpsel channel}
 \label{sec:1e0pconstraint}
 \emph{While the procedure to implement the constraints from the \zpsel channel is clear, its results will be shown after the \zpsel selection is optimized.}
 
 
-\subsection{Final Sensitivities \textcolor{green}{Nico} \textcolor{red}{Do we need the final numbers from SBNfit?}}
+\subsection{Final Sensitivities \textcolor{green}{Nico}}
 
 Using Nicol\`o's tool the expected significance as a function of the collected POT has been computed \ref{fig:sensitivity_function_pot}.
 This has been performed using the Poisson LLR test statistic, and including systematic uncertainties as explained in \ref{subsec:sensitivity_syst_uncertainty}.
@@ -1176,37 +1214,6 @@ BDT-based \npsel & 10.7 & N.A. & N.A. & N.A. \\
  \end{tabular}
  \caption{\label{tab:sensitivity}Expected sensitivities.}
 \end{table}
-
-\begin{figure}[H]
-    \begin{center}
-     \begin{subfigure}[b]{0.45\textwidth}
-    \centering
-    \includegraphics[width=1.00\textwidth]{Sensitivity/numuconstraint-truth/SBNfit_Cls_nue_nu_e_truth_1eNp_LEE_deltachi_statonly.pdf}
-    \label{fig:nue_statonly}
-    \caption{statistical only sensitivity estimate for 1eNp truth level selection (without constraint)}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.45\textwidth}
-    \centering
-    \includegraphics[width=1.00\textwidth]{Sensitivity/numuconstraint-truth/SBNfit_Cls_nue_nu_e_truth_1eNp_LEE_syst.pdf}
-    \label{fig:nue_statsyst}
-    \caption{statistical and systematics sensitivity estimate for 1eNp truth level selection (without constraint)}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.45\textwidth}
-    \includegraphics[width=1.00\textwidth]{Sensitivity/numuconstraint-truth/SBNfit_Cls_nuenumu_nu_e_truth_1eNp_LEE_deltachi_statonly.pdf}
-    \label{fig:nuenumu_statonly}
-    \caption{statistical only sensitivity estimate for 1eNp truth level selection}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.45\textwidth}
-    \centering
-    \includegraphics[width=1.00\textwidth]{Sensitivity/numuconstraint-truth/SBNfit_Cls_nuenumu_nu_e_truth_1eNp_LEE_syst.pdf}
-    \label{fig:nuenumu_statsyst}
-    \caption{statistical and systematics sensitivity estimate for 1eNp truth level selection with the $\nu_{\mu} constraint$}
-    \end{subfigure}
-    \caption{The sensitivity estimate for the 1eNp truth level selection for statistical only estimate and the statistical+systematics estimate.}.
-    \label{fig:sensitivity_numuconst}
-    \caption{Truth-level sensitivity estimate comparisons for the 1eNp selection before constraint is included. It has been observed that there is less constraint power on the sensitivity estimate when we include the MC statistical errors ($\sqrt{N_{bin}}$) as opposed to what is shown on Fig.~\ref{fig:numuconstraintresult}. We have also studied the kinematic topology for the selection and observed that when we select more hadrons in the final state of interaction, there is less correlation that we can exploit between the two channels. This leads to similar sensitivity estimates before and after applying the $\nu_\mu$ constraint.}
-    \end{center}
-\end{figure}
 
 \subsection{Sensitivity to a 3+1 $\nu_s$ oscillation signal \textcolor{green}{Nico}}
 In addition to quoting the sensitivity to the MiniBooNE unfolded signal model, sensitivity to a 3+1 $\sim$eV sterile-neutrino oscillation signal is studied. The nature of this analysis, and the strong connection of past short baseline anomalies to sterile neutrino models, makes the investigation of such a hypothesis interesting and relevant for the results' interpretation. While strong tension exists in global fits to 3+1 signals, this model is less dependent on MiniBooNE's detector and neutrino interaction modeling and therefore provides complementary information enriching the analysis as a whole.
@@ -1277,9 +1284,9 @@ The distribution of the test statistic for the null and alternative hypothesis d
 
 
 \newpage
-\section{Conclusions and Outlook}
+\section{Outlook and Future Work}
 
-\subsection{Remaining Steps in the Analysis}
+%\subsection{Remaining Steps in the Analysis}
 \par There are several known remaining steps to be completed by the analysis. We list them below, trying to give a timeline for each. 
 \begin{enumerate}
     \item \textbf{MC Statistics} Larger MC statistics for specific background categories are needed to be able to better train the \npsel BDT as well as obtain a more accurate estimation of expected backgrounds from different background neutrino categories. Initial samples for specific background categories have been generated (with $\times2-8$ the stats from the default BNB simulation, depending on the sample). It is expected that these will be included in the analysis by the Feb. 2020 collaboration meeting. %\textcolor{green}{Giuseppe}
@@ -1670,6 +1677,7 @@ W. Van De Pontseele, \emph{Muon Neutrino Charged-Current Inclusive Selection and
 
 \bibitem{bib:CRTPresel_Technote}
 D. Caratelli, et al., \emph{Use of the MicroBooNE Cosmic Ray Tagger for Electron Neutrino Preselection}, \href{https://microboone-docdb.fnal.gov/cgi-bin/private/RetrieveFile?docid=24031&filename=CRTPACTechnote.pdf&version=1}{DocDB 24031}
+
 \bibitem{bib:muonconstraint}
 M. H. Schaevitz, \emph{Constraining the $\nu_e$ Background Uncertainties with the Observed $\nu_\mu$ Events}, \href{https://microboone-docdb.fnal.gov/cgi-bin/private/RetrieveFile?docid=7583}{DocDB 7583}
 \bibitem{bib:SCE}
