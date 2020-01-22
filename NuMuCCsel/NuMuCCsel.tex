@@ -29,11 +29,11 @@ Category & Variable Name & Description  \\
 
 
 \multicolumn{1}{l|}{} & \emph{trk\_sce\_\{start,end\}\_\{x,y,z\}} &  Reconstructed, spacecharge-corrected start/end-points for the tracks.\\  \cline{2-3}
-\multicolumn{1}{l|}{} & \emph{trk\_llr\_pid\_score} &  The log likelihood ratio particle identification score (see sec. \ref{subsec:loglikelihoodpid}). This variable has strong muon-proton discriminating power (see fig. \ref{fig:numu_topo_pid}).\\  \cline{2-3}
+\multicolumn{1}{l|}{} & \emph{trk\_llr\_pid\_score} &  The log likelihood ratio particle identification score (see sec. \ref{subsec:loglikelihoodpid}). This variable has strong muon-proton discriminating power (see fig. \ref{fig:numu:topo_pid}).\\  \cline{2-3}
 \multicolumn{1}{l|}{} & \emph{trk\_score} & A machine-learned quantity that describes how `track-like' the reconstructed object is (possible values between 0 and 1). \\  \cline{2-3}
 \parbox[t]{2mm}{\multirow{4}{*}{\rotatebox[origin=c]{90}{Track}}} & \emph{trk\_len} & he length of the reconstructed track (in cm). \\  \cline{2-3}
 \multicolumn{1}{l|}{} & \emph{trk\_distance} & The distance from the start-point of the reconstructed track to the reconstructed neutrino vertex (in cm). \\  \cline{2-3}
-\multicolumn{1}{l|}{} & \emph{pfp\_generation} & The generation of the PFParticle according to Pandora, i.e. how many parents the object on interest has in the slice.\\  \cline{2-3}
+\multicolumn{1}{l|}{} & \emph{pfp\_generation} &  The generation of the PFParticle according to Pandora: the neutrino has generation 1, it's direct daughters 2, and further decay products 3 or higher.\\  \cline{2-3}
 \hline
 
 \end{tabular}
@@ -91,11 +91,10 @@ The cut on the true energy corresponds to a track length of \SI{\approx 2.5}{\cm
 Before identifying the muon, some event level cuts are applied:
 
 \begin{itemize}
-    \item \textit{slpdg==14}
+    \item \textit{slpdg= 14}
     \item \textit{CosmicIP} $>$ \SI{20}{\cm}
     \item \textit{topological\_score $>$ 0.1}
     \item \textit{all\_start\_contained}
-    \item reco\_fid\_vol \& CosmicIP>20 \& slpdg==14 \& all\_start\_contained
 \end{itemize} 
 
 The next step is to identify a muon track.
@@ -104,7 +103,7 @@ The next step is to identify a muon track.
     \item \textit{trk\_score $>$ 0.8}
     \item \textit{trk\_len} $>$ \SI{10}{\cm}
     \item \textit{trk\_llr\_pid\_score $>$ 0.2}
-    \item \textit{pfp\_generation==2}
+    \item \textit{pfp\_generation = 2}
     \item \textit{trk\_distance} $<$ \SI{4}{\cm}
 \end{itemize}
 At this point, the amount of muon candidate tracks in signal events is:
