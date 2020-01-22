@@ -1,19 +1,39 @@
 \label{sec:nueselection:inclusive}
 
+
+\newcommand{\nueccinc}{$\nu_e$ CC inclusive\xspace}
+\newcommand{\nueccsel}{$\nu_e$ CC inclusive selection\xspace}
+
+
 The aim of the inclusive charged-current electron neutrino selection is to select electron neutrinos independently of their final state and energy. The selection efficiency is approximately 20\%, leading to 250-300 electron neutrino's in the Run 1-4 data-set. The purity without CRT is $\approx 35-40\%$ and with CRT $\approx 45-50\%$.
 
-\subsubsection{Pre-selection}
-The selection builds on top of the SliceID (\cref{sec:sliceID}). At first the following cuts are applied:
-\begin{itemize}
-    \item Reconstructed, space-charge corrected vertex inside a fiducial volume of \SI{10}{\cm} in $x$ and $y$ and $[ \SI{20}{\cm}, \SI{50}{\cm}]$ in $z$.
-    \item Topological score above 0.15
-    \item CosmicIP $>$ $\SI{15}{\cm}$
-    \item slclustfrac $>$ 0.4
-    \item An electron candidate shower
-\end{itemize}
-here, an electron candidate shower is defined as a particle with a trackscore below 0.3, and hits on all three planes. Furthermore, a minimum calorimeric energy of \SI{75}{\MeV} is required. 
 
-At this stage, the efficiency of the selection is 46\% for $\nu_e$ CC events inside the fiducial volume. This is equivalent to 618 events per \SI{10.1e20}{POT}. The number of LEE signal events passing is approximately 30 per \SI{10.1e20}{POT}. The purity at this stage is 3.0\% and the Data/MC ratio is 0.91.
+\subsubsection{Pre-selection}
+The selection builds on top of the SliceID (\cref{sec:sliceID}). At first the the cuts listed in \cref{tab:nuecc:presel} are applied. Here, an electron candidate shower is defined as a particle with a \textit{track\_score} below 0.3, and hits on all three planes. Furthermore, a minimum calorimeric energy of \SI{75}{\MeV} is required. 
+
+\begin{table}[h!]
+\centering
+\setlength{\tabcolsep}{10pt}
+\renewcommand{\arraystretch}{1.25}
+ \begin{tabular}{| c | c |} 
+ \hline
+ Cut goal & Cut definition \\
+ \hline\hline
+Signal topology n & An electron candidate shower \\
+ \hline
+\multirow{2}{*}{Cosmic rejection} & \textit{topological\_score} $>$ 0.15 \\
+ & \textit{CosmicIP} $>$ $\SI{15}{\cm}$ \\
+ \hline
+Fiducial volume & \makecell{Reconstructed, space-charge corrected vertex \\ inside a volume defined by borders of \\ \SI{10}{\cm} in $x$ and $y$ and $[ \SI{20}{\cm}, \SI{50}{\cm}]$ in $z$} \\
+ \hline
+Reconstruction quality & \textit{slclustfrac} $>$ 0.4 \\
+ \hline
+ \end{tabular}
+ \caption{\label{tab:nuecc:presel} Preselection requirements for the \nueccsel. An electron candidate is defined as a particle with a \textit{track\_score} $<$ 0.3, and hits on all three planes. Furthermore, a minimum calorimeric energy of \SI{75}{\MeV} is required. }
+\end{table}
+
+
+At this stage, the efficiency of the selection is 46\% for \nuecc events inside the fiducial volume. This is equivalent to 618 events per \SI{10.1e20}{POT}. The number of LEE signal events passing is approximately 30 per \SI{10.1e20}{POT}. The purity at this stage is 3.0\% and the Data/MC ratio is 0.91.
 
 \cref{fig:pre_vtx,fig:pre_shower_E_pdg} show the agreement in the vertex location and kinematics of the electron candidate shower at this stage of the selection. 
 %\begin{figure}
@@ -23,7 +43,7 @@ At this stage, the efficiency of the selection is 46\% for $\nu_e$ CC events ins
 %    \label{fig:pre_shower_E_pdg}
 %\end{figure}
 
-\begin{figure}[]
+\begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth]{NueCCsel/Images/run1/pre_vtx.pdf}
     \caption{Vertex position of events passing the pre-selection cuts.}
@@ -34,37 +54,51 @@ At this stage, the efficiency of the selection is 46\% for $\nu_e$ CC events ins
     \centering
     \includegraphics[height=4.9cm]{NueCCsel/Images/run1/pre_angles.pdf}
     \includegraphics[height=4.9cm]{NueCCsel/Images/run1/pre_shower_E_pdg.pdf}
-    \caption{After the pre-selection cuts, the $\nu_e$ CC purity is still low. These panels show the dominant background categories and the distribution of the angles and reconstructed energy of the electron candidate shower. The plot on the right shows that the main background is coming from photons. There is also an indication that the reconstructed energy in MC is slightly overestimated and needs to be corrected.}
+    \caption{After the pre-selection cuts, the \nuecc purity is still low. These panels show the dominant background categories and the distribution of the angles and reconstructed energy of the electron candidate shower. The plot on the right shows that the main background is coming from photons. There is also an indication that the reconstructed energy in MC is slightly overestimated and needs to be corrected.}
     \label{fig:pre_shower_E_pdg}
 \end{figure}
 
-\clearpage
 \subsubsection{Electron Identification}
-After the pre-selection, the object that is tagged as electron candidate is still not an neutrino electron in the dominant fraction of events. The ratio photons to electrons is approximately 20 to 1 and photon-electron separation is therefore the main objective of electron identification. The identification is done using a boosted decision tree, trained on variables that belong to the particle. Those variables are:
-\begin{enumerate}
-    \item Shower vertex distance.
-    \item Shower d$E$/d$x$ at the start of the shower:
-    \begin{itemize}
-        \item On the collection plane only.
-        \item Weighted mean over the 3 planes.
-        \item Collection plane, but shifted by \SI{1}{\cm}. 
-    \end{itemize}
-    \item Shower Moliere radius.
-    \item Second shower distance and number of hits on the collection plane.
-    \item Number of subclusters in the shower.
-    \item ismerged: checks if a proton is merged in the start of the shower.
-\end{enumerate}
+After the pre-selection, the object that is tagged as electron candidate is still not an neutrino electron in the dominant fraction of events. The ratio photons to electrons is approximately 20 to 1 and photon-electron separation is therefore the main objective of electron identification. The identification is done using a boosted decision tree, trained on variables that belong to the particle. Those variables are listed in \cref{tab:nuecc:e_bdt}.
+
+\begin{table}[h!]
+\centering
+\setlength{\tabcolsep}{10pt}
+\renewcommand{\arraystretch}{1.25}
+\begin{tabular}{| c | c |} 
+\hline
+Cut goal & Cut definition \\
+\hline\hline
+\multirow{2}{*}{$e/\gamma$ separation} & Shower vertex distance \\
+                                       & \makecell{Shower d$E$/d$x$ at the start of the shower: \\
+                                            \tabitem On the collection plane only.\\
+                                            \tabitem Weighted mean over the 3 planes.\\
+                                            \tabitem Collection plane, but shifted by \SI{1}{\cm}.\\ 
+                                            }\\
+\hline
+\multirow{2}{*}{$\pi^0$ tagging} & \textit{secondshower\_Y\_nhit} \\
+ & \textit{secondshower\_Y\_vtxdist} \\
+ \hline
+\multirow{2}{*}{$\mu$-rejection} & \textit{shrmoliereavg} \\
+                                 & \textit{subcluster} \\
+ \hline
+Reconstruction quality & \makecell{\textit{ismerged} \\ Checks if a proton is merged in the start of the shower. } \\
+ \hline
+ \end{tabular}
+ \caption{\label{tab:nuecc:e_bdt} Input variables used by the BDT to do electron identification.}
+\end{table}
+
 
 The three distributions of the variables used to characterise the d$E$/d$x$ at the start of the shower are given in \cref{fig:e_cand_dedx}. The response of the BDT is shown in the right panel of \cref{fig:e_cand_dist}.
 
-\begin{figure}
+\begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth]{NueCCsel/Images/run1/e_cand_dedx.pdf}
     \caption{d$E$/d$x$ of the electron candidate shower after the pre-selection. The collection plane shows the cleanest e/$\gamma$ separation. The middle panel combines all three planes, leading to a smaller peak at 0 in cases where there are few hits on the collection plane. The plane on the right uses the collection plane but leaves a \SI{1}{\cm} gap, which is beneficial when vertex activity is merged into the electron shower.}
     \label{fig:e_cand_dedx}
 \end{figure}
 
-\begin{figure}
+\begin{figure}[h]
     \centering
     \includegraphics[height=5cm]{NueCCsel/Images/run1/e_cand_dist.pdf}
     \includegraphics[height=5cm]{NueCCsel/Images/run1/pre_e_score.pdf}
@@ -88,8 +122,6 @@ The three distributions of the variables used to characterise the d$E$/d$x$ at t
 
 \subsubsection{Other Daughters Identification}
 
-%\textcolor{blue}{(comment by David) This section is not too clear. Is this BDT score computed per PFParticle, for all %PFParticles that are not the electron candidate? What do you mean when you say that pions are not used? PFParticles from %nue slices are classified as signal-like, PFParticles from numu/NC events are background like, and pions from all events %are not classified at all?}
-
 Apart of the electron candidate particle, there are other particles in the slice. In this section we study each of those PFParticles separately, except the electron candidate shower described in the previous section. Particle by particle a BDT is used to split the particle into two categories:
 \begin{enumerate}
     \item Positive if the particle is backtracked to a proton or a split-off part of the electron.
@@ -98,14 +130,30 @@ Apart of the electron candidate particle, there are other particles in the slice
 The philosophy behind this is that we want to reject events which contain a particle which is overlay or muon like. On the other hand, particles that are backtracked to protons or electron bits are allowed and should not lead to the rejection of the event.
 \par The more complicated situation arises when pions are present. Charged pions should be allowed in a $\nu_e$ CC search, but the mis-identification rate between charged pions and muons is large in this detector type. Photons coming from neutral pions, apart of the electron shower candidate, can be part of the $\nu_e$ CC event, but can also help to reduce the NC $\pi^0$ backgrounds. It was chosen therefore to give them a neutral label. 
 
-The input variables of the BDT are:
-\begin{enumerate}
-    \item trk\_llr\_pid\_score
-    \item trk\_distance
-    \item trk\_score
-    \item The generation of the particle: primary daughter of the neutrino or secondary.
-    \item Has the particle a shower or a track as daughter?
-\end{enumerate}
+The input variables of the BDT are listed in \cref{tab:nuecc:other_bdt}
+
+
+
+\begin{table}[h!]
+\centering
+\setlength{\tabcolsep}{10pt}
+\renewcommand{\arraystretch}{1.25}
+\begin{tabular}{| c | c |} 
+\hline
+Cut goal & Cut definition \\
+\hline\hline
+\multirow{3}{*}{particle identification} & \textit{trk\_llr\_pid\_score} \\
+                                         & \textit{trk\_distance} \\
+                                         & \textit{trk\_score}\\
+\hline
+\multirow{2}{*}{particle hierarchy} & \textit{pfp\_generation} \\
+                                    & \textit{Number of daughters of the particle} \\
+
+ \hline
+ \end{tabular}
+ \caption{\label{tab:nuecc:other_bdt} Input variables used by the BDT to classify the other daughter particles.}
+\end{table}
+
 The three most important distributions of the variables used are given in \cref{fig:pre_daughter_1}. The response of the BDT is shown in \cref{fig:pre_daughter_score}.
 
 

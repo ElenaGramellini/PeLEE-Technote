@@ -60,7 +60,7 @@
 
 
 \newcommand{\nue}{$\nu_e$ }
-\newcommand{\nuecc}{$\nu_e CC$ }
+\newcommand{\nuecc}{$\nu_e$ CC\xspace}
 \newcommand{\nueccnopinp}{$\nu_e CC 0\pi Np$ }
 \newcommand{\nuebar}{$\bar{\nu}_e$ }
 \newcommand{\nuebarcc}{$\bar{\nu}_e CC$ }
@@ -70,6 +70,8 @@
 \newcommand{\numubarcc}{$\bar{\nu}_{\mu} CC$ }
 \newcommand{\npsel}{1$e$N$p$0$\pi$ }
 \newcommand{\zpsel}{1$e$0$p$0$\pi$ }
+
+\newcommand{\tabitem}{~~\llap{\textbullet}~~}
 
 \begin{document}
 
@@ -944,7 +946,7 @@ The model for the signal currently used is the MiniBooNE LEE unfolded signal \ci
 \par \textcolor{blue}{In its current version, this Tech-Note estimates sensitivities using the 1$e$N$p$ box-cut selection (section~\ref{sec:nueselection:1eNp}). In future iterations the BDT-approach will be used to measure the estimated sensitivity, once this selection has been further developed and validated. The BDT's sensitivity is expected to be larger then that obtained through the box-cut approach.} 
 \par The primary scope of the analysis is to be able to \textcolor{blue}{understand the nature of \st{learn knew knowledge about}} the anomalous excess observed by MiniBooNE. \textcolor{blue}{In particular, MicroBooNE aims to determine whether a potential excess of events is caused by neutrino interactions with electron- or photon-like activity in the final state.}
 For this reason, the sensitivity to \textcolor{blue}{a $\nu_e$ electron-like \st{this}} excess is estimated, as a metric of the power of the analysis.
-The model for the signal currently used is the MB-$\nu_e$ LEE unfolded signal \cite{bib:sbnfit20437}.
+The model for the signal currently used is the MB-$\nu_e$ LEE unfolded signal~\cite{C2}.
 
 To construct this signal, the reconstructed energy distribution, under the CCQE hypothesis, of the excess observed by MiniBooNE, is unfolded to a distribution in true neutrino energy.
 Scale factors \textcolor{blue}{of excess events to \st{for}} the \textcolor{blue}{intrinsic} \nue flux are then derived \textcolor{blue}{\st{, in order to make the BNB flux account for the LEE}}, as seen in figure \ref{fig:lee_unfolded_signal}.
@@ -1221,14 +1223,16 @@ The distribution of the test statistic for the null and alternative hypothesis d
 \subsection{Remaining Steps in the Analysis}
 \par There are several known remaining steps to be completed by the analysis. We list them below, trying to give a timeline for each. 
 \begin{enumerate}
-    \item \textbf{MC Statistics} Larger MC statistics for specific background categories are needed to be able to better train the \npsel BDT as well as obtain a more accurate estimation of expected backgrounds from different background neutrino categories. Initial samples for specific background categories have been generated (with $\times2-8$ the stats from the default BNB simulation, depending on the sample). It is expected that these will be included in the analysis by the Feb. 2020 collaboration meeting.
-    \item apply common optical filter to simulation events. Important for Run3.
-    \item \textbf{Charge re-calibration} A discrepancy in d$E$/d$x$ measured for both tracks and showers indicates a few-percent mis-calibration. In order to further improve data-simulation agreement. This re-calibration, outlined in \textcolor{red}{DocDB XXX} is being implemented in the analysis code and should be implemeneted in the analysis by the February collaboration meeting.
-    \item \textbf{LLR-PID $e-\gamma$ Separation} The analysis team is exploring applying a log-likelihood based PID for $e-\gamma$ separation, in a similar way to that developed for tracks (see~\ref{subsec:loglikelihoodpid}). The goal is to further improve the rejection power for photons in the $\nu_e$ selections. Preliminary work on this will be reported at the February collaboration meeting but possibly will not be integrated in the full analysis until later in the spring.
-    \item \textbf{Detector Systematics} Not all available. Those available processed. Their full inclusion in the sensitivity estimation is dependent on certain development needed in SBNFit. Likely completed by Feb. meeting.
-    \item \textbf{$\nu_{\mu}$ Constraint Implementation} New selection developed. Selected events being now input to excercise constraint. Result of this work, including the full GENIE systematics, will be ready by the Feb. collaboration meeting.
-    \item \textbf{Additional Sideband Constraints}
-    \item MCS fitter for better efficiency for low-energy showers.
+    \item \textbf{MC Statistics} Larger MC statistics for specific background categories are needed to be able to better train the \npsel BDT as well as obtain a more accurate estimation of expected backgrounds from different background neutrino categories. Initial samples for specific background categories have been generated (with $\times2-8$ the stats from the default BNB simulation, depending on the sample). It is expected that these will be included in the analysis by the Feb. 2020 collaboration meeting. \textcolor{green}{Giuseppe}
+    \item \textbf{BDT Selection and Sensitivity} Once larger MC samples are avilable, we plan to finalize the BDT based selections and produce updated sensitivities. This work will be performed by the February meeting. \textcolor{green}{Giuseppe, David, Sophie, Wouter}
+    \item \textbf{Common Optical Filter} An optical-based filter rejects MicroBooNE data with less than 20 photo-electrons of prompt light activity in the beam spill. This cut is not applied in simulation. Information for whether simulated events pass this cut is now stored in our analysis NTuples and this cut will be fully incorporated by the Feb. collaboration meeting. This cut has minimal effect on Run 1 analyses (where the \texttt{SliceID} provides a more aggressive cut) but becomes relevant in Run 3 data/simulation comparisons. \textcolor{green}{David}
+    \item \textbf{Charge re-calibration} A discrepancy in d$E$/d$x$ measured for both tracks and showers indicates a few-percent mis-calibration. In order to further improve data-simulation agreement. This re-calibration, outlined in DocDB 26438 is being implemented in the analysis code and should be incorporated in the analysis by the February collaboration meeting. \textcolor{green}{Nicolo, David}
+    \item \textbf{LLR-PID $e-\gamma$ Separation} The analysis team is exploring applying a log-likelihood based PID for $e-\gamma$ separation, in a similar way to that developed for tracks (see~\ref{subsec:loglikelihoodpid}). The goal is to further improve the rejection power for photons in the $\nu_e$ selections. Preliminary work on this will be reported at the February collaboration meeting but possibly will not be integrated in the full analysis until later in the spring.\textcolor{green}{Nicolo}
+    \item \textbf{Detector Systematics} Not all samples are currently available. Those available have been processed, and a preliminary study of their impact on reconstructed variables and efficiencies was presented. Their full inclusion in the sensitivity estimation is however dependent on certain development needed in SBNFit. We expect to also be able to fully include detector systematic uncertainties by February meeting.\textcolor{green}{David, Maya}
+    \item \textbf{$\nu_{\mu}$ Constraint Implementation} An upadted $\nu_{\mu}$ selection focused on reconstructing low-energy $\nu_{\mu}$ interactions was developed for this note. This selection, presented in section~\ref{ssec:NuMUCCsel:constr}, is now being used to test and validate the constraint procedu. Result of this work will be ready by the February collaboration meeting.\textcolor{green}{Maya, Ryan}
+    \item \textbf{Additional Sideband Constraints} The analysis is well positioned to use the \texttt{SliceID} (sec.~\ref{sec:sliceID}) and inclusive $\nu_{\mu}$ selection (sec.~\ref{ssec:NuMUCCsel:INC}) to perform exclusive final-state measurements with the purpose of constraining particular detector, flux, or neutrino interaction uncertainties. Pursuing these additional sideband measurements will be guided by concerns over the dominant sources of systematic uncertainties identified as the analysis is reviewed. These efforts are likely to occur in the time interval between the Feb. and April collaboration meetings. A first candidate for such a constraint comes from the $\pi^0$ sideband which will be used to control $\pi^0$ production uncertainties.
+    \item \textbf{Box Opening Strategy} The contents of this note show generally good data-simulation agreement. As the collaboration moves towards opening the full $10.1E20$ POT for the analysis, this team would like to be able to open two intermediate datasets. First, we ask to be able to explore data-mc agreement on a $5E19$ POT dataset of Run 3 to validate that the changes in detector state have not led to discrepancies in the neutrino analysis. Second, we request to be able to open a significant fraction of the Run 3 dataset filtered through the $\nu_e$ inclusive selection (sec.~\ref{sec:nueselection:inclusive}). In order to preserve blindness to the MB-$\nu_e$ LEE model, we are considering opening up only events which pass a certain energy cut. We believe this cross-check is necessary as it helps validate modeling of $\nu_e$ interactions at higher energies before investigating a potential excess at lower energies.
+    %\item MCS fitter for better efficiency for low-energy showers.
 
 \end{enumerate}{}
 
