@@ -64,19 +64,20 @@ When choosing the cut values for PID variables, we account not only for the effi
 \subsubsection{Log Likelihood Ratio  PID \textcolor{green}{Nico, P.R. David, Elena}}
 \label{subsec:loglikelihoodpid}
 
-For track-like particles, the particle identification is performed looking at the profile of the deposited charge per unit length (d$E$/d$x$). The scope of track PID is to identify the particle type which originated a given track object. In this analysis, we limit PID to a binary classification problem, i.e.  how to distinguish protons from muons. We disregard further classification because kaons are rarely produced in neutrino interactions at the energy of interest, whereas pions are very difficult to distinguish from muons using calorimetry information only.\textcolor{blue}{ \st{, given the very similar mass and the current resolution of the detector.} -- Elena}
-Additional information, such as possible hadronic reinteractions or Michel electrons, can be powerful to perform particle identification \textcolor{blue}{but is not leveraged in this analysis. \st{No additional information is used in this analysis, as we believe the reconstruction is not precise enough to tag such reinteractions}}.
+For track-like particles, the particle identification is performed looking at the profile of the deposited charge per unit length (d$E$/d$x$). The scope of track PID is to identify the particle type which originated a given track object. In this analysis, we limit PID to a binary classification problem, i.e.  how to distinguish protons from muons. We disregard further classification because kaons are rarely produced in neutrino interactions at the energy of interest, whereas pions are very difficult to distinguish from muons using calorimetry information only.
+Additional information, such as possible hadronic reinteractions or Michel electrons, can be powerful to perform particle identification but is not leveraged in this analysis.
 
 The expected distribution of the $dE/dx$ is modeled for each particle type and for each plane, as a function of two variables: the residual range ($rr$), and the pitch as
 \[ p(dE/dx | \text{type}, \text{plane}, \text{rr}, \text{pitch}). \]
-\textcolor{blue}{\st{ The residual range is defined as the length of the track between a given trajectorty point of a track and the point where the track stops} The residual range is the distance of a given space point from the end of the track, while} the pitch is the  length on which the charge measured on a given wire has been deposited.
+The residual range is the distance of a given space point from the end of the track, measured along the track trajectory, while the pitch is the length over which the charge measured on a given wire has been deposited.
 \textcolor{blue}{ \st{Given the angle $\gamma$ between the local direction of the track and the direction vector orthogonal to the wires and lying on the wire plane, the pitch is measured as $\text{pitch} = 0.3 cm / \cos(\gamma) $.}}
 The expected distribution is modeled for each plane independently, and for the two kinds of particles under study, protons and muons.
 Multiple effects enter in the model of this distribution.
 The first effect is what we want to leverage:  the average d$E$/d$x$ at a given residual range depends on the particle's mass, as seen by integrating the Bethe-Bloch function for different masses.
-Secondly, the fluctuations of the d$E$/d$x$ depend on the pitch. These fluctuations are intrinsically stochastic\textcolor{blue}{:\st{, and}} the longer the length over which the charge is averaged, the smaller the fluctuations.
+Secondly, the fluctuations of the d$E$/d$x$ depend on the pitch. These fluctuations are intrinsically stochastic: the longer the length over which the charge is averaged, the smaller the fluctuations.
 Furthermore, detector effects such as recombination, signal deconvolution, and hit reconstruction add a non-linear response and smearing; this response depends on both the true deposited charge and the pitch, and lacks an analytic model. For this reason, the expected distribution of $dE/dx$ is built starting from the simulation.
-\textcolor{blue}{ \st{This has the main advantage of modeling all of these effects,  to the best of our knowledge}}. The performance of the particle identification improves as the model for the  $dE/dx$ distribution becomes more accurate.
+\textcolor{blue}{ \st{This has the main advantage of modeling all of these effects,  to the best of our knowledge}}. 
+The performance of the particle identification improves as the model for the  $dE/dx$ distribution becomes more accurate.
 The model for $dE/dx$ is built by considering well reconstructed tracks\footnote{ We define a ``well reconstructed track" a track whose completeness and purity are both above 90\%, where completeness measures how much of the true particle's  deposited charge is reconstructed in the track and purity measures how little spurious charge enters the track reconstruction. }, well contained within a fiducial volume, and backtracked to protons and muons.
 The binning of the probability density function (pdf) is the following:
 \begin{itemize}
@@ -108,9 +109,10 @@ The combination of the three planes happens in a straightforward way, by taking 
 \[ p(dE/dx | \text{type}, \text{plane}, \text{rr}, \text{pitch}). \]
 In order to perform the classification task, the likelihood ratio test statistic is chosen:
 \[ T(dE/dx, \text{rr}, \text{pitch}) = \mathcal{L}(\text(muon)| dE/dx, \text{rr}, \text{pitch}) /  \mathcal{L}(\text(proton)| dE/dx, \text{rr}, \text{pitch}). \]
-An example of the distribution of these variable, normalized between -1 and 1, is given in figure \ref{fig:llr_pid_uvy_example}, for tracks contained in a fiducial volume, and backtracked to muon, proton, or cosmic. \textcolor{blue}{\st{As long as the likelihood is correct, that means the model is correct, this} The likelihood ratio, as defined above, } can be proven to be the most powerful statistical test, i.e. the one with the smallest mis-identification rate for any given value of the efficiency.
-Any \textcolor{blue}{mis-modeling \st{imperfection}} in the simulation used to build the \textcolor{blue}{likelihood \st{model}} produces a loss of power \textcolor{blue}{in data, so the likelihood response is validated in data sidebands and control regions. \st{but does not add any systematic uncertainty}}.
-\textcolor{red}{quote example efficiency / separation power?}
+An example of the distribution of these variable, normalized between -1 and 1, is given in figure \ref{fig:llr_pid_uvy_example}, for tracks contained in a fiducial volume, and backtracked to muon, proton, or cosmic.
+The likelihood ratio, as defined above can be proven to be the most powerful statistical test, i.e. the one with the smallest mis-identification rate for any given value of the efficiency.
+Any \textcolor{blue}{mis-modeling \st{imperfection}} in the simulation used to build the likelihood produces a loss of power \textcolor{blue}{in data, so the likelihood response is validated in data sidebands and control regions. \st{but does not add any systematic uncertainty}}.
+In a sample of contained protons and muons used to test the performance, this PID variable is able to reach 94\% muon efficiency, with 10\% proton mis-ID rate.
 \textcolor{red}{why it does not add any systematic uncertainty? if there is a loss of rejection power in data, than the cut efficiency is different in data and MC, so this is a systematic effect.}
 
 \begin{figure}[ht] 

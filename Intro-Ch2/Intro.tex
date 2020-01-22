@@ -156,22 +156,46 @@ Finally, the observed spectra from the \nueccnopinp and the \numu selections are
 
 \subsection{Analysis Status \textcolor{red}{Elena/David/ Group discussion}}
 
-\par The work presented in this note has matured into a robust and comprehensive analysis, with strong tools which are able to leverage the calorimetric and topological imaging of the LArTPC technology to identify in a kinematically agnosic selection $\nu_e$ interactions in MicroBooNE's BNB dataset. The analysis, as it stands, is able to make interesting conclusions on the $\nu_e$ content of the BNB flux, with the primary limitation to the power of these conclusison at low energy driven by the low selection efficiency.
-\par Multiple selections have been developed as part of this analysis, all showing generally good data-simulation agreement, as shown in figure~\ref{fig:datamccomparisons} for 
+\par The work presented in this note has matured into a robust and comprehensive analysis, with strong tools which are able to leverage the calorimetric and topological imaging of the LArTPC technology to identify in a kinematically agnosic selection $\nu_e$ interactions in MicroBooNE's BNB dataset. The analysis, as it stands, is able to make interesting conclusions on the $\nu_e$ content of the BNB flux, with the primary limitation to the power of these conclusions driven by the low selection efficiency at low energy .
+\par Multiple selections have been developed as part of this analysis, all showing generally good data-simulation agreement, as shown in figure~\ref{fig:datamccomparisons} for the \npsel pre-selection (figure~\ref{fig:datamccomparisons:nuepresel}, Run 1) and for the full $\nu_{\mu}$ contained selection (figure~\ref{fig:datamccomparisons:numu}, Run 3).
 
 \begin{figure}[ht] 
 \begin{center}
-    \begin{subfigure}[b]{0.42\textwidth}
+    \begin{subfigure}[b]{0.4\textwidth}
     \centering
-    \includegraphics[width=1.00\textwidth]{introduction/fluxcorrelation.png}
-    \caption{\label{fig:numuconstraint:flux}}
+    \includegraphics[width=1.00\textwidth]{1eNp/reco_e_01162020_RUN1.pdf}
+    \caption{\label{fig:datamccomparisons:nuepresel} \npsel pre-selection for Run  1}
     \end{subfigure}
-    \begin{subfigure}[b]{0.3\textwidth}
+    \begin{subfigure}[b]{0.44\textwidth}
     \centering
-    \includegraphics[width=1.00\textwidth]{introduction/xsec_mcc8_mcc9.png}
-    \caption{\label{fig:numuconstraint:xsec}}
+    \includegraphics[width=1.00\textwidth]{NuMuCCsel/Images/Ryan/Run3_costheta_withCRT.jpg}
+    \caption{\label{fig:datamccomparisons:numu} high-purity $\nu_{\mu}$ for Run 3}
     \end{subfigure}
-\caption{\label{fig:datamccomparisons} (a) $\nu_{\mu}$-$\nu_e$flux correlation matrix. (b) Different cross section models for CC interactions \textcolor{blue}{Y axis label is missing}.  }
+\caption{\label{fig:datamccomparisons} }
+\end{center}
+\end{figure}
+
+\par The three $\nu_e$ selections developed in this work all provide strong input to the analysis. Figure~\ref{fig:intro:nueselections} shows the status of the box-cut \npsel (figure~\ref{fig:intro:nueselections:1eNp}), the BDT-based (figure~\ref{fig:intro:nueselections:1e0p}), and the BDT-based $\nu_e$ inclusive (figure~\ref{fig:intro:nueselections:inclusive}). \par The inclusive channel provides the analysis a tool with which to study the modeling of $\nu_e$ interactions, especially at higher energies, and provides a first validation even with the small dataset currently available. Moving forward, we are exploring ways to use this channel to quantitatively constrain high-energy $\nu_e$ modeling uncertainties.
+\par The 1$e$0$p$0$\pi$ channel obtains a purity of 49\%
+
+\begin{figure}[ht] 
+\begin{center}
+    \begin{subfigure}[b]{0.28\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{1eNp/reco_e_01162020_box_RUN1.pdf}
+    \caption{\label{fig:intro:nueselections:1eNp}  $\nu_e$ 1$e$0$p$}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.28\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{1e0p/reco_e_01162020_RUN3_bgbdt.pdf}
+    \caption{\label{fig:intro:nueselections:1e0p} $\nu_e$ 1$e$0$p$}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.31\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{introduction/nueinclusive.png}
+    \caption{\label{fig:intro:nueselections:inclusive} $\nu_e$ inclusive}
+    \end{subfigure}
+\caption{\label{fig:intro:nueselections} }
 \end{center}
 \end{figure}
 
