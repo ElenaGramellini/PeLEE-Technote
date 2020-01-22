@@ -108,12 +108,13 @@ The combination of the three planes happens in a straightforward way, by taking 
 In order to perform the classification task, the likelihood ratio test statistic is chosen:
 \[ T(dE/dx, \text{rr}, \text{pitch}) = \mathcal{L}(\text(muon)| dE/dx, \text{rr}, \text{pitch}) /  \mathcal{L}(\text(proton)| dE/dx, \text{rr}, \text{pitch}). \]
 An example of the distribution of these variable, normalized between -1 and 1, is given in figure \ref{fig:llr_pid_uvy_example}, for tracks contained in a fiducial volume, and backtracked to muon, proton, or cosmic.
+
 The likelihood ratio, as defined above can be proven to be the most powerful statistical test, i.e. the one with the smallest mis-identification rate for any given value of the efficiency.
 Any mis-modeling in the simulation used to build the likelihood produces a loss of power, as the test would not be the most powerful one.
-However, as long as the same procedure with the same likelihood is applied to both the data and the simulation, no systematic uncertainty due to this mis-modelling is expected.
-Systematic uncertainties arise from the fact that the measured distribution of $dE/dx$ in the data differs from the simulation, or because the properties of the tracks we are considering are non properly simulated, such as angular or length distributions.
+Systematic uncertainties arise from the fact that the measured distribution of $dE/dx$ in the data may differ from the simulation, or because the properties of the tracks we consider may not be properly simulated, such as angular or length distributions.
 This behaviour is qualitatively present in all the PID methods.
-Regardless of systematic uncertainties, in a sample of contained protons and muons used to test the performance, this PID variable is able to reach 94\% muon efficiency, with 10\% proton mis-ID rate.
+
+In a MC sample of contained protons and muons used to test the performance, this PID variable is able to reach 94\% muon efficiency, with 10\% proton mis-ID rate.
 
 \begin{figure}[ht] 
     \centering
@@ -205,7 +206,7 @@ d$E$/d$x$ information at different distances from the shower start-point for $e$
 \end{center}
 \end{figure}
  
-% \newpage
+\newpage
 
 \begin{figure}[H] 
 \begin{center}
@@ -242,8 +243,6 @@ d$E$/d$x$ information at different distances from the shower start-point for $e$
 \caption{\label{fig:eres:particle}Energy resolution for electrons (top), protons (center) and muons (bottom). Left: reconstructed vs. true energy resolution (log-scale). Right: energy resolution from Gaussian fit to $[E_{\rm reco}-E_{\rm true}] / E_{\rm true}$.}
 \end{center}
 \end{figure}
-
-%\newpage
 
 \subsubsection{Neutrino Energy Reconstruction \textcolor{green}{Giuseppe + David, P.R. Elena}}
 
