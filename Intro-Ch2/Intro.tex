@@ -159,6 +159,22 @@ Finally, the observed spectra from the \nueccnopinp and the \numu selections are
 \par The work presented in this note has matured into a robust and comprehensive analysis, with strong tools which are able to leverage the calorimetric and topological imaging of the LArTPC technology to identify in a kinematically agnosic selection $\nu_e$ interactions in MicroBooNE's BNB dataset. The analysis, as it stands, is able to make interesting conclusions on the $\nu_e$ content of the BNB flux, with the primary limitation to the power of these conclusison at low energy driven by the low selection efficiency.
 \par Multiple selections have been developed as part of this analysis, all showing generally good data-simulation agreement, as shown in figure~\ref{fig:datamccomparisons} for 
 
+\begin{figure}[ht] 
+\begin{center}
+    \begin{subfigure}[b]{0.42\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{introduction/fluxcorrelation.png}
+    \caption{\label{fig:numuconstraint:flux}}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.3\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{introduction/xsec_mcc8_mcc9.png}
+    \caption{\label{fig:numuconstraint:xsec}}
+    \end{subfigure}
+\caption{\label{fig:datamccomparisons} (a) $\nu_{\mu}$-$\nu_e$flux correlation matrix. (b) Different cross section models for CC interactions \textcolor{blue}{Y axis label is missing}.  }
+\end{center}
+\end{figure}
+
 \par As will be clear from section \ref{sec:nueselection:1eNp}, we have two workflows for our most sensitive channel (~\npsel): a cut-base selection and a BDT-based selection.  The \npsel channel achieves a $5-10$\% efficiency with a 73\%  purity for the cut-based  and a $5-15$\% efficiency with a 81\%  purity for the BDT-based selection. These selections lead to $\mathcal{O}$(10) expected MB-$\nu_e$ LEE signal events and $40-70$ intrinsic $\nu_e$ events for the full Run $1-4$ dataset. The final reconstructed energy distribution for the box-cut selection is shown in figure~\ref{fig:1eNp:box:RUN1:intro}. The box-cut selection's statistics-only sensitivity is $2.1-2.3\sigma$, depending on the test-statistic used. The low statistics of the predicted signals lead to significant fluctuations in the expected sensitivity, covering the range $1.5-3.1\sigma$. 
  \emph{Given the efficiency and purity obtained with the BDT-based workflow, we expect a higher sensitivity compared to the cut-based workflow.  We are in the process of re-evaluating the BDT-based performance which will be reported in this note after higher statistics MC samples have been included, and a re-calibration of the calorimetry has been completed.} 
 
