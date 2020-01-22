@@ -622,9 +622,9 @@ The selection efficiency for the \zpsel cut-based and BDT selections are shown i
 \section{Systematics \textcolor{red}{Maya, Nicolo, Sebastien}}
 \label{sec:systematics}
 
-Our selections are subject to some level of uncertainty, both statistical and systematic. The systematic uncertainties are associated to the level of precision of the model used in the \textcolor{blue}{simulation of neutrino interactions \st{reconstruction}} (GENIE), knowledge of the neutrino beam (flux), and mis-modeling of the detector response (detector systematics). These systematic uncertainties can be calculated for many parameters of the models and measured variables that we use to reconstruct our sample
+Our selections are subject to some level of uncertainty, both statistical and systematic. The systematic uncertainties are associated to the level of precision of the model used in the simulation of neutrino interactions (GENIE), knowledge of the neutrino beam (flux), and mis-modeling of the detector response (detector systematics). These systematic uncertainties can be calculated for many parameters of the models and measured variables that we use to reconstruct our sample
 
-\textcolor{blue}{When treating systematic uncertainties, one wishes to take into account correlations between different bins of the distribution of a given reconstructed variable.} For each uncertainty, a covariance matrix \textcolor{blue}{correlating the variation in the measured number of events between two bins is calculated \st{of its effect on a given distribution is obtained}}. Two approaches are followed to obtain the covariance matrix, depending on the type of uncertainty: unisim or multisim.
+When treating systematic uncertainties, one wishes to take into account correlations between different bins of the distribution of a given reconstructed variable. For each uncertainty, a covariance matrix correlating the variation in the measured number of events between two bins is calculated. Two approaches are followed to obtain the covariance matrix, depending on the type of uncertainty: unisim or multisim.
 
 Unisim means that a single variation of a given analysis input parameter is performed according to its uncertainty. The difference in the number of selected events between this variation and the central value is taken as the uncertainty in that number of events.
 
@@ -712,7 +712,7 @@ Details on MicroBooNE's approach to handling detector systematics can be found i
 \end{figure}
 
 \subsection{Flux Uncertainties \textcolor{green}{Maya}}
-The flux \textcolor{blue}{model} and \textcolor{blue}{its} uncertainties for MCC9~\cite{bib:fluxmcc9,bib:fluxtechnote} are largely the same as MCC8~\cite{bib:fluxtechnote}. We use the multisim technique to estimate the flux uncertainties. The various sources of uncertainties are taken as independent and are varied individually around the central value. They are listed in Table~\ref{tab:fluxsyst} along the number of universes considered for each. The fractional covariance matrix and correlation matrix for the 1eNp selection are presented in Figure~\ref{fig:fluxmatrices} which amount to 2\% in flux uncertainties. Meanwhile, Figure~\ref{fig:fluxsystvars} displays the effects of reweighting central value in each universe of an individual parameter of flux.
+The flux model and its uncertainties for MCC9~\cite{bib:fluxmcc9,bib:fluxtechnote} are largely the same as MCC8~\cite{bib:fluxtechnote}. We use the multisim technique to estimate the flux uncertainties. The various sources of uncertainties are taken as independent and are varied individually around the central value. They are listed in Table~\ref{tab:fluxsyst} along the number of universes considered for each. The fractional covariance matrix and correlation matrix for the 1eNp selection are presented in Figure~\ref{fig:fluxmatrices} \textcolor{blue}{which amount to 2\% in flux uncertainties}. Meanwhile, Figure~\ref{fig:fluxsystvars} displays the effects of reweighting central value in each universe of an individual parameter of flux.
 
 \begin{table}[H]
 \centering
@@ -779,7 +779,7 @@ piplus\_PrimaryHadronSWCentralSplineVariation     &  Primary Hadron Sanford Wang
 \end{figure}
 
 \subsection{Neutrino Interaction Modeling Uncertainties \textcolor{green}{Maya/Sebastien}}
-We use genie event reweighting framework with the standard reweighting parameters, also known as "knobs", to model the neutrino cross section and final states uncertainties. Document~\cite{bib:geniesupportnote} describes the GENIE cross-section model, recommended central-value tune, and the recommended uncertainties for MCC9 analyses. 
+We use the \texttt{GENIE} event reweighting framework with the standard reweighting parameters, also known as "knobs", to model the neutrino cross section and final stats uncertainties. Document~\cite{bib:geniesupportnote} describes the GENIE cross-section model, recommended central-value tune, and the recommended uncertainties for MCC9 analyses. 
 
 The updated Genie central value tune is guided on fits to the T2K data which increase the MA CCQE and scale up the MEC normalization.
 
@@ -1720,6 +1720,10 @@ MicroBooNE Collaboration, \emph{First Measurement of Inclusive Muon Neutrino Cha
 
 \bibitem{bib:cholesky}
 Press W H, Teukolsky S A, Vetterling W T and Flannery B P, \emph{Numerical Recipes in C++ 2nd edn}, Cambridge: Cambridge University Press (2002) pp 99–101.
+
+\bibitem{bib:tpccalibrationnote}
+MicroBooNE Detector and Calibration groups, \emph{Calorimetry reconstruction and calibration in MCC9}
+\href{https://microboone-docdb.fnal.gov/cgi-bin/private/ShowDocument?docid=27042}{DocDB 27042}
 
 \end{thebibliography}
 
