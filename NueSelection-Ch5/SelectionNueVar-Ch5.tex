@@ -80,6 +80,7 @@ Category & Variable Name & Description  \\
 \multicolumn{1}{l|}{} & \emph{crtveto} & Boolean variable checking if the event passes the CRT veto. \\  \cline{2-3}
 \multicolumn{1}{l|}{} & \emph{\_closestNuCosmicDist} &  3D distance between the reconstructed neutrino vertex and the closest CRT-tagged cosmic track. \\  \cline{2-3}
 \multicolumn{1}{l|}{} & \emph{slclustfrac} & Fraction of hits in the slice that are fully reconstructed to 3D particles. \\  \cline{2-3}
+\multicolumn{1}{l|}{} & \emph{nObjHits\_\{U,V,Y\}} & Number of hits associated with the object on each plane.\\  \cline{2-3}
 \hline
 
 \hline
@@ -94,8 +95,9 @@ Category & Variable Name & Description  \\
 \multicolumn{1}{l|}{} & \emph{shrmoliereavg} &  Average angle between the shower’s direction and its 3D spacepoints.    \\ \cline{2-3}
 \multicolumn{1}{l|}{} & \emph{shr\_tkfit\_gap10\_dedx\_\{U,V,Y\}}  & Median dE/dx computed over the [1,5] cm of the shower’s  trunk. \\ \cline{2-3}
 \multicolumn{1}{l|}{} & \emph{shr\_tkfit\_2cm\_dedx\_\{U,V,Y\}}  & Median dE/dx computed  over  the first 2 cm of the shower’s  trunk. \\ \cline{2-3}
+\multicolumn{1}{l|}{} & \emph{shower\_vtx\_dist} & Distance between the shower start and the neutrino vertex.\\ \cline{2-3}
+\multicolumn{1}{l|}{} & \emph{ismerged} & Check if a proton is merged at the beginning of a shower.\\ \cline{2-3}
 \hline
-
 \hline
 \multicolumn{1}{l|}{} & \emph{secondshower\_Y\_nhit} & Number of hits in the collection plane of the largest cluster associated to the  recovered 2nd shower  \\  \cline{2-3}
 \parbox[t]{2mm}{\multirow{4}{*}{\rotatebox[origin=c]{90}{Second Shower}}}  & \emph{secondshower\_Y\_dot} &  Dot product between the vector connecting the vertex to the closest hit in cluster and the charge-weighted cluster direction w.r.t. closest hit in cluster \\  \cline{2-3}

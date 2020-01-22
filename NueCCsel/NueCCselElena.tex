@@ -3,7 +3,7 @@
 The aim of the inclusive charged-current electron neutrino selection is to select electron neutrinos independently of their final state and energy. The selection efficiency is approximately 20\%, leading to 250-300 electron neutrino's in the Run 1-4 data-set. The purity without CRT is $\approx 35-40\%$ and with CRT $\approx 45-50\%$.
 
 \subsubsection{Pre-selection}
-The selection builds on top of the SliceID (\cref{sec:sliceID}). At first the following cuts are applied:
+The preselection builds on top of the SliceID (\cref{sec:sliceID}). At the preselection stage, the following cuts are applied:
 \begin{itemize}
     \item Reconstructed, space-charge corrected vertex inside a fiducial volume of \SI{10}{\cm} in $x$ and $y$ and $[ \SI{20}{\cm}, \SI{50}{\cm}]$ in $z$.
     \item Topological score above 0.15
@@ -13,56 +13,33 @@ The selection builds on top of the SliceID (\cref{sec:sliceID}). At first the fo
 \end{itemize}
 here, an electron candidate shower is defined as a particle with a trackscore below 0.3, and hits on all three planes. Furthermore, a minimum calorimeric energy of \SI{75}{\MeV} is required. 
 
-At this stage, the efficiency of the selection is 46\% for $\nu_e$ CC events inside the fiducial volume. This is equivalent to 618 events per \SI{10.1e20}{POT}. The number of LEE signal events passing is approximately 30 per \SI{10.1e20}{POT}. The purity at this stage is 3.0\% and the Data/MC ratio is 0.91.
+At this stage, the efficiency of the selection is 46\% for $\nu_e$ CC events inside the fiducial volume\textcolor{blue}{Do we have the plot of efficiency as a function of true nu E? }. This is equivalent to 618 events per \SI{10.1e20}{POT}. The number of LEE signal events passing is approximately 30 per \SI{10.1e20}{POT}. The purity at this stage is $\sim$3.0\%. 
 
-\cref{fig:pre_vtx,fig:pre_shower_E_pdg} show the agreement in the vertex location and kinematics of the electron candidate shower at this stage of the selection. 
-%\begin{figure}
-%    \centering
-%    \includegraphics[width=\textwidth]{NueCCsel/Images/run1/pre_angles.pdf}
-%    \caption{Caption}
-%    \label{fig:pre_shower_E_pdg}
-%\end{figure}
+%\cref{fig:pre_vtx,fig:pre_shower_E_pdg} show the agreement in the vertex location and kinematics of the electron candidate shower at this stage of the selection.  \textcolor{blue}{Why are the vertex plots important? Are the calo plots done without the MC recalibration?}
 
-\begin{figure}[]
-    \centering
-    \includegraphics[width=\textwidth]{NueCCsel/Images/run1/pre_vtx.pdf}
-    \caption{Vertex position of events passing the pre-selection cuts.}
-    \label{fig:pre_vtx}
-\end{figure}
+After the pre-selection cuts, the $\nu_e$ CC purity is still low. Figure \ref{fig:pre_shower_E_pdg} shows the distribution of the angles of the electron candidate shower highlighting the dominant background categories: the main background is coming from events with $\pi^0$ in the final state. Thus, $e/\gamma$ separation becomes key to the $\nu_e$ CC inclusive selection.
+
+\cref{fig:e_cand_Calo} shows the agreement in the kinematics of the electron candidate shower at the preselection stage. \emph{As seen in several other Data-MC comparisons of calorimetry variables throughout this note, a slight disagreement is found in the shower candidate energy, to be re-evaluated after the planned MC re-calibration.}
 
 \begin{figure}[h]
     \centering
     \includegraphics[height=4.9cm]{NueCCsel/Images/run1/pre_angles.pdf}
-    \includegraphics[height=4.9cm]{NueCCsel/Images/run1/pre_shower_E_pdg.pdf}
-    \caption{After the pre-selection cuts, the $\nu_e$ CC purity is still low. These panels show the dominant background categories and the distribution of the angles and reconstructed energy of the electron candidate shower. The plot on the right shows that the main background is coming from photons. There is also an indication that the reconstructed energy in MC is slightly overestimated and needs to be corrected.}
+    \caption{MC-Data comparison of the angles of the electron candidate after the pre-selection cuts.}
     \label{fig:pre_shower_E_pdg}
 \end{figure}
 
-\clearpage
-\subsubsection{Electron Identification}
-After the pre-selection, the object that is tagged as electron candidate is still not an neutrino electron in the dominant fraction of events. The ratio photons to electrons is approximately 20 to 1 and photon-electron separation is therefore the main objective of electron identification. The identification is done using a boosted decision tree, trained on variables that belong to the particle. Those variables are:
-\begin{enumerate}
-    \item Shower vertex distance.
-    \item Shower d$E$/d$x$ at the start of the shower:
-    \begin{itemize}
-        \item On the collection plane only.
-        \item Weighted mean over the 3 planes.
-        \item Collection plane, but shifted by \SI{1}{\cm}. 
-    \end{itemize}
-    \item Shower Moliere radius.
-    \item Second shower distance and number of hits on the collection plane.
-    \item Number of subclusters in the shower.
-    \item ismerged: checks if a proton is merged in the start of the shower.
-\end{enumerate}
-
-The three distributions of the variables used to characterise the d$E$/d$x$ at the start of the shower are given in \cref{fig:e_cand_dedx}. The response of the BDT is shown in the right panel of \cref{fig:e_cand_dist}.
-
 \begin{figure}
     \centering
-    \includegraphics[width=\textwidth]{NueCCsel/Images/run1/e_cand_dedx.pdf}
-    \caption{d$E$/d$x$ of the electron candidate shower after the pre-selection. The collection plane shows the cleanest e/$\gamma$ separation. The middle panel combines all three planes, leading to a smaller peak at 0 in cases where there are few hits on the collection plane. The plane on the right uses the collection plane but leaves a \SI{1}{\cm} gap, which is beneficial when vertex activity is merged into the electron shower.}
-    \label{fig:e_cand_dedx}
+     \includegraphics[height=4.9cm]{NueCCsel/Images/run1/pre_shower_E_pdg.pdf}
+    \includegraphics[height=4.9cm]{NueCCsel/Images/run1/e_cand_dedxColl}
+    \caption{ Energy (\emph{Left}) of the electron candidate after the pre-selection cut d$E$/d$x$ on the collection plane (\emph{Right}) of the electron candidate shower after the pre-selection.}
+    \label{fig:e_cand_Calo}
 \end{figure}
+
+\subsubsection{Electron Identification}
+After the pre-selection, the object that is tagged as electron candidate is still not an neutrino electron in the dominant fraction of events. The ratio photons to electrons is approximately 20 to 1 and photon-electron separation is therefore the main objective of electron identification. The identification is done using a boosted decision tree, trained on variables characterizing the particle. 
+
+Even if a number of variables contribute to the BDT (see backup \cref{fig:e_cand_dedx} for the d$E$/d$x$ examples),  we highlight here the  d$E$/d$x$ distribution on  collection plane (left side of \cref{fig:e_cand_Calo}) which shows the cleanest e/$\gamma$ separation. The response of the BDT is shown in the right panel of \cref{fig:e_cand_dist}. The complete list of variables used to train the BDT for electron identification is: \emph{shower\_vtx\_dist}, \emph{nObjHits\_Y},  \emph{shr\_tkfit\_2cm\_dedx\_Y},  \emph{shr\_tkfit\_2cm\_dedx\_ALL},  \emph{shr\_tkfit\_gap10\_dedx\_Y}, \emph{shrmoliereavg}, \emph{secondshower\_Y\_vtxdist}, \emph{subcluster}, \emph{ismerged}.
 
 \begin{figure}
     \centering
@@ -90,7 +67,7 @@ The three distributions of the variables used to characterise the d$E$/d$x$ at t
 
 %\textcolor{blue}{(comment by David) This section is not too clear. Is this BDT score computed per PFParticle, for all %PFParticles that are not the electron candidate? What do you mean when you say that pions are not used? PFParticles from %nue slices are classified as signal-like, PFParticles from numu/NC events are background like, and pions from all events %are not classified at all?}
 
-Apart of the electron candidate particle, there are other particles in the slice. In this section we study each of those PFParticles separately, except the electron candidate shower described in the previous section. Particle by particle a BDT is used to split the particle into two categories:
+Apart from the electron candidate particle, there are other particles in the slice. In this section we study each of those PFParticles separately, except the electron candidate shower described in the previous section. Particle by particle a BDT is used to split the particle into two categories:
 \begin{enumerate}
     \item Positive if the particle is backtracked to a proton or a split-off part of the electron.
     \item Negative if the particle is backtracked to cosmic overlay or a simulated muon. 
