@@ -395,29 +395,32 @@ Figure~\ref{fig:1eNp:effpur:RUN1} shows the efficiency of the \npsel selections 
 \end{center}
 \end{figure}
 
-\subsection{1$e$0$p$ Channel \textcolor{green}{Sophie, Ivan ... PR Elena}}
+\subsection{1$e$0$p$0$\pi$ Channel \textcolor{green}{Sophie, Ivan ... PR Elena}}
 \label{sec:nueselection:1e0p}
 
-The \zpsel topology complements the \npsel topology as part of the signal that MiniBooNE measured: the MiniBooNE signal is defined as 1eXp0$\pi$, i.e. the sum of the 1eNp0$\pi$ and 1e0p0$\pi$ channels. Thus,  including the \zpsel topology makes it possible for MicroBooNE to fully reproduce the types of events observed by MiniBooNE.    
+The \zpsel topology complements the \npsel topology as it is a part of the signal that MiniBooNE measured. The MiniBooNE signal is defined as 1eXp0$\pi$, which is the sum of the 1eNp0$\pi$ and 1e0p0$\pi$ channels. This means that including the \zpsel topology makes it possible for MicroBooNE to identify the full range of event topologies observed by MiniBooNE.    
 
-The \zpsel channel can also be used to constrain uncertainties associated with the \npsel selection.  In particular, it can be used to constrain uncertainties associated with low energy protons, such as the modeling of the proton multiplicity and kinematics produced by neutrino interactions, and their reconstruction efficiencies.  This selection is very sensitive to the neutrino interaction modeling, which makes it a useful way to constrain these systematics with data.  In MCC8, there were twice as many events in this channel as in MCC9, including half of the  electron neutrinos below 0.8 GeV.
+The \zpsel channel can also be used to constrain uncertainties associated with the \npsel selection.  In particular, it can be used to constrain uncertainties associated with low energy protons, such as the modeling of the proton multiplicity and kinematics produced by neutrino interactions, as well as their reconstruction efficiencies.  This selection is very sensitive to the neutrino interaction modeling, which makes it a useful way to constrain these systematics with data.  In MCC8, there were twice as many events in this channel as in MCC9, including half of the  electron neutrinos below 0.8 GeV.
 
+Since the \zpsel selection that will be described in this section is fully orthogonal to the \npsel selection, we can use it to constrain systematic uncertainties in the \npsel sample by allowing for migrations in a simultaneous fit. \emph{This will be described in section \ref{sec:1e0pconstraint}}.
 
 \subsubsection{Tools Unique to 0p Selection}
 
 %The \npsel sample is able to constrain systematic uncertainties in the \npsel sample because it is fully orthogonal with the \npsel selection by construction.  This will allow migrations in a simultaneous fit, as described in section \textcolor{blue}{XX}.  
 
-Since the \zpsel selection is fully orthogonal to the \npsel selection, we can use \zpsel sample to constrain systematic uncertainties in the \npsel sample, allowing for migrations in a simultaneous fit, \emph{as will be described in section \ref{sec:1e0pconstraint}}.
+The \zpsel selection allows us to recover $\nu_e$ signal events without visible protons.  The efficiency of this selection can be increased by using track-shower merging to recover \zpsel events that have been mis-reconstructed.
 
-The \zpsel selection also allows to recover $\nu_e$ signal events not accounted in the \npsel selection, especially thanks to the track-shower merging tool.  \textcolor{blue}{ \st{These events are typically discarded immediately in the 1eNp selection, either by a cut on the angle between the track and the shower, or the track PID} In some sense, rightfully so: if the problem is shower mis-Reco, then the \npsel shouldnt catch them -- Elena}.  
-The track-shower merging tool is a processing step specific to \npsel workflow which is designed to recover events where the EM activity is split in a shower and one (or more)  tracks; this occurs frequently when the shower trunk is mis-reconstructed as a track. For this recovery, we consider the most energetic shower and all the non-proton-like tracks in the slice.  In case of multiple tracks, we select the track that best aligns with the shower by calculating the track with the smallest angle off of the shower direction. In case of only one reconstructed track, the track is selected by default. We then calculate the distance between the start point of the shower and either ends of the selected track:  the smallest of these two values is stored as the  \emph{merge\_bestdist} variable.  We recover an event that fails the \npsel selection cuts at either the shower-track angle or track PID stage if the event has one contained track and one contained shower with \emph{merge\_bestdist} is less than 2 cm. As of December 20th, this corresponded to a 20\% increase in selected \zpsel events.
+%\textcolor{blue}{ \st{These events are typically discarded immediately in the 1eNp selection, either by a cut on the angle between the track and the shower, or the track PID} In some sense, rightfully so: if the problem is shower mis-Reco, then the \npsel shouldnt catch them -- Elena}.  
+The track-shower merging tool is a processing step 
+%specific to \npsel workflow 
+which is designed to recover events where the EM activity is split into a shower and one, or more, tracks. This occurs frequently when the shower trunk is mis-reconstructed as a track. To perform this recovery, we consider the most energetic shower and all of the tracks in the slice.  In case of multiple tracks, we select the track that best aligns with the shower by calculating the track with the angle that best matches the shower direction. In case of only one reconstructed track, the track is selected by default. We then calculate the distance between the start point of the shower and either ends of the selected track, and the smallest of these two values is stored as the  \emph{merge\_bestdist} variable.  We recover an event that fails the \npsel selection cuts at either the shower-track angle or track PID stage if the event has one contained track and one contained shower where \emph{merge\_bestdist} is less than 2 cm. As of December 20th, this corresponded to a 20\% increase in selected \zpsel events.
 
 
 \subsubsection{Pre-selection}
-Similarly to the \npsel workflow, a minimum set of pre-selection requirements are defined for the \zpsel selection.  The preselection requires that the all selection variables are defined, and all potential 1eNp events, including those included with track-shower merging are included \textcolor{blue}{I don't think I understand this point on the 1eNp events... if we write it like this, the channels don't look orthogonal: I thought this preselection was after the splitting between Np and 0p pre-selections}.  The pre-selection also includes a cut on the shower energy to remove decay electrons from cosmic muons.
-The 1e0p pre-selection is summarized in table \ref{tab:1e0p:presel}. Again, similarly to \npsel workflow, we developed both a box cuts-based and a BDT-based selection for the 1e0p channel after this preselection.
-
-
+Similarly to the \npsel workflow, a minimum set of pre-selection requirements are defined for the \zpsel selection.  The pre-selection requires that the all selection variables are defined, and all potential \zpsel events, including those included with track-shower merging are included %\textcolor{blue}{I don't think I understand this point on the 1eNp events... if we write it like this, the channels don't look orthogonal: I thought this preselection was after the splitting between Np and 0p pre-selections}.  
+%Response: This is a typo.  I meant that we want to include the 0p events in the pre-selection, including the ones we might recover with shower merging. 
+The pre-selection also includes a cut on the shower energy to remove decay electrons from cosmic muons. 
+The \zpsel pre-selection is summarized in table \ref{tab:1e0p:presel}. Similarly to in the \npsel channel, we developed both a box cut and a BDT selection for \zpsel events after this pre-selection.
 
 \begin{table}[h!]
 \centering
@@ -436,7 +439,7 @@ The 1e0p pre-selection is summarized in table \ref{tab:1e0p:presel}. Again, simi
 Michel rejection & shr\_energy\_tot\_cali $>$ 0.07 GeV \\
  \hline
  \end{tabular}
- \caption{\label{tab:1e0p:presel} Preselection requirements for the \zpsel selection.}
+ \caption{\label{tab:1e0p:presel} Pre-selection requirements for the \zpsel selection.}
 \end{table}
 
 
@@ -444,8 +447,7 @@ Michel rejection & shr\_energy\_tot\_cali $>$ 0.07 GeV \\
 
 \subsubsection{Box cut selection}
 
-A box cut selection has been developed to select 1e0p events.  The selection cuts are designed to target the main backgrounds.  The strict fiducial volume from the CC inclusive analysis \cite{bib:numuCCincl} has been implemented to reduce the backgrounds associated with dirt and single showers %from backgrounds 
-entering the FV.   Cosmic rejection includes the addition of cuts on CRT variables and on CosmicIP.  In order to remove muon neutrino and non-showering backgrounds, cuts on the shower profile and the number of subclusters in the shower are applied.  A second shower search for hits in the Y plane is used to remove events where the second shower of a pi0 may have initially been missed.  dEdx is also used to remove pi0 backgrounds.  Two calculations are used, one which looks at the first 2 cm of the shower, and one which starts the calculation after 1 cm so that any hits from a low energy proton that may have been merged with the shower are not included in the calculation.
+A box cut selection has been developed to select \zpsel events. The selection cuts are designed to target the main backgrounds.  The fiducial volume from the CC inclusive analysis \cite{bib:numuCCincl} has been implemented to reduce the backgrounds associated with dirt and single showers entering the fiducial volume.   Cosmic rejection includes the addition of cuts on CRT variables and on CosmicIP.  In order to remove muon neutrino and non-showering backgrounds, cuts on the shower profile and the number of sub-clusters in the shower are applied.  A second shower search for hits in the Y plane is used to remove events where the second shower of a pi0 may have initially been missed.  dE/dx is also used to remove pi0 backgrounds.  Two calculations are used, one which looks at the first 2 cm of the shower, and one which starts the calculation after 1 cm so that any hits from a low energy proton that may have been merged with the shower are not included in the calculation.
 
 The \zpsel box cuts are summarized in table \ref{tab:1e0p:cutbased}.
 
@@ -943,14 +945,15 @@ The model for the signal currently used is the MiniBooNE LEE unfolded signal \ci
 
 \label{sec:sensitivity}
 
-\par \textcolor{blue}{In its current version, this Tech-Note estimates sensitivities using the 1$e$N$p$ box-cut selection (section~\ref{sec:nueselection:1eNp}). In future iterations the BDT-approach will be used to measure the estimated sensitivity, once this selection has been further developed and validated. The BDT's sensitivity is expected to be larger then that obtained through the box-cut approach.} 
-\par The primary scope of the analysis is to be able to \textcolor{blue}{understand the nature of \st{learn knew knowledge about}} the anomalous excess observed by MiniBooNE. \textcolor{blue}{In particular, MicroBooNE aims to determine whether a potential excess of events is caused by neutrino interactions with electron- or photon-like activity in the final state.}
-For this reason, the sensitivity to \textcolor{blue}{a $\nu_e$ electron-like \st{this}} excess is estimated, as a metric of the power of the analysis.
+In its current version, this Tech-Note estimates sensitivities using the 1$e$N$p$ box-cut selection (section~\ref{sec:nueselection:1eNp}). In future iterations the BDT-approach will be used to measure the estimated sensitivity, once this selection has been further developed and validated. The BDT's sensitivity is expected to be larger then that obtained through the box-cut approach.
+
+The primary scope of the analysis is to be able to understand the nature of the anomalous excess observed by MiniBooNE. In particular, MicroBooNE aims to determine whether a potential excess of events is caused by neutrino interactions with electron- or photon-like activity in the final state.
+For this reason, the sensitivity to a \nue electron-like excess is estimated, as a metric of the power of the analysis.
 The model for the signal currently used is the MB-$\nu_e$ LEE unfolded signal~\cite{C2}.
 
 To construct this signal, the reconstructed energy distribution, under the CCQE hypothesis, of the excess observed by MiniBooNE, is unfolded to a distribution in true neutrino energy.
-Scale factors \textcolor{blue}{of excess events to \st{for}} the \textcolor{blue}{intrinsic} \nue flux are then derived \textcolor{blue}{\st{, in order to make the BNB flux account for the LEE}}, as seen in figure \ref{fig:lee_unfolded_signal}.
-This additional flux \textcolor{blue}{component} is then propagated in the MicroBooNE simulation.
+Scale factors of excess events to the intrinsic \nue flux are then derived, as seen in figure \ref{fig:lee_unfolded_signal}.
+This additional flux component is then propagated in the MicroBooNE simulation.
 
 \begin{figure}[]
     \begin{center}
@@ -970,7 +973,7 @@ The procedure is described below:
     \item Choice of the test statistic, which is a function of the observables only. It is in fact necessary to choose a variable that condenses all information of the observables in one number. Different choices are described in the following subsection.
     \item Definition of the two hypothesis. $H_0$ is the null hypothesis, where we do not observed any LEE signal, whereas $H_1$ is the hypothesis where we do observe the LEE signal.
     \item Toy-experiments or pseudo-experiments. The expected distributions of the test statistic under the two hypotheses are built by randomly sampling the observables from their expected distributions. In case of the statistical only sensitivities, the bins of the histograms are treated as independent Poisson variables. In case systematic uncertainties are considered, the bins of the histograms are treated as a Multivariate Gaussian distribution, determined by the mean values and by a covariance matrix, which is then convoluted with a Poisson sampling that accounts for the statistical fluctuations.
-    \item Once each toy-experiment is performed, and a \textcolor{blue}{distribution for the bin contents \st{value}} of the histograms is observed, the discovery significance, i.e. reject $H_0$, can be computed. This is done by computing the value of the test statistic associated to the observation, and then the p-value with respect to the expected distribution of the test statistic under $H_0$.
+    \item Once each toy-experiment is performed, and a distribution for the bin contents of the histograms is observed, the discovery significance, i.e. reject $H_0$, can be computed. This is done by computing the value of the test statistic associated to the observation, and then the p-value with respect to the expected distribution of the test statistic under $H_0$.
     \item To compute the expected significance, in the case the LEE is present, we can consider the median value, and an interval which contain 68\% (or 95\%) of the distribution of the test statistic under $H_1$, and compute the p-values with respect to $H_0$.
     \item The p-value is typically converted to the number of sigma of a standard Gaussian that produces the same p-value, as outlined in \cite{bib:cowan}.
 \end{itemize}
@@ -1006,7 +1009,7 @@ One can see that the $\Delta \chi^2$-like variable is a log-likelihood-ratio, in
 %     \item We also generate a large number of toy experiments under the LEE hypothesis. The $\Delta \chi^2 = \chi^2_{H0} - \chi^2_{H1}$ is computed for each toy experiment and this gives the $\Delta \chi^2_{H1}$ distribution.
 %     \item The quoted sensitivity for the discovery of the LEE is given by the p-value at the median of the $H1$ distribution.
 % \end{enumerate}
-\textcolor{blue}{The statistical-only sensitivity is measured using the result of the box-cut 1$e$N$p$ selection (figure~\ref{fig:1eNp:box:RUN1}). The distribution of the test-statistic computed with SBNFit ($\Delta\chi^2$, eq.~\ref{eqn:deltachi2}) and the stand-alone tool \emph{LLR Poisson} (eq.~\ref{eqn:llrpois}) are shown on the left and right-panel of figure~\ref{fig:1eNp:box:statonlysensitivity}, respectively. The stand-alone tool was also used to validate that, when using the $\delta\chi^2$ test-statistic, results from SBNFit's statistics-only sensitivity calculation can be fully reproduced.}
+The statistical-only sensitivity is measured using the result of the box-cut 1$e$N$p$ selection (figure~\ref{fig:1eNp:box:RUN1}). The distribution of the test-statistic computed with SBNFit ($\Delta\chi^2$, eq.~\ref{eqn:deltachi2}) and the stand-alone tool \emph{LLR Poisson} (eq.~\ref{eqn:llrpois}) are shown on the left and right-panel of figure~\ref{fig:1eNp:box:statonlysensitivity}, respectively. The stand-alone tool was also used to validate that, when using the $\Delta\chi^2$ test-statistic, results from SBNFit's statistics-only sensitivity calculation can be fully reproduced.
 
 \begin{comment}
 \begin{figure}[H]
@@ -1066,7 +1069,7 @@ $$x_{toy} = x_{CV} + Lv.$$
 % \caption{\label{fig:1eNp:box:statonlysensitivity} Statistics-only sensitivity estimation for the 1eNp box cut selection. Sample is taken from Monte Carlo Run 1 Data and scaled to $1.01\times10^{21}$ POT}
 % \end{center}
 % \end{figure}
-The resulting plot of the test statistic for the 1eNp0$pi$ selection described in \ref{eqn:deltachi2_systematic} before applying any constraint is shown in figure \ref{fig:1eNp:box:statsystsensitivity}. 
+The resulting plot of the test statistic for the 1eNp0$pi$ selection described in \ref{eqn:deltachi2_systematic} before applying any constraint is shown in figure \ref{fig:1eNp:box:statsystsensitivity}. The median sensitivity obtained including flux and cross-section systematic uncertainties is $1.8\sigma$. This calculation is performed without sideband constraints.
 
 \begin{figure}[H]
 \begin{center}

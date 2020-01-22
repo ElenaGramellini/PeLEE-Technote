@@ -75,7 +75,6 @@ Multiple effects enter in the model of this distribution.
 The first effect is what we want to leverage:  the average d$E$/d$x$ at a given residual range depends on the particle's mass, as seen by integrating the Bethe-Bloch function for different masses.
 Secondly, the fluctuations of the d$E$/d$x$ depend on the pitch. These fluctuations are intrinsically stochastic: the longer the length over which the charge is averaged, the smaller the fluctuations.
 Furthermore, detector effects such as recombination, signal deconvolution, and hit reconstruction add a non-linear response and smearing; this response depends on both the true deposited charge and the pitch, and lacks an analytic model. For this reason, the expected distribution of $dE/dx$ is built starting from the simulation.
-\textcolor{blue}{ \st{This has the main advantage of modeling all of these effects,  to the best of our knowledge}}. 
 The performance of the particle identification improves as the model for the  $dE/dx$ distribution becomes more accurate.
 The model for $dE/dx$ is built by considering well reconstructed tracks\footnote{ We define a ``well reconstructed track" a track whose completeness and purity are both above 90\%, where completeness measures how much of the true particle's  deposited charge is reconstructed in the track and purity measures how little spurious charge enters the track reconstruction. }, well contained within a fiducial volume, and backtracked to protons and muons.
 The binning of the probability density function (pdf) is the following:
@@ -110,9 +109,11 @@ In order to perform the classification task, the likelihood ratio test statistic
 \[ T(dE/dx, \text{rr}, \text{pitch}) = \mathcal{L}(\text(muon)| dE/dx, \text{rr}, \text{pitch}) /  \mathcal{L}(\text(proton)| dE/dx, \text{rr}, \text{pitch}). \]
 An example of the distribution of these variable, normalized between -1 and 1, is given in figure \ref{fig:llr_pid_uvy_example}, for tracks contained in a fiducial volume, and backtracked to muon, proton, or cosmic.
 The likelihood ratio, as defined above can be proven to be the most powerful statistical test, i.e. the one with the smallest mis-identification rate for any given value of the efficiency.
-Any \textcolor{blue}{mis-modeling \st{imperfection}} in the simulation used to build the likelihood produces a loss of power \textcolor{blue}{in data, so the likelihood response is validated in data sidebands and control regions. \st{but does not add any systematic uncertainty}}.
-In a sample of contained protons and muons used to test the performance, this PID variable is able to reach 94\% muon efficiency, with 10\% proton mis-ID rate.
-\textcolor{red}{why it does not add any systematic uncertainty? if there is a loss of rejection power in data, than the cut efficiency is different in data and MC, so this is a systematic effect.}
+Any mis-modeling in the simulation used to build the likelihood produces a loss of power, as the test would not be the most powerful one.
+However, as long as the same procedure with the same likelihood is applied to both the data and the simulation, no systematic uncertainty due to this mis-modelling is expected.
+Systematic uncertainties arise from the fact that the measured distribution of $dE/dx$ in the data differs from the simulation, or because the properties of the tracks we are considering are non properly simulated, such as angular or length distributions.
+This behaviour is qualitatively present in all the PID methods.
+Regardless of systematic uncertainties, in a sample of contained protons and muons used to test the performance, this PID variable is able to reach 94\% muon efficiency, with 10\% proton mis-ID rate.
 
 \begin{figure}[ht] 
     \centering
