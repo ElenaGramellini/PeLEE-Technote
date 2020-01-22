@@ -117,17 +117,17 @@ Reconstruction quality & \makecell{\textit{ismerged} \\ Checks if a proton is me
 %    \label{fig:e_cand_secondshower}
 %\end{figure}
 
-\subsubsection{Other Daughters Identification}
-A number of particles are present in the slice besides the electron candidate. We leverage those PFParticles to improve background rejection. We train a BDT on PFParticles divided in two categories:
-\begin{enumerate}
-    \item particles backtracked to a proton or a split-off part of the electron;
-    \item particles backtracked to a simulated muon or cosmic activity. 
-\end{enumerate}
-We want to reject events which contain a particle which is overlay or muon like. On the other hand, particles that are backtracked to protons or electron bits are allowed and should not lead to the rejection of the event.
-\par The more complicated situation arises when pions are present. Charged pions should be allowed in a $\nu_e$ CC search, but the mis-identification rate between charged pions and muons is large in this detector type. Photons coming from neutral pions, apart of the electron shower candidate, can be part of the $\nu_e$ CC event, but can also help to reduce the NC $\pi^0$ backgrounds. It was chosen therefore to give them a neutral label. 
+\subsubsection{Other Daughters Identification}other-daughters
+Besides the electron candidate, the slice includes a number of particles which can be leveraged to improve background rejection. We classify each PFParticle using the ``other-daughters-BDT". This BDT is trained on three labeled categories: \emph{signal-like}, \emph{neutral}, \emph{background-like}. The signal-like particles are those PFParticles that are backtracked to a proton or a split-off part of the electron associated to $\nu_e$ interactions: we want to keep events with a high content of signal-like particles. The background-like particles are those PFParticles that are backtracked to a simulated muon or cosmic activity.
+The ``neutral" label accounts for tricker cases: this label is given to PFParticles backtracked to charged pions or photons. Charged pions should be allowed in a $\nu_e$ CC search, but the mis-identification rate between charged pions and muons is large in LArTPCs. \textcolor{blue}{Photons coming from neutral pions are allowed in a  $\nu_e$ CC inclusive search, but they can also constitute a pernicious background.REALLY? We assign neutral scores to gammas?} 
 
-The input variables of the BDT are listed in \cref{tab:nuecc:other_bdt}
+The input variables of the other-daughters-BDT are listed in \cref{tab:nuecc:other_bdt}.
+The three most important distributions of the variables used are given in \cref{fig:pre_daughter_1}.  
 
+
+The response of the other-daughters-BDT is a score assigned to each PFParticle, whose distribution is shown in \cref{fig:pre_daughter_score}: high scores classify the PFParticles as signal-like. 
+
+For each event, we create two important variables that inform the event selection starting from this BDT output:  \emph{otherD\_MeanScore} and \emph{otherD\_LowestScore}.  The variables \emph{otherD\_MeanScore} and   \emph{otherD\_LowestScore} are the average and the lowest other-daughters-BDT score calculated using all the PFParticles in the event that are not the electron. Both the  \emph{otherD\_MeanScore} and  \emph{otherD\_LowestScore}  is assigned the default value 1 in the case the event is made of just the single electron shower.
 
 
 \begin{table}[h!]
@@ -150,7 +150,6 @@ Cut goal & Cut definition \\
  \caption{\label{tab:nuecc:other_bdt} Input variables used by the BDT to classify the other daughter particles.}
 \end{table}
 
-The three most important distributions of the variables used are given in \cref{fig:pre_daughter_1}. The response of the BDT is shown in \cref{fig:pre_daughter_score}.
 
 
 \begin{figure}
@@ -175,19 +174,19 @@ The three most important distributions of the variables used are given in \cref{
 \end{figure}
 
 \subsubsection{Event Selection}
-The final event classification build on top of the particle identification performed in the two previous sections. THe dominating variable is the electron identification response but the full list of variables is, in sequence of importance:
+We construct the final event classification BDT building on the particle identification performed in the two previous sections. For this final BDT, the dominating variable is the electron identification response but the full list of variables is, in sequence of importance:
 
 \begin{enumerate}
-    \item Electron BDT response
-    \item Lowest BDT response of the other daughter BDT from the collection of PFParticles, except the electron candidate shower. In the case of a single shower event, this field is assigned the default value 1. 
+    \item electron BDT response
+    \item otherD\_LowestScore
     %\textcolor{blue}{(David) Lowest means the score for the least nue-like PFParticle? What happens if no additional PFParticle is present?}
     \item contained\_fraction
-    \item Number of showers
+    \item number of showers
     \item hits\_ratio
-    \item Mean BDT response of the other daughter BDT from the collection of PFParticles, except the electron candidate shower. In the case of a single shower event, this field is assigned the default value 1. 
-    \item Number of particles in the slice that have a reconstructed start point more than \SI{3}{\cm} from the neutrino vertex.
+    \item otherD\_MeanScore
+    \item number of particles in the slice that have a reconstructed start point more than \SI{3}{\cm} from the neutrino vertex.
 \end{enumerate}
-The response of the event classification is given in the left panel \cref{fig:pre_event_score}. After the selection, the efficiency is 21\%, corresponding to 280 electron neutrino's in the Run 1-4 data-set. The distribution of the reconstructed electron energy is given in the right panel of \cref{fig:pre_event_score}. \cref{fig:nueccinc_eff} documents the efficiency of the SliceID, pre-selection and final inclusive selection for the three final state categories.
+The response of the event classification is given in the left panel \cref{fig:pre_event_score}. After the selection, the efficiency is 21\%, corresponding to 280 electron neutrino's in the Run 1-4 data-set. The distribution of the reconstructed electron energy is given in the right panel of \cref{fig:pre_event_score}. \cref{fig:nueccinc_eff} documents the efficiency of the SliceID, pre-selection and final inclusive selection for the three final state categories \textcolor{blue}{In the context of this note, I think it would be better to have the combined efficiency of the three channels (cause otherwise the reader can get confused with the previous sections)}.
 
 %\begin{figure}
 %    \centering
