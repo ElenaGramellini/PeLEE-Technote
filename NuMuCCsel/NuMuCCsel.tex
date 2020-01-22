@@ -273,9 +273,9 @@ Comparison between the calorimetry-only (left panels) and the range-based (right
 
 \begin{figure}
     \centering
-    \includegraphics[height=6.5cm]{NuMuCCsel/Images/Ryan/containedMomentumRes.png} \hspace{2mm}
+    \includegraphics[height=6.5cm]{NuMuCCsel/Images/Ryan/Momres.pdf} \hspace{2mm}
     \includegraphics[height=6.5cm]{NuMuCCsel/Images/Ryan/muoncandidate_pquality.jpg} \hspace{2mm}
-    \caption{The performance of range-based $\mu$ momentum calculation for contained tracks.}
+    \caption{The performance of $\mu$ range-based momentum calculation for muon candidates that pass this selection.}
     \label{fig:numusel:momres}
 \end{figure}
 
@@ -283,13 +283,23 @@ Comparison between the calorimetry-only (left panels) and the range-based (right
 \begin{center}
     \begin{subfigure}[b]{0.45\textwidth}
     \centering
-    \includegraphics[width=1.00\textwidth]{NuMuCCsel/Images/Ryan/Run1_recoErange_FullSel.jpg}
+    \includegraphics[width=1.00\textwidth]{NuMuCCsel/Images/Ryan/Run1_recoErange_fullSel.jpg}
     \caption{\label{fig:NuMUCCsel:ryan:noPQuality} After full selection.}
     \end{subfigure}
     \begin{subfigure}[b]{0.45\textwidth}
     \centering
     \includegraphics[width=1.00\textwidth]{NuMuCCsel/Images/Ryan/Run1_recoErange_FullSel_pquality.jpg}
     \caption{\label{fig:NuMUCCsel:ryan:withPQuality} After full selection and momentum quality cut.}
+    \end{subfigure} \newline
+    \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{NuMuCCsel/Images/Ryan/RangeBasedEnergyResolution.pdf}
+    \caption{\label{fig:NuMUCCsel:ryan:Eres_noPQuality} Energy resolution. After full selection.}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{NuMuCCsel/Images/Ryan/RangeBasedEnergyResolution_pquality.pdf}
+    \caption{\label{fig:NuMUCCsel:ryan:Eres_withPQuality} Energy Resolution. After full selection and momentum quality cut.}
     \end{subfigure}
 \caption{The distribution of range-based energy calculations for each passing slice. Fig \ref{fig:NuMUCCsel:ryan:withPQuality} shows the distribution after a quality cut, keeping events that fall within 0.5 of the peak in the right plot of fig \ref{fig:numusel:momres}.}
 \label{fig:NuMUCCsel:ryan:PQuality}
@@ -344,20 +354,20 @@ Comparison between the calorimetry-only (left panels) and the range-based (right
 
 \par This selection has been evaluated on the Run1 and the Run3 open datasets processed for this analysis. The advantage of the Run 1 data-set is higher statistics ($4E19$ POT in Run1 and $0.9E19$ POT in Run3). Run 3 allows to use the CRT system for extra background rejection. Distributions shown in this section will be of variables pertaining to the muon candidate for each event that passes the selection; Run1 data will be preferentially shown due to the higher statistics. The power of the Run3 CRT system will be demonstrated at the end of this section.
 
-\par Run 3 data includes information from the CRT system which was unavailable for the first MicroBooNE run. See fig \ref{fig:NuMUCCsel:ryan:Run3CRTcomp} for an example of the impact of the CRT. The CRT veto will eliminate more than 70$\%$ of the cosmics while suffering only roughly 15$\%$ loss in signal.
+\par Run 3 data includes information from the CRT system which was unavailable for the first MicroBooNE run. See fig \ref{fig:NuMUCCsel:ryan:Run3CRTcomp} for an example of the impact of the CRT. The CRT veto will eliminate more than 70$\%$ of the cosmic muons while suffering only roughly 15$\%$ loss in signal.
 
-\par The overall efficiency of this selection is \textcolor{pink}{finish remaking these plots with newest data} ???$\%$ and overall purity is ???$\%$. The priority of the selection was to maximize purity and efficiency in the low-energy region (see fig ???). The effectiveness of this selection can not by explained by distributions, efficiencies, and purities alone; it relies on the constraining power. See sec \ref{ssec:finalSensitivityCalc} for a technical discussion of the incorporation of this selection into the final analysis sensitivity.
+\par The overall efficiency of this selection, for Run1, is shown in Fig. \ref{fig:NuMUCCsel:ryan:Run1Efficiency}. The effectiveness of this selection can not by explained by distributions and efficiencies alone; it relies on the constraining power. See sec \ref{ssec:finalSensitivityCalc} for a technical discussion of the incorporation of this selection into the final analysis sensitivity.
 
 \begin{figure}[H] 
 \begin{center}
     \begin{subfigure}[b]{0.3\textwidth}
     \centering
-    \includegraphics[width=1.00\textwidth]{NuMuCCsel/Images/Ryan/Run1_trklen_justSlice.jpg}
+    \includegraphics[width=1.00\textwidth]{NuMuCCsel/Images/Ryan/Run1_trklen_SliceID.jpg}
     \caption{\label{fig:NuMUCCsel:ryan:trklenSliceID} after SliceID}
     \end{subfigure}
     \begin{subfigure}[b]{0.3\textwidth}
     \centering
-    \includegraphics[width=1.00\textwidth]{NuMuCCsel/Images/Ryan/Run1_trklen_justEvtsel.jpg}
+    \includegraphics[width=1.00\textwidth]{NuMuCCsel/Images/Ryan/Run1_trklen_EvtSel.jpg}
     \caption{\label{fig:NuMUCCsel:ryan:trklenEvt} after event-level preselection}
     \end{subfigure} %\newline
     \begin{subfigure}[b]{0.3\textwidth}
@@ -373,12 +383,12 @@ Comparison between the calorimetry-only (left panels) and the range-based (right
 \begin{center}
     \begin{subfigure}[b]{0.3\textwidth}
     \centering
-    \includegraphics[width=1.00\textwidth]{NuMuCCsel/Images/Ryan/Run1_costheta_justSlice.jpg}
+    \includegraphics[width=1.00\textwidth]{NuMuCCsel/Images/Ryan/Run1_costheta_SliceID.jpg}
     \caption{\label{fig:NuMUCCsel:ryan:trklenSliceID} after SliceID}
     \end{subfigure}
     \begin{subfigure}[b]{0.3\textwidth}
     \centering
-    \includegraphics[width=1.00\textwidth]{NuMuCCsel/Images/Ryan/Run1_costheta_justEvtsel.jpg}
+    \includegraphics[width=1.00\textwidth]{NuMuCCsel/Images/Ryan/Run1_costheta_EvtSel.jpg}
     \caption{\label{fig:NuMUCCsel:ryan:trklenEvt} after event-level preselection}
     \end{subfigure} %\newline
     \begin{subfigure}[b]{0.3\textwidth}
@@ -387,6 +397,27 @@ Comparison between the calorimetry-only (left panels) and the range-based (right
     \caption{\label{fig:NuMUCCsel:ryan:trklenFull} With muon-tagging}
     \end{subfigure}
 \caption{Cosine of the track angle of muon candidates with respect to the beam-direction. Just statistical uncertainties shown.}
+\end{center}
+\end{figure}
+
+\begin{figure}[H] 
+\begin{center}
+    \begin{subfigure}[b]{0.3\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{NuMuCCsel/Images/Ryan/Run1_recoErange_SliceID.jpg}
+    \caption{\label{fig:NuMUCCsel:ryan:trklenSliceID} after SliceID}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.3\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{NuMuCCsel/Images/Ryan/Run1_recoErange_EvtSel.jpg}
+    \caption{\label{fig:NuMUCCsel:ryan:trklenEvt} after event-level preselection}
+    \end{subfigure} %\newline
+    \begin{subfigure}[b]{0.3\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{NuMuCCsel/Images/Ryan/Run1_recoErange_fullSel.jpg}
+    \caption{\label{fig:NuMUCCsel:ryan:trklenFull} With muon-tagging}
+    \end{subfigure}
+\caption{Reconstructed energy of the slice. This calculation is made from combining range-based energy calculations on PFParticles.}
 \end{center}
 \end{figure}
 
@@ -407,6 +438,11 @@ Comparison between the calorimetry-only (left panels) and the range-based (right
 \end{center}
 \end{figure}
 
-\textcolor{red}{Missing data-mc plot of reconstructed range-based neutrino energy.}
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.5]{NuMuCCsel/Images/Ryan/finalEfficiency.jpg}
+    \caption{Efficiency of this full selection for Run1 $4E19$ POT.}
+    \label{fig:NuMUCCsel:ryan:Run1Efficiency}
+\end{figure}
 
 \textcolor{blue}{The selection described in this section shows a good level of data-simulation agreement for both Run 1 and Run 3, and is highly enriched in $\nu_{\mu}$ events which are reconstructed with very good energy resolution. \emph{Events from this selection are to be used to constrain $\nu_e$ flux and cross-section modeling uncertainties. While this excercise has not been fully performed at the current time, it is expected to be completed by the Feb. 2020 collaboration meeting.}}
