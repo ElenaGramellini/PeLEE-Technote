@@ -95,62 +95,90 @@ Category & Variable Name & Description  \\
 \end{comment}
 \subsubsection{Signal Definition}
 \label{sssec:NuMUCCsel:constr:signaldef}
-\par A $\nu_{\mu}$ CC event is identified by the presence of one muon candidate originating from inside the fiducial volume of the detector. Additional tracks and showers may accompany the muon candidate; these particles assist in the neutrino event reconstruction and energy calculation but are not necessary in the inclusive selection. Future studies of the $\nu_{\mu}$ selection may require the presence of proton candidates to further constrain the interaction models.
+\par A $\nu_{\mu}$ CC event is identified by the presence of one muon candidate originating from inside the fiducial volume of the detector. Additional tracks and showers may accompany the muon candidate; these particles assist in the neutrino event reconstruction and energy calculation but are not a requirement in the inclusive selection. Future studies of the $\nu_{\mu}$ selection may require the presence of proton candidates to further constrain the interaction models.
 
 \subsubsection{Event Preselection}
 \label{sssec:NuMUCCsel:constr:preselec}
 
 \par The selection of $\nu_{\mu}$ events is built from the groundwork of the SliceID tool (sec. \ref{sec:sliceID:SliceID}) and a combination of cuts on event-level and track-level variables. The cuts described in this section are chosen to reduce cosmic and dirt backgrounds and select slices that are $\nu_{\mu}$-like. The methodology of this selection is similar to the selections in Sec. \ref{sec:nueselection} where first, the common SliceID filter is applied; next, event-level cuts are applied to select $\nu_{\mu}$-like events; finally, track-level cuts are applied to screen for muon-like candidates. The muon-candidate selection is described in sec \ref{sssec:NuMUCCsel:constr:muonsel}.
 
-\par The requirement that the reconstructed vertex be contained inside the fiducial volume and that the slice have a sufficiently high topological score favor $\nu_{\mu}$ CC events and disfavor activity that is cosmogenic or dirt-like. Those cuts, specifically, are:
+\par Table \ref{tab:1muNp:presel} summarizes the preselection requirements for this $\nu_{\mu}$ CC inclusive sample. The requirement that the reconstructed vertex be contained inside the fiducial volume and that the slice has a sufficiently high topological score favors $\nu_{\mu}$ CC events and disfavors cosmogenic or dirt-like activity. The final cut on the $z$ coordinate is to eliminate events that exist in the region of `dead wires' in the MicroBooNE detector -- a common practice within the collaboration. Run 3 has the additional power to leverage the CRT system to further limit cosmogenic background. Given that this selection targets contained events, the fact that $\nu_{\mu}$ interactions can lead to hits in the CRT does not hamper the analysis' performance.
 
-\textbf{Runs 1+3:}
-\begin{itemize}
-    \item \emph{nslice} = 1.
-    \item \emph{n\_tracks\_contained} $>$= 1.
-    \item \emph{reco\_nu\_vtx\_sce\_x} $\in$ [5,251] cm.
-    \item \emph{reco\_nu\_vtx\_sce\_y} $\in$ [-110,110] cm.
-    \item \emph{reco\_nu\_vtx\_sce\_z} $\in$ [20,986] cm.
-    \item \emph{topological\_score} $>$ 0.06.
-    \item \emph{reco\_nu\_vtx\_sce\_z} $\not\in$ [675,775] cm.
-\end{itemize}
 
-\par \noindent The final cut on the $z$ coordinate is to eliminate events that exist in the region of `dead wires' in the MicroBooNE detector, this is common practice within the collaboration.
+\begin{table}[h!]
+\centering
+\setlength{\tabcolsep}{10pt}
+\renewcommand{\arraystretch}{1.25}
+ \begin{tabular}{| c | c |} 
+ \hline
+ Cut goal & Cut definition \\
+ \hline\hline
+\multirow{1}{*}{ Cosmic rejection } & nslice = 1 \\
+ \hline
+\multirow{2}{*}{ Cosmic rejection (Run3) } & \emph{CRT Veto} != 1 or \emph{crthitpe} $<$ 100\\
+& \emph{closestNuCosmicDist} $>$ 5 cm\\
+ \hline
+\multirow{1}{*}{Signal~topology} & topological\_score $>$ 0.06 \\
+ \hline
+Containment & contained\_fraction $>$ 0.9 \\
+ \hline
+ \multirow{4}{*}{Fiducial Volume} & \emph{reco\_nu\_vtx\_sce\_x} $\in$ [5,251] cm \\ &
+\emph{reco\_nu\_vtx\_sce\_y} $\in$ [-110,110] cm \\ &
+\emph{reco\_nu\_vtx\_sce\_z} $\in$ [20,986] cm \\ &
+\emph{reco\_nu\_vtx\_sce\_z} $\not\in$ [675,775] cm.\\
+ \hline
+ \end{tabular}
+ \caption{\label{tab:1muNp:presel} Preselection requirements for the $\nu_\mu$ constraining selection.}
+\end{table}
 
-\par \noindent Run 3 has the additional power to leverage the CRT system to further limit cosmic contamination in the signal. Given that this selection targets contained events, the fact that $\nu_{\mu}$ interactions can lead to hits in the CRT does not hamper the analysis' performance.
 
-\textbf{Run 3 only:}
-\begin{itemize}
-    \item \emph{CRT Veto} != 1 or \emph{crthitpe} $<$ 100
-    \item \emph{closestNuCosmicDist} $>$ 5 cm
-\end{itemize}
+
 
 \subsubsection{Muon Selection}
 \label{sssec:NuMUCCsel:constr:muonsel}
 
-\par After the event-level cuts are applied, the tracks in the slice are further analyzed to identify muon candidates. At least one reconstructed track in the event must satisfy all these criteria for the event to pass the selection. If more than one track passes this requirement, then the longest is taken as the muon candidate. Of the muon candidates that pass this selection, $\approx 94\%$ are, in simulation, correctly tagged muons from $\nu_{\mu}$ CC interactions.
+\par After the event-level cuts are applied, the tracks in the slice are further analyzed to identify muon candidates. At least one reconstructed track in the event must satisfy all the criteria listed in table \ref{tab:findthemuon} for the event to pass the selection. If more than one track passes this requirement, then the longest is taken as the muon candidate. Of the muon candidates that pass this selection, $\approx 94\%$ are, in simulation, correctly tagged muons from $\nu_{\mu}$ CC interactions.
 
-\begin{itemize}
-    \item \emph{trk\_sce\_start\_x} $\in$ [5,251] cm.
-    \item \emph{trk\_sce\_start\_y} $\in$ [-110,110] cm.
-    \item \emph{trk\_sce\_start\_z} $\in$ [20,986] cm.
-    \item \emph{trk\_sce\_end\_x} $\in$ [5,251] cm.
-    \item \emph{trk\_sce\_end\_y} $\in$ [-110,110] cm.
-    \item \emph{trk\_sce\_end\_z} $\in$ [20,986] cm.
-    \item \emph{trk\_llr\_pid\_score} $>$ 0.2.
-    \item \emph{trk\_trk\_score} $>$ 0.8.
-    \item \emph{trk\_trk\_length} $>$ 10 cm.
-    \item \emph{trk\_distance} $<$ 4 cm.
-    \item \emph{pfp\_generation} = 2.
-\end{itemize}
+
+
+\begin{table}[h!]
+\centering
+\setlength{\tabcolsep}{10pt}
+\renewcommand{\arraystretch}{1.25}
+ \begin{tabular}{| c | c |} 
+ \hline
+ Cut goal & Cut definition \\
+ \hline\hline
+\multirow{6}{*}{ Containment } &
+     \emph{trk\_sce\_start\_x} $\in$ [5,251] cm. \\&
+     \emph{trk\_sce\_start\_y} $\in$ [-110,110] cm.\\&
+     \emph{trk\_sce\_start\_z} $\in$ [20,986] cm.\\&
+     \emph{trk\_sce\_end\_x} $\in$ [5,251] cm.\\&
+     \emph{trk\_sce\_end\_y} $\in$ [-110,110] cm.\\&
+     \emph{trk\_sce\_end\_z} $\in$ [20,986] cm.\\
+   \hline
+ \multirow{2}{*}{ Track Id } &
+     \emph{trk\_llr\_pid\_score} $>$ 0.2.\\&
+     \emph{trk\_trk\_length} $>$ 10 cm.\\
+     \hline
+ \multirow{1}{*}{ Track-Shower Separation } &     
+          \emph{trk\_trk\_score} $>$ 0.8.\\ 
+     \hline
+ \multirow{1}{*}{ No-Reinteraction Requirement } &     
+                    \emph{pfp\_generation} = 2.\\
+  \hline          
+ \multirow{1}{*}{ Cosmic Rejection } & \emph{trk\_distance} $<$ 4 cm.\\
+ \hline
+ \end{tabular}
+ \caption{\label{tab:findthemuon} Requirements for $\mu$ identification.}
+\end{table}
+
+
 
 \par \noindent The cuts made on the start and end points of the reconstructed tracks require that the track is fully contained inside the fiducial volume of the detector. This containment cut further reduces the primary background for this selection are is cosmic muons, originating from outside the detector. The containment requirement also motivates the use of range-based momentum calculations on all the muon candidates. Range-based momentum has been shown to have a high resolution. \emph{Consistency between range-based and the independently calculated MCS-based momentum will be used in a future iteration of this analysis as an additional handle to increase purity (see figs \ref{fig:numusel:momres} and \ref{fig:NuMUCCsel:ryan:PQuality})}. The containment condition rejects many higher-energy $\nu_{\mu}$ events that might leave the detector, but it has a high efficiency in the lower energies.
-
-\par The cut on the $trk_distance$ requires that the reconstructed track be sufficiently close to the interaction vertex, this removes many in-time cosmic muons that are reconstructed as part of the event.
-
-\par The cut on the log likelihood ratio pid score is to separate the muons from the protons among the PFParticle tracks in the passing slices. The track length cut further separates the muons from the protons which tend to have shorter track lengths. 
-
-\par The track score cut ensures that the selected tracks are particularly track-like and this removes many \textcolor{red}{particularly high energy (unclear why this is the case)}, track-like showers from the selection. Finally the PFParticle generation cut ensures that Pandora recognizes that the track is produced directly at the neutrino interaction vertex, and not as a secondary particle (i.e. in a $\pi \rightarrow \mu$ decay or re-interaction). 
+The cut on the log likelihood ratio pid score is to separate the muons from the protons among the PFParticle tracks in the passing slices. The track length cut further separates the muons from the protons which tend to have shorter track lengths. 
+The track score cut ensures that the selected tracks are particularly track-like and this removes many track-like showers from the selection.  The PFParticle generation cut ensures that Pandora recognizes that the track is produced directly at the neutrino interaction vertex, and not as a secondary particle (i.e. in a $\pi \rightarrow \mu$ decay or re-interaction). 
+The cut on the trk\_distance requires that the reconstructed track be sufficiently close to the interaction vertex, this removes many in-time cosmic muons that are reconstructed as part of the event.
 
 \begin{figure}
     \centering
@@ -187,7 +215,7 @@ Category & Variable Name & Description  \\
 \end{center}
 \end{figure}
 
-
+\begin{comment}
 \subsubsection{Determination of Fiducial Volume}
 \label{sssec:NuMUCCsel:constr:FV}
 
@@ -199,7 +227,7 @@ Category & Variable Name & Description  \\
     \item z $\in$ [20,986]
 \end{itemize}
 
-\begin{comment}
+
 \par The fiducial volume in this section differs slightly from other fiducial volumes, even in this analysis. Because the purpose of this selection is to leverage the high-statistics of the $\nu_{\mu}$ composition of the BNB, the fiducial volume is taken to be as large as possible while retaining high purity and efficiency at low-energies.
 
 \par With the exception of the downstream fiducial volume face, all the fiducial volume boundaries are chosen in order to retain as many signal events as possible. The SCE-correction procedure is quite effective and can recover the true value give or take a few centimeters, with slightly less resolution near the boundaries. The resolution is shown in fig \ref{fig:NuMUCCsel:ryan:sceres_y} for the x-direction; the performance is similar in the x, y, and z directions. See fig \ref{fig:NuMUCCsel:ryan:FVhighy} for an example of signal purity near a boundary using the spacecharge-corrected coordinates. Together, the spacecharge boundary that was found to maintain the highest purity is defined by
