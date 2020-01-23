@@ -23,11 +23,12 @@ The work presented in this note relies on the Pandora approach for event reconst
 \end{center}
 \end{figure}
 
-%\subsection{Slicing, Clustering and Vertexing \textcolor{green}{Wouter ... P.R. Elena}}
+%\subsection{Slicing, Clustering and Vertexing}
 \subsection{Pandora Slicing, Clustering and Vertexing}
-The creation of a ``slice" is the first step of the Pandora processing. A slice is a collection of distinct reconstructed particles which belong to the same interaction (such as a cosmic muon and its Michel electron, or the muon and proton in a 1$\mu$1$p$ neutrino interaction). To produce slices, the Pandora Cosmic Pattern Recognition is first run over all hits, aiming to construct muon tracks and associated $\delta$-rays and Michel electrons under the cosmic hypothesis (fig.~\ref{fig:slcieid:00}). At this stage, obvious cosmic activity (through-going or out-of-time muons) is tagged using geometric information and discarded (fig.~\ref{fig:slcieid:01}). The remaining hit collection is used as input to the Pandora Consolidated Pattern Recognition which reconstruct slices under the neutrino hypothesis. Each slice is now reconstructed both under the cosmic hypothesis and the neutrino hypothesis. A typical event contains approximately 5 slices. 
+The creation of a ``slice" is the first step of the Pandora processing. A slice is a collection of distinct reconstructed particles which belong to the same interaction (such as a cosmic muon and its Michel electron, or the muon and proton in a 1$\mu$1$p$ neutrino interaction). To produce slices, the Pandora Cosmic Pattern Recognition is first run over all hits, aiming to construct muon tracks and associated $\delta$-rays and Michel electrons under the cosmic hypothesis (fig.~\ref{fig:slcieid:00}). At this stage, obvious cosmic activity (through-going or out-of-time muons) is tagged using geometric information and discarded (fig.~\ref{fig:slcieid:01}). The remaining hit collection is used as input to the Pandora %Consolidated 
+Pattern Recognition which reconstruct slices under the neutrino hypothesis. Each slice is now reconstructed both under the cosmic hypothesis and the neutrino hypothesis. A typical event contains approximately 5 slices. 
 
-%\subsubsection{Clustering and Vertex Finding \textcolor{green}{Wouter}} 
+%\subsubsection{Clustering and Vertex Finding } 
 \par In order to reconstruct the interactions in 3D, Pandora needs to match the information from at least two different views and create a neutrino vertex. Pandora computes the 2D clustering on the hits in each slice and in each plane separately. Then, a number of 3D candidate vertices is created by finding positions that project down on to the ends of the available 2D clusters. All the possible vertex candidates are fed into the support vector machine (SVM) vertex selection, and the candidate with the highest SVM score is chosen. This 3D vertex is used to split any existing clusters that straddle the vertex. Then, the cluster matching algorithms are run, where the clusters are compared between views and modified to improve the matching.
 
 \subsection{Pandora SliceID: Cosmic Removal Via Topology and Scintillation Light}
@@ -58,8 +59,8 @@ If the slice with the largest topological score passes the optical pre-selection
 The performance of the \texttt{SliceID} for simulated neutrino events is given in~\cref{fig:sliceid}.
 Integrated over all final states and neutrino energies, the efficiency is:
 \begin{itemize}
-    \item $\nu_\mu$ charged-current: \SI{83.0}{\%}
-    \item $\nu_e$ charged-current: \SI{83.3}{\%}
+    \item[-] $\nu_\mu$ charged-current: \SI{83.0}{\%}
+    \item[-] $\nu_e$ charged-current: \SI{83.3}{\%}
 \end{itemize}
 Further details on the \texttt{SliceID} tool are available in DocDB 23854 and 22519. Additional documentation for this tool is in preparation.
 

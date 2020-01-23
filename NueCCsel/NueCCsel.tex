@@ -40,14 +40,14 @@ After the pre-selection cuts, the $\nu_e$ CC purity is still low. Figure \ref{fi
 \cref{fig:e_cand_Calo} shows the agreement in the kinematics of the electron candidate shower at the pre-selection stage. \emph{As seen in several other Data-MC comparisons of calorimetry variables throughout this note, a slight disagreement is found in the shower candidate energy, to be re-evaluated after the planned MC re-calibration.}
 
 
-\begin{figure}[]
+\begin{figure}[H]
     \centering
     \includegraphics[height=4.9cm]{NueCCsel/Images/run1/pre_angles.pdf}
     \caption{MC-Data comparison of the angles of the electron candidate after the pre-selection cuts.}
     \label{fig:pre_shower_E_pdg}
 \end{figure}
 
-\begin{figure}[]
+\begin{figure}[H]
     \centering
     \includegraphics[height=4.9cm]{NueCCsel/Images/run1/e_cand_dedxColl}
      \includegraphics[height=4.9cm]{NueCCsel/Images/run1/pre_shower_E_pdg.pdf}
@@ -58,9 +58,10 @@ After the pre-selection cuts, the $\nu_e$ CC purity is still low. Figure \ref{fi
 
 
 \subsubsection{Electron Identification}
-After the pre-selection, the object that is tagged as electron candidate is still not an neutrino electron in the dominant fraction of events. The ratio photons to electrons is approximately 20 to 1 and photon-electron separation is therefore the main objective of electron identification. The identification is done using a boosted decision tree, trained on variables characterizing the particle. 
+After the pre-selection, the object that is tagged as the electron candidate is still not a neutrino-induced electron in the dominant fraction of events. The ratio of photons to electrons is approximately 20 to 1 and photon-electron separation is therefore the main objective of electron identification. The identification is done using a boosted decision tree, trained on variables characterizing the particle. 
 
-Even if a number of variables contribute to the BDT (see backup \ref{sec:datamc:nueccinclusive}),  we highlight here some distributions which show the cleanest e/$\gamma$: separation: the  d$E$/d$x$ distribution on  collection plane (left side of Figures \ref{fig:e_cand_Calo}), the shower vertex distance and average molier radius (\cref{fig:e_cand_dist} left and center) . The response of the BDT is shown in the right panel of \cref{fig:e_cand_dist}. The complete list of variables used to train the BDT for electron identification is: \emph{shower\_vtx\_dist}, \emph{nObjHits\_Y},  \emph{shr\_tkfit\_2cm\_dedx\_Y},  \emph{shr\_tkfit\_2cm\_dedx\_ALL},  \emph{shr\_tkfit\_gap10\_dedx\_Y}, \emph{shrmoliereavg}, \emph{secondshower\_Y\_vtxdist}, \emph{subcluster}, \emph{ismerged}.
+Even if a number of variables contribute to the BDT (see backup \ref{sec:datamc:nueccinclusive}),  we highlight here some distributions which show the cleanest e/$\gamma$: separation: the  d$E$/d$x$ distribution on  collection plane (left side of Figures \ref{fig:e_cand_Calo}), the shower vertex distance and average molier radius (\cref{fig:e_cand_dist} left and center) . The response of the BDT is shown in the right panel of \cref{fig:e_cand_dist}. The complete list of variables used to train the BDT for electron identification is: \texttt{shower\_vtx\_dist}, \texttt{nObjHits\_Y}, \texttt{shr\_tkfit\_2cm\_dedx\_Y}, \texttt{shr\_tkfit\_2cm\_dedx\_ALL}, \texttt{shr\_tkfit\_gap10\_dedx\_Y}, \texttt{shrmoliereavg}, \texttt{secondshower\_Y\_vtxdist},
+\texttt{subcluster}, \texttt{ismerged}.
 
 \begin{comment}
  Those variables are listed in \cref{tab:nuecc:e_bdt}.
@@ -119,14 +120,15 @@ Reconstruction quality & \makecell{\textit{ismerged} \\ Checks if a proton is me
 \subsubsection{Other Daughters Identification}
 Besides the electron candidate, the slice includes a number of particles which can be leveraged to improve background rejection. We classify each PFParticle using the ``other-daughters-BDT". This BDT is trained on three labeled categories: \emph{signal-like}, \emph{neutral}, \emph{background-like}. The signal-like particles are those PFParticles that are backtracked to a proton or a split-off part of the electron associated to $\nu_e$ interactions: we want to keep events with a high content of signal-like particles. The background-like particles are those PFParticles that are backtracked to a simulated muon or cosmic activity.
 The ``neutral" label accounts for tricker cases: this label is given to PFParticles backtracked to charged pions or photons. Charged pions should be allowed in a $\nu_e$ CC search, but the mis-identification rate between charged pions and muons is large in LArTPCs. Photons coming from neutral pions are allowed in a  $\nu_e$ CC inclusive search, but they can also constitute a pernicious background.
-emph
-The input variables of the other-daughters-BDT are:  \emph{trk\_llr\_pid\_score},\emph{trk\_distance},\emph{trk\_score},\emph{pfp\_generation},\emph{Number of daughters of the particle}.
+
+The input variables of the other-daughters-BDT are:  \texttt{trk\_llr\_pid\_score}, \texttt{trk\_distance}, \texttt{trk\_score}, 
+\texttt{pfp\_generation}, \texttt{Number of daughters of the particle}.
 The three most important distributions of the variables used are given in \cref{fig:pre_daughter_1}.  
 
 
 The response of the other-daughters-BDT is a score assigned to each PFParticle, whose distribution is shown in \cref{fig:pre_daughter_score}: high scores classify the PFParticles as signal-like. 
 
-For each event, we create two important variables that inform the event selection starting from this BDT output:  \emph{otherD\_MeanScore} and \emph{otherD\_LowestScore}.  The variables \emph{otherD\_MeanScore} and   \emph{otherD\_LowestScore} are the average and the lowest other-daughters-BDT score calculated using all the PFParticles in the event that are not the electron. Both the  \emph{otherD\_MeanScore} and  \emph{otherD\_LowestScore}  is assigned the default value 1 in the case the event is made of just the single electron shower.
+For each event, we create two important variables that inform the event selection starting from this BDT output:  \texttt{otherD\_MeanScore} and \texttt{otherD\_LowestScore}.  The variables \texttt{otherD\_MeanScore} and   \texttt{otherD\_LowestScore} are the average and the lowest other-daughters-BDT score calculated using all the PFParticles in the event that are not the electron. Both the  \texttt{otherD\_MeanScore} and  \texttt{otherD\_LowestScore}  is assigned the default value 1 in the case the event is made of just the single electron shower.
 
 
 
@@ -147,13 +149,13 @@ For each event, we create two important variables that inform the event selectio
 %    \label{fig:pre_daughter_2}
 %\end{figure}
 
-\begin{figure}
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{NueCCsel/Images/run1/pre_daughter_score.pdf}
     \caption{BDT response to classify the non-electron candidate daughters in the event. The cosmogenic particles, together with the muons and photons have a low response, indicating higher likeliness to be background. The protons have a high response on the right.}
     \label{fig:pre_daughter_score}
 \end{figure}
-\clearpage
+%\clearpage
 
 \subsubsection{Event Selection}
 We construct the final event classification BDT building on the particle identification performed in the two previous sections. For this final BDT, the dominating variable is the electron identification response but the full list of variables is, in sequence of importance:
@@ -184,7 +186,7 @@ The response of the event classification is given in the left panel \cref{fig:pr
 %    \label{fig:bdt_2}
 %\end{figure}
 
-\begin{figure}
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.445\textwidth]{NueCCsel/Images/run1/pre_event_score.pdf}
     \includegraphics[width=0.545\textwidth]{NueCCsel/Images/run1/nue_shower_energy_y.pdf}
@@ -193,7 +195,7 @@ The response of the event classification is given in the left panel \cref{fig:pr
 \end{figure}
 
 
-\begin{figure}
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{NueCCsel/Images/run1/efficiency_all.pdf}
     \caption{Efficiency of the different stages in the selection in function of the true neutrino energy.}

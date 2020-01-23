@@ -15,29 +15,29 @@ The second selection (Section \ref{ssec:NuMUCCsel:INC}) provides a pure, high-st
 \begin{table}[ht]
 \caption{\label{tab:numuvariableSummary} Summary of the definition for the variables used in the $\nu_{\mu}$ selections.}
 \centering
-\begin{tabular}{ m{0.08\textwidth} | m{0.25\textwidth} | m{0.55\textwidth}  }
+\begin{tabular}{ m{0.07\textwidth} | m{0.26\textwidth} | m{0.55\textwidth}  }
 Category & Variable Name & Description  \\
 \hline
 
-\multicolumn{1}{l|}{} & \emph{nslice} &  Number of neutrino slices identified by the \emph{SliceID}. Values are  0 or 1.\\  \cline{2-3}
-\multicolumn{1}{l|}{} & \emph{slpdg} &  PDG code of the event as assigned by Pandora, 12 if the object with the most hits over all planes is shower-like, 14 if track-like.\\  \cline{2-3}
-\multicolumn{1}{l|}{} & \emph{all\_\{start,end\}\_contained} &  The start/end points of all PFParticles are volume defined with borders: \SI{5}{\cm} in $x$ and \SI{6}{\cm} $y$ and \SI{10}{\cm} $z$.\\  \cline{2-3}
-\multicolumn{1}{l|}{} & \emph{slpdg} &  PDG code of the event as assigned by Pandora, 12 if the object with the most hits over all planes is shower-like, 14 if track-like.\\  \cline{2-3}
-\multicolumn{1}{l|}{} & \emph{n\_tracks\_contained} &  number of tracks fully contained in the fiducial volume.\\  \cline{2-3}
-\multicolumn{1}{l|}{} & \emph{reco\_nu\_vtx\_sce\_\{x,y,z\}} & Reconstructed neutrino interaction vertex in (x,y,z) coordinates. The space charged correction is applied.  \\  \cline{2-3}
-\parbox[t]{2mm}{\multirow{4}{*}{\rotatebox[origin=c]{90}{Slice}}} & \emph{hits\_ratio} & Ratio between hits from showers and total number of hits in the slice. \\  \cline{2-3}
-\multicolumn{1}{l|}{} & \emph{CosmicIP} & Closest distance between shower start and space points associated to tracks flagged as cosmics. \\  \cline{2-3}
-\multicolumn{1}{l|}{} & \emph{crtveto} & Boolean variable checking if the event passes the CRT veto. \\  \cline{2-3}
-\multicolumn{1}{l|}{} & \emph{\_closestNuCosmicDist} &  3D distance between the reconstructed neutrino vertex and the closest CRT-tagged cosmic track. \\  \cline{2-3}
+\multicolumn{1}{l|}{} & \texttt{nslice} &  Number of neutrino slices identified by the \texttt{SliceID}. Values are  0 or 1.\\  \cline{2-3}
+\multicolumn{1}{l|}{} & \texttt{slpdg} &  PDG code of the event as assigned by Pandora, 12 if the object with the most hits over all planes is shower-like, 14 if track-like.\\  \cline{2-3}
+\multicolumn{1}{l|}{} & \texttt{all\_\{start,end\}\_contained} &  The start/end points of all PFParticles are volume defined with borders: \SI{5}{\cm} in $x$ and \SI{6}{\cm} $y$ and \SI{10}{\cm} $z$.\\  \cline{2-3}
+\multicolumn{1}{l|}{} & \texttt{slpdg} &  PDG code of the event as assigned by Pandora, 12 if the object with the most hits over all planes is shower-like, 14 if track-like.\\  \cline{2-3}
+\multicolumn{1}{l|}{} & \texttt{n\_tracks\_contained} &  number of tracks fully contained in the fiducial volume.\\  \cline{2-3}
+\multicolumn{1}{l|}{} & \texttt{reco\_nu\_vtx\_sce\_\{x,y,z\}} & Reconstructed neutrino interaction vertex in (x,y,z) coordinates. The space charged correction is applied.  \\  \cline{2-3}
+\parbox[t]{2mm}{\multirow{4}{*}{\rotatebox[origin=c]{90}{Slice}}} & \texttt{hits\_ratio} & Ratio between hits from showers and total number of hits in the slice. \\  \cline{2-3}
+\multicolumn{1}{l|}{} & \texttt{CosmicIP} & Closest distance between shower start and space points associated to tracks flagged as cosmics. \\  \cline{2-3}
+\multicolumn{1}{l|}{} & \texttt{crtveto} & Boolean variable checking if the event passes the CRT veto. \\  \cline{2-3}
+\multicolumn{1}{l|}{} & \texttt{\_closestNuCosmicDist} &  3D distance between the reconstructed neutrino vertex and the closest CRT-tagged cosmic track. \\  \cline{2-3}
 \hline
 
 
-\multicolumn{1}{l|}{} & \emph{trk\_sce\_\{start,end\}\_\{x,y,z\}} &  Reconstructed, spacecharge-corrected start/end-points for the tracks.\\  \cline{2-3}
-\multicolumn{1}{l|}{} & \emph{trk\_llr\_pid\_score} &  The log likelihood ratio particle identification score (see sec. \ref{subsec:loglikelihoodpid}). This variable has strong muon-proton discriminating power (see fig. \ref{fig:numu:topo_pid}).\\  \cline{2-3}
-\multicolumn{1}{l|}{} & \emph{trk\_score} & A machine-learned quantity that describes how `track-like' the reconstructed object is (possible values between 0 and 1). \\  \cline{2-3}
-\parbox[t]{2mm}{\multirow{4}{*}{\rotatebox[origin=c]{90}{Track}}} & \emph{trk\_len} & he length of the reconstructed track (in cm). \\  \cline{2-3}
-\multicolumn{1}{l|}{} & \emph{trk\_distance} & The distance from the start-point of the reconstructed track to the reconstructed neutrino vertex (in cm). \\  \cline{2-3}
-\multicolumn{1}{l|}{} & \emph{pfp\_generation} &  The generation of the PFParticle according to Pandora: the neutrino has generation 1, it's direct daughters 2, and further decay products 3 or higher.\\  \cline{2-3}
+\multicolumn{1}{l|}{} & \texttt{trk\_sce\_\{start,end\}\_\{x,y,z\}} &  Reconstructed, spacecharge-corrected start/end-points for the tracks.\\  \cline{2-3}
+\multicolumn{1}{l|}{} & \texttt{trk\_llr\_pid\_score} &  The log likelihood ratio particle identification score (see sec. \ref{subsec:loglikelihoodpid}). This variable has strong muon-proton discriminating power (see fig. \ref{fig:numu:topo_pid}).\\  \cline{2-3}
+\multicolumn{1}{l|}{} & \texttt{trk\_score} & A machine-learned quantity that describes how `track-like' the reconstructed object is (possible values between 0 and 1). \\  \cline{2-3}
+\parbox[t]{2mm}{\multirow{4}{*}{\rotatebox[origin=c]{90}{Track}}} & \texttt{trk\_len} & he length of the reconstructed track (in cm). \\  \cline{2-3}
+\multicolumn{1}{l|}{} & \texttt{trk\_distance} & The distance from the start-point of the reconstructed track to the reconstructed neutrino vertex (in cm). \\  \cline{2-3}
+\multicolumn{1}{l|}{} & \texttt{pfp\_generation} &  The generation of the PFParticle according to Pandora: the neutrino has generation 1, it's direct daughters 2, and further decay products 3 or higher.\\  \cline{2-3}
 \hline
 
 \end{tabular}
@@ -48,21 +48,21 @@ Category & Variable Name & Description  \\
 
 \par \noindent \textbf{Slice variables}: These variables generally describe the reconstructed neutrino interaction, i.e. the confluence of data gathered from all the PFParticles in the slice.
 \begin{itemize}
-    \item \emph{nslice}: number of neutrino slices identified by the SliceID (possible values are 0 or 1).
-    \item \emph{n\_tracks\_contained}: number of tracks fully contained in the fiducial volume.
-    \item \emph{reco\_nu\_vtx\_sce\_\{x,y,z\}}: Reconstructed, spacecharge-corrected neutrino interaction vertices in (x,y,z) coordinates (see fig. \ref{fig:numu_vtx}.
-    \item \emph{topological\_score}: A machine-learned quantity that reflects the complexity and directionality of observable slice quantities. This variable has strong discriminating power between signal and cosmic-background (see \ref{fig:numu_topo_pid} (possible values are between 0 and 1).
-    \item \emph{CRT Veto and Distance Tagger}: Tools provided by the cosmic ray tagger (see sec. \ref{sec:sliceID:CRT}).
+    \item \texttt{nslice}: number of neutrino slices identified by the SliceID (possible values are 0 or 1).
+    \item \texttt{n\_tracks\_contained}: number of tracks fully contained in the fiducial volume.
+    \item \texttt{reco\_nu\_vtx\_sce\_\{x,y,z\}}: Reconstructed, spacecharge-corrected neutrino interaction vertices in (x,y,z) coordinates (see fig. \ref{fig:numu_vtx}.
+    \item \texttt{topological\_score}: A machine-learned quantity that reflects the complexity and directionality of observable slice quantities. This variable has strong discriminating power between signal and cosmic-background (see \ref{fig:numu_topo_pid} (possible values are between 0 and 1).
+    \item \texttt{CRT Veto and Distance Tagger}: Tools provided by the cosmic ray tagger (see sec. \ref{sec:sliceID:CRT}).
 \end{itemize}
 
 \par \noindent \textbf{Track variables}: These variables specifically describe the reconstructed PFParticles; in interest to this selection are reconstructed track-like objects. 
 \begin{itemize}
-    \item \emph{trk\_sce\_\{start,end\}\_\{x,y,z\}}: Reconstructed, spacecharge-corrected start/end-points for the tracks.
-    \item \emph{trk\_llr\_pid\_score}: The log likelihood ratio particle identification score (see sec. \ref{subsec:loglikelihoodpid}). This variable has strong muon-proton discriminating power (see fig. \ref{fig:numu_topo_pid}).
-    \item \emph{trk\_score}: A machine-learned quantity that describes how `track-like' the reconstructed object is (possible values between 0 and 1).
-    \item \emph{trk\_len}: The length of the reconstructed track (in cm).
-    \item \emph{trk\_distance}: The distance from the start-point of the reconstructed track to the reconstructed neutrino vertex (in cm).
-    \item \emph{pfp\_generation}: The generation of the PFParticle according to Pandora, i.e. the neutrino has generation 1, its direct daughters generation 2 and further decay products have generation 3.
+    \item \texttt{trk\_sce\_\{start,end\}\_\{x,y,z\}}: Reconstructed, spacecharge-corrected start/end-points for the tracks.
+    \item \texttt{trk\_llr\_pid\_score}: The log likelihood ratio particle identification score (see sec. \ref{subsec:loglikelihoodpid}). This variable has strong muon-proton discriminating power (see fig. \ref{fig:numu_topo_pid}).
+    \item \texttt{trk\_score}: A machine-learned quantity that describes how `track-like' the reconstructed object is (possible values between 0 and 1).
+    \item \texttt{trk\_len}: The length of the reconstructed track (in cm).
+    \item \texttt{trk\_distance}: The distance from the start-point of the reconstructed track to the reconstructed neutrino vertex (in cm).
+    \item \texttt{pfp\_generation}: The generation of the PFParticle according to Pandora, i.e. the neutrino has generation 1, its direct daughters generation 2 and further decay products have generation 3.
 \end{itemize}
 \end{comment}
 
@@ -80,7 +80,7 @@ Category & Variable Name & Description  \\
 
 
 
-\subsection{Constraint Selection \textcolor{red}{Ryan}}
+\subsection{Constraint Selection}
 \label{ssec:NuMUCCsel:constr}
 \par The purpose of selecting a $\nu_{\mu}$ sample is to constrain the systematic uncertainties in the $\nu_{e}$ analysis. Such a constraint is possible because the $\nu_{\mu}$s and $\nu_{e}$s of the BNB are subject to common, correlated uncertainties. The flux and cross-section models are discussed further in sec \ref{ssec:goalsofnumusel} and \ref{subsec:constraintfromnumu}. The $\nu_{e}$ selection is subject to higher uncertainties due to its low statistics: the $\nu_{\mu}$ channel benefits from two orders-of-magnitude larger absolute flux (Docdb 1031) therefore providing high-statistics samples which can be exploited to constrain the uncertainties on the $\nu_{e}$ predicted event rate. For more information regarding the philosophy and goals of this constraint, see sec \ref{ssec:goalsofnumusel}.
 
@@ -115,17 +115,17 @@ Category & Variable Name & Description  \\
  \hline\hline
 \multirow{1}{*}{ Cosmic rejection } & nslice = 1 \\
  \hline
-\multirow{2}{*}{ Cosmic rejection (Run3) } & \emph{CRT Veto} != 1 or \emph{crthitpe} $<$ 100\\
-& \emph{closestNuCosmicDist} $>$ 5 cm\\
+\multirow{2}{*}{ Cosmic rejection (Run3) } & \texttt{CRT Veto} != 1 or \texttt{crthitpe} $<$ 100\\
+& \texttt{closestNuCosmicDist} $>$ 5 cm\\
  \hline
-\multirow{1}{*}{Signal~topology} & topological\_score $>$ 0.06 \\
+\multirow{1}{*}{Signal~topology} & \texttt{topological\_score} $>$ 0.06 \\
  \hline
-Containment & contained\_fraction $>$ 0.9 \\
+Containment & \texttt{contained\_fraction} $>$ 0.9 \\
  \hline
- \multirow{4}{*}{Fiducial Volume} & \emph{reco\_nu\_vtx\_sce\_x} $\in$ [5,251] cm \\ &
-\emph{reco\_nu\_vtx\_sce\_y} $\in$ [-110,110] cm \\ &
-\emph{reco\_nu\_vtx\_sce\_z} $\in$ [20,986] cm \\ &
-\emph{reco\_nu\_vtx\_sce\_z} $\not\in$ [675,775] cm.\\
+ \multirow{4}{*}{Fiducial Volume} & \texttt{reco\_nu\_vtx\_sce\_x} $\in$ [5,251] cm \\ &
+\texttt{reco\_nu\_vtx\_sce\_y} $\in$ [-110,110] cm \\ &
+\texttt{reco\_nu\_vtx\_sce\_z} $\in$ [20,986] cm \\ &
+\texttt{reco\_nu\_vtx\_sce\_z} $\not\in$ [675,775] cm.\\
  \hline
  \end{tabular}
  \caption{\label{tab:1muNp:presel} Preselection requirements for the $\nu_\mu$ constraining selection.}
@@ -150,24 +150,24 @@ Containment & contained\_fraction $>$ 0.9 \\
  Cut goal & Cut definition \\
  \hline\hline
 \multirow{6}{*}{ Containment } &
-     \emph{trk\_sce\_start\_x} $\in$ [5,251] cm. \\&
-     \emph{trk\_sce\_start\_y} $\in$ [-110,110] cm.\\&
-     \emph{trk\_sce\_start\_z} $\in$ [20,986] cm.\\&
-     \emph{trk\_sce\_end\_x} $\in$ [5,251] cm.\\&
-     \emph{trk\_sce\_end\_y} $\in$ [-110,110] cm.\\&
-     \emph{trk\_sce\_end\_z} $\in$ [20,986] cm.\\
+     \texttt{trk\_sce\_start\_x} $\in$ [5,251] cm. \\&
+     \texttt{trk\_sce\_start\_y} $\in$ [-110,110] cm.\\&
+     \texttt{trk\_sce\_start\_z} $\in$ [20,986] cm.\\&
+     \texttt{trk\_sce\_end\_x} $\in$ [5,251] cm.\\&
+     \texttt{trk\_sce\_end\_y} $\in$ [-110,110] cm.\\&
+     \texttt{trk\_sce\_end\_z} $\in$ [20,986] cm.\\
    \hline
  \multirow{2}{*}{ Track Id } &
-     \emph{trk\_llr\_pid\_score} $>$ 0.2.\\&
-     \emph{trk\_trk\_length} $>$ 10 cm.\\
+     \texttt{trk\_llr\_pid\_score} $>$ 0.2.\\&
+     \texttt{trk\_trk\_length} $>$ 10 cm.\\
      \hline
  \multirow{1}{*}{ Track-Shower Separation } &     
-          \emph{trk\_trk\_score} $>$ 0.8.\\ 
+          \texttt{trk\_trk\_score} $>$ 0.8.\\ 
      \hline
  \multirow{1}{*}{ No-Reinteraction Requirement } &     
-                    \emph{pfp\_generation} = 2.\\
+                    \texttt{pfp\_generation} = 2.\\
   \hline          
- \multirow{1}{*}{ Cosmic Rejection } & \emph{trk\_distance} $<$ 4 cm.\\
+ \multirow{1}{*}{ Cosmic Rejection } & \texttt{trk\_distance} $<$ 4 cm.\\
  \hline
  \end{tabular}
  \caption{\label{tab:findthemuon} Requirements for $\mu$ identification.}
@@ -175,7 +175,7 @@ Containment & contained\_fraction $>$ 0.9 \\
 
 
 
-\par \noindent The cuts made on the start and end points of the reconstructed tracks require that the track is fully contained inside the fiducial volume of the detector. This containment cut further reduces the primary background for this selection are is cosmic muons, originating from outside the detector. The containment requirement also motivates the use of range-based momentum calculations on all the muon candidates. Range-based momentum has been shown to have a high resolution. \emph{Consistency between range-based and the independently calculated MCS-based momentum will be used in a future iteration of this analysis as an additional handle to increase purity (see figs \ref{fig:numusel:momres} and \ref{fig:NuMUCCsel:ryan:PQuality})}. The containment condition rejects many higher-energy $\nu_{\mu}$ events that might leave the detector, but it has a high efficiency in the lower energies.
+\par \noindent The cuts made on the start and end points of the reconstructed tracks require that the track is fully contained inside the fiducial volume of the detector. This containment cut further reduces the primary background for this selection are is cosmic muons, originating from outside the detector. The containment requirement also motivates the use of range-based momentum calculations on all the muon candidates. Range-based momentum has been shown to have a high resolution. \emph{Consistency between range-based and the independently calculated MCS-based momentum will be used in a future iteration of this analysis as an additional handle to increase purity and the quality of the reconstruction of$\nu_{\mu}$ events (see figs \ref{fig:numusel:momres} and \ref{fig:NuMUCCsel:ryan:PQuality})}. The containment condition rejects many higher-energy $\nu_{\mu}$ events that might leave the detector, but it has a high efficiency in the lower energies.
 The cut on the log likelihood ratio pid score is to separate the muons from the protons among the PFParticle tracks in the passing slices. The track length cut further separates the muons from the protons which tend to have shorter track lengths. 
 The track score cut ensures that the selected tracks are particularly track-like and this removes many track-like showers from the selection.  The PFParticle generation cut ensures that Pandora recognizes that the track is produced directly at the neutrino interaction vertex, and not as a secondary particle (i.e. in a $\pi \rightarrow \mu$ decay or re-interaction). 
 The cut on the trk\_distance requires that the reconstructed track be sufficiently close to the interaction vertex, this removes many in-time cosmic muons that are reconstructed as part of the event.
@@ -210,7 +210,7 @@ The cut on the trk\_distance requires that the reconstructed track be sufficient
     \includegraphics[width=1.00\textwidth]{NuMuCCsel/Images/Ryan/RangeBasedEnergyResolution_pquality.pdf}
     \caption{\label{fig:NuMUCCsel:ryan:Eres_withPQuality} Energy resolution adding the momentum quality cut.}
     \end{subfigure}
-\caption{The distribution of range-based energy calculations for each passing slice. Fig \ref{fig:NuMUCCsel:ryan:withPQuality} shows the distribution after a quality cut, keeping events that fall within 0.5 of the peak in the right plot of fig \ref{fig:numusel:momres}.}
+\caption{The distribution of range-based energy calculations for each reconstructed neutrino. Fig \ref{fig:NuMUCCsel:ryan:withPQuality} shows the distribution after a quality cut on the MCS vs. range muon momentum energy, keeping events that fall within 0.5 of the peak in the right plot of fig \ref{fig:numusel:momres}. From Figures~\ref{fig:NuMUCCsel:ryan:Eres_noPQuality} and~\ref{fig:NuMUCCsel:ryan:Eres_withPQuality} the reduction in mis-reconstructed events is apparent.}
 \label{fig:NuMUCCsel:ryan:PQuality}
 \end{center}
 \end{figure}
@@ -315,7 +315,6 @@ The cut on the true energy corresponds to a track length of \SI{\approx 2.5}{\cm
 
 Before identifying the muon, some event level cuts are applied, as listed in Table \ref{tab:1muNp:preseInclusivel}
 
-<<<<<<< HEAD
 \begin{table}[h!]
 \centering
 \setlength{\tabcolsep}{10pt}
@@ -379,7 +378,7 @@ At this point, the amount of muon candidate tracks in signal events is:
     \item 2 (18\%) or $>2$ (2\%), the particle with the highest \textit{trk\_llr\_pid\_score} is picked as muon and the event is selected.
 \end{itemize}
 
-The cut on the reconstructed length corresponds to a muon kinetic energy of \SI{\approx 47}{\MeV} kinetic energy or a muon momentum of \SI{0.11}{GeV/c}. Therefore, this selection aim to have a lower neutrino energy threshold of \SI{\approx 153}{\MeV}. Therefore, efficiency plots will be shown in a range from \SIrange{0.15}{1.65}{\GeV}.
+The cut on the reconstructed length corresponds to a muon kinetic energy of \SI{\approx 47}{\MeV} or a muon momentum of \SI{0.11}{GeV/c}. Therefore, this selection has a lower neutrino energy threshold of \SI{\approx 153}{\MeV}, and efficiency plots will be shown in a range from \SIrange{0.15}{1.65}{\GeV}.
 The distribution of the topological score and the track muon likelihood after applying all cuts except these two is given in \cref{fig:numu:topo_pid}.
 
 
@@ -406,9 +405,9 @@ The distribution of the topological score and the track muon likelihood after ap
 \subsubsection{High purity selection}
 When using the Run3 open data, we can use the CRT to achieve  a higher purity. Nonetheless, exiting muon tracks might trigger the CRT veto as well, therefore the higher purity selection includes both containment and CRT veto. The additional cuts are:
 \begin{itemize}
-    \item \textit{all\_end\_contained}
-    \item \textit{CRT Veto} != 1 or \textit{crthitpe} $<$ 100
-    \item \textit{closestNuCosmicDist} $>$ \SI{5}{\cm}
+    \item[-] \texttt{all\_end\_contained}
+    \item[-] \texttt{CRT Veto} != 1 or \texttt{crthitpe} $<$ 100
+    \item[-] \texttt{closestNuCosmicDist} $>$ \SI{5}{\cm}
 \end{itemize}
 Due to the fact that most $\nu_\mu$ CC inclusive events are not contained, the efficiency drops to 17.5\%, see \cref{fig:numu:eff_r3}. Note that the denominator here still contains both contained and uncontained events to enable comparison with the previous section. At the very lowest neutrino energies, below \SI{\approx 400}{\MeV}, the efficiency is only slightly reduced. The overall purity goes up to \SI{77.6}{\%}. 
 

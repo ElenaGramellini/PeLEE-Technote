@@ -30,7 +30,7 @@ The efficiency of Pandora's reconstruction on $\nu_e$ interactions is evaluated 
     \includegraphics[width=1.00\textwidth]{nureco/reco_e_01152020.pdf}
     \caption{\label{fig:nuereco:shower} after shower requirement}
     \end{subfigure}
-\caption{\label{fig:nuereco} \textcolor{blue}{ Y axis of figure a is cut off}}
+\caption{\label{fig:nuereco} Left Efficiency of the \texttt{SliceID} (black) and shower-requirement (blue) for $\nu_e$ events. Center: data-MC comparison after \texttt{SliceID}. Right: data-MC comparison after shower requirement. }
 \end{center}
 \end{figure}
 
@@ -52,7 +52,7 @@ If the PFParticle has been selected as an electron or photon candidate, the iden
 Notably, additional information provided by the rest of the slice may be used for the particle identification 
 depending on the specific PFParticle. For example, while the shower d$E$/d$x$ depends only on the PFParticle itself, the track-shower separation relies also on additional objects identified in the slice.
 
-When choosing the cut values for PID variables, we account not only for the efficiency and mis-identification achievable to distinguish two kinds of particles (e.g. electrons from photons), but also for the mixture of backgrounds specific to the considered topology: e.g. \textcolor{blue}{add example}. 
+%When choosing the cut values for PID variables, we account not only for the efficiency and mis-identification achievable to distinguish two kinds of particles (e.g. electrons from photons), but also for the mixture of backgrounds specific to the considered topology: e.g. \textcolor{blue}{add example}. 
 
 %The value of the cuts applied on these variables depends not only on the general level of efficiency and mis-identification achievable to distinguish two kind of particles (electrons from photons, for example), but also on the mixture of backgrounds specific to selection the analyzer is performing.
 
@@ -60,7 +60,7 @@ When choosing the cut values for PID variables, we account not only for the effi
 
 
 
-\subsubsection{Log Likelihood Ratio  PID \textcolor{green}{Nico, P.R. David, Elena}}
+\subsubsection{Log Likelihood Ratio  PID}
 \label{subsec:loglikelihoodpid}
 
 For track-like particles, the particle identification is performed looking at the profile of the deposited charge per unit length (d$E$/d$x$). The scope of track PID is to identify the particle type which originated a given track object. In this analysis, we limit PID to a binary classification problem, i.e.  how to distinguish protons from muons. We disregard further classification because kaons are rarely produced in neutrino interactions at the energy of interest, whereas pions are very difficult to distinguish from muons using calorimetry information only.
@@ -125,7 +125,7 @@ In a MC sample of contained protons and muons used to test the performance, this
 
 
 
-\subsubsection{$e$/$\gamma$ Separation \textcolor{green}{David, P.R Elena}}
+\subsubsection{$e$/$\gamma$ Separation}
 \label{subsec:egammaspearation}
 \par Distinguishing electron from photon EM-showers is one of the crucial steps required to perform a measurement of $\nu_e$ interactions in the BNB beam. Photon backgrounds to a $\nu_e$ measurement are largely caused by neutrino interactions with $\pi^0 \rightarrow \gamma\gamma$ in the final state; this topology dominates the $\nu_e$ event rate by approximately an order of magnitude. Three key features distinguish events with $\pi^0$ induced photon showers from $\nu_e$ interactions: (a) the presence of two final state EM showers. (b) the non-zero conversion distance separating the neutrino interaction vertex from the shower start point, and (c) the calorimetric separation via $dE$/$dx$ due to the overlapping ionization segment of $e^+$/$e^-$ pair-conversions through which most $\gamma$ showers manifest themselves. Figure~\ref{fig:egammasep} shows how, at reconstruction level, each of these features can aid in $e$/$\gamma$ separation. This section describes how each of the items above is utilized in the analysis on a technical level, what performance is obtained, and what challenges (both physics- and reconstruction-driven) are encountered when leveraging these variables.
 
@@ -151,7 +151,7 @@ In a MC sample of contained protons and muons used to test the performance, this
 \end{figure}
 
 \par \textbf{two-shower requirement} Requiring a single reconstructed shower retains 68\% of $\nu_e$ interactions (with no $\pi^0$ in the final state) while removing 61\% of $\nu_{\mu}$ events with at least one $\pi^0$ in the final state. The fraction of selected $\nu_e$s grows to 79\% when looking below 800 MeV of true energy (the focus of this analysis). Rejection of $\nu_e$s is largely due to events where the electron shower is reconstructed as two separate EM showers, often closely aligned in 3D. Events with final state $\pi^0$s are reconstructed with a single EM shower in the final state because either the second photon escapes the TPC active volume completely (irreducible) or because the second shower is not reconstructed. The dominant causes of this second case are (1) highly-boosted $\pi^0$ decays, in which two aligned photons are merged into one shower and (2) photons which go undetected, often low in energy (below 100 MeV). Additional discriminating variables which aim to recover the reconstruction-related mis-ID of (1) and (2) are utilized in the analysis and presented in Sec.~\ref{sec:nueselection:inputs}.
-\par \textbf{track-shower separation} For events where hadronic activity at the neutrino interaction vertex (i.e. final-state protons) is visible, a clear gap between the vertex and the shower start-point can be used to reject $\gamma$ backgrounds. This is a powerful background mitigation tool in the 1$e$N$p$ $\nu_e$ selection. Two factors determine the performance of such a tool: the ability to detect protons and other hadronic activity at the vertex and the accuracy with which the shower start-point is reconstructed. The shower start-point reconstruction accuracy determines the level of background rejection obtainable, as $\gamma$ showers lead to an exponential conversion-distance distribution. \textcolor{blue}{A 1 cm vs. 5 cm track-shower separation cut leads to 95\% vs 74\% mis-ID respectively, but causes a drop in selection efficiency for 1$e$N$p$ events from 72\% to 28\%. I don't think I understand these numbers... because what  I'm understanding is not logical: if I reject events with a 1 cm or more gap, I keep 72\% of nues and 95\% of photons. If I reject events with a 5 cm or more gap, I keep only 28\% nue and 75\% photons. This is completely counter intuitive, what am I getting wrong?  } This is a consequence of the sub-optimal vertex reconstruction accuracy for low-energy $\nu_e$ interactions. In order to enhance the ability to isolate $\nu_e$ events in the 1$e$N$p$ selection through vertex-displacement, different metrics are used to measure the presence of a gap between an electron and proton candidate. These will be described in section~\ref{sec:nueselection:inputs}. It is important to note that this background mitigation strategy is not applicable to single-electron searches, which are an important contribution to $\nu_e$ interactions, especially in the low-energy regime.
+\par \textbf{track-shower separation} For events where hadronic activity at the neutrino interaction vertex (i.e. final-state protons) is visible, a clear gap between the vertex and the shower start-point can be used to reject $\gamma$ backgrounds. This is a powerful background mitigation tool in the 1$e$N$p$ $\nu_e$ selection. Two factors determine the performance of such a tool: the ability to detect protons and other hadronic activity at the vertex and the accuracy with which the shower start-point is reconstructed. The shower start-point reconstruction accuracy determines the level of background rejection obtainable, as $\gamma$ showers lead to an exponential conversion-distance distribution. A 1 cm vs. 5 cm track-shower separation cut leads to 95\% vs 74\% $\gamma$ rejection power respectively, but causes a drop in selection efficiency for 1$e$N$p$ events from 72\% to 28\%. This is a consequence of the sub-optimal vertex reconstruction accuracy for low-energy $\nu_e$ interactions. In order to enhance the ability to isolate $\nu_e$ events in the 1$e$N$p$ selection through vertex-displacement, different metrics are used to measure the presence of a gap between an electron and proton candidate. These will be described in section~\ref{sec:nueselection:inputs}. It is important to note that this background mitigation strategy is not applicable to single-electron searches, which are an important contribution to $\nu_e$ interactions, especially in the low-energy regime.
 \par \textbf{shower d$E$/d$x$} The majority of photons manifest themselves in the TPC through the ionization released by the $e^+$/$e^-$ pair produced via pair-conversion. The electron-positron pair is highly aligned and overlaps on the mm-scale, leading to a doubly-ionizing charge-segment compared to electron showers. To measure this, we use the track fit of the main shower trunk and the calorimetric tools as described in Sec.~\ref{sec:tkshreco}. 
 %with a modified version of the MicroBooNE track-fitter~\cite{bib:shrtrackfitter} and for each point along a track the d$Q$/d$x$  and distance from the shower-start are recorded using MicroBooNE's Calorimetry module. This procedure allows to accurately measure d$x$, including small deflections due to the electron's trajectory and SCE offsets, and d$Q$, by incorporating MicroBooNE's full position- and field-dependent relative and absolute charge calibration. From d$Q$/d$x$, d$E$/d$x$ is calculated assuming a fixed recombination correction assuming 2.1 MeV/cm energy loss, but accounting for local variations in the electric field. 
 The distinctive 4 MeV/cm population expected for $\gamma$ showers is visible in figure~\ref{fig:egammasep:dedx}. The main limitation to $e$/$\gamma$ separation via d$E$/d$x$ is the large fraction of photons reconstructed with a d$E$/d$x$ of less then 3 MeV/cm (23\% of $\pi^0$ events fall in the 1-3 MeV range). This is due both to mis-reconstructed events, for which the start-point is incorrectly reconstructed by more than one or two cm, and to events where the photon shower's energy loss-profile is not as clearly distinguishable from that of a single electron. While the relative contribution of these two sources is still under determination, the second causes a significant mis-ID rate, and is largely associated to lower-energy $\gamma$ showers for which the production of a highly asymmetric electron-positron pair where one of the electrons is barely visible is more frequent. The impact of shower energy on the measured d$E$/d$x$ for a $\gamma$ shower is shown in figure~\ref{fig:dedxgammas:energy}. Below 100 MeV, where most $\gamma$ showers in the BNB are produced, the reconstructed d$E$/d$x$ is electron-like. The impact of distance from the shower start-point on whether d$E$/d$x$ is reconstructed to be 2 or 4 MeV/cm is also important, as can be seen in figure~\ref{fig:dedxgammas:dist}. This is particularly true for low-energy asymmetric pair-production events, and motivates utilizing 
@@ -176,9 +176,9 @@ d$E$/d$x$ information at different distances from the shower start-point for $e$
 
 %\newpage
 
-\subsection{Energy Reconstruction \textcolor{green}{Giuseppe + David... (PR Elena)}}
+\subsection{Energy Reconstruction}
 \label{sec:ereco}
-\par Energy reconstruction is performed thought calorimetry for EM showers and through a measurement of a track's range for contained muons and protons. For \textcolor{blue}{should we add "uncontained"} muons, multiple Coulomb scattering (MCS) is also used to estimate the muon energy. The energy resolution obtained for different particles is reported in table~\ref{tab:eres}. More information on each particle's energy resolution is reported in figure~\ref{fig:eres:particle} where the 2D reconstructed vs. true energy distribution (in log-scale) is shown on the left, next to a plot of energy resolution vs. true energy on the right. The energy resolution reported here is obtained from a Gaussian plus one-sided exponential fit to the distribution $[E_{\rm reco}-E_{\rm true}] / E_{\rm true}$, see figures \ref{fig:eres:elec:binned}. The resolution reported refers only to the Gaussian width $\sigma$ extracted in the fit, and therefore does not account for negative tails, which are significant in the case of EM shower energy reconstruction, and described below.
+\par Energy reconstruction is performed thought calorimetry for EM showers and through a measurement of a track's range for contained muons and protons. For muons (contained or uncontained), multiple Coulomb scattering (MCS) is also used to estimate the muon energy. The energy resolution obtained for different particles is reported in table~\ref{tab:eres}. More information on each particle's energy resolution is reported in figure~\ref{fig:eres:particle} where the 2D reconstructed vs. true energy distribution (in log-scale) is shown on the left, next to a plot of energy resolution vs. true energy on the right. The energy resolution reported here is obtained from a Gaussian plus one-sided exponential fit to the distribution $[E_{\rm reco}-E_{\rm true}] / E_{\rm true}$, see figures \ref{fig:eres:elec:binned}. The resolution reported refers only to the Gaussian width $\sigma$ extracted in the fit, and therefore does not account for negative tails, which are significant in the case of EM shower energy reconstruction, and described below.
 
 
 \begin{table}[H]
@@ -188,7 +188,7 @@ d$E$/d$x$ information at different distances from the shower start-point for $e$
     particle & kinetic energy resolution  \\ \hline
     proton & 4\% at 100 MeV 1\% at 200 MeV \\ \hline
     muon (range) & 3\%  \\ \hline
-    muon (MCS) & $\frac{4.7\%}{\sqrt{E/{\rm GeV}}} \otimes \frac{2.8\%}{E/{\rm GeV}} \otimes 0.0\% \text{\textcolor{blue}{this is fairly confusing, especially the 0.0\%, can we add a reference, or an explaination?}}$  \\ \hline
+    muon (MCS) & 25\% at 100 MeV $< 10$\% above 400 MeV  \\ \hline
     electron & 15\%  \\
     \hline
     
@@ -243,20 +243,19 @@ d$E$/d$x$ information at different distances from the shower start-point for $e$
 \end{center}
 \end{figure}
 
-\subsubsection{Neutrino Energy Reconstruction \textcolor{green}{Giuseppe + David, P.R. Elena}}
+\subsubsection{Neutrino Energy Reconstruction}
 
-\par In this analysis, the energy reconstruction for neutrino interactions is performed through a sum of the visible energy of the various reconstructed final-state particles in the interaction. For $\nu_e$ events, the reconstructed energy is defined as:
+\par In this analysis, the energy reconstruction for neutrino interactions is performed through a sum of the visible energy of the various reconstructed final-state particles in the interaction. For $\nu_e$ events in the \zpsel and \npsel, the reconstructed energy is defined as:
 \begin{equation}
     E_{\rm reco}^{\nu_e} = E_{\rm corrected}^{\rm electron} + \sum_{\rm tracks} E_{\rm range}^{\rm proton}.
 \end{equation}{}
-\textcolor{blue}{is this true also for nue inclusive?}.
 For contained $\nu_{\mu}$ interactions, the reconstructed energy is defined as:
 
 \begin{equation}
     E_{\rm reco}^{\nu_{\mu}} = E_{\rm range}^{\rm muon} + \sum_{\rm protons} E_{\rm range}^{\rm proton} + 0.105 \; GeV
 \end{equation}{}
 
-Figure~\ref{fig:eres:neutrino} shows the comparison between reconstructed energy and truth visible energy, which is defined as the sum of the lepton energy, pion energy (if present), and proton energy (for all protons above 40 MeV of KE). This comparison shows very accurate energy reconstruction for $\nu_{\mu}$ events \textcolor{blue}{uhm.... this is true up to a point: there's a tail for high numu visible and log numu range: does this come from events w/ non-contained muons?}. For $\nu_e$ interactions, with smearing dominated by the worse energy resolution of electron showers \textcolor{blue}{This sentence misses a verb}.
+Figure~\ref{fig:eres:neutrino} shows the comparison between reconstructed energy and truth visible energy, which is defined as the sum of the lepton energy, pion energy (if present), and proton energy (for all protons above 40 MeV of KE). This comparison shows very accurate energy reconstruction for most $\nu_{\mu}$ events. For $\nu_e$ interactions the energy resolution is on average less accurate, with smearing dominated by the worse energy resolution of electron showers.
 
 \begin{figure}[H] 
 \begin{center}
