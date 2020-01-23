@@ -1,8 +1,8 @@
 This section highlights the key aspects of the event reconstruction which allow for the classification of neutrino interactions: the track and shower reconstruction, the particle identification and the energy reconstruction.
-\subsection{Track and Shower Reconstruction \textcolor{green}{Giuseppe... P.R David,Elena}}
+\subsection{Track and Shower Reconstruction}
 \label{sec:tkshreco}
 The output of Pandora~\cite{bib:pandoraub} is organized in a hierarchy of reconstructed Particle Flow Particles (``PFParticles''), which describes the particle content in an observed event as a parent-daughter relationship chain. Final state PFParticles are 3D objects matching clusters of hits in at least two different planes.
-Pandora classifies PFParticles as track-like or shower-like base on a Support Vector Machine (SVM) algorithm~\cite{bib:tkshsvm}, producing a score with values between 0 (shower-like) and 1 (track-like). \textcolor{blue}{Can we add a quick sentence on the relationship between the PFParticles to the slice? At this point of the note, the reader knows that Pandora provides slices and not much more... Elena }
+Pandora classifies PFParticles as track-like or shower-like base on a Support Vector Machine (SVM) algorithm~\cite{bib:tkshsvm}, producing a score with values between 0 (shower-like) and 1 (track-like). PFParticles will be collected together based on physical proximity into slices, and ordered in a hierarchy (i.e. a Michel electron is the daughter of a muon, which is a daugther of a neutrino).
 
 Pandora processes track-like PFParticles with a sliding linear fit procedure (described in~\cite{bib:pandoraub}) that returns the 3D position and direction at each point along the trajectory (where each point corresponds to a 2D hit). For each point the d$Q$/d$x$ and distance from the track-start are recorded using MicroBooNE's Calorimetry module. This procedure allows to accurately measure both d$x$, including small deflections due to the particle's trajectory and Space Charge Effect (SCE) offsets, and d$Q$, by incorporating MicroBooNE's full position- and field-dependent relative and absolute charge calibration. For tracks, the conversion from d$Q$/d$x$ to d$E$/d$x$ is performed by applying the inverse Modified Box recombination model~\cite{bib:tpccalibrationnote}.
 
@@ -10,7 +10,7 @@ We evaluate the energy and 3D direction of shower-like PFParticles with the same
 
 By default, Pandora separates showers and tracks with a cut on the SVM score at 0.5; however, as will be described in later sections, in many cases we choose different cut values, i.e. tighter shower definition for the $\nu_e$ selection and looser for the $\pi^0$ control region.
 
-\par  \textcolor{blue}{Should we add a brief description of how Pandora decides what's a nue interaction? Something along the lines of "When a single shower is present in the slice, Pandora identifies the slice as a $\nu_e$" I don't know if this is correct, please check-- Elena} The efficiency of Pandora's reconstruction on $\nu_e$ interactions is evaluated in figure~\ref{fig:nuereco:eff} as a function of true neutrino energy;  the efficiency for identifying the $\nu_e$ events as neutrino interactions is shown in black, and the efficiency for reconstructing $\nu_e$ interactions with a final-state EM shower in blue. The efficiency has a sharp upturn between 100 and 200 MeV, especially in the case when an EM shower is required, and levels off at 80\% and 60\% respectively for the two curves. 
+The efficiency of Pandora's reconstruction on $\nu_e$ interactions is evaluated in figure~\ref{fig:nuereco:eff} as a function of true neutrino energy;  the efficiency for identifying the $\nu_e$ events as neutrino interactions is shown in black, and the efficiency for reconstructing $\nu_e$ interactions with a final-state EM shower in blue. The efficiency has a sharp upturn between 100 and 200 MeV, especially in the case when an EM shower is required, and levels off at 80\% and 60\% respectively for the two curves. 
 \par At this stage in the analysis, the good efficiency for reconstructing $\nu_e$ events is offset by the very low signal-to-background for $\nu_e$ events in MicroBooNE's data, a consequence of the very small $\nu_e$ content of the beam. With no additional requirement on the reconstructed neutrino, the purity for $\nu_e$ interactions is 0.12\% (figure~\ref{fig:nuereco:sliceid}). After imposing a requirement of one reconstructed shower, the purity grows by almost an order of magnitude, to 1\% (figure~\ref{fig:nuereco:shower}). The $\nu$ background composition also changes significantly, with $\pi^0$ backgrounds moving from 14\% to 48\% of all backgrounds.
 
 \begin{figure}[ht] 
@@ -36,7 +36,7 @@ By default, Pandora separates showers and tracks with a cut on the SVM score at 
 
 \par The next step in the analysis demands the development of a selection capable of isolating $\nu_e$ interactions rejecting the two order of magnitude larger background rates from $\nu_{\mu}$ neutrinos. This selection will make use of PID and topological information described in the next sections. The strong level of background rejection needed to isolate signal events will inevitably lead to a lower selection efficiency.
 
-\subsection{Particle Identification \textcolor{green}{Nico, reviewed by David,Elena}}
+\subsection{Particle Identification}
 % GC: this part is now in the previous subsection
 %In the neutrino slice, every PFParticle is reconstructed in three different ways:
 %\begin{itemize}
