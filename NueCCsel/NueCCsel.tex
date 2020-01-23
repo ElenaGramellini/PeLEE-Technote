@@ -1,6 +1,5 @@
 \label{sec:nueselection:inclusive}
 
-
 \newcommand{\nueccinc}{$\nu_e$ CC inclusive\xspace}
 \newcommand{\nueccsel}{$\nu_e$ CC inclusive selection\xspace}
 
@@ -9,7 +8,7 @@ The aim of the inclusive charged-current electron neutrino selection is to selec
 
 \subsubsection{Pre-selection}
 The selection builds on top of the SliceID (\cref{sec:sliceID}). At the preselection stage,  the cuts listed in \cref{tab:nuecc:presel} are applied. %Here, an electron candidate shower is defined as a particle with a \textit{track\_score} below 0.3, and hits on all three planes. Furthermore, a minimum calorimeric energy of \SI{75}{\MeV} is required. 
-\begin{comment}
+
 \begin{table}[h!]
 \centering
 \setlength{\tabcolsep}{10pt}
@@ -32,24 +31,23 @@ Electron Candidate &  track\_score $<$ 0.3, hits in all three planes \\
 Michel rejection & shr\_energy\_tot\_cali $>$ 0.075 GeV \\
  \hline
  \end{tabular}
- \caption{\label{tab:nuecc:presel} Preselection requirements for the \nueccsel.  }
+ \caption{\label{tab:nuecc:presel} Preselection requirements for the $\nu_e$ CC inclusive.  }
 \end{table}
-\end{comment}
-At this stage, the efficiency of the selection is 46\% for $\nu_e$ CC events inside the fiducial volume\textcolor{blue}{Do we have the plot of efficiency as a function of true nu E? }. This is equivalent to 618 events per \SI{10.1e20}{POT}. The number of LEE signal events passing is approximately 30 per \SI{10.1e20}{POT}. The purity at this stage is $\sim$3.0\%. 
+At this stage, the efficiency of the selection is 46\% for $\nu_e$ CC events inside the fiducial volume, see Figure \ref{fig:nueccinc_eff}. This is equivalent to 618 events per \SI{10.1e20}{POT}. The number of LEE signal events passing is approximately 30 per \SI{10.1e20}{POT}. The purity at this stage is $\sim$3.0\%. 
 
 After the pre-selection cuts, the $\nu_e$ CC purity is still low. Figure \ref{fig:pre_shower_E_pdg} shows the distribution of the angles of the electron candidate shower highlighting the dominant background categories: the main background is coming from events with $\pi^0$ in the final state. Thus, $e/\gamma$ separation becomes key to the $\nu_e$ CC inclusive selection.
 
 \cref{fig:e_cand_Calo} shows the agreement in the kinematics of the electron candidate shower at the pre-selection stage. \emph{As seen in several other Data-MC comparisons of calorimetry variables throughout this note, a slight disagreement is found in the shower candidate energy, to be re-evaluated after the planned MC re-calibration.}
 
 
-\begin{figure}[h]
+\begin{figure}[]
     \centering
     \includegraphics[height=4.9cm]{NueCCsel/Images/run1/pre_angles.pdf}
     \caption{MC-Data comparison of the angles of the electron candidate after the pre-selection cuts.}
     \label{fig:pre_shower_E_pdg}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[]
     \centering
     \includegraphics[height=4.9cm]{NueCCsel/Images/run1/e_cand_dedxColl}
      \includegraphics[height=4.9cm]{NueCCsel/Images/run1/pre_shower_E_pdg.pdf}
@@ -121,8 +119,8 @@ Reconstruction quality & \makecell{\textit{ismerged} \\ Checks if a proton is me
 \subsubsection{Other Daughters Identification}
 Besides the electron candidate, the slice includes a number of particles which can be leveraged to improve background rejection. We classify each PFParticle using the ``other-daughters-BDT". This BDT is trained on three labeled categories: \emph{signal-like}, \emph{neutral}, \emph{background-like}. The signal-like particles are those PFParticles that are backtracked to a proton or a split-off part of the electron associated to $\nu_e$ interactions: we want to keep events with a high content of signal-like particles. The background-like particles are those PFParticles that are backtracked to a simulated muon or cosmic activity.
 The ``neutral" label accounts for tricker cases: this label is given to PFParticles backtracked to charged pions or photons. Charged pions should be allowed in a $\nu_e$ CC search, but the mis-identification rate between charged pions and muons is large in LArTPCs. Photons coming from neutral pions are allowed in a  $\nu_e$ CC inclusive search, but they can also constitute a pernicious background.
-
-The input variables of the other-daughters-BDT are listed in \cref{tab:nuecc:other_bdt}.
+emph
+The input variables of the other-daughters-BDT are:  \emph{trk\_llr\_pid\_score},\emph{trk\_distance},\emph{trk\_score},\emph{pfp\_generation},\emph{Number of daughters of the particle}.
 The three most important distributions of the variables used are given in \cref{fig:pre_daughter_1}.  
 
 
@@ -131,25 +129,7 @@ The response of the other-daughters-BDT is a score assigned to each PFParticle, 
 For each event, we create two important variables that inform the event selection starting from this BDT output:  \emph{otherD\_MeanScore} and \emph{otherD\_LowestScore}.  The variables \emph{otherD\_MeanScore} and   \emph{otherD\_LowestScore} are the average and the lowest other-daughters-BDT score calculated using all the PFParticles in the event that are not the electron. Both the  \emph{otherD\_MeanScore} and  \emph{otherD\_LowestScore}  is assigned the default value 1 in the case the event is made of just the single electron shower.
 
 
-\begin{table}[h!]
-\centering
-\setlength{\tabcolsep}{10pt}
-\renewcommand{\arraystretch}{1.25}
-\begin{tabular}{| c | c |} 
-\hline
-Cut goal & Cut definition \\
-\hline\hline
-\multirow{3}{*}{particle identification} & \textit{trk\_llr\_pid\_score} \\
-                                         & \textit{trk\_distance} \\
-                                         & \textit{trk\_score}\\
-\hline
-\multirow{2}{*}{particle hierarchy} & \textit{pfp\_generation} \\
-                                    & \textit{Number of daughters of the particle} \\
 
- \hline
- \end{tabular}
- \caption{\label{tab:nuecc:other_bdt} Input variables used by the BDT to classify the other daughter particles.}
-\end{table}
 
 
 
@@ -173,6 +153,7 @@ Cut goal & Cut definition \\
     \caption{BDT response to classify the non-electron candidate daughters in the event. The cosmogenic particles, together with the muons and photons have a low response, indicating higher likeliness to be background. The protons have a high response on the right.}
     \label{fig:pre_daughter_score}
 \end{figure}
+\clearpage
 
 \subsubsection{Event Selection}
 We construct the final event classification BDT building on the particle identification performed in the two previous sections. For this final BDT, the dominating variable is the electron identification response but the full list of variables is, in sequence of importance:

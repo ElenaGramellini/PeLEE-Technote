@@ -188,7 +188,7 @@ The cut on the trk\_distance requires that the reconstructed track be sufficient
     \label{fig:numusel:momres}
 \end{figure}
 
-\begin{figure}[ht] 
+\begin{figure}[] 
 \begin{center}
     \begin{subfigure}[b]{0.45\textwidth}
     \centering
@@ -240,7 +240,7 @@ The cut on the trk\_distance requires that the reconstructed track be sufficient
     \label{fig:NuMUCCsel:ryan:sceres_y}
 \end{figure}
 
-\begin{figure}[ht] 
+\begin{figure}[] 
 \begin{center}
     \begin{subfigure}[b]{0.45\textwidth}
     \centering
@@ -261,55 +261,10 @@ The cut on the trk\_distance requires that the reconstructed track be sufficient
 \subsubsection{Performance}
 \label{sssec:NuMUCCsel:constr:performance}
 
-\par This selection has been evaluated on the Run1 and the Run3 open datasets processed for this analysis. The advantage of the Run 1 data-set is higher statistics ($4E19$ POT in Run1 and $0.9E19$ POT in Run3). Run 3 allows to use the CRT system for extra background rejection. Distributions shown in this section will be of variables pertaining to the muon candidate for each event that passes the selection; Run1 data will be preferentially shown due to the higher statistics. The power of the Run3 CRT system will be demonstrated at the end of this section.
+\par This selection has been evaluated on the Run1 and the Run3 open datasets processed for this analysis. The advantage of the Run 1 data-set is higher statistics ($4E19$ POT in Run1 and $0.9E19$ POT in Run3). Run 3 allows to use the CRT system for extra background rejection which was unavailable for the first MicroBooNE run. 
+The many DATA-MC comparisons produced for this selection are reported in the backup section \ref{sec:numu:constr}: distributions shown there pertain  variables relative to the muon candidate for each event that passes the selection; Run1 data will be preferentially shown due to the higher statistics. Here, we highlight the DATA-MC comparisons regarding the reconstructed energy in the slice (Figure \ref{fig:NuMUCCsel:ryan:trklenFull}) made from combining range-based energy calculations on PFParticles.
 
-\par Run 3 data includes information from the CRT system which was unavailable for the first MicroBooNE run. See fig \ref{fig:NuMUCCsel:ryan:Run3CRTcomp} for an example of the impact of the CRT. The CRT veto will eliminate more than 70$\%$ of the cosmic muons while suffering only roughly 15$\%$ loss in signal.
-
-\par The overall efficiency of this selection, for Run1, is shown in Fig. \ref{fig:NuMUCCsel:ryan:Run1Efficiency}. The effectiveness of this selection can not by explained by distributions and efficiencies alone; it relies on the constraining power. See sec \ref{ssec:finalSensitivityCalc} for a technical discussion of the incorporation of this selection into the final analysis sensitivity.
-
-\begin{figure}[H] 
-\begin{center}
-    \begin{subfigure}[b]{0.3\textwidth}
-    \centering
-    \includegraphics[width=1.00\textwidth]{NuMuCCsel/Images/Ryan/Run1_trklen_SliceID.jpg}
-    \caption{\label{fig:NuMUCCsel:ryan:trklenSliceID} after SliceID}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.3\textwidth}
-    \centering
-    \includegraphics[width=1.00\textwidth]{NuMuCCsel/Images/Ryan/Run1_trklen_EvtSel.jpg}
-    \caption{\label{fig:NuMUCCsel:ryan:trklenEvt} after event-level preselection}
-    \end{subfigure} %\newline
-    \begin{subfigure}[b]{0.3\textwidth}
-    \centering
-    \includegraphics[width=1.00\textwidth]{NuMuCCsel/Images/Ryan/Run1_trklen_fullSel.jpg}
-    \caption{\label{fig:NuMUCCsel:ryan:trklenFull}  With muon-tagging}
-    \end{subfigure}
-\caption{Track length of muon candidates. Just statistical uncertainties shown.}
-\end{center}
-\end{figure}
-
-\begin{figure}[H] 
-\begin{center}
-    \begin{subfigure}[b]{0.3\textwidth}
-    \centering
-    \includegraphics[width=1.00\textwidth]{NuMuCCsel/Images/Ryan/Run1_costheta_SliceID.jpg}
-    \caption{\label{fig:NuMUCCsel:ryan:trklenSliceID} after SliceID}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.3\textwidth}
-    \centering
-    \includegraphics[width=1.00\textwidth]{NuMuCCsel/Images/Ryan/Run1_costheta_EvtSel.jpg}
-    \caption{\label{fig:NuMUCCsel:ryan:trklenEvt} after event-level preselection}
-    \end{subfigure} %\newline
-    \begin{subfigure}[b]{0.3\textwidth}
-    \centering
-    \includegraphics[width=1.00\textwidth]{NuMuCCsel/Images/Ryan/Run1_costheta_fullSel.jpg}
-    \caption{\label{fig:NuMUCCsel:ryan:trklenFull} With muon-tagging}
-    \end{subfigure}
-\caption{Cosine of the track angle of muon candidates with respect to the beam-direction. Just statistical uncertainties shown.}
-\end{center}
-\end{figure}
-
-\begin{figure}[H] 
+\begin{figure}[] 
 \begin{center}
     \begin{subfigure}[b]{0.3\textwidth}
     \centering
@@ -330,22 +285,10 @@ The cut on the trk\_distance requires that the reconstructed track be sufficient
 \end{center}
 \end{figure}
 
-\begin{figure}[ht] 
-\begin{center}
-    \begin{subfigure}[b]{0.45\textwidth}
-    \centering
-    \includegraphics[width=1.00\textwidth]{NuMuCCsel/Images/Ryan/Run3_costheta_noCRT.jpg}
-    \caption{\label{fig:NuMUCCsel:ryan:coswithCRT} without CRT}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.45\textwidth}
-    \centering
-    \includegraphics[width=1.00\textwidth]{NuMuCCsel/Images/Ryan/Run3_costheta_withCRT.jpg}
-    \caption{\label{fig:NuMUCCsel:ryan:cosnoCRT} with CRT veto}
-    \end{subfigure}
-\caption{Angle with respect to the beam-direction of muon candidates for $\nu_{\mu}$ constraint. Just statistical uncertainties shown.}
-\label{fig:NuMUCCsel:ryan:Run3CRTcomp}
-\end{center}
-\end{figure}
+\par The overall efficiency of this selection, for Run1, is shown in Fig. \ref{fig:NuMUCCsel:ryan:Run1Efficiency}. The effectiveness of this selection can not by explained by distributions and efficiencies alone; it relies on the constraining power. See sec \ref{ssec:finalSensitivityCalc} for a technical discussion of the incorporation of this selection into the final analysis sensitivity.
+
+Figure \ref{fig:NuMUCCsel:ryan:Run3CRTcomp} shows an example of the impact of the CRT on the $\nu_\mu$ contained selection. The CRT veto will eliminate more than 70$\%$ of the cosmic muons while suffering only roughly 15$\%$ loss in signal.
+The selection described in this section shows a good level of data-simulation agreement for both Run 1 and Run 3, and is highly enriched in $\nu_{\mu}$ events which are reconstructed with very good energy resolution. \emph{Events from this selection are to be used to constrain $\nu_e$ flux and cross-section modeling uncertainties. While this exercise has not been fully performed at the current time, it is expected to be completed by the Feb. 2020 collaboration meeting.}
 
 \begin{figure}
     \centering
@@ -354,58 +297,80 @@ The cut on the trk\_distance requires that the reconstructed track be sufficient
     \label{fig:NuMUCCsel:ryan:Run1Efficiency}
 \end{figure}
 
-\textcolor{blue}{The selection described in this section shows a good level of data-simulation agreement for both Run 1 and Run 3, and is highly enriched in $\nu_{\mu}$ events which are reconstructed with very good energy resolution. \emph{Events from this selection are to be used to constrain $\nu_e$ flux and cross-section modeling uncertainties. While this exercise has not been fully performed at the current time, it is expected to be completed by the Feb. 2020 collaboration meeting.}}
+\clearpage
 
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Inclusive Selection}
 \label{ssec:NuMUCCsel:INC}
-The $\nu_\mu$ CC Inclusive selection is an update from the selection that is currently be used as a filter and described in an internal note~\cite{bib:numuccfilter}. This selection aims to be as similar as possible to the $\nu_e$ CC Inclusive selection described in \cref{sec:nueselection:inclusive}, with the ultimate goal to perform a $\nu_\mu$ constrained BNB electron neutrino measurement. 
+The $\nu_\mu$ CC Inclusive selection is an update from the selection described in an internal note~\cite{bib:numuccfilter}. This selection aims to be as similar as possible to the $\nu_e$ CC Inclusive selection described in \cref{sec:nueselection:inclusive}, with the ultimate goal to perform a $\nu_\mu$ constraint for a BNB electron neutrino measurement  based that $\nu_e$ selection. 
 
-\paragraph{$\nu_\mu$ CC inclusive signal definition}
+\subsubsection{$\nu_\mu$ CC inclusive signal definition}
 \begin{itemize}
     \item One final state muon with a kinetic energy above \SI{20}{\MeV}.
     \item True neutrino vertex inside a fiducial volume defined with borders: \SI{10}{\cm} in $x$ and $y$ and $[ \SI{20}{\cm}, \SI{50}{\cm}]$ in $z$.
 \end{itemize}
 The cut on the true energy corresponds to a track length of \SI{\approx 2.5}{\cm}.
 
-\paragraph{Event selection}
-Before identifying the muon, some event level cuts are applied:
+Before identifying the muon, some event level cuts are applied, as listed in Table \ref{tab:1muNp:preseInclusivel}
 
-\begin{itemize}
-    \item \textit{slpdg= 14}
-    \item \textit{CosmicIP} $>$ \SI{20}{\cm}
-    \item \textit{topological\_score $>$ 0.1}
-    \item \textit{all\_start\_contained}
-\end{itemize} 
+\begin{table}[h!]
+\centering
+\setlength{\tabcolsep}{10pt}
+\renewcommand{\arraystretch}{1.25}
+ \begin{tabular}{| c | c |} 
+ \hline
+ Cut goal & Cut definition \\
+ \hline\hline
+\multirow{5}{*}{ Cosmic rejection } & nslice = 1 \\ & slpdg= 14\\ &CosmicIP $>$ \SI{20}{\cm}\\
+& topological\_score $>$ 0.1 \\ &all\_start\_contained\\
+ \hline
+ \end{tabular}
+ \caption{\label{tab:1muNp:preseInclusivel} Preselection requirements for the $\nu_\mu$ Inclusive Selection.}
+\end{table}
 
-The next step is to identify a muon track.
-\paragraph{Muon candidate identification} 
-\begin{itemize}
-    \item \textit{trk\_score $>$ 0.8}
-    \item \textit{trk\_len} $>$ \SI{10}{\cm}
-    \item \textit{trk\_llr\_pid\_score $>$ 0.2}
-    \item \textit{pfp\_generation = 2}
-    \item \textit{trk\_distance} $<$ \SI{4}{\cm}
-\end{itemize}
-At this point, the amount of muon candidate tracks in signal events is:
+The next step is to identify a muon track. The requirements for muon identification are listed in Table \ref{tab:1muNp:preseInclusivelMuon}
+
+\begin{table}[h!]
+\centering
+\setlength{\tabcolsep}{10pt}
+\renewcommand{\arraystretch}{1.25}
+ \begin{tabular}{| c | c |} 
+ \hline
+ Cut goal & Cut definition \\
+ \hline\hline
+\multirow{5}{*}{ Muon Identification } & 
+trk\_score $>$ 0.8 \\ &
+trk\_len $>$ \SI{10}{\cm} \\ &
+trk\_llr\_pid\_score $>$ 0.2\\ &
+pfp\_generation = 2  \\ &
+trk\_distance $<$ \SI{4}{\cm}\\
+ \hline
+ \end{tabular}
+ \caption{\label{tab:1muNp:preseInclusivelMuon} Muon identification requirements for the $\nu_\mu$ Inclusive Selection.}
+\end{table}
+
+At this point, the number of muon candidate tracks in signal events is:
 \begin{itemize}
     \item 0 (10\%), the event gets rejected.
     \item 1 (70\%), the event gets selected.
     \item 2 (18\%) or $>2$ (2\%), the particle with the highest \textit{trk\_llr\_pid\_score} is picked as muon and the event is selected.
 \end{itemize}
 
-The cut on the reconstructed length corresponds to a muon kinetic energy of \SI{\approx 47}{\MeV} kinetic energy or a muon momentum of \SI{0.11}{GeV/c}. Therefore, this selection aim to have a lower neutrino energy threshold of \SI{\approx 153}{\MeV}. Therefore, efficiency plots will be shown in a range from \SIrange{0.15}{1.65}{\GeV} in this section.
+The cut on the reconstructed length corresponds to a muon kinetic energy of \SI{\approx 47}{\MeV} kinetic energy or a muon momentum of \SI{0.11}{GeV/c}. Therefore, this selection aim to have a lower neutrino energy threshold of \SI{\approx 153}{\MeV}. Therefore, efficiency plots will be shown in a range from \SIrange{0.15}{1.65}{\GeV}.
+The distribution of the topological score and the track muon likelihood after applying all cuts except these two is given in \cref{fig:numu:topo_pid}.
 
-\begin{figure}
+\begin{figure}[]
     \centering
     \includegraphics[width=\textwidth]{NuMuCCsel/Images/run1/numu_pret_run1.pdf}
     \caption{Topological score and track PID likelihood distributions after all other cuts are applied in the $\nu_\mu$ CC inclusive selection.}
     \label{fig:numu:topo_pid}
 \end{figure}
 
-The distribution of the topological score and the track muon likelihood after applying all cuts except these two is given in \cref{fig:numu:topo_pid}.
 
-\paragraph{Event selection performance}
+
+\subsubsection{Event selection performance}
 
 \begin{figure}[H]
     \centering
@@ -414,29 +379,10 @@ The distribution of the topological score and the track muon likelihood after ap
     \label{fig:numu:eff_r1}
 \end{figure}
 
-\cref{fig:numu:eff_r1} shows the efficiency in function of the true neutrino energy, integrated over all energies for all singal event categories, the efficiency is 51.1\%. It can be seen that the selection is truly inclusive in both interaction type and final states. non-zero efficiencies are reached from \SI{150}{\MeV} and the efficiency flattens out at \SI{\approx 700}{\MeV}. The overall purity of the selection is 65.9\% with the in-time cosmic activity as dominant background. In 94.7\% of the events, the track identified as muon is backtracked to the muon correctly. Most mis-identification cases correspond to charged pions (3.6\%).
+\cref{fig:numu:eff_r1} shows the efficiency in function of the true neutrino energy;  the integrated  efficiency over all energies for all signal categories is 51.1\%. It can be seen that the selection is truly inclusive in both interaction type and final states. non-zero efficiencies are reached from \SI{150}{\MeV} and the efficiency flattens out at \SI{\approx 700}{\MeV}. The overall purity of the selection is 65.9\% with the in-time cosmic activity as dominant background. In 94.7\% of the events, the track identified as muon is backtracked to the muon correctly. Most mis-identification cases correspond to charged pions (3.6\%). Because this selection contains both contained and uncontained events, multiple coulomb scattering is used to measure the muon momentum. We report Data-MC comparisons for the $\nu_\mu$ CC Inclusive selection in the backup section \ref{sec:numuinclusive2}. 
 
-Because this selection contains both contained and uncontained events, multiple coulomb scattering is used to measure the muon momentum. \cref{fig:numu:mcs,fig:numu:vtx} show the muon candidate kinematics and the reconstructed vertex position after selection.
-
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[height=4.25cm]{NuMuCCsel/Images/run1/numu_theta_run1.pdf}
-    \includegraphics[height=4.25cm]{NuMuCCsel/Images/run1/numu_mcsmom_run1.pdf} \hspace{1mm}
-    \includegraphics[height=4.25cm]{NuMuCCsel/Images/run1/numu_vtxntrack_cat_run1.pdf}
-    \caption{(left) Kinematics of the muon tagged track. Because the selection is not contained, multiple coulomb scattering is used to determine the momentum. (right) Track multiplicity at vertex. An object is considered to be a track at vertex if the \textit{track\_score} $>$ 0.3 and \textit{trk\_distance} $<$ \SI{3}{\cm}.}
-    \label{fig:numu:mcs}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[height=5.35cm]{NuMuCCsel/Images/run1/numu_recovtx_run1.pdf}
-    \caption{Position of the reconstructed vertex after the selection. Notice the high purity event at the edges of the detector. The reduced efficiency due to the dead wire region is clearly visible.. Because the purity is reasonable, it was chosen to be as inclusive as possible and not remove the region.}
-    \label{fig:numu:vtx}
-\end{figure}
-
-\paragraph{High purity selection}
-When using the Run3 open data, we can use the CRT to achieve higher a higher purity. Nonetheless, exiting muon tracks might trigger the CRT veto as well, therefore the higher purity selection includes both containment and CRT veto. The additional cuts are:
+\subsubsection{High purity selection}
+When using the Run3 open data, we can use the CRT to achieve  a higher purity. Nonetheless, exiting muon tracks might trigger the CRT veto as well, therefore the higher purity selection includes both containment and CRT veto. The additional cuts are:
 \begin{itemize}
     \item \textit{all\_end\_contained}
     \item \textit{CRT Veto} != 1 or \textit{crthitpe} $<$ 100
@@ -451,13 +397,13 @@ Due to the fact that most $\nu_\mu$ CC inclusive events are not contained, the e
     \label{fig:numu:eff_r3}
 \end{figure}
 
-\paragraph{Energy reconstruction in the high-purity selection} 
+\subsubsection{Energy reconstruction in the high-purity selection} 
 In a contained selection, range based momentum can be used to estimate the energy. Therefore there are two methods shown in this section:
 \begin{itemize}
-    \item Calorimetric energy estimate: the calorimetric information of the collection plane is used. For showers, the energy of the hits is summed and corrected for a bias. For tracks, the energy is obtained by summing over the energy over the track segments by multiplying the pitch with the local $d$E/d$x$. The mass of the muon is added to the sum.
-    \item The range based momentum estimate is used to for the track-like particles. The energy is calculated under the muon hypothesis for the muon candidate. If there are other muon-like particles in the event (as defined earlier in this section) their energy is added under the charged pion hypothesis. The energy of other track-like particles is added under the proton hypothesis. Finally, for shower-like particles, the calorimetric estimate is used.
+    \item Calorimetric energy estimate: the calorimetric information of the collection plane is used. For showers, the energy of the hits is summed and corrected for a bias. For tracks, the energy is obtained by summing all  the local products of track pitch and $d$E/d$x$ over the track length. The mass of the muon is added to the sum. 
+    \item Range based momentum estimate: the energy is calculated under the muon hypothesis for the muon candidate. If there are other muon-like particles in the event (as defined earlier in this section) their energy is added under the charged pion hypothesis. The energy of other track-like particles is added under the proton hypothesis. Finally, for shower-like particles, the calorimetric estimate is used.
 \end{itemize}
-Both methods are compared in \cref{fig:numu:energy,fig:numu:reso_e}. The range based energy estimation clearly has a smaller bias and smaller spread compared to the calorimetric-based estimate. This is one of the major advantages of a contained selection which will further be stressed in the next section.
+Both methods are compared in \cref{fig:numu:energy,fig:numu:reso_e}. The range based energy estimation clearly has a smaller bias and smaller spread compared to the calorimetric-based estimate: this is one of the major advantages of a contained selection.
 
 \begin{figure}[H]
     \centering
