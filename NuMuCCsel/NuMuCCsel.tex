@@ -203,12 +203,12 @@ The cut on the trk\_distance requires that the reconstructed track be sufficient
     \begin{subfigure}[b]{0.45\textwidth}
     \centering
     \includegraphics[width=1.00\textwidth]{NuMuCCsel/Images/Ryan/RangeBasedEnergyResolution.pdf}
-    \caption{\label{fig:NuMUCCsel:ryan:Eres_noPQuality} Energy resolution. After full selection.}
+    \caption{\label{fig:NuMUCCsel:ryan:Eres_noPQuality} Energy resolution after full selection.}
     \end{subfigure}
     \begin{subfigure}[b]{0.45\textwidth}
     \centering
     \includegraphics[width=1.00\textwidth]{NuMuCCsel/Images/Ryan/RangeBasedEnergyResolution_pquality.pdf}
-    \caption{\label{fig:NuMUCCsel:ryan:Eres_withPQuality} Energy Resolution. After full selection and momentum quality cut.}
+    \caption{\label{fig:NuMUCCsel:ryan:Eres_withPQuality} Energy resolution adding the momentum quality cut.}
     \end{subfigure}
 \caption{The distribution of range-based energy calculations for each passing slice. Fig \ref{fig:NuMUCCsel:ryan:withPQuality} shows the distribution after a quality cut, keeping events that fall within 0.5 of the peak in the right plot of fig \ref{fig:numusel:momres}.}
 \label{fig:NuMUCCsel:ryan:PQuality}
@@ -315,6 +315,7 @@ The cut on the true energy corresponds to a track length of \SI{\approx 2.5}{\cm
 
 Before identifying the muon, some event level cuts are applied, as listed in Table \ref{tab:1muNp:preseInclusivel}
 
+<<<<<<< HEAD
 \begin{table}[h!]
 \centering
 \setlength{\tabcolsep}{10pt}
@@ -352,6 +353,26 @@ trk\_distance $<$ \SI{4}{\cm}\\
 \end{table}
 
 At this point, the number of muon candidate tracks in signal events is:
+\begin{comment}
+\begin{itemize}
+    \item \textit{slpdg = 14}
+    \item \textit{CosmicIP} $>$ \SI{20}{\cm}
+    \item \textit{topological\_score $>$ 0.1}
+    \item \textit{all\_start\_contained}
+\end{itemize} 
+
+The next step is to identify a muon track.
+\paragraph{Muon candidate identification} 
+\begin{itemize}
+    \item \textit{trk\_score $>$ 0.8}
+    \item \textit{trk\_len} $>$ \SI{10}{\cm}
+    \item \textit{trk\_llr\_pid\_score $>$ 0.2}
+    \item \textit{pfp\_generation = 2}
+    \item \textit{trk\_distance} $<$ \SI{4}{\cm}
+\end{itemize}
+At this point, the amount of muon candidate tracks in signal events is:
+\end{comment}
+
 \begin{itemize}
     \item 0 (10\%), the event gets rejected.
     \item 1 (70\%), the event gets selected.
@@ -360,6 +381,7 @@ At this point, the number of muon candidate tracks in signal events is:
 
 The cut on the reconstructed length corresponds to a muon kinetic energy of \SI{\approx 47}{\MeV} kinetic energy or a muon momentum of \SI{0.11}{GeV/c}. Therefore, this selection aim to have a lower neutrino energy threshold of \SI{\approx 153}{\MeV}. Therefore, efficiency plots will be shown in a range from \SIrange{0.15}{1.65}{\GeV}.
 The distribution of the topological score and the track muon likelihood after applying all cuts except these two is given in \cref{fig:numu:topo_pid}.
+
 
 \begin{figure}[]
     \centering
