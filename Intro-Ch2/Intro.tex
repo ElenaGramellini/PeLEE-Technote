@@ -1,36 +1,22 @@
-In this section, we provide the big picture view of the complete Pandora $\nu_e$ analysis, starting from our selection philosophy and ending with our strategy regarding systematics. A broad summary of the current status of the analysis is presented in section~\ref{sec:introduction:conclusions}. A deeper dive into each topic is provided in note's following sections. 
+In this section, we provide the big picture view of the complete Pandora $\nu_e$ analysis, starting from our selection philosophy and ending with our strategy regarding systematic uncertainties. A broad summary of the current status of the analysis is presented in section~\ref{sec:introduction:conclusions}. Each topic is discussed in more detail in subsequent chapters of this document.  This chapter should provide a brief but complete overview of the analysis, including its main results.
 
 \subsection{$\nu_e$ Selection Philosophy} %\textcolor{green}{David ... (P.R. Elena,Sophie) }
-\par Several proposals have been made to explain the nature of the MiniBooNE LEE anomaly. It is fair to say that a large amount of uncertainty remains in the community regarding what may have generated such an excess of EM events: this analysis works within the $\nu_e$ excess hypothesis.  To best explore the potential new physics in the $\nu_e$ channel at low energy, this analysis aims to perform an inclusive multi-channel measurement of $\nu_e$ interactions without relying on kinematic variables which depend upon neutrino-interaction models. A multi-channel approach can reduce systematic uncertainties dependent on the chosen interaction model in addition to building stronger confidence against issues with the MC simulation.
+\par Several proposals have been made to explain the nature of the MiniBooNE LEE anomaly. It is fair to say that a large amount of uncertainty remains in the community regarding what may have generated such an excess of electromagnetic events. This analysis works within the $\nu_e$ excess hypothesis.  To best explore the potential new physics in the $\nu_e$ channel at low energy, this analysis aims to perform an inclusive multi-channel measurement of $\nu_e$ interactions without relying on the kinematic variables which depend on neutrino-interaction models. A multi-channel approach can reduce systematic uncertainties associated with the chosen interaction model in addition to building stronger confidence against mis-modeling of neutrino interaction and detector simulations. Finally, such a search allows the analysis to be sensitive to a broader range of possible new-physics explanations for a low-energy-excess.
 
-\par By performing three different $\nu_e$ selections, we aim to isolate three topologies: the $\nu_e$ inclusive (1$e$X$p$X$\pi$), 1$e$N$p$0$\pi$, and a 1$e$0$p$0$\pi$ channels. A schematic summarizing the strengths and features of each selection is shown in Table~\ref{tab:selectionsNue}. The 1$e$N$p$0$\pi$ and 1$e$0$p$0$\pi$ selections are orthogonal and share a common pre-selection, which splits at the stage in which the presence of a final state proton in the event is determined; these two channels combined match the MiniBooNE signal channel (1$e$X$p$0$\pi$). The inclusive $\nu_e$ selection is currently developed independently of the other two selections: therefore, its selected events are not orthogonal to the 1$e$X$p$0$\pi$ events.
+\par This analysis relies on two exclusive and orthogonal selections to isolate $\nu_e$ interactions and be sensitive to new physics at low energy. The two channels, both requiring no final state pions, differ by the presence or lack of final-state protons and are denoted in this note by their final-state topology as \npsel and \zpsel respectively. These two channels combined match the MiniBooNE signal channel (1$e$X$p$0$\pi$). An inclusive $\nu_e$ selection is currently developed independently of the other two selections; while it is not an input to the analysis sensitivity, it provides an important sideband capable of measuring $\nu_e$ interactions above $\sim$700 MeV with high statistics and thus help study the modeling of $\nu_e$ kinematics modeling in this energy regime. A schematic summarizing the strengths and features of each selection is shown in Table~\ref{tab:selectionsNue}. 
 %\textcolor{red}{Should we add that our main selection is the 1$e$N$p$0$\pi$? }
 
-\begin{comment}
-\par We perform three $\nu_e$ selections, each aimed at leveraging particular strengths, and designed with cuts tailored to exploit as much information in a given channel topology as possible. The analysis is comprised of a $\nu_e$ inclusive, a 1$e$N$p$0$\pi$, and a 1$e$0$p$0$\pi$ selection. A schematic summarizing the strengths and features of each selection is shown in table~\ref{tab:selectionsNue}. The 1$e$N$p$0$\pi$ and 1$e$0$p$0$\pi$ selections are orthogonal and share a common pre-selection, which splits at the stage in which presence of a final state proton in the event is determined; these two channels combined match the MiniBooNE signal channel (1$e$X$p$0$\pi$). The inclusive $\nu_e$ selection currently is developed independently of the 1$e$N$p$ selection and therefore its selected events are not independent.
-\end{comment}
-
-
-
-%\begin{figure}[ht]
-%\begin{center}
-%\includegraphics[width=0.85\textwidth]{introduction/nueselections.png}
-%\caption{\label{fig:nueselections}Schematic of the three $\nu_e$ selection in this analysis, outlining the goals and strengths of each. In this work, the threshold for a visible proton at truth-level proton is 40 MeV of KE. $N$ refers to one or more and $X$ to any number of final state particles of a given category.}
-%\end{center}
-%\end{figure}
-
-
 \begin{table}[ht]
-\caption{\label{tab:selectionsNue} Schematic of the three $\nu_e$ selections, outlining the definition and goals of each. In this work, the threshold for a visible proton at truth-level is 40 MeV of KE. N refers to one or more, and X to any number of final state particles of a given category.}
+\caption{\label{tab:selectionsNue} Schematic of the three $\nu_e$ selections, outlining the definition and goals of each. In this work, the threshold for a visible proton at truth-level is 40 MeV of kinetic energy (KE). N refers to one or more, and X to any number of final state particles of a given category.}
 \centering
 \begin{tabular}{ m{0.1\textwidth} | m{0.2\textwidth}  m{0.45\textwidth}  }
 Channel & Description & Goal \\
 \hline
  \begin{center}\includegraphics[width=0.1\textwidth]{introduction/1eNp}\end{center}& At least one visible proton and no visible pions & Most sensitive channel to MiniBooNE unfolded signal. The presence of a proton facilitates vertex finding.\\
 \hline
- \begin{center}\includegraphics[width=0.1\textwidth]{introduction/1e0p}\end{center}& No visible protons and no visible pions & Constrain uncertainty related to proton reconstruction, multiplicity and kinematics for the 1$e$N$p$0$\pi$ channel.\\
+ \begin{center}\includegraphics[width=0.1\textwidth]{introduction/1e0pcartoon.png}\end{center}& No visible protons and no visible pions & Constrain uncertainty related to proton reconstruction, multiplicity and kinematics for the 1$e$N$p$0$\pi$ channel. Also contains MiniBooNE unfolded signal events.\\
 \hline
-\begin{center}\includegraphics[width=0.1\textwidth]{introduction/inclusive} \end{center} & Inclusive Selection: any number of protons and pions & Helpful to understand $\nu_e$ in the BNB: high statistic selection, especially at higher energies ($>$ 700 MeV). Not yet used as a constraint for other channels. \\
+\begin{center}\includegraphics[width=0.1\textwidth]{introduction/inclusive} \end{center} & Inclusive Selection: any number of protons and pions & Helpful to understand $\nu_e$ in the BNB: high statistics selection, especially at higher energies ($>$ 700 MeV). Not yet used as a constraint for other channels. \\
 \hline
 \end{tabular}
 \label{tab:gt}
@@ -38,12 +24,13 @@ Channel & Description & Goal \\
 
 
 \par %\textbf{agnostic selection} 
-In devising the selections presented above, we have deliberately chosen not to rely on cuts that make use of the kinematic features of low-energy $\nu_e$ events. This allows the analysis to be agnostic to possible sources of new physics, and limits model dependence associated with assumptions on intrinsic $\nu_e$ interaction kinematics. Furthermore, an agnostic selection strategy will allow exploration of the kinematics of $\nu_e$ candidate events after their selection, for a full investigation of the origin of a potential anomaly. Implementing this choice requires the ability to fully leverage the information provided by the MicroBooNE LArTPC for $\nu_{\mu}-\nu_e$ and $e-\gamma$ separation. Significant progress has been made in developing the necessary tools for this goal, and these will be described in subsequent sections. 
+In devising the selections presented above, we have deliberately chosen not to rely on cuts that make use of the kinematic features of low-energy $\nu_e$ events. This allows the analysis to be agnostic to possible sources of new physics, and limits model dependence associated with assumptions about intrinsic $\nu_e$ interaction kinematics. Furthermore, an agnostic selection strategy will allow exploration of the kinematics of $\nu_e$ candidate events after their selection for a full investigation of the origin of a potential anomaly. Implementing this choice requires the ability to fully leverage the information provided by the MicroBooNE LArTPC for $\nu_{\mu}-\nu_e$ and $e-\gamma$ separation. Significant progress has been made in developing the necessary tools for this goal, and these will be described in subsequent sections. 
 
 
 
 
 \subsection{Signal Model}
+\label{sec:introduction:LEE}
 \begin{comment}
 %%%%%%% these are various parts that have been moved/modified
 In order to benchmark the performance of the analysis it is valuable to have a signal model which can be used to assess the analysis' sensitivity.  This section describes the choice of model used for this purpose. It is important to stress that the signal model used serves the purpose of benchmarking the analysis' sensitivity, but the ultimate goal of our analysis remains to measure the rate of $\nu_e$ interactions in the BNB and report whether the observation is consistent or not with MicroBooNE's MC prediction.
@@ -54,12 +41,9 @@ While reporting sensitivities for the MB-$\nu_e$ LEE model is useful, it is not 
 \end{comment}
 
 
-\par  Many models can be devised to explain the MiniBooNE LEE as an excess of $\nu_e$ interactions, each model relying on a given (new) physics production mechanism and set of assumptions on the detector response. This section describes the signal model chosen by the collaboration to benchmark the sensitivity of all $\nu_e$ LEE analyses, including this one.  While a signal model is a useful tool, it is important to stress that any signal model carries a set of important assumptions and caveats, and that the ultimate goal of our analysis is to measure the rate of $\nu_e$ interactions in the BNB, reporting whether the observation is consistent or not with MicroBooNE's MC prediction. Answering whether MicroBooNE's observation is consistent with the MiniBooNE LEE anomaly is beyond the scope of this work, and something not achievable without significant work from both MiniBooNE and MicroBooNE.
-\begin{comment}
-\par To test this analysis' sensitivity, a model explaining the MiniBooNE LEE  as an excess of $\nu_e$ interactions must be produced and used to generate simulated events in MicroBooNE. Many such models can be devised, each relying on a given (new) physics production mechanism and set of assumptions on detector response. 
-\end{comment}
+\par  Many models can be devised to explain the MiniBooNE LEE as an excess of $\nu_e$ interactions, each model relying on a given (new) physics production mechanism and set of assumptions about the detector response. This section describes the signal model chosen by the collaboration to benchmark the sensitivity of all $\nu_e$ LEE analyses, including this one.  While a signal model is a useful tool, it is important to stress that any signal model carries a set of important assumptions and caveats, and that the ultimate goal of our analysis is to measure the rate of $\nu_e$ interactions in the BNB, reporting whether the observation is consistent or not with MicroBooNE's MC prediction. Answering whether MicroBooNE's observation is consistent with the MiniBooNE LEE anomaly is beyond the scope of this work, and something not achievable without significant work from both MiniBooNE and MicroBooNE.
 
-\par  The signal model used to generate simulated events in MicroBooNE and to compute the primary sensitivity quoted by this analysis  is the MiniBooNE-unfolded LEE model, referred to as \textbf{MB-$\nu_e$ LEE} model \cite{C2,C}. In this model, all excess LEE events are assumed to be due to $\nu_e$ interactions with a value of true energy obtained by unfolding from the reconstructed CCQE energy of MiniBooNE LEE events, as recorded by MiniBooNE's data. This procedure is performed by relying on MiniBooNE's energy smearing matrix. The resulting true neutrino energy distribution is shown in Figure~\ref{fig:minibooneunfolded}. There are several limitations to this model worth observing, some technical, others conceptual. On a technical level, the model is composed of a binned event distribution, rather then a parametrized or analytic prediction of the expected $\nu_e$ spectrum. Additionally, no events below 200 MeV of true energy exist in this model. 
+\par  The signal model used to generate simulated events in MicroBooNE and to compute the primary sensitivity quoted by this analysis  is the MiniBooNE-unfolded LEE model, referred to as \textbf{MB-$\nu_e$ LEE} model \cite{C2,C}. In this model, all excess LEE events are assumed to be due to $\nu_e$ interactions with a value of true energy obtained by unfolding from the reconstructed CCQE energy of MiniBooNE LEE events, as recorded by MiniBooNE's data~\footnote{according to the 2018 data-release}. This procedure is performed by relying on MiniBooNE's energy smearing matrix. The resulting true neutrino energy distribution is shown in Figure~\ref{fig:minibooneunfolded}. There are several limitations to this model worth observing, some technical, others conceptual. On a technical level, the model is composed of a binned event distribution, rather then a parametrized or analytic prediction of the expected $\nu_e$ spectrum. Additionally, no events below 200 MeV of true energy exist in this model. 
 \begin{figure}[ht]
 \begin{center}
 \includegraphics[width=0.45\textwidth]{introduction/unfoldedminiboone.png}
@@ -67,7 +51,7 @@ While reporting sensitivities for the MB-$\nu_e$ LEE model is useful, it is not 
 \end{center}
 \end{figure}
 Conceptual issues can be raised in association with the various assumptions made to generate this model. These include the strong reliance on MiniBooNE's simulation in order to unfold reconstructed to true neutrino energy, and the choice of such an unfolding procedure; for example, that it is performed as a function of $E_{\rm CCQE}$ rather then EM energy and $\theta$.
-It is especially important to note that the chosen model strongly favors the interpretation of MiniBooNE events as originating from very low energies (200-400 MeV), for which achieving high sensitivity may come at the cost of omitting a robust analysis at higher energies. This is something this analysis tries to avoid by developing an inclusive and kinematically unbiased analysis. In addition to calculating sensitivities with respect to the MB-$\nu_e$ LEE model, we explore a 3+1 sterile-neutrino oscillation model. This work, preliminary at the moment, is discussed in more detail in Section~\ref{sec:Sensitivity2Osc}.
+It is especially important to note that the chosen model strongly favors the interpretation of MiniBooNE events as originating from very low energies (200-400 MeV), for which achieving high sensitivity may come at the cost of omitting a robust analysis at higher energies. This is something this analysis tries to avoid by developing an inclusive and kinematically unbiased analysis. %In addition to calculating sensitivities with respect to the MB-$\nu_e$ LEE model, we explore a 3+1 sterile-neutrino oscillation model. This work, preliminary at the moment, is discussed in more detail in Section~\ref{sec:Sensitivity2Osc}.
 \par Figure~\ref{fig:nuerate} shows the expected $\nu_e$ rate as a function of true neutrino energy split by final-state topology for the available MicroBooNE dataset of 10.1E20 POT. % with a 10 cm FV. 
  MB-$\nu_e$ LEE signal events are shown in orange.
 \begin{figure}[H] 
@@ -82,128 +66,150 @@ It is especially important to note that the chosen model strongly favors the int
     \includegraphics[width=1.00\textwidth]{introduction/nue_rate_MCC9_LEE.pdf}
     %\caption{\label{fig:nuerate:prediction:MC}}
     \end{subfigure}
-\caption{\label{fig:nuerate}Expected $\nu_e$ rate in MicroBooNE for $10.1E20$ POT %in a 10-cm FV 
- subdivided by event topology (1$e$N$\pi$, 1$e$N$p$0$\pi$, and 1$e$N$p$0$\pi$). The right-hand side figure highlights the low energy region with the unfolded $MB-\nu_e$ LEE signal prediction in orange.}
+\caption{\label{fig:nuerate}Expected $\nu_e$ rate in MicroBooNE for 10.1E20 POT %in a 10-cm FV 
+ subdivided by event topology (1$e$N$\pi$, 1$e$N$p$0$\pi$, and 1$e$N$p$0$\pi$). The right-hand figure highlights the low energy region with the unfolded MB-$\nu_e$ LEE signal prediction in orange.}
 \end{center}
 \end{figure}
 
 \subsection{Goals of the $\nu_{\mu}$ Selection}
 \label{ssec:goalsofnumusel}
-\begin{comment}
-\par For the purpose of this analysis, measurements of $\nu_{\mu}$ interactions are aimed at reducing modeling uncertainties for intrinsic $\nu_e$ events and backgrounds, with the goal of reducing systematic uncertainties in order to be able to claim the observation of new physics were a measurement of $\nu_e$ interactions differ significantly from the expected intrinsic rate. This section describes why such a data-driven constraint is needed and what are the choices which motivate the approach taken in this analysis.
-\end{comment}
+
 \par In the context of this analysis, measurements of $\nu_{\mu}$ interactions are aimed at reducing modeling uncertainties for intrinsic $\nu_e$ events and backgrounds. Event reconstruction and $\nu_e$ identification are only one of the challenges in this analysis:  in order to make statements on whether the observed $\nu_e$ rate indicates the presence of new physics, a well understood prediction of the intrinsic $\nu_e$ rate is needed. 
 
-\par Uncertainties in the expected $\nu_e$ rate are associated with reconstruction efficiencies (detector effects), as well as modeling uncertainties in both the $\nu_e$ flux  and neutrino-argon cross-section predictions. Here, we focus on describing the strategy to deal with the latter. In the case of a single detector experiment, %uncertainties in the intrinsic $\nu_e$ interaction rate are rather large:  and can limit the ability to associate a $\nu_e$ measurement with potential new physics if not a constraint through additional measurements is needed. 
-flux uncertainties for $\nu_e$ calculated from the beam simulation are $\mathcal{O}$(10\%) above 800 MeV and grow to 40\% at 200 MeV. Cross-section uncertainties are also large due to the scarcity of $\nu$-Ar cross-sections measurements, especially at low energy, and due to the complex modeling of neutrino interactions on heavy targets such as argon. Combining all effects, the uncertainty on the $\nu_e$ interaction rate in the few-hundred MeV energy range in MicroBooNE could be as high as 100\%.
+\par Uncertainties in the expected $\nu_e$ rate are associated with reconstruction efficiencies (detector effects), as well as modeling uncertainties in both the $\nu_e$ flux  and neutrino-argon cross-section predictions. Here, we focus on describing the strategy to deal with the latter. In the case of a single detector experiment,
+flux uncertainties for $\nu_e$ calculated from the beam simulation are $\mathcal{O}$(10\%) above 800 MeV and grow to 40\% at 200 MeV. Cross-section uncertainties are also large due to the scarcity of $\nu$-Ar cross-sections measurements, especially at low energy, and due to the complex modeling of neutrino interactions on heavy targets such as argon. Combining all effects, the uncertainty on the $\nu_e$ interaction rate in the few-hundred MeV energy range in MicroBooNE is large enough to significantly hamper an analysis' sensitivity to new physics.
 \par To reduce modeling uncertainties on the expected rate of $\nu_e$ interactions, data-driven constraints are required. These can be performed through measurements of $\nu_{\mu}$ interactions impacted by the same underlying modeling uncertainties. In order to constrain flux uncertainties, we rely on the fact that $\nu_e$ and $\nu_{\mu}$ intrinsic to the beam are both produced by the decay of the same parent $\pi$ and $K$ flux. Similarly, we rely on the charged-current interaction mode $\nu_{l} + Ar \rightarrow l + X$ common to both $\nu_{\mu}$ and $\nu_e$ interactions to constrain the uncertainties on the $\nu_e$ interaction modeling.
 
-
-\begin{comment}
-
-The complexity of $\nu$-Ar interactions and of hadronic interactions in the beamline mean that many different handles and measurements of $\nu_{\mu}$ interactions can play a role in constraining different uncertainties. As examples, measurement of CC and NC $\pi^0$ production constrain resonant interactions and thus $\pi^0$ backgrounds to the $\nu_e$ selection, and measurements of high-energy $\nu_{\mu}$ interactions can help constrain the kaon flux in the beam, which contributes substantially to the production of intrinsic $\nu_e$s. Likewise, measurements of low-energy $\nu_{\mu}$s can help constrain poorly understood $\nu$-Ar interaction models in the few-hundred MeV energy regime, a critical requirement for this analysis. The neutrino identification work developed for this analysis, referred to as \texttt{SliceID} and described in section~\ref{sec:sliceID}, is a highly efficient and topology agnostic selection that enables a vast program of $\nu_{\mu}$ measurements, allowing for flexibility in selecting topologies that may have the strongest constraining power and thus most benefit the $\nu_e$ analysis. At the current time, as described in the remainder of this section and in section~\ref{sec:systematics}, the emphasis is on the measurement of low-energy $\nu_{\mu}$ interactions with the goal of constraining the large uncertainties in low-energy $\nu_e$ events which significantly impact the analysis.
-\par To further motivate the need for low energy $\nu_{\mu}$ interactions, we describe two important ways in which such a dataset can benefit the reduction of modeling uncertainties for $\nu_e$ interactions.
-\end{comment}
 \par The richness of $\nu$-Ar interactions and of hadronic interactions in the beamline offers a number of different handles 
 to constrain different uncertainties using the measurements of $\nu_{\mu}$ interactions.
-As examples, measurements of CC and NC $\pi^0$ production can be used to constrain resonant interactions and thus $\pi^0$ backgrounds to the $\nu_e$ selection;  measurements of high-energy $\nu_{\mu}$ interactions can help constrain the kaon flux in the beam, which contributes substantially to the production of intrinsic $\nu_e$s. Likewise, measurements of low-energy $\nu_{\mu}$s can help constrain poorly understood $\nu$-Ar interaction models in the few-hundred MeV energy regime, which is a critical requirement for this analysis.  At this time, we focus our effort on the study with the bigger impact to the analysis: we perform the measurement of low-energy $\nu_{\mu}$ interactions with the goal of constraining the large uncertainties in low-energy $\nu_e$s. A detailed  description of this constraint is shown in the remainder of this section and in Section~\ref{sec:systematics}.
-%At the current time, our effort is focused on the measurement of low-energy $\nu_{\mu}$ interactions with the goal of constraining the large uncertainties in low-energy $\nu_e$ events which significantly impact the analysis; a detailed  description of this constraint is shown in the remainder of this section and in section~\ref{sec:systematics}.
-It should be noted, however, that the neutrino identification work described in Section~\ref{sec:sliceID} results in a highly efficient and topology agnostic selection. A flexible selection, like this one, will allow for a number of $\nu_{\mu}$ measurements and their associated constraints to be implemented in the future if the $\nu_e$ analysis needs to be more strongly constrained. 
-
-
-
-\par To further motivate the need to study low energy $\nu_{\mu}$ interactions, we describe two important ways in which such a dataset can lead to a reduction of modeling uncertainties for $\nu_e$ interactions. Figure~\ref{fig:numuconstraint:flux} shows the flux correlation for $\nu_{\mu}$ (bottom left) and $\nu_e$ (top right) interactions obtained from MicroBooNE's adaptation of the BNB flux simulation developed by MiniBooNE~\cite{bib:fluxmcc9,bib:fluxtechnote}. Red (blue) areas show large (anti-)correlation. The top-left or bottom-right quadrants show the strength of correlations between the two flavors. For $\nu_e$ energies below 1 GeV, correlations are strongest with $\nu_{\mu}$ interactions at low energy. Figure~\ref{fig:numuconstraint:xsec} shows different cross-section predictions for $\nu_{\mu}$ and $\nu_e$ interactions. The dashed and solid curves represent the CCQE cross-section used in MCC8 vs. MCC9 respectively. Below 400 MeV, the difference in event rates for different models is larger then 100\%. The large differences between these curves, particularly at low energy, indicate the strong need to constrain cross-section uncertainties with MicroBooNE's own data. 
+As examples, measurements of CC and NC $\pi^0$ production can be used to constrain resonant interactions and thus $\pi^0$ backgrounds to the $\nu_e$ selection; measurements of high-energy $\nu_{\mu}$ interactions can help constrain the kaon flux in the beam, which contributes substantially to the production of intrinsic $\nu_e$s. Likewise, measurements of low-energy $\nu_{\mu}$s can help constrain poorly understood $\nu$-Ar interaction models in the few-hundred MeV energy regime, which is a critical requirement for this analysis. We focus our effort on the study with the largest impact to the analysis: a measurement of low-energy $\nu_{\mu}$ interactions with the goal of constraining the large uncertainties in low-energy $\nu_e$s. A detailed  description of this constraint is presented in Section~\ref{sec:sensitivity}. Preliminary work in studying high-energy $\nu_{\mu}$ events to constrain uncertainties on the kaon flux are documented in \href{https://microboone-docdb.fnal.gov/cgi-bin/private/ShowDocument?docid=31239}{DocDB 31239} but their inclusion in the analysis is left to future iterations. The inclusion of a $\pi^0$ constraint in the analysis is omitted due to the low $\pi^0$ contamination in the final selections obtained thanks to the high degree of $e$/$\gamma$ separation achieved. Nonetheless, $\pi^0$ backgrounds are studied extensively and data-MC differences in their modeling are accounted for with the implementation of a ``tune'' described in sec.~\ref{sec:sideband:pi0}.
+\par To motivate the need to study low energy $\nu_{\mu}$ interactions, we describe two important ways in which such a dataset can lead to a reduction of modeling uncertainties for $\nu_e$ interactions. Figure~\ref{fig:numuconstraint:flux} shows the flux correlation for $\nu_{\mu}$ (bottom left) and $\nu_e$ (top right) interactions obtained from MicroBooNE's adaptation of the BNB flux simulation developed by MiniBooNE~\cite{bib:fluxmcc9,bib:fluxtechnote}. Red (blue) areas show large (anti-)correlation. The top-left or bottom-right quadrants show the strength of correlations between the two flavors. For $\nu_e$ energies below 1 GeV, correlations are strongest with $\nu_{\mu}$ interactions at low energy. Figure~\ref{fig:numuconstraint:xsec} shows different cross-section predictions for $\nu_{e}$ interactions and the uncertainty on these cross-sections as assessed within GENIE-v3 and documented in~\cite{bib:1074}. Below 600 MeV, the difference in event rates for different models is significant. The large differences between these curves, particularly at low energy, indicate the strong need to constrain cross-section uncertainties with MicroBooNE data. 
 \begin{figure}[ht] 
 \begin{center}
-    \begin{subfigure}[b]{0.4\textwidth}
+    \begin{subfigure}[b]{0.42\textwidth}
     \centering
     \includegraphics[width=1.00\textwidth]{introduction/fluxcorrelation.png}
-    \caption{\label{fig:numuconstraint:flux}}
+    \caption{\label{fig:numuconstraint:flux} flux}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{introduction/lowexsec.png}
+    \caption{\label{fig:numuconstraint:xsec} xsec}
+    \end{subfigure}
+\caption{\label{fig:numuconstraint} (a) $\nu_{\mu}-\nu_e$ flux correlation matrix at truth level from \href{https://microboone.fnal.gov/wp-content/uploads/MICROBOONE-NOTE-1031-PUB.pdf}{PUBLIC-NOTE-1031}. (b) Different cross section models and uncertainty band for $\nu_e$ CC interactions, from \href{https://microboone.fnal.gov/wp-content/uploads/MICROBOONE-NOTE-1074-PUB.pdf}{PUBLIC-NOTE-1074}~\cite{bib:1074}.}
+\end{center}
+\end{figure}
+It should be noted that the neutrino identification work described in Section~\ref{sec:sliceID} results in a highly efficient and topology agnostic selection. A flexible selection, like this one, allows for a number of exclusive $\nu_{\mu}$ measurements and their associated constraints to be implemented in the future if the $\nu_e$ analysis needs to be more strongly constrained. 
+
+\subsection{Systematics}
+\par This section gives a brief overview of how detector and modeling uncertainties are accounted for in the analysis. The estimation of systematics is presented in section~\ref{sec:systematics}.
+\par \noindent \textbf{Detector systematics}: Detector modeling in MicroBooNE has undergone significant updates in the past year, in part as a result of the large impact that detector systematics have had on 2018 analyses \cite{bib:CCpi0, bib:CCincl}. Detector effects with significant impact on the analysis can be broken up into four main categories: wire-response, space-charge, ion-recombination, and light modeling. In MCC9, the approach to detector systematics is based on studies of data-MC differences in variables relative to each effect. These observed differences are used to create detector simulation variations. These simulation variations are then used to assess the impact on the analysis' performance in measuring $\nu_e$ interactions and relative backgrounds through a uni-sim approach. The cumulative impact of detector systematics in the analysis is found to be at the 10\% level in almost all bins, and is sub-dominant compared to other sources of systematics and statistical uncertainties. The topic, including limitations in the current estimation of detector effects, is presented in detail in section~\ref{sec:detsys}.
+\par \noindent \textbf{Flux, cross-section, and re-interaction modeling} Uncertainties in flux, cross-section, and particle re-interaction modeling are treated through a \emph{multi-sim} approach, where underlying parameters that are input to the model are varied in a correlated way. Flux uncertainties are taken from the MiniBooNE BNB flux simulation adapted to MicroBooNE~\cite{bib:fluxmcc9,bib:fluxtechnote}, while $\nu$ interaction uncertainties are handled within the \texttt{GENIE} reweighting package, as described in~\cite{bib:geniesupportnote}. Particle re-interaction uncertainties (subdominant, at the 1\% level) are included following the treatment oulined in~\href{https://microboone-docdb.fnal.gov/cgi-bin/private/ShowDocument?docid=31919}{DocDB 31919}. The assessment of flux, cross-section, and re-interaction uncertainties and their impact on the analysis are described in sections~\cref{sec:systematics:flux},~\cref{sec:systematics:xsec}, and~\cref{sec:systematics:reint} respectively.
+
+Figure~\ref{fig:systsummaryintro} summarizes the impact of systematic uncertainties on the three channels used in the LEE sensitivity estimation. For $\nu_e$ channels, the total uncertainty before and after constraint are shown in dotted and solid black lines respectively. It is important to note that, while not represented in the plot, statistical errors dominate the uncertainty in the $\nu_e$ selections, while are negligible in the $\nu_{\mu}$ channel.
+
+\begin{figure}[H] 
+\begin{center}
+    \begin{subfigure}[b]{0.32\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{Systematics/1eNp_syst_summary.pdf}
+    \caption{\label{fig:systsummary:np}\npsel}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.32\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{Systematics/1eNp_syst_summary.pdf}
+    \caption{\label{fig:systsummary:zp}\zpsel}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.32\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{Systematics/numu_syst_summary.pdf}
+    \caption{\label{fig:systsummary:numu}\numu}
+    \end{subfigure}
+\caption{\label{fig:systsummaryintro}Summary of systematic errors on the analysis in the three selections used for the LEE sensitivity estimation.}
+\end{center}
+\end{figure}
+
+
+\subsection{Sensitivity Estimation}
+Given a measurement of the spectrum of reconstructed $\nu$ energy in the \npsel and \zpsel event distributions, the hypothesis in which the observed spectrum is entirely due to the Standard Model (SM), $H_0$, is tested against an alternative hypothesis $H_1$.
+The alternative hypothesis $H_1$ consists of all background and intrinsic $\nu_e$ events (i.e. the SM hypothesis), plus the LEE unfolded signal from MiniBooNE (MB-$\nu_e$ LEE).
+In this analysis a simple hypothesis test is performed to test compatibility of the data with $H_0$ vs. $H_1$, and no signal strength is extracted.
+
+A test statistic is chosen in order to condensate all information of the observables in one number.
+Through toy experiments, the expected distributions of the test statistic under the two hypotheses is calculated; the separation power is computed by taking the median p-value with respect to $H_0$ under the assumption that $H_1$ is true. This is the discovery sensitivity, i.e. the sensitivity to reject $H_0$ when $H_1$ is true.
+%We studied the sensitivity in different cases. First, we describe in detail the sensitivity calculation considering only statistical uncertainties. Given the current efficiency for low-energy $\nu_e$ interactions, the impact of statistical uncertainties plays a large role in determining the analysis' ultimate sensitivity. We also include systematic uncertainties using the covariance matrix formalism and the SBNfit package, as described in section \ref{subsec:sensitivity_syst_uncertainty}.
+The full sensitivity calculation takes all observed spectra from the \npsel, \zpsel, and \numu selections and analyzes them simultaneously using a single covariance matrix to constrain the systematic uncertainties and thus increase the sensitivity.
+
+\subsection{Results}
+\label{sec:introduction:conclusions}
+\par The work presented in this note has matured into a robust and comprehensive analysis, with strong tools which are able to leverage the calorimetric and topological imaging of the LArTPC technology to identify in a kinematically agnostic selection $\nu_e$ interactions in MicroBooNE's BNB dataset. The analysis, as it stands, is able to make interesting conclusions about the $\nu_e$ content of the BNB flux, with the primary limitation to the power of these conclusions driven by the low selection efficiency at low energy.
+\par Multiple selections have been developed as part of this analysis, all showing generally good data-simulation agreement. Validations of the analysis through data/MC comparisons have been performed in several sideband regions and are summarized in figure~\ref{fig:datamccomparisons}. Data-MC comparisons in all variables used in the analysis, at relevant stages of a selection are showed in the numerous appendices of this Tech Note. Most data-MC comparisons provided in this note are limited to small subsets of MicroBooNE data which are currently accessible. The analysis team has devised and a procedure for reaching a final box-opening which relies on producing successively more sensitive data-MC comparisons of distributions relevant to the analysis, starting with the $\pi^0$ and $\nu_{\mu}$ sideband and constraint channels, and moving to distributions relevant to the $\nu_e$ channel. This procedure, outlined in \href{https://microboone-docdb.fnal.gov/cgi-bin/private/ShowDocument?docid=28527}{DocDB 28527} is being developed in accordance to the guidelines of the OSC group presented in \href{https://microboone-docdb.fnal.gov/cgi-bin/private/ShowDocument?docid=29203}{DocDB 29203}.
+
+\begin{figure}[ht] 
+\begin{center}
+    \begin{subfigure}[b]{0.3\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{1eNp/reco_e_03122020_RUN1_preselection.pdf}
+    \caption{\label{fig:datamccomparisons:nuepresel} \npsel pre-selection for Run  1}
     \end{subfigure}
     \begin{subfigure}[b]{0.3\textwidth}
     \centering
-    \includegraphics[width=1.00\textwidth]{introduction/xsec_mcc8_mcc9.png}
-    \caption{\label{fig:numuconstraint:xsec}}
-    \end{subfigure}
-\caption{\label{fig:numuconstraint} (a) $\nu_{\mu}$-$\nu_e$flux correlation matrix. (b) Different cross section models for CC interactions (y-axis is $\sigma$ in a.u.).  }
-\end{center}
-\end{figure}
-
-\subsection{Systematics}
-\par This section gives a brief overview of how detector and modeling uncertainties are accounted for in the analysis. The estimation of systematics is performed in section~\ref{sec:systematics}.
-\par \noindent \textbf{Detector Systematics}: Detector modeling in MicroBooNE has undergone significant updates in the past year, in part as a result of the large impact that detector systematics have had on 2018 analyses \cite{bib:CCpi0, bib:CCincl}. Detector effects with significant impact on the analysis can be broken up into three main categories:
-\begin{itemize}
-    \item[-] Wire-Response modeling: the response of MicroBooNE's electronics to drifting charge is a complex subject described in three past publications~\cite{bib:noise,bib:SP1,bib:SP2}. The work of these papers in improving the understanding and modeling of noise and field-response effects has been implemented in the current detector simulation and is expected to lead to a reduction in what for MCC8 analysis comprised the largest detector uncertainty.
-    \item[-] Space-Charge modeling: MicroBooNE's space-charge model has changed significantly since 2018, moving from a calculation-based~\cite{bib:SCEsim} implementation of electric field distortions to a data-driven E-field map~\cite{bib:SCEdata} implemented in simulation and reconstruction. Due to the large position distortions (and, though smaller, charge distortions) SCE can significantly impact an analysis through the determination  of fiducial boundaries, tracking and energy resolution.
-    \item[-] Scintillation light modeling: MicroBooNE's model of scintillation light production has not changed significantly since the beginning of data-taking, and has known limitations. Of particular importance to this analysis, which aims to use a dataset spanning four years, is the known and significant time-dependent variation of MicroBooNE's light response. This analysis takes several steps to correct for, and mitigate the impact of light mismodeling. Triggering on low-energy signal $\nu_e$ events, and cosmic-rejection are particularly sensitive to scintillation light detector effects.
-\end{itemize}
-\emph{An additional detector effects that needs to be accounted for is ion Recombination which impacts the detector's calorimetric response. Tailored studies and proton samples are being developed to assess ion recombination modeling accuracy in MCC9 but are not available at the time of writing of this note.}
-\par \noindent \textbf{Flux and Cross-Section Modeling} Uncertainties in flux and cross-section modeling are treated through a \emph{multi-sim} approach, where underlying parameters that are input to the modeling are varied in a correlated way. Flux uncertainties are taken from the MiniBooNE BNB flux simulation adapted to MicroBooNE~\cite{bib:fluxmcc9,bib:fluxtechnote}, while $\nu$ interaction uncertainties are handled within the \texttt{GENIE} reweighting package, as described in~\cite{bib:geniesupportnote}. \emph{We note that the \texttt{GENIE} event reweighting infrastructure is still in development and likely to be updated or further expanded on in the future. Finally, uncertainties associated with pion and proton re-interactions in argon were unavailable when this version of the Tech Note was produced and not included at this stage.} 
-
-\subsection{Sensitivity Estimation}
-In order to extract information from the selected events, a simple hypothesis test is performed.
-Given an observable quantity, such as a measurement of the energy deposited by the neutrino interaction, the hypothesis in which the observed spectrum of events is entirely due to the standard model, $H_0$, is tested against an alternative hypothesis $H_1$.
-The alternative hypothesis $H_1$ consists of all the known background plus the LEE unfolded signal from MiniBooNE (MB-$\nu_e$ LEE), though an oscillation signal has also been studied, as shown in section \ref{sec:Sensitivity2Osc}.
-For the MB-$\nu_e$ LEE signal, the hypothesis test is simple in that the comparison of two different hypotheses is performed and no parameter is inferred from the data.
-
-%The hypothesis test is simple in the sense no parameter is fitted from the data, but we limit ourselves to a comparison of two different hypotheses.
-
-A test statistic is chosen in order to condensate all information of the observables in one number.
-Through toy experiments, the expected distributions of the test statistic under the two hypotheses is calculated; the separation power is computed by taking the median p-value with respect to $H_0$ under the assumption that %one might observe if 
- $H_1$ is true. This is the discovery sensitivity, i.e. the sensitivity to reject $H_0$ when $H_1$ is true.
-We studied the sensitivity in different cases. First, we describe in detail the sensitivity calculation considering only statistical uncertainties. Given that only a handful of events pass the exclusive selections, the impact of statistical uncertainties plays a large role in determining the analysis' ultimate sensitivity. We also include systematic uncertainties using the covariance matrix formalism and the SBNfit package, as described in section \ref{subsec:sensitivity_syst_uncertainty}.
-Finally, the observed spectra from the \nueccnopinp and the \numu selections are analyzed simultaneously using a single covariance matrix to constraint the systematic uncertainties and thus increase the sensitivity.
-
-\subsection{Analysis Status}
-\label{sec:introduction:conclusions}
-\par The work presented in this note has matured into a robust and comprehensive analysis, with strong tools which are able to leverage the calorimetric and topological imaging of the LArTPC technology to identify in a kinematically agnostic selection $\nu_e$ interactions in MicroBooNE's BNB dataset. The analysis, as it stands, is able to make interesting conclusions on the $\nu_e$ content of the BNB flux, with the primary limitation to the power of these conclusions driven by the low selection efficiency at low energy .
-\par Multiple selections have been developed as part of this analysis, all showing generally good data-simulation agreement, as shown in figure~\ref{fig:datamccomparisons} for the \npsel pre-selection (figure~\ref{fig:datamccomparisons:nuepresel}, Run 1) and for the full $\nu_{\mu}$ contained selection (figure~\ref{fig:datamccomparisons:numu}, Run 3).
-
-\begin{figure}[ht] 
-\begin{center}
-    \begin{subfigure}[b]{0.4\textwidth}
-    \centering
-    \includegraphics[width=1.00\textwidth]{1eNp/reco_e_01162020_RUN1.pdf}
-    \caption{\label{fig:datamccomparisons:nuepresel} \npsel pre-selection for Run  1}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.44\textwidth}
-    \centering
-    \includegraphics[width=1.00\textwidth]{NuMuCCsel/Images/Ryan/Run3_costheta_withCRT.jpg}
+    \includegraphics[width=1.00\textwidth]{NuMuCCsel/Images/Ryan/fullselection_run3_fullsystematics/trk_cos_theta_v_07232020_fullsel_samples_detsys_event_category.pdf}
     \caption{\label{fig:datamccomparisons:numu} high-purity $\nu_{\mu}$ for Run 3}
     \end{subfigure}
-\caption{\label{fig:datamccomparisons} }
+    \begin{subfigure}[b]{0.3\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{detsys/datamc/pi0_mass_Y_03292020_detsys.pdf}
+    \caption{\label{fig:datamccomparisons:pi0} high-purity $\nu_{\mu}$ for Run 3}
+    \end{subfigure}
+\caption{\label{fig:datamccomparisons} (a) Comparisons of data and simulation for the \npsel pre-selection with Run1 $5e19$, including GENIE and flux systematic uncertainties. (b) Run 3 $\nu_{\mu}$ selection data-MC comparisons with $2.13e20$ POT of data with full GENIE and flux and detector systematic uncertainties. (c) Area-normalized $\pi^0$ data-MC comparison including detector systematic uncertainties.}
 \end{center}
 \end{figure}
 
-\par The three $\nu_e$ selections developed in this work all provide strong input to the analysis. Figure~\ref{fig:intro:nueselections} shows the status of the box-cut \npsel (figure~\ref{fig:intro:nueselections:1eNp}), the BDT-based \zpsel selection (figure~\ref{fig:intro:nueselections:1e0p}), and the BDT-based $\nu_e$ inclusive (figure~\ref{fig:intro:nueselections:inclusive}). \par The inclusive channel provides the analysis a tool with which to study the modeling of $\nu_e$ interactions, especially at higher energies, and provides a first validation even with the small dataset currently available. Moving forward, we are exploring ways to use this channel to quantitatively constrain high-energy $\nu_e$ modeling uncertainties.
-\par The 1$e$0$p$0$\pi$ channel obtains a purity of 49\% and, even though it currently primarily is sensitive to higher-energy $\nu_e$ interactions, provides a valuable validation of detector and modeling effects which can cause migration from the N$p$ to 0$p$ channel. A quantitative estimation of the impact of this channel is being performed.
-\par The \npsel channel achieves a $5-10$\% efficiency with a 73\%  purity for the cut-based  and a $5-15$\% efficiency with a 81\%  purity for the BDT-based selection. These selections lead to $\mathcal{O}$(10) expected MB-$\nu_e$ LEE signal events and $40-70$ intrinsic $\nu_e$ events for the full Run $1-4$ dataset. The final reconstructed energy distribution for the box-cut selection is shown in figure~\ref{fig:intro:nueselections:1eNp}. The box-cut selection's statistics-only sensitivity is $2.1-2.3\sigma$, depending on the test-statistic used. The low statistics of the predicted signals lead to significant fluctuations in the expected sensitivity, covering the range $1.5-3.1\sigma$. 
- \emph{Given the efficiency and purity obtained with the BDT-based workflow, we expect a higher sensitivity compared to the cut-based workflow.  We are in the process of re-evaluating the BDT-based performance which will be reported in this note after higher statistics MC samples have been included, and a re-calibration of the calorimetry has been completed.} 
+\par The three $\nu_e$ selections developed in this work all provide strong input to the analysis. Figure~\ref{fig:intro:nueselections} shows the status of the \npsel (figure~\ref{fig:intro:nueselections:1eNp}), the \zpsel selection (figure~\ref{fig:intro:nueselections:1e0p}), and the $\nu_e$ inclusive (figure~\ref{fig:intro:nueselections:inclusive}). The two exclusive \npsel and \zpsel selections provide sensitivity to new physics in the $\nu_e$ channel, focusing at low-energy. 
+\par The \npsel channel achieves a $7-15$\% efficiency with an energy-dependent 60-90\%  purity, leading to $\mathcal{O}$(15) expected MB-$\nu_e$ LEE signal events and $75$ intrinsic $\nu_e$ events for the full Run $1-4$ data set. The final reconstructed energy distribution for the BDT selection is shown in figure~\ref{fig:intro:nueselections:1eNp}.  
+\par The \zpsel channel obtains a purity of 50\%. This channel, in addition to providing a valuable constraint of detector and modeling effects which can cause migration from the \npsel to the \zpsel channel, also adds to the performance of the analysis because it is treated on equal footing as the \npsel in the sensitivity calculation.
+\par The inclusive channel provides the analysis a tool with which to study the modeling of $\nu_e$ interactions, especially at higher energies, and provides a first validation even with the small data set currently available.
 
 \begin{figure}[ht] 
 \begin{center}
     \begin{subfigure}[b]{0.28\textwidth}
     \centering
-    \includegraphics[width=1.00\textwidth]{1eNp/reco_e_01162020_box_RUN1.pdf}
-    \caption{\label{fig:intro:nueselections:1eNp} box-cut $\nu_e$ 1$e$0$p$}
+    \includegraphics[width=1.00\textwidth]{Sidebands/Figures/1eNp/HighEnergy/reco_e.pdf}
+    \caption{\label{fig:intro:nueselections:1eNp}\npsel}
     \end{subfigure}
     \begin{subfigure}[b]{0.28\textwidth}
     \centering
-    \includegraphics[width=1.00\textwidth]{1e0p/reco_e_01162020_RUN3_bgbdt.pdf}
-    \caption{\label{fig:intro:nueselections:1e0p} bdt-based $\nu_e$ 1$e$0$p$}
+    \includegraphics[width=1.00\textwidth]{introduction/reco_e_1e0p_08052020.pdf}
+    \caption{\label{fig:intro:nueselections:1e0p}\zpsel}
     \end{subfigure}
     \begin{subfigure}[b]{0.31\textwidth}
     \centering
-    \includegraphics[width=1.00\textwidth]{introduction/nueinclusive.png}
-    \caption{\label{fig:intro:nueselections:inclusive} BDT-based $\nu_e$ inclusive}
+    \includegraphics[width=1.00\textwidth]{NuMuCCsel/Images/Ryan/fullselection_run3_fullsystematics/reco_nu_e_range_v_08052020_fullsel_samples_noratio_event_category.pdf}
+    \caption{\label{fig:intro:nueselections:numu} $\nu_{\mu}$}
     \end{subfigure}
-\caption{\label{fig:intro:nueselections} }
+\caption{\label{fig:intro:nueselections} Final spectra of the \npsel, \zpsel, and \numu selections in reconstructed neutrino energy provided as input to SBNFit. Data-points are shown for \nue events in the far-sideband (above 0.85 and 0.9 GeV for the \npsel and \zpsel respectively) and for the full spectrum for \numu events.}
 \end{center}
 \end{figure}
 
 
-\par A particular strength of this analysis consists in the multiple sideband channels available to validate the simulation, reconstruction, and help constrain $\nu_e$ interaction uncertainties. A high statistics $\pi^0$ sideband (section~\ref{sec:controls:pi0}) provides confidence in the performance of the analysis' shower reconstruction. A high-quality inclusive contained $\nu_{\mu}$ selection shows good data-simulation agreement in both Run 1 and Run 3 and provides the input for the $\nu_{\mu}$ constraint which has the primary goal of reducing systematic uncertainties for low-energy $\nu_e$s. A primary estimation of the impact of the $\nu_{\mu}$ constraint shows a 50\% reduction in modeling uncertainties, though this is to be revisited by the time of the February collaboration meeting. Additionally, an inclusive $\nu_{\mu}$ selection (section~\ref{sec:nueselection:inclusive}) provides a valuable starting point for many possible final-state measurements which may become necessary to further validate the analysis as its review progresses. 
-\par The full evaluation of systematics for this analysis has not yet been completed. Detector systematic samples available have been investigated and preliminarily show little impact on the selections (sec.~\ref{sec:systematics}) but have not yet been included in sensitivity calculations. The recent availability of an updated central-value simulation for \texttt{GENIE}, together with updated genie modeling uncertainties, will allow us to quantitatively measure the impact of these uncertainties, with and without sideband channel constraints, by the February collaboration meeting. In the meantime, sections~\ref{sec:systematics} and~\ref{sec:sensitivity} present the status of tools and methods used for the full evaluation of the analysis' sensitivity. Statistics-only sensitivity calculations are also presented, based on the box-cut \npsel described in this note.
+\par A particular strength of this analysis is the multiple side band channels available to validate the simulation and reconstruction, and to help constrain $\nu_e$ interaction uncertainties. A high statistics $\pi^0$ side band (section~\ref{sec:sideband:pi0}) provides confidence in the performance of the analysis' shower reconstruction. A high-quality inclusive contained $\nu_{\mu}$ selection (section~\ref{sec:nueselection:inclusive}) shows good data-simulation agreement in both Run 1 and Run 3 and provides the input for the $\nu_{\mu}$ constraint which has the primary goal of reducing systematic uncertainties for low-energy $\nu_e$s. An initial estimation of the impact of the $\nu_{\mu}$ constraint shows a 50\% reduction in modeling uncertainties. Additionally, an inclusive $\nu_{\mu}$ selection provides a valuable starting point for many possible final-state measurements which may become necessary to further validate the analysis. 
+\par The current version of the analysis, which includes the use of the SBNFit framework and accounts for flux, cross-section, and re-interaction uncertainties (constrained through the $\nu_{\mu}$ channel) as well as detector uncertainties leads to a 2.3$\sigma$ median sensitivity to exclude the SM in favor of the LEE hypothesis with the full Run 1$-$3 6.95E20 POT data set. 
+\begin{figure}[H]
+    \begin{center}
+    \begin{subfigure}{0.55\textwidth}
+    \includegraphics[width=1.00\textwidth]{Sensitivity/BDT_higheff/SBNfit_Cls_nue_1e0p_numu_reco_e_H1_newBDT_higheff_noCCMEC_constrained_detsys.pdf}
+    \label{fig:sensitivity_bdt_loose_const:intro}
+    %\caption{Loose BDT selection}
+    \end{subfigure}
+    \caption{Final discovery sensitivity to the LEE unfolded signal of the \npsel selection with the constrained systematics.}
+    \end{center}
+\end{figure}
+
+\input{sensitivitytable.tex}
+
+\subsection{Outline of Tech-Note Contents}
+\par Subsequent chapters in this tech-note present the material summarized in this chapter in more detail. Section~\ref{sec:sliceID} presents the common $\nu$ ID tools used to perform the bulk of cosmic-rejection for all selections in this analysis. Section~\ref{sec:NuEvtReco} presents the tools employed for event reconstruction in the analysis, with particular emphasis on the PID tools developed specifically in the context of this work. This chapter also details the performance of particle and neutrino energy reconstruction. Section~\ref{sec:controls} presents results from two important control regions: a $\pi^0$ sample, used to validate EM shower reconstruction and study and correct for $\pi^0$ production mis-modeling in our generator, as well as validations of \dedx calorimetry on stopping muons and protons from data. Sections~\ref{app:nueslections},~\ref{sec:NuMUCCsel}, and~\ref{sec:nueselection:inclusive} present the exclusive \nue \npsel and \zpsel selections, constraint \numu selection, and inclusive $\nu_e$ selection respectively. Section~\ref{sec:systematics} presents a description of the treatment, and quantitative assessment of detector, flux, genie, and re-interaction uncertainties in the analysis, and is followed by Section~\ref{sec:sensitivity} where the joint fit between the \npsel, \zpsel, and \numu selections is presented, together with the systematics constraint obtained through this fit as well as the obtained analysis sensitivity. \cref{sec:sidebands} focuses on presenting results from the numerous far-sidebands in the analysis, which include the high-energy, low-PID, and 2+ shower sidebands. Section~\ref{sec:fakedata} presents results from the five fake-data sets provided to the analysis team. Finally, Section~\ref{sec:conclusions} summarizes the results of the analysis.
 
 
 \newpage

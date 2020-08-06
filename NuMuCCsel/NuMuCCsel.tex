@@ -1,18 +1,18 @@
 \label{sec:NuMUCCsel}
 
-\par This section presents the two $\nu_{\mu}$ selections of the analysis; both are inclusive selections, but differ in scopes and optimizations. 
+\par This selection is designed to be best used as a constraining tool for the $\nu_e$ analysis. The flux and cross-section predictions for BNB $\nu$s are most uncertain in the few-hundreds MeV energy region, blurring the results of a low-energy analysis focused on that region of phase space. Because the $\nu_e$s and $\nu_{\mu}$s all share the same parent atoms and interact similarly in our detector, the $\nu_{\mu}$ sample can be used to constrain flux and cross-section uncertainties in the $\nu_e$ sector. The $\nu_{e}$ selection is subject to higher uncertainties due to its low statistics, but the $\nu_{\mu}$ channel benefits from two orders-of-magnitude larger absolute flux.
 
-The first selection (Section \ref{ssec:NuMUCCsel:constr}) is optimized to be used as a constraining tool in the $\nu_e$ analysis with a particular emphasis on reconstructing low-energy neutrino interactions. 
+\par This selection is ultimately a $\nu_{\mu}$ CC Inclusive selection, allowing any number of final state hadrons, with a focus on prioritizing performance in the low-energy region. This selection is intentionally broad, this accomplishes a few things. It allows for the quick implementation sub-selections that can probe interesting features in the data and improves the statistics. The improved statistics are important because only Run 3 is considered in this selection, this will be discussed later in the section. 
 
-The second selection (Section \ref{ssec:NuMUCCsel:INC}) provides a pure, high-statistics sample of $\nu_{\mu}$s. \emph{This selection is particularly well suited as a starting step for multiple exclusive channel measurements, which, while not currently performed and included in this analysis, may provide helpful validations and constraints on neutrino interaction modeling as the analysis matures in the coming months.}
+\par \cref{ssec:NuMUCCsel:sel:vars} defines the variables used in this selection. \cref{sssec:NuMUCCsel:constr:selectionandsignal} further defines the signal and the cuts placed on the variables described in \cref{ssec:NuMUCCsel:sel:vars}. \cref{ssec:NuMUCCsel:datasample} discusses the data sample used for the constraint. And \cref{ssec:NuMUCCsel:timedep} discusses the time dependence of the data.
 
-
+%-----------------VARIABLE DEFINITIONS---------------------%
 \subsection{Variable Definitions}
 \label{ssec:NuMUCCsel:sel:vars}
 
-\par Table~\ref{tab:numuvariableSummary} contains a concise list of variables used in the $\nu_{\mu}$ selections. The variables are organized into \textit{slice} and \textit{track}-level descriptors, used for preselection and muon-candidate selection respectively. There is some redundancy between this list and the list in sec \ref{sec:nueselection:variables}, but this list below should serve as a quick reference to a reader of this chapter.
+\par Table~\ref{tab:numuvariableSummary} contains a concise list of variables used in this $\nu_{\mu}$ selection. The variables are organized into \textit{event} and \textit{track}-level descriptors, used for preselection and muon-candidate selection respectively. There is some redundancy between this list and the list in sec \ref{sec:nueselection:variables}, but this list below should serve as a quick reference to a reader of this chapter.
 
-\begin{table}[ht]
+\begin{table}[H]
 \caption{\label{tab:numuvariableSummary} Summary of the definition for the variables used in the $\nu_{\mu}$ selections.}
 \centering
 \begin{tabular}{ m{0.07\textwidth} | m{0.26\textwidth} | m{0.55\textwidth}  }
@@ -20,90 +20,51 @@ Category & Variable Name & Description  \\
 \hline
 
 \multicolumn{1}{l|}{} & \texttt{nslice} &  Number of neutrino slices identified by the \texttt{SliceID}. Values are  0 or 1.\\  \cline{2-3}
-\multicolumn{1}{l|}{} & \texttt{slpdg} &  PDG code of the event as assigned by Pandora, 12 if the object with the most hits over all planes is shower-like, 14 if track-like.\\  \cline{2-3}
-\multicolumn{1}{l|}{} & \texttt{all\_\{start,end\}\_contained} &  The start/end points of all PFParticles are volume defined with borders: \SI{5}{\cm} in $x$ and \SI{6}{\cm} $y$ and \SI{10}{\cm} $z$.\\  \cline{2-3}
-\multicolumn{1}{l|}{} & \texttt{slpdg} &  PDG code of the event as assigned by Pandora, 12 if the object with the most hits over all planes is shower-like, 14 if track-like.\\  \cline{2-3}
-\multicolumn{1}{l|}{} & \texttt{n\_tracks\_contained} &  number of tracks fully contained in the fiducial volume.\\  \cline{2-3}
+\multicolumn{1}{l|}{} & \texttt{crtveto} & Boolean variable checking if the event passes the CRT veto. Not available for Run 1 and Run 2 data. \\  \cline{2-3}
 \multicolumn{1}{l|}{} & \texttt{reco\_nu\_vtx\_sce\_\{x,y,z\}} & Reconstructed neutrino interaction vertex in (x,y,z) coordinates. The space charged correction is applied.  \\  \cline{2-3}
+\multicolumn{1}{l|}{} & \texttt{n\_tracks\_contained} &  number of tracks fully contained in the fiducial volume.\\  \cline{2-3}
+\multicolumn{1}{l|}{} & \texttt{slpdg} &  PDG code of the event as assigned by Pandora, 12 if the object with the most hits over all planes is shower-like, 14 if track-like.\\  \cline{2-3}
+%\multicolumn{1}{l|}{} & \texttt{all\_\{start,end\}\_contained} &  The start/end points of all PFParticles are volume defined with borders: \SI{5}{\cm} in $x$ and \SI{6}{\cm} $y$ and \SI{10}{\cm} $z$.\\  \cline{2-3}
 \parbox[t]{2mm}{\multirow{4}{*}{\rotatebox[origin=c]{90}{Slice}}} & \texttt{hits\_ratio} & Ratio between hits from showers and total number of hits in the slice. \\  \cline{2-3}
 \multicolumn{1}{l|}{} & \texttt{CosmicIP} & Closest distance between shower start and space points associated to tracks flagged as cosmics. \\  \cline{2-3}
-\multicolumn{1}{l|}{} & \texttt{crtveto} & Boolean variable checking if the event passes the CRT veto. \\  \cline{2-3}
 \multicolumn{1}{l|}{} & \texttt{\_closestNuCosmicDist} &  3D distance between the reconstructed neutrino vertex and the closest CRT-tagged cosmic track. \\  \cline{2-3}
 \hline
-
 
 \multicolumn{1}{l|}{} & \texttt{trk\_sce\_\{start,end\}\_\{x,y,z\}} &  Reconstructed, spacecharge-corrected start/end-points for the tracks.\\  \cline{2-3}
 \multicolumn{1}{l|}{} & \texttt{trk\_llr\_pid\_score} &  The log likelihood ratio particle identification score (see sec. \ref{subsec:loglikelihoodpid}). This variable has strong muon-proton discriminating power (see fig. \ref{fig:numu:topo_pid}).\\  \cline{2-3}
 \multicolumn{1}{l|}{} & \texttt{trk\_score} & A machine-learned quantity that describes how `track-like' the reconstructed object is (possible values between 0 and 1). \\  \cline{2-3}
-\parbox[t]{2mm}{\multirow{4}{*}{\rotatebox[origin=c]{90}{Track}}} & \texttt{trk\_len} & he length of the reconstructed track (in cm). \\  \cline{2-3}
+\parbox[t]{2mm}{\multirow{4}{*}{\rotatebox[origin=c]{90}{Track}}} & \texttt{trk\_len} & The length of the reconstructed track (in cm). \\  \cline{2-3}
 \multicolumn{1}{l|}{} & \texttt{trk\_distance} & The distance from the start-point of the reconstructed track to the reconstructed neutrino vertex (in cm). \\  \cline{2-3}
-\multicolumn{1}{l|}{} & \texttt{pfp\_generation} &  The generation of the PFParticle according to Pandora: the neutrino has generation 1, it's direct daughters 2, and further decay products 3 or higher.\\  \cline{2-3}
+\multicolumn{1}{l|}{} & \texttt{pfp\_generation} &  The generation of the PFParticle according to Pandora: the neutrino has generation 1, its direct daughters 2, and further decay products 3 or higher.\\  \cline{2-3}
+\multicolumn{1}{l|}{} & \texttt{MCS\_quality} &  Agreement between the muon momentum estimated with the range-based method $P_\texttt{range}$ and with the Multiple Coulomb Scattering-based method $P_\texttt{MCS}$. The variable is defined as $(P_\texttt{MCS}-P_\texttt{range})/P_\texttt{range}$.\\  \cline{2-3}
 \hline
 
 \end{tabular}
 \label{tab:numuvariableSummary}
 \end{table}
 
-\begin{comment}
+\subsection{Selection}
+\label{sssec:NuMUCCsel:constr:selectionandsignal}
 
-\par \noindent \textbf{Slice variables}: These variables generally describe the reconstructed neutrino interaction, i.e. the confluence of data gathered from all the PFParticles in the slice.
-\begin{itemize}
-    \item \texttt{nslice}: number of neutrino slices identified by the SliceID (possible values are 0 or 1).
-    \item \texttt{n\_tracks\_contained}: number of tracks fully contained in the fiducial volume.
-    \item \texttt{reco\_nu\_vtx\_sce\_\{x,y,z\}}: Reconstructed, spacecharge-corrected neutrino interaction vertices in (x,y,z) coordinates (see fig. \ref{fig:numu_vtx}.
-    \item \texttt{topological\_score}: A machine-learned quantity that reflects the complexity and directionality of observable slice quantities. This variable has strong discriminating power between signal and cosmic-background (see \ref{fig:numu_topo_pid} (possible values are between 0 and 1).
-    \item \texttt{CRT Veto and Distance Tagger}: Tools provided by the cosmic ray tagger (see sec. \ref{sec:sliceID:CRT}).
-\end{itemize}
+\par A $\nu_{\mu}$ event is identified by the presence of one muon candidate originating from inside the fiducial volume of the TPC. Additional tracks may accompany the muon candidate; additional particles assist in the neutrino event reconstruction and energy calculation but their information is not used in the selection itself. Showers are not explicitly rejected although they contribute very little to the final spectra, particularly in the low-energy region. 
 
-\par \noindent \textbf{Track variables}: These variables specifically describe the reconstructed PFParticles; in interest to this selection are reconstructed track-like objects. 
-\begin{itemize}
-    \item \texttt{trk\_sce\_\{start,end\}\_\{x,y,z\}}: Reconstructed, spacecharge-corrected start/end-points for the tracks.
-    \item \texttt{trk\_llr\_pid\_score}: The log likelihood ratio particle identification score (see sec. \ref{subsec:loglikelihoodpid}). This variable has strong muon-proton discriminating power (see fig. \ref{fig:numu_topo_pid}).
-    \item \texttt{trk\_score}: A machine-learned quantity that describes how `track-like' the reconstructed object is (possible values between 0 and 1).
-    \item \texttt{trk\_len}: The length of the reconstructed track (in cm).
-    \item \texttt{trk\_distance}: The distance from the start-point of the reconstructed track to the reconstructed neutrino vertex (in cm).
-    \item \texttt{pfp\_generation}: The generation of the PFParticle according to Pandora, i.e. the neutrino has generation 1, its direct daughters generation 2 and further decay products have generation 3.
-\end{itemize}
-\end{comment}
+\par This selection filter can be broken down into ``preselection'' and ``muon selection'' components. The preselection filter is applied first and only takes event-level variables as input. In other words, the preselection filter is coarse and interacts only with variables that reflect the event as a whole but are agnostic to features of individual tracks. The primary purpose of the preselection is to eliminate events that are founded on cosmic muons or are not generally $\nu_{\mu} CC-like$. The events that pass through the preselection filter are then put through the muon selection filter. If the event does not have at least one track that passes the requirements than it is rejected. If multiple tracks pass the filter, the longest one is selected as the muon candidate. 
 
-\begin{comment}
-\subsubsection{Backgrounds}
-\label{sssec:NuMUCCsel:sel:bkgrnds}
-
-\par Coming soon...
-
-\subsubsection{Fiducial Volume and Spacecharge-Corrected Spacepoints}
-\label{sssec:NuMUCCsel:sel:FVandSCE}
-
-\par Coming soon...
-\end{comment}
-
-
-
-\subsection{Constraint Selection}
-\label{ssec:NuMUCCsel:constr}
-\par The purpose of selecting a $\nu_{\mu}$ sample is to constrain the systematic uncertainties in the $\nu_{e}$ analysis. Such a constraint is possible because the $\nu_{\mu}$s and $\nu_{e}$s of the BNB are subject to common, correlated uncertainties. The flux and cross-section models are discussed further in sec \ref{ssec:goalsofnumusel} and \ref{subsec:constraintfromnumu}. The $\nu_{e}$ selection is subject to higher uncertainties due to its low statistics: the $\nu_{\mu}$ channel benefits from two orders-of-magnitude larger absolute flux (Docdb 1031) therefore providing high-statistics samples which can be exploited to constrain the uncertainties on the $\nu_{e}$ predicted event rate. For more information regarding the philosophy and goals of this constraint, see sec \ref{ssec:goalsofnumusel}.
-
-\par This selection prioritizes higher efficiencies and purities in the low-energy region that is the interest to the LEE analysis. While f the flux and cross-section predictions for $\nu_{e}$ are most uncertain in the few-hundreds MeV energy region, the absolute $\nu_{\mu}$ flux and the cross-species flux correlation is greatest below 1 GeV (see figs \ref{fig:numuconstraint:flux}, \ref{fig:numuconstraint}) where its constraining power is most needed.
-\begin{comment}
-\begin{figure}
-    \centering
-    \includegraphics[height=6.5cm]{NuMuCCsel/Images/Ryan/absoluteFlux_uBooNE.png} \hspace{2mm}
-    \caption{The absolute neutrino flux prediction through the MicroBooNE detector as calculated by the beam simulation. Shown is the flux for $\nu_{\mu}$, $\overline{\nu_{\mu}}$, $\nu_{e}$, and $\overline{\nu_{e}}$ averaged through the TPC volume with dimensions 2.56m by 2.33m by10.37m. DocDb 1031}
-    \label{fig:bnb_absoluteflux}
-\end{figure}
-\end{comment}
-\subsubsection{Signal Definition}
-\label{sssec:NuMUCCsel:constr:signaldef}
-\par A $\nu_{\mu}$ CC event is identified by the presence of one muon candidate originating from inside the fiducial volume of the detector. Additional tracks and showers may accompany the muon candidate; these particles assist in the neutrino event reconstruction and energy calculation but are not a requirement in the inclusive selection. Future studies of the $\nu_{\mu}$ selection may require the presence of proton candidates to further constrain the interaction models.
+\par Many supporting plots for this section are in \cref{sec:Appendix:numu:constr}. Here one can find the distributions of every variable cut on in the selection. 
 
 \subsubsection{Event Preselection}
 \label{sssec:NuMUCCsel:constr:preselec}
 
-\par The selection of $\nu_{\mu}$ events is built from the groundwork of the SliceID tool (sec. \ref{sec:sliceID:SliceID}) and a combination of cuts on event-level and track-level variables. The cuts described in this section are chosen to reduce cosmic and dirt backgrounds and select slices that are $\nu_{\mu}$-like. The methodology of this selection is similar to the selections in Sec. \ref{sec:nueselection} where first, the common SliceID filter is applied; next, event-level cuts are applied to select $\nu_{\mu}$-like events; finally, track-level cuts are applied to screen for muon-like candidates. The muon-candidate selection is described in sec \ref{sssec:NuMUCCsel:constr:muonsel}.
+\par The $\nu_{\mu}$ constraint selection is built from the groundwork of the SliceID tool (sec. \ref{sec:sliceID}) like the $\nu_e$ selections of this analysis are; SliceID selects $\nu-like$ events and is agnostic to flavor. The additional preselection cuts are chosen to reduce cosmic and dirt backgrounds and select slices that are generally more $\nu_{\mu}$-like. 
 
-\par Table \ref{tab:1muNp:presel} summarizes the preselection requirements for this $\nu_{\mu}$ CC inclusive sample. The requirement that the reconstructed vertex be contained inside the fiducial volume and that the slice has a sufficiently high topological score favors $\nu_{\mu}$ CC events and disfavors cosmogenic or dirt-like activity. The final cut on the $z$ coordinate is to eliminate events that exist in the region of `dead wires' in the MicroBooNE detector -- a common practice within the collaboration. Run 3 has the additional power to leverage the CRT system to further limit cosmogenic background. Given that this selection targets contained events, the fact that $\nu_{\mu}$ interactions can lead to hits in the CRT does not hamper the analysis' performance.
+\par \cref{tab:numuCC:presel} summarizes the preselection cuts. 
+The containment requirement on the reconstructed vertex favors $\nu_{\mu}$ CC events and disfavors cosmogenic or dirt-like activity as the latter originate from outside the detector. The topological score is a machine learned quantity that is designed to discriminate between events founded on muons from cosmic vs neutrino parents. The final cut on the $z$ coordinate is to avoid occur in a region of the MicroBooNE detector with non-functioning channels~\cite{bib:noise} -- a common practice within the collaboration. \\
 
+\par Three variables of the preselection are informed by the cosmic ray tagger (CRT) system at MicroBooNE, $CRT\ Veto$, $crthitpe$, and $closestNuCosmicDist$. The first two reflect whether or not the CRT system was triggered in coincidence with the event and how many photoelectrons (PEs) were present. One can extrapolate straight lines between two coincident CRT hits, the distance between that extrapolated track and the reconstructed neutrino vertex is given in the third variable, $closestNuCosmicDist$. The CRT cuts remove a significant amount of the off-beam data, particularly at lower reconstructed energies. The effect of the CRT cuts on this selection can bee seen in the Appendix, Fig \ref{fig:NuMuCCsel:crtimpact}.
+
+\par Finally, it is required that 90$\%$ of all hits in the reconstructed slice are contained inside the fiducial volume, via $contained_fraction$.
+
+\par Ensuring that all events are contained is a crux of this selection, it is consistent with the stated goal of constructing a selection that prioritizes low-energy performance. Muons from low-energy $\nu_{\mu}$s will not have much kinetic energy and often decay inside the nearly ten meter long detector. Nearly all muons that trigger the CRT system will be cosmogenic, from a high-energy $\nu_{\mu}$, or a $\nu_{\mu}$ close to the edge of the detector. Range-based energy reconstruction (using the Bethe-Bloch formula) can be done on contained tracks, but not un-contained ones, where multiple coulomb scattering (MCS)-based measurements can be done on any track that is at least 50 cm long. The range-based energy calculations are used in the final $\nu_{\mu}$ energy calculation, but the MCS-based calculations are used for validation, more on this later. 
 
 \begin{table}[h!]
 \centering
@@ -113,33 +74,37 @@ Category & Variable Name & Description  \\
  \hline
  Cut goal & Cut definition \\
  \hline\hline
-\multirow{1}{*}{ Cosmic rejection } & nslice = 1 \\
- \hline
-\multirow{2}{*}{ Cosmic rejection (Run3) } & \texttt{CRT Veto} != 1 or \texttt{crthitpe} $<$ 100\\
-& \texttt{closestNuCosmicDist} $>$ 5 cm\\
- \hline
-\multirow{1}{*}{Signal~topology} & \texttt{topological\_score} $>$ 0.06 \\
- \hline
-Containment & \texttt{contained\_fraction} $>$ 0.9 \\
+ \multirow{1}{*}{ Cosmic rejection } & nslice = 1 \\
  \hline
  \multirow{4}{*}{Fiducial Volume} & \texttt{reco\_nu\_vtx\_sce\_x} $\in$ [5,251] cm \\ &
 \texttt{reco\_nu\_vtx\_sce\_y} $\in$ [-110,110] cm \\ &
 \texttt{reco\_nu\_vtx\_sce\_z} $\in$ [20,986] cm \\ &
 \texttt{reco\_nu\_vtx\_sce\_z} $\not\in$ [675,775] cm.\\
+\hline
+\multirow{1}{*}{Signal~topology} & \texttt{topological\_score} $>$ 0.06 \\
+ \hline
+ \multirow{2}{*}{ Cosmic rejection (Run3) } & \texttt{CRT Veto} != 1 or \texttt{crthitpe} $<$ 100\\
+& \texttt{closestNuCosmicDist} $>$ 5 cm\\
+ \hline
+Containment & \texttt{contained\_fraction} $>$ 0.9 \\
  \hline
  \end{tabular}
- \caption{\label{tab:1muNp:presel} Preselection requirements for the $\nu_\mu$ constraining selection.}
+ \caption{\label{tab:numuCC:presel} Preselection requirements for the $\nu_\mu$ constraining selection.}
 \end{table}
-
-
 
 
 \subsubsection{Muon Selection}
 \label{sssec:NuMUCCsel:constr:muonsel}
 
-\par After the event-level cuts are applied, the tracks in the slice are further analyzed to identify muon candidates. At least one reconstructed track in the event must satisfy all the criteria listed in table \ref{tab:findthemuon} for the event to pass the selection. If more than one track passes this requirement, then the longest is taken as the muon candidate. Of the muon candidates that pass this selection, $\approx 94\%$ are, in simulation, correctly tagged muons from $\nu_{\mu}$ CC interactions.
+\par After the event-level cuts are applied, the tracks in the slice are further analyzed to identify individual muon candidates. At least one reconstructed track in the event must satisfy all the criteria listed in table \ref{tab:findthemuon} for the event to pass the selection. If more than one track passes this requirement, then the longest is taken as the muon candidate. Of the muon candidates that pass this selection, $\approx 94\%$ are, in simulation, correctly tagged muons from $\nu_{\mu}$ CC interactions.
 
+\par The cuts made on the start and end points of the reconstructed tracks require that the track is fully contained inside the fiducial volume of the detector. The preselection requires that the vertex and most of the hits be contained, but not all the tracks themselves. This containment cut further eliminates cosmic muons enables the use of range-based energy calculations for the muon. The final `cosmic rejection' cut is the requirement that the reconstructed muon start point is no more than four cm from the reconstructed neutrino vertex. This eliminates events that are just cosmic muons that happen to be somewhat close to some hadronic activity. 
 
+\par The log-likelihood variable, see \cref{subsec:loglikelihoodpid}, is a powerful muon-proton discriminator, with values close to -1 being proton-like and values close to +1 being muon-like. The cut at 0.2 avoids the ambiguous region between -0.2 and 0.2. Additionally, the track is required to be at least 10 cm long to be muon-like.
+
+\par The track score cut ensures that the selected tracks are particularly track-like and this removes many track-like showers from the selection.  The PFParticle generation cut ensures that Pandora recognizes that the track is produced directly at the neutrino interaction vertex, and not as a secondary particle (i.e. in a $\pi \rightarrow \mu$ decay or re-interaction). 
+
+\par A final selection cut requiring agreement between the muon's range-based and MCS-based momentum is imposed. This cut provides an additional handle to increase purity and the quality of the reconstruction of $\nu_{\mu}$ events (see figs \ref{fig:NuMUCCsel:ryan:MCSqualitydistrib} and \ref{fig:NuMUCCsel:ryan:MCSqualityeres}). A `broken track' in the detector would fail this momentum quality test, for example. 
 
 \begin{table}[h!]
 \centering
@@ -157,293 +122,133 @@ Containment & \texttt{contained\_fraction} $>$ 0.9 \\
      \texttt{trk\_sce\_end\_y} $\in$ [-110,110] cm.\\&
      \texttt{trk\_sce\_end\_z} $\in$ [20,986] cm.\\
    \hline
- \multirow{2}{*}{ Track Id } &
-     \texttt{trk\_llr\_pid\_score} $>$ 0.2.\\&
-     \texttt{trk\_trk\_length} $>$ 10 cm.\\
-     \hline
- \multirow{1}{*}{ Track-Shower Separation } &     
-          \texttt{trk\_trk\_score} $>$ 0.8.\\ 
-     \hline
- \multirow{1}{*}{ No-Reinteraction Requirement } &     
-                    \texttt{pfp\_generation} = 2.\\
-  \hline          
  \multirow{1}{*}{ Cosmic Rejection } & \texttt{trk\_distance} $<$ 4 cm.\\
  \hline
- \end{tabular}
+ \multirow{2}{*}{ Track Id } &
+     \texttt{trk\_llr\_pid\_score} $>$ 0.2.\\&
+     \texttt{trk\_length} $>$ 10 cm.\\
+     \texttt{trk\_score} $>$ 0.8.\\ 
+     \hline
+ \multirow{1}{*}{ Direct $\nu$ Daughter } &     
+                    \texttt{pfp\_generation} = 2.\\
+  \hline          
+ \multirow{1}{*}{ Reconstruction Quality } & -0.5 $<$ \texttt{MCS\_quality} $<$ 0.5\\
+  \hline
+\end{tabular}
  \caption{\label{tab:findthemuon} Requirements for $\mu$ identification.}
 \end{table}
 
-
-
-\par \noindent The cuts made on the start and end points of the reconstructed tracks require that the track is fully contained inside the fiducial volume of the detector. This containment cut further reduces the primary background for this selection are is cosmic muons, originating from outside the detector. The containment requirement also motivates the use of range-based momentum calculations on all the muon candidates. Range-based momentum has been shown to have a high resolution. \emph{Consistency between range-based and the independently calculated MCS-based momentum will be used in a future iteration of this analysis as an additional handle to increase purity and the quality of the reconstruction of$\nu_{\mu}$ events (see figs \ref{fig:numusel:momres} and \ref{fig:NuMUCCsel:ryan:PQuality})}. The containment condition rejects many higher-energy $\nu_{\mu}$ events that might leave the detector, but it has a high efficiency in the lower energies.
-The cut on the log likelihood ratio pid score is to separate the muons from the protons among the PFParticle tracks in the passing slices. The track length cut further separates the muons from the protons which tend to have shorter track lengths. 
-The track score cut ensures that the selected tracks are particularly track-like and this removes many track-like showers from the selection.  The PFParticle generation cut ensures that Pandora recognizes that the track is produced directly at the neutrino interaction vertex, and not as a secondary particle (i.e. in a $\pi \rightarrow \mu$ decay or re-interaction). 
-The cut on the trk\_distance requires that the reconstructed track be sufficiently close to the interaction vertex, this removes many in-time cosmic muons that are reconstructed as part of the event.
-
-\begin{figure}
-    \centering
-    \includegraphics[height=6.5cm]{NuMuCCsel/Images/Ryan/Momres.pdf} \hspace{2mm}
-    \includegraphics[height=6.5cm]{NuMuCCsel/Images/Ryan/muoncandidate_pquality.jpg} \hspace{2mm}
-    \caption{The performance of $\mu$ range-based momentum calculation for muon candidates that pass this selection.}
-    \label{fig:numusel:momres}
-\end{figure}
-
-\begin{figure}[] 
+\begin{figure}[hbt!] 
 \begin{center}
     \begin{subfigure}[b]{0.45\textwidth}
     \centering
-    \includegraphics[width=1.00\textwidth]{NuMuCCsel/Images/Ryan/Run1_recoErange_fullSel.jpg}
-    \caption{\label{fig:NuMUCCsel:ryan:noPQuality} After full selection.}
+    \includegraphics[height=5cm]{NuMuCCsel/Images/Ryan/appendix_muonsel_input_R3/trk_p_quality_v_07232020_presel_samples_detsys_event_category.pdf}
+    \caption{\label{fig:NuMUCCsel:ryan:MCSqualitydistrib} Momentum quality variable distribution.}
     \end{subfigure}
     \begin{subfigure}[b]{0.45\textwidth}
     \centering
-    \includegraphics[width=1.00\textwidth]{NuMuCCsel/Images/Ryan/Run1_recoErange_FullSel_pquality.jpg}
-    \caption{\label{fig:NuMUCCsel:ryan:withPQuality} After full selection and momentum quality cut.}
+    \includegraphics[height=5cm]{NuMuCCsel/Images/Ryan/other/EnergyRes_03202020_subplots.pdf}
+    \caption{\label{fig:NuMUCCsel:ryan:MCSqualityeres} Events kept and rejected by the MCS cut.}
     \end{subfigure} \newline
-    \begin{subfigure}[b]{0.45\textwidth}
-    \centering
-    \includegraphics[width=1.00\textwidth]{NuMuCCsel/Images/Ryan/RangeBasedEnergyResolution.pdf}
-    \caption{\label{fig:NuMUCCsel:ryan:Eres_noPQuality} Energy resolution after full selection.}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.45\textwidth}
-    \centering
-    \includegraphics[width=1.00\textwidth]{NuMuCCsel/Images/Ryan/RangeBasedEnergyResolution_pquality.pdf}
-    \caption{\label{fig:NuMUCCsel:ryan:Eres_withPQuality} Energy resolution adding the momentum quality cut.}
-    \end{subfigure}
-\caption{The distribution of range-based energy calculations for each reconstructed neutrino. Fig \ref{fig:NuMUCCsel:ryan:withPQuality} shows the distribution after a quality cut on the MCS vs. range muon momentum energy, keeping events that fall within 0.5 of the peak in the right plot of fig \ref{fig:numusel:momres}. From Figures~\ref{fig:NuMUCCsel:ryan:Eres_noPQuality} and~\ref{fig:NuMUCCsel:ryan:Eres_withPQuality} the reduction in mis-reconstructed events is apparent.}
-\label{fig:NuMUCCsel:ryan:PQuality}
+\caption{MCS quality cut on preselected events.}
+\label{fig:numusel:momres}
 \end{center}
 \end{figure}
 
-\begin{comment}
-\subsubsection{Determination of Fiducial Volume}
-\label{sssec:NuMUCCsel:constr:FV}
+\subsection{Data Sample}
+\label{ssec:NuMUCCsel:datasample}
 
-\par This selection leverages the availability of a fully calibrated E-field map to perform space-charge corrections on the start and end-points of reconstructed tracks. This allows to impose a tight fiducial volume which maximizes the selection efficiency without impacting reconstruction performance. The fiducial volume is defined to be: 
+\par Run 3 is the only run used in the $\nu_{\mu}$ constraint, despite Run 1, Run 2, and Run 3 all being currently available and are presented in other sections of this paper. The primary motivating factor for this decision is that the CRT variables, see \cref{sec:sliceID:CRT}, are available only for Run 3. It was described in the previous section that the CRT cuts a crucial component of the selection. The purity that can be achieved with the CRT cuts is arguably more important than the higher statistics of all three runs. 
 
-\begin{itemize}
-    \item x $\in$ [5,251]
-    \item y $\in$ [-110,110]
-    \item z $\in$ [20,986]
-\end{itemize}
+\par The inclusion of the CRT cuts, see \cref{tab:numuCC:presel}, removes nearly 64$\%$ of comic muon background, see \cref{fig:NuMuCCsel:ryan:crtimpact}, the primary background for $\nu_{\mu}$ CC events. Muons are particularly hard to reject at low energies without the CRT cuts; this is precisely where we want the highest purity. The uncertainty due to to cross-section and flux modeling is prohibitively high at low-energies for the $\nu_e$ analysis, boosting the importance of a pure $\nu_{\mu}$ sample in that region. One can see from the figures in this section that the CRT cuts does not degrade the DATA-MC agreement, but improves it.
 
+\subsection{Performance}
+\label{sssec:NuMUCCsel:performance}
+                    
+\par Figure~\ref{fig:NuMuCCsel:run3kinematics} shows the reconstructed muon energy, muon angle, and neutrino energy with the available Run3 open data. With current open Run3 POT, we see 1-2 thousand entries per bin, making obtaining a constraint for flux and cross-section systematics with Run3 alone not a limitation to the analysis. Figure~\ref{fig:NuMuCCsel:ryan:runscombinedkinematics} shows the same distributions with the open data from all three runs, where more than three times the statistics are available. Plots from Runs other than Run 3 do not include the CRT cuts.
 
-\par The fiducial volume in this section differs slightly from other fiducial volumes, even in this analysis. Because the purpose of this selection is to leverage the high-statistics of the $\nu_{\mu}$ composition of the BNB, the fiducial volume is taken to be as large as possible while retaining high purity and efficiency at low-energies.
-
-\par With the exception of the downstream fiducial volume face, all the fiducial volume boundaries are chosen in order to retain as many signal events as possible. The SCE-correction procedure is quite effective and can recover the true value give or take a few centimeters, with slightly less resolution near the boundaries. The resolution is shown in fig \ref{fig:NuMUCCsel:ryan:sceres_y} for the x-direction; the performance is similar in the x, y, and z directions. See fig \ref{fig:NuMUCCsel:ryan:FVhighy} for an example of signal purity near a boundary using the spacecharge-corrected coordinates. Together, the spacecharge boundary that was found to maintain the highest purity is defined by
-
-
-\begin{figure}
-    \centering
-    \includegraphics[height=6.5cm]{NuMuCCsel/Images/Ryan/sceresolution_y.jpg} \hspace{2mm}
-    \caption{Resolution of the spacecharge-corrected vertex positions. The spacehcarge-corrected y-coordinates are being compared to the truth values without spacecharge distortion. }
-    \label{fig:NuMUCCsel:ryan:sceres_y}
-\end{figure}
-
-\begin{figure}[] 
+%-------RUN 3-----------
+\begin{figure}[hbt!] 
 \begin{center}
-    \begin{subfigure}[b]{0.45\textwidth}
+    \begin{subfigure}[b]{0.3\textwidth}
     \centering
-    \includegraphics[width=1.00\textwidth]{NuMuCCsel/Images/Ryan/Run3_MCData_highy.jpg}
-    \caption{\label{fig:NuMUCCsel:ryan:FVhighyMC} Data-MC distribution near top of detector.}
+    \includegraphics[width=1.00\textwidth]{NuMuCCsel/Images/Ryan/fullselection_run3_fullsystematics/reco_nu_e_range_v_07232020_fullsel_samples_detsys_event_category.pdf}
+    \caption{\label{fig:NuMUCCsel:ryan:run3kinematics:nuE}}
     \end{subfigure}
-    \begin{subfigure}[b]{0.45\textwidth}
+    \begin{subfigure}[b]{0.3\textwidth}
     \centering
-    \includegraphics[width=1.00\textwidth]{NuMuCCsel/Images/Ryan/SignalPurity_highy.png}
-    \caption{\label{fig:NuMUCCsel:ryan:FVhighyPur} Signal Purity}
+    \includegraphics[width=1.00\textwidth]{NuMuCCsel/Images/Ryan/fullselection_run3_fullsystematics/trk_range_muon_e_v_07232020_fullsel_samples_detsys_event_category.pdf}
+    \caption{\label{fig:NuMUCCsel:ryan:run3kinematics:muonE}}
     \end{subfigure}
-\caption{Example of signal composition near boundary.}
-\label{fig:NuMUCCsel:ryan:FVhighy}
+    \begin{subfigure}[b]{0.3\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{NuMuCCsel/Images/Ryan/fullselection_run3_fullsystematics/trk_cos_theta_v_07232020_fullsel_samples_detsys_event_category.pdf}
+    \caption{\label{fig:NuMUCCsel:ryan:run3kinematics:cosTheta}}
+    \end{subfigure} %\newline
+\caption{Reconstructed kinematics of selected events with $2.13e20$ POT of Run3 data. Full detector and MC systematic errors are shown with statistical errors.}
+\label{fig:NuMuCCsel:run3kinematics}
 \end{center}
 \end{figure}
-\end{comment}
 
-\subsubsection{Performance}
-\label{sssec:NuMUCCsel:constr:performance}
-
-\par This selection has been evaluated on the Run1 and the Run3 open datasets processed for this analysis. The advantage of the Run 1 data-set is higher statistics ($4E19$ POT in Run1 and $0.9E19$ POT in Run3). Run 3 allows to use the CRT system for extra background rejection which was unavailable for the first MicroBooNE run. 
-The many DATA-MC comparisons produced for this selection are reported in the backup section \ref{sec:numu:constr}: distributions shown there pertain  variables relative to the muon candidate for each event that passes the selection; Run1 data will be preferentially shown due to the higher statistics. Here, we highlight the DATA-MC comparisons regarding the reconstructed energy in the slice (Figure \ref{fig:NuMUCCsel:ryan:trklenFull}) made from combining range-based energy calculations on PFParticles.
-
-\begin{figure}[] 
+%-------RUNS COMBINED-----------
+\begin{figure}[hbt!] 
 \begin{center}
     \begin{subfigure}[b]{0.3\textwidth}
     \centering
-    \includegraphics[width=1.00\textwidth]{NuMuCCsel/Images/Ryan/Run1_recoErange_SliceID.jpg}
-    \caption{\label{fig:NuMUCCsel:ryan:trklenSliceID} after SliceID}
+    \includegraphics[width=1.00\textwidth]{NuMuCCsel/Images/Ryan/combined/reco_nu_e_range_v_08052020_full_samples_longest_noCRT_event_category.pdf}
+    \caption{\label{fig:NuMUCCsel:ryan:combinedkinematics:nuE}}
     \end{subfigure}
     \begin{subfigure}[b]{0.3\textwidth}
     \centering
-    \includegraphics[width=1.00\textwidth]{NuMuCCsel/Images/Ryan/Run1_recoErange_EvtSel.jpg}
-    \caption{\label{fig:NuMUCCsel:ryan:trklenEvt} after event-level preselection}
+    \includegraphics[width=1.00\textwidth]{NuMuCCsel/Images/Ryan/combined/trk_range_muon_e_v_08052020_full_samples_longest_noCRT_event_category.pdf}
+    \caption{\label{fig:NuMUCCsel:ryan:combinedkinematics:muonE}}
     \end{subfigure} %\newline
     \begin{subfigure}[b]{0.3\textwidth}
     \centering
-    \includegraphics[width=1.00\textwidth]{NuMuCCsel/Images/Ryan/Run1_recoErange_fullSel.jpg}
-    \caption{\label{fig:NuMUCCsel:ryan:trklenFull} With muon-tagging}
+    \includegraphics[width=1.00\textwidth]{NuMuCCsel/Images/Ryan/combined/trk_cos_theta_v_08052020_full_samples_longest_noCRT_event_category.pdf}
+    \caption{\label{fig:NuMUCCsel:ryan:combinedkinematics:costheta}}
     \end{subfigure}
-\caption{Reconstructed energy of the slice. This calculation is made from combining range-based energy calculations on PFParticles.}
+\caption{Distributions from the full $\nu_{\mu}$ CC INC selection with the $6.37e20$ POT of open data from Runs 1, 2, and 3 combined. MC systematic errors are included, with statistical errors, in MC error calculation.}
+\label{fig:NuMuCCsel:ryan:runscombinedkinematics}
 \end{center}
 \end{figure}
 
-\par The overall efficiency of this selection, for Run1, is shown in Fig. \ref{fig:NuMUCCsel:ryan:Run1Efficiency}. The effectiveness of this selection can not by explained by distributions and efficiencies alone; it relies on the constraining power. See sec \ref{ssec:finalSensitivityCalc} for a technical discussion of the incorporation of this selection into the final analysis sensitivity.
 
-Figure \ref{fig:NuMUCCsel:ryan:Run3CRTcomp} shows an example of the impact of the CRT on the $\nu_\mu$ contained selection. The CRT veto will eliminate more than 70$\%$ of the cosmic muons while suffering only roughly 15$\%$ loss in signal.
-The selection described in this section shows a good level of data-simulation agreement for both Run 1 and Run 3, and is highly enriched in $\nu_{\mu}$ events which are reconstructed with very good energy resolution. \emph{Events from this selection are to be used to constrain $\nu_e$ flux and cross-section modeling uncertainties. While this exercise has not been fully performed at the current time, it is expected to be completed by the Feb. 2020 collaboration meeting.}
+%---------------------TIME DEPENDENCE-------------------------%
+\subsection{Time Dependence}
+\label{ssec:NuMUCCsel:timedep}
+\par Run 3 is the only run considered when applying the $\nu_{\mu}$ constraint, as it is the only run where the CRT cuts are available. This method is only appropriate if Run 3 is a good proxy for the data as a whole. This time dependence study demonstrates the uniformity of run 3 in the context of all the open MicroBooNE data as a whole.
 
-\begin{figure}
-    \centering
-    \includegraphics[scale=0.5]{NuMuCCsel/Images/Ryan/finalEfficiency.jpg}
-    \caption{Efficiency of this full selection for Run1 $4E19$ POT.}
-    \label{fig:NuMUCCsel:ryan:Run1Efficiency}
+\par Because the CRT cuts cannot be applied to all runs, they will be applied to none of the distributions of this section; this direct comparison is more appropriate for this study as well. MC systematic errors (flux, GENIE, and G4) as well as statistics errors are included in all distributions. The main take-away from all of these plots should be that the data and Monte Carlo agree to within the error for virtually every distribution; in the individual runs as well as combined. Hints of DATA-MC disagreement in certain plots are quenched by the combined POT distributions.
+
+\par Most of the plots for the time dependence study are in the appendix, section \ref{ssec:Appendix:numu:timedep}; with the exception of the reconstructed neutrino energy, fig \ref{fig:NuMuCCsel:timedep:Enu}, in this section. The plots displayed in the appendix are chosen to demonstrate the time dependence at various stages of the selection: SliceID filter only, preselection, and full selection. The data-MC agrees within the plotted errors (just detector systematic errors not included), with minor exceptions. For example, with the X coordinate of the reconstructed neutrino vertex, fig \ref{fig:NuMuCCsel:timedep:vtxX}, the run 3 distribution has disagreement at high and low x. This disagreement is only evident in this variable and is not present in the muon endpoints, which have the preselection applied.
+
+\par If one tries to add up up the event counts of each category for the individual runs, they will find that they will not recover the value shown for the combined runs. This is most likely due to the normalization procedure used here. Each run is scaled with a flat POT normalization in addition to a finer tuning that comes from the GENIE simulation. The flat scaling factor averages over whatever intra-run effects might exist, introducing some rounding errors.
+
+\par Each Run represents a year's worth of data taking, so intra-run effects should be considered. The run numbers are consecutive in time, each run lasting on the order of hours, so plotting out the data and MC as a function of run number roughly shows the chronology of data-taking, see \cref{fig:NuMuCCsel:timedep:RunsDistribution}. The white, hashed component of the histogram represents the OFF BEAM, or EXT, data. The OFF BEAM sample was collected almost entirely \textit{after} the ON BEAM data for Runs 1 and 2, but not Run 3. In order to probe the time dependence of the OFF BEAM sample, one can examine the distributions of variables that isolate the cosmic muon contribution in various stages of the selection. The topological score, seen in \cref{fig:NuMuCCsel:timedep:topo} and Cos($\theta$), fig \ref{fig:NuMuCCsel:timedep:costheta}, are such variables. There does not seem to be any time dependence with the shape of the EXT (OFF BEAM) component. The right-most bin of the topological score seems to be developing a deficit, but this could be due to statistics also the combined distribution agrees quite well for this bin.
+
+\begin{figure}[hbt!] 
+\begin{center}
+    \begin{subfigure}[b]{0.35\textwidth}
+        \centering
+        \includegraphics[width=1.00\textwidth]{NuMuCCsel/Images/Ryan/Run1/reco_nu_e_range_v_08052020_full_samples_longest_noCRT_event_category.pdf}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.35\textwidth}
+        \centering
+        \includegraphics[width=1.00\textwidth]{NuMuCCsel/Images/Ryan/Run2/reco_nu_e_range_v_08052020_full_samples_longest_noCRT_event_category.pdf}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.35\textwidth}
+        \centering
+        \includegraphics[width=1.00\textwidth]{NuMuCCsel/Images/Ryan/Run3_nocrt/reco_nu_e_range_v_08052020_full_samples_longest_noCRT_event_category.pdf}
+    \end{subfigure} %\newline
+    \begin{subfigure}[b]{0.35\textwidth}
+        \centering
+        \includegraphics[width=1.00\textwidth]{NuMuCCsel/Images/Ryan/combined/reco_nu_e_range_v_08052020_full_samples_longest_noCRT_event_category.pdf}
+    \end{subfigure}
+\caption{Reconstructed neutrino energy for the open data sets of each run all open data combined.}
+\label{fig:NuMuCCsel:timedep:Enu}
+\end{center}
 \end{figure}
 
 \clearpage
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Inclusive Selection}
-\label{ssec:NuMUCCsel:INC}
-The $\nu_\mu$ CC Inclusive selection is an update from the selection described in an internal note~\cite{bib:numuccfilter}. This selection aims to be as similar as possible to the $\nu_e$ CC Inclusive selection described in \cref{sec:nueselection:inclusive}, with the ultimate goal to perform a $\nu_\mu$ constraint for a BNB electron neutrino measurement  based that $\nu_e$ selection. 
-
-\subsubsection{$\nu_\mu$ CC inclusive signal definition}
-\begin{itemize}
-    \item One final state muon with a kinetic energy above \SI{20}{\MeV}.
-    \item True neutrino vertex inside a fiducial volume defined with borders: \SI{10}{\cm} in $x$ and $y$ and $[ \SI{20}{\cm}, \SI{50}{\cm}]$ in $z$.
-\end{itemize}
-The cut on the true energy corresponds to a track length of \SI{\approx 2.5}{\cm}.
-
-Before identifying the muon, some event level cuts are applied, as listed in Table \ref{tab:1muNp:preseInclusivel}
-
-\begin{table}[h!]
-\centering
-\setlength{\tabcolsep}{10pt}
-\renewcommand{\arraystretch}{1.25}
- \begin{tabular}{| c | c |} 
- \hline
- Cut goal & Cut definition \\
- \hline\hline
-\multirow{5}{*}{ Cosmic rejection } & nslice = 1 \\ & slpdg= 14\\ &CosmicIP $>$ \SI{20}{\cm}\\
-& topological\_score $>$ 0.1 \\ &all\_start\_contained\\
- \hline
- \end{tabular}
- \caption{\label{tab:1muNp:preseInclusivel} Preselection requirements for the $\nu_\mu$ Inclusive Selection.}
-\end{table}
-
-The next step is to identify a muon track. The requirements for muon identification are listed in Table \ref{tab:1muNp:preseInclusivelMuon}
-
-\begin{table}[h!]
-\centering
-\setlength{\tabcolsep}{10pt}
-\renewcommand{\arraystretch}{1.25}
- \begin{tabular}{| c | c |} 
- \hline
- Cut goal & Cut definition \\
- \hline\hline
-\multirow{5}{*}{ Muon Identification } & 
-trk\_score $>$ 0.8 \\ &
-trk\_len $>$ \SI{10}{\cm} \\ &
-trk\_llr\_pid\_score $>$ 0.2\\ &
-pfp\_generation = 2  \\ &
-trk\_distance $<$ \SI{4}{\cm}\\
- \hline
- \end{tabular}
- \caption{\label{tab:1muNp:preseInclusivelMuon} Muon identification requirements for the $\nu_\mu$ Inclusive Selection.}
-\end{table}
-
-At this point, the number of muon candidate tracks in signal events is:
-\begin{comment}
-\begin{itemize}
-    \item \textit{slpdg = 14}
-    \item \textit{CosmicIP} $>$ \SI{20}{\cm}
-    \item \textit{topological\_score $>$ 0.1}
-    \item \textit{all\_start\_contained}
-\end{itemize} 
-
-The next step is to identify a muon track.
-\paragraph{Muon candidate identification} 
-\begin{itemize}
-    \item \textit{trk\_score $>$ 0.8}
-    \item \textit{trk\_len} $>$ \SI{10}{\cm}
-    \item \textit{trk\_llr\_pid\_score $>$ 0.2}
-    \item \textit{pfp\_generation = 2}
-    \item \textit{trk\_distance} $<$ \SI{4}{\cm}
-\end{itemize}
-At this point, the amount of muon candidate tracks in signal events is:
-\end{comment}
-
-\begin{itemize}
-    \item 0 (10\%), the event gets rejected.
-    \item 1 (70\%), the event gets selected.
-    \item 2 (18\%) or $>2$ (2\%), the particle with the highest \textit{trk\_llr\_pid\_score} is picked as muon and the event is selected.
-\end{itemize}
-
-The cut on the reconstructed length corresponds to a muon kinetic energy of \SI{\approx 47}{\MeV} or a muon momentum of \SI{0.11}{GeV/c}. Therefore, this selection has a lower neutrino energy threshold of \SI{\approx 153}{\MeV}, and efficiency plots will be shown in a range from \SIrange{0.15}{1.65}{\GeV}.
-The distribution of the topological score and the track muon likelihood after applying all cuts except these two is given in \cref{fig:numu:topo_pid}.
-
-
-\begin{figure}[]
-    \centering
-    \includegraphics[width=\textwidth]{NuMuCCsel/Images/run1/numu_pret_run1.pdf}
-    \caption{Topological score and track PID likelihood distributions after all other cuts are applied in the $\nu_\mu$ CC inclusive selection.}
-    \label{fig:numu:topo_pid}
-\end{figure}
-
-
-
-\subsubsection{Event selection performance}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.65\textwidth]{NuMuCCsel/Images/run1/numu_efficiency_run1.pdf}
-    \caption{Efficiency of the $\nu_\mu$ CC inclusive selection for different interaction categories (left) and final states (right) in function of the true neutrino energy. }
-    \label{fig:numu:eff_r1}
-\end{figure}
-
-\cref{fig:numu:eff_r1} shows the efficiency in function of the true neutrino energy;  the integrated  efficiency over all energies for all signal categories is 51.1\%. It can be seen that the selection is truly inclusive in both interaction type and final states. non-zero efficiencies are reached from \SI{150}{\MeV} and the efficiency flattens out at \SI{\approx 700}{\MeV}. The overall purity of the selection is 65.9\% with the in-time cosmic activity as dominant background. In 94.7\% of the events, the track identified as muon is backtracked to the muon correctly. Most mis-identification cases correspond to charged pions (3.6\%). Because this selection contains both contained and uncontained events, multiple coulomb scattering is used to measure the muon momentum. We report Data-MC comparisons for the $\nu_\mu$ CC Inclusive selection in the backup section \ref{sec:numuinclusive2}. 
-
-\subsubsection{High purity selection}
-When using the Run3 open data, we can use the CRT to achieve  a higher purity. Nonetheless, exiting muon tracks might trigger the CRT veto as well, therefore the higher purity selection includes both containment and CRT veto. The additional cuts are:
-\begin{itemize}
-    \item[-] \texttt{all\_end\_contained}
-    \item[-] \texttt{CRT Veto} != 1 or \texttt{crthitpe} $<$ 100
-    \item[-] \texttt{closestNuCosmicDist} $>$ \SI{5}{\cm}
-\end{itemize}
-Due to the fact that most $\nu_\mu$ CC inclusive events are not contained, the efficiency drops to 17.5\%, see \cref{fig:numu:eff_r3}. Note that the denominator here still contains both contained and uncontained events to enable comparison with the previous section. At the very lowest neutrino energies, below \SI{\approx 400}{\MeV}, the efficiency is only slightly reduced. The overall purity goes up to \SI{77.6}{\%}. 
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.65\textwidth]{NuMuCCsel/Images/run3/numu_efficiency_run3.pdf}
-    \caption{Efficiency of the $\nu_\mu$ CC contained selection with CRT for different interaction categories (left) and final states (right) in function of the true neutrino energy.}
-    \label{fig:numu:eff_r3}
-\end{figure}
-
-\subsubsection{Energy reconstruction in the high-purity selection} 
-In a contained selection, range based momentum can be used to estimate the energy. Therefore there are two methods shown in this section:
-\begin{itemize}
-    \item Calorimetric energy estimate: the calorimetric information of the collection plane is used. For showers, the energy of the hits is summed and corrected for a bias. For tracks, the energy is obtained by summing all  the local products of track pitch and $d$E/d$x$ over the track length. The mass of the muon is added to the sum. 
-    \item Range based momentum estimate: the energy is calculated under the muon hypothesis for the muon candidate. If there are other muon-like particles in the event (as defined earlier in this section) their energy is added under the charged pion hypothesis. The energy of other track-like particles is added under the proton hypothesis. Finally, for shower-like particles, the calorimetric estimate is used.
-\end{itemize}
-Both methods are compared in \cref{fig:numu:energy,fig:numu:reso_e}. The range based energy estimation clearly has a smaller bias and smaller spread compared to the calorimetric-based estimate: this is one of the major advantages of a contained selection.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[height=4.35cm]{NuMuCCsel/Images/run3/numu_rangemom_run3} \hspace{2mm}
-    \includegraphics[height=4.35cm]{NuMuCCsel/Images/run3/numu_caloe_rangevscalo_run3.pdf}
-    \caption{(left) Reconstructed muon momentum using the range-based estimation. Due to the \SI{10}{\cm} track-length requirement, there are no entries below \SI{0.11}{\GeV \per c}. (right) Reconstructed energy, both calorimetry-based and range-based, see text for details.}
-    \label{fig:numu:energy}
-\end{figure}
-
-\begin{figure}[H]
-  \begin{minipage}[c]{0.5\textwidth}
-    \includegraphics[width=\textwidth]{NuMuCCsel/Images/run3/resolution.pdf}
-    \includegraphics[width=0.88\textwidth]{NuMuCCsel/Images/run3/resolution_errors.pdf}
-  \end{minipage}\hfill
-  \begin{minipage}[c]{0.5\textwidth}
-    \caption{
-Comparison between the calorimetry-only (left panels) and the range-based (right panels) neutrino energy estimation. The top panel show the the reconstructed energy in function of the truth energy. In every bin, the black error bars correspond to the 5th, 50th and 95th percentile of the reconstructed energy distribution. The lower panel shows the fractional energy difference with 68\% and 90\% coverage intervals. 
-    } 
-    \label{fig:numu:reso_e}
-  \end{minipage}
-\end{figure}
 
