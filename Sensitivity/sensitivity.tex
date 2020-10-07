@@ -12,7 +12,7 @@ This additional flux component is then propagated in the MicroBooNE simulation.
 
 It is noteworthy that this method has significant limitations, as the cross section model used by MiniBooNE and MicroBooNE are different, implying that the signal, as modeled by the MicroBooNE simulation, will not identically match the MiniBooNE LEE events.
 
-This Tech-Note uses the BDT-based \npsel and \zpsel as the primary channels through which the sensitivity is evaluated. Results for the box-based selections are briefly summarized and described more thoroughly in appendices~\ref{app:detsys} and~\ref{app:sensitivity}.
+This Tech-Note uses the BDT-based \npsel and \zpsel as the primary channels through which the sensitivity is evaluated. Results for the box-based selections are briefly summarized and described more thoroughly in appendix~\ref{app:sensitivity}.
 
 %In its current version, this Tech-Note estimates sensitivities using the 1$e$N$p$ box-cut selection (section~\ref{sec:nueselection:1eNp}). In future iterations the BDT-approach will be used to measure the estimated sensitivity, once this selection has been further developed and validated. The BDT's sensitivity is expected to be larger then that obtained through the box-cut approach.
 
@@ -71,7 +71,7 @@ The statistics-only sensitivity to the LEE signal with the combined \npsel and \
         \includegraphics[width=1.\textwidth]{Sensitivity/sensitivity-run123/SBNfit_Cls_nue_1e0p_reco_e_H1_mc_collab_statsonly_exclusionCNP_Chi.pdf}
         \caption{ruling out LEE if SM is true}
     \end{subfigure}
-\caption{Distribution of the test statistics under the null and alternative hypotheses for statistical-only sensitivities studies. This study use the combined samples of run 1, run 2, and run 3 scaled to $6.95\times10^{20}$ POT.}
+\caption{Distribution of the test statistics under the null and alternative hypotheses for statistical-only sensitivities studies. This study use the combined samples of run 1, run 2, and run 3 scaled to $6.95\times10^{20}$ POT. (a) $H_0$ is the standard model and $H_1$ is the LEE model, (b) $H_0$ is the LEE model and $H_1$ is the standard model.}
 \label{fig:1eNp:SBNFit:statonlysensitivity}
 \end{center}
 \end{figure}
@@ -118,7 +118,7 @@ $$x_{toy} = x_{CV} + Lv.$$
 % \caption{\label{fig:1eNp:box:statonlysensitivity} Statistics-only sensitivity estimation for the 1eNp box cut selection. Sample is taken from Monte Carlo Run 1 Data and scaled to $1.01\times10^{21}$ POT}
 % \end{center}
 % \end{figure}
-The resulting plot of the test statistic described in eq. \ref{eqn:deltachi2_systematic}, and utilizing systematics as presented in ~\cref{tab:1eNp0pi_bdt_errors} and ~\cref{tab:1e0p0pi_bdt_errors} before applying any constraint, is shown in figure \ref{fig:1eNp:BDT:statsystsensitivity}. 
+The resulting plot of the test statistic described in eq. \ref{eqn:deltachi2_systematic}, and utilizing systematics as presented in ~\cref{tab:1eNp0pi_bdt_errors} and ~\cref{tab:1e0p0pi_bdt_errors} before applying any constraint, is shown in figure \ref{fig:1eNp:BDT:statsystsensitivityrun1to3}. 
 The median sensitivity obtained including flux, cross-section, hadron reinteractions, and detector systematic uncertainties is $2.3\sigma$ from the combined fit of the \npsel and \zpsel selections, with no \numu constraint.
 %This calculation is performed without sideband constraints.
 
@@ -134,8 +134,8 @@ The median sensitivity obtained including flux, cross-section, hadron reinteract
     \includegraphics[width=1.00\textwidth]{Sensitivity/sensitivity-run123/SBNfit_Cls_nue_1e0p_reco_e_H1_mc_collab_syst_detsys_exclusionCNP_Chi.pdf}
     \caption{ruling out LEE if SM is true}
     \end{subfigure}
-    \caption{Statistics and Systematics (cross-section, flux, g4, and detector systematics) sensitivity estimation for the \npsel and \zpsel selection without the \numu constraint. Sample is taken from combined Monte Carlo samples of Run 1, Run 2, and Run 3 and scaled to $6.95\times10^20$ POT.}
-    \label{fig:1eNp:BDT:statsystsensitivity}
+    \caption{Statistics and Systematics (cross-section, flux, g4, and detector systematics) sensitivity estimation for the \npsel and \zpsel selection without the \numu constraint. Sample is taken from combined Monte Carlo samples of Run 1, Run 2, and Run 3 and scaled to $6.95\times10^20$ POT.  (a) $H_0$ is the standard model and $H_1$ is the LEE model, (b) $H_0$ is the LEE model and $H_1$ is the standard model.}
+    \label{fig:1eNp:BDT:statsystsensitivityrun1to3}
 \end{figure}
 
 %A second and simpler exercise is performed to get a rough understanding of the degradation of the sensitivity due to the presence of systematic uncertainties, using Nicol\`o's tool.
@@ -172,7 +172,7 @@ Several closure-tests of this procedure have been performed as part of the valid
 %The different selections described in Section~\ref{sec:nueselection} provide constraints to different energy range of the 1eNp selection as well as the kinematics and topology. The inclusive $\nu_e$ selection can be used to constrain the high energy $\nu_e$. We explore the prospect of adding the inclusive $\nu_e$ selection to constrain the high energy $\nu_e$. Given the non-orthogonality of this selection to the 1eNp0$\pi$ selection, we still need to explore other variables that can provide orthogonality in order to exercise the constraint. The 1e0p0$\pi$ channel can provide constraint to the less understood proton reconstruction and kinematics. The CC and NC $\pi0$ samples can be utilized to constrain the uncertainties coming from shower. Finally, we can use the $\nu_\mu$ selection to constrain the flux and cross section at low energy $\nu_e$ and Section~\ref{subsec:constraintfromnumu} describes this in more details. In its current state, the analysis utilizes the combined $\nu_{\mu}$ and \zpsel channel as constraints for $\nu_e$ systematics. Constraints employing the $\pi^0$ channels will be implemented in future iterations of this work.
 
 %\subsubsection{Constraint from $\nu_\mu$ and \zpsel Selections}
-\subsubsection{Constraint from $\nu_\mu$ Selections on the \npsel selection}
+\subsubsection{Constraint from $\nu_\mu$ selections on the \npsel selection}
 \label{subsec:constraintfromnumu}
 
 Using the measured $\nu_{\mu}$ channel to constrain $\nu_e$ systematics is an approach used in several accelerator-based neutrino oscillation experiments. In particular, this was performed in the \nue analysis in MiniBooNE. This constraint takes advantage of the high statistics $\nu_{\mu}$ data and modeled correlations between electron and muon neutrino flux, cross sections, and hadron reinteractions. %We also leverage the multiple selections within this analysis to provide additional constraint to the \npsel selection by utilizing the \zpsel channel. The \zpsel channel provides a valuable constraint for the less understood proton reconstruction and kinematics when we perform the simultaneous combined fit, which is not going to be demonstrated in this section.
@@ -207,7 +207,7 @@ Therefore, we observed less correlation between the $\nu_e$ and the $\nu_{\mu}$ 
 
 \par We follow the procedures described in Document~\cite{bib:muonconstraint} to include the %\zpsel and 
 \numu constraint to the covariance matrix. We make an assumption that the $N_{MC}$ is approximately the same as the $N_{signal}$ for the constraint channel. The constraint technique leads to, in this exercise, a reduction in systematic uncertainties of $\sim70$\% if we are only folding in the correlated flux, genie, and geant-4 systematics, and $\sim60$\% when we include the uncorrelated detector systematics.
-Figure~\ref{fig:numuconstraintzpselnpsel} shows the effects of the $\nu_\mu$ and \zpsel constraint on the systematics of the \npsel $\nu_e$ selections.
+Figure~\ref{fig:numuconstraintzpselnpsel} shows the effects of the $\nu_\mu$ constraint on the systematics of the \npsel $\nu_e$ selections.
 % (described in sec.~\ref{sssec:NuMUCCsel:constr:muonsel} and sec.~\ref{sec:nueselection:1e0p}). %\emph{This study, is performed with the samples and muon selection developed in December 2019. This exercise will be completed with the updated central-value simulation, modeling of systematic uncertainties, and updated muon selection
 
 \begin{comment}
@@ -279,23 +279,23 @@ The quantitative impact of the constraint on diagonal uncertainties in the \npse
 \cline{2-7}
 {} &  before constraint & after constraint  & size of reduction & before constraint & after constraint & size of reduction \\
 \hline
-0.15 - 0.25 & 50.59 & 20.43 & 59.62 & 52.38 & 26.58 & 49.26 \\
-0.25 - 0.35 & 34.45 & 8.15 & 76.34 & 35.42 & 12.38 & 65.05 \\
-0.35 - 0.45 & 32.29 & 9.22 & 71.45 & 33.23 & 12.87 & 61.27 \\
-0.45 - 0.55 & 23.25 & 5.60 & 75.91 & 23.72 & 7.77 & 67.24 \\
-0.55 - 0.65 & 22.41 & 5.33 & 76.22 & 23.05 & 8.05 & 65.08 \\
-0.65 - 0.75 & 23.10 & 5.75 & 75.11 & 24.02 & 9.42 & 60.78 \\
-0.75 - 0.85 & 23.27 & 6.22 & 73.27 & 24.16 & 9.83 & 59.31 \\
-0.85 - 0.95 & 22.87 & 6.26 & 72.63 & 24.22 & 10.96 & 54.75 \\
-0.95 - 1.05 & 22.04 & 6.05 & 72.55 & 23.84 & 11.53 & 51.64 \\
-1.05 - 1.15 & 22.22 & 6.41 & 71.15 & 24.36 & 12.61 & 48.23 \\
-1.15 - 1.25 & 21.48 & 7.68 & 64.25 & 32.04 & 25.28 & 21.10 \\
-1.25 - 1.35 & 22.25 & 7.21 & 67.60 & 23.69 & 11.54 & 51.29 \\
-1.35 - 1.45 & 21.47 & 8.45 & 60.64 & 25.33 & 16.31 & 35.61 \\
-1.45 - 1.55 & 21.38 & 7.70 & 63.99 & 27.72 & 19.64 & 29.15 \\
+0.15 - 0.25 & 50.59 & 20.22 & 60.03 & 52.38 & 26.44 & 49.52 \\
+0.25 - 0.35 & 34.45 & 8.08 & 76.55 & 35.42 & 12.35 & 65.13 \\
+0.35 - 0.45 & 32.29 & 9.18 & 71.57 & 33.23 & 12.85 & 61.33 \\
+0.45 - 0.55 & 24.48 & 5.88 & 75.98 & 24.98 & 8.17 & 67.29 \\
+0.55 - 0.65 & 23.61 & 5.59 & 76.32 & 24.28 & 8.47 & 65.12 \\
+0.65 - 0.75 & 23.10 & 5.72 & 75.24 & 24.02 & 9.41 & 60.82 \\
+0.75 - 0.85 & 23.27 & 6.15 & 73.57 & 24.16 & 9.80 & 59.44 \\
+0.85 - 0.95 & 22.87 & 6.21 & 72.85 & 24.22 & 10.94 & 54.83 \\
+0.95 - 1.05 & 22.04 & 6.00 & 72.78 & 23.84 & 11.51 & 51.72 \\
+1.05 - 1.15 & 22.22 & 6.33 & 71.51 & 24.36 & 12.58 & 48.36 \\
+1.15 - 1.25 & 21.48 & 7.63 & 64.48 & 32.04 & 25.27 & 21.13 \\
+1.25 - 1.35 & 22.25 & 7.17 & 67.78 & 23.69 & 11.52 & 51.37 \\
+1.35 - 1.45 & 21.47 & 8.41 & 60.83 & 25.33 & 16.30 & 35.65 \\
+1.45 - 1.55 & 21.38 & 7.65 & 64.22 & 27.72 & 19.62 & 29.22 \\   
 \hline
 \end{tabular}
-\caption{Summary of the fractional errors (in percentage) on the flux, genie, and detector systematics before and after the $\nu_\mu$ constrain for the BDT selection}
+\caption{Summary of the fractional errors (in percentage) on the flux, genie, and detector systematics before and after the $\nu_\mu$ constrain for the \npsel BDT selection}
 \label{tab:numu_1eNp_bdt_const}
 \end{table}
 
@@ -352,34 +352,33 @@ The quantitative impact of the constraint on diagonal uncertainties in the \npse
 1.45 - 1.55&15.24&7.57&25.36&35.90&33.78&5.91\\
 \hline
 \end{tabular}
-\caption{Summary of the fractional errors (in percentage) on the flux, genie, and detector systematics before and after the $\nu_\mu$ and 1e0p$0\pi$ constrain for the BDT selection}
+\caption{Summary of the fractional errors (in percentage) on the flux, genie, and detector systematics before and after the $\nu_\mu$ and 1e0p$0\pi$ constrain for the \npsel BDT selection}
 \label{tab:numu_1e0p_bdt_const}
 \end{table}
 \end{comment}
 
-\subsubsection{Constraint from \numu Selections on the \zpsel selection}
+\subsubsection{Constraint from \numu selections on the \zpsel selection}
 \label{subsec:zpselconstraint}
 
-\par We follow the same procedures as described in Section~\ref{subsec:constraintfromnumu} and perform the
-\numu constraint to the \zpsel selection via the covariance matrix. Again, we make an assumption that the $N_{MC}$ is approximately the same as the $N_{signal}$ for the \numu constraint channel. The constraint technique leads to, in this exercise, a reduction in systematic uncertainties of $\sim55$\% if we are only folding in the correlated flux and genie systematics, and $\sim35$\% when we include the uncorrelated detector systematics.
+\par We follow the same procedures as described in Section~\ref{subsec:constraintfromnumu} and perform the \numu constraint to the \zpsel selection via the covariance matrix. Again, we make an assumption that the $N_{MC}$ is approximately the same as the $N_{signal}$ for the \numu constraint channel. The constraint technique leads to, in this exercise, a reduction in systematic uncertainties of $\sim50$\% if we are only folding in the correlated flux, genie, and geant-4 systematics, and $\sim35$\% when we include the uncorrelated detector systematics.
 Figure~\ref{fig:numuconstraintzpselnpsel} shows the effects of the $\nu_\mu$ constraint on the systematics of the \zpsel $\nu_e$ selections.
 
 \begin{center}
 \begin{figure}[ht] 
-    \begin{subfigure}[b]{0.45\textwidth}
+    \begin{subfigure}{0.45\textwidth}
     \centering
     \includegraphics[width=1.00\textwidth]{Sensitivity/newconstraintplots/nue_numu_reco_e_H1_mc_collab_beforeafter_constraint.pdf}
     \caption{\npsel selection}
     \end{subfigure}
-    \begin{subfigure}[b]{0.45\textwidth}
+    \begin{subfigure}{0.45\textwidth}
     \centering
     \includegraphics[width=1.00\textwidth]{Sensitivity/newconstraintplots/1e0p_numu_reco_e_H1_mc_collab_beforeafter_constraint.pdf}
     \caption{\zpsel selection}
     \end{subfigure}
-\caption{\label{fig:numuconstraintzpselnpsel} The final \npsel and \zpsel selection from run 1, run 2, and run 3 scaled to $6.95 \times 10^{20}$. The shaded gray and pink band on the bottom half of plots (a) and (b) is respectively the systematic uncertainty associated to each bin, before and after the constraint, and measured with respect to the stacked background plus intrinsic \nue only contribution. The size of the reduction in each bin for selection (a) and (b) is given in ~\cref{tab:numu_1eNp_bdt_const} and ~\cref{tab:numu_1e0p_bdt_const}, respectively.}
+\caption{\label{fig:numuconstraintzpselnpsel} The final \npsel and \zpsel selection from run 1, run 2, and run 3 scaled to $6.95 \times 10^{20}$. The shaded gray and pink band on the bottom half of plots (a) and (b) is respectively the systematic uncertainty associated to each bin, before and after the \numu constraint, and measured with respect to the stacked background plus intrinsic \nue only contribution. The size of the reduction in each bin for selection (a) and (b) is given in ~\cref{tab:numu_1eNp_bdt_const} and ~\cref{tab:numu_1e0p_bdt_const}, respectively.}
 \end{figure}
 \end{center}
-The quantitative impact of the constraint on diagonal uncertainties in the \npsel reconstructed energy spectrum can be seen in table~\ref{tab:numu_1e0p_bdt_const}.
+The quantitative impact of the constraint on diagonal uncertainties in the \zpsel reconstructed energy spectrum can be seen in table~\ref{tab:numu_1e0p_bdt_const}.
 
 \begin{table}[H]
 \centering
@@ -389,20 +388,20 @@ The quantitative impact of the constraint on diagonal uncertainties in the \npse
 \cline{2-7}
 {} &  before constraint & after constraint  & size of reduction & before constraint & after constraint & size of reduction \\
 \hline
-0.15 - 0.25 & 17.67 & 12.43 & 29.65 & 19.52 & 15.50 & 20.59 \\
-0.25 - 0.35 & 19.57 & 8.62 & 55.95 & 20.65 & 11.15 & 46.00 \\
-0.35 - 0.45 & 22.73 & 13.38 & 41.14 & 23.69 & 15.43 & 34.87 \\
-0.45 - 0.55 & 14.97 & 7.28 & 51.37 & 15.95 & 9.29 & 41.76 \\
-0.55 - 0.65 & 29.74 & 13.54 & 54.47 & 33.27 & 20.56 & 38.20 \\
-0.65 - 0.75 & 27.02 & 14.91 & 44.82 & 30.01 & 20.59 & 31.39 \\
-0.75 - 0.85 & 23.00 & 12.16 & 47.13 & 25.94 & 17.42 & 32.85 \\
-0.85 - 0.95 & 19.06 & 9.00 & 52.78 & 23.65 & 16.88 & 28.63 \\
-0.95 - 1.05 & 31.24 & 15.59 & 50.10 & 45.36 & 36.68 & 19.14 \\
-1.05 - 1.15 & 33.30 & 19.48 & 41.50 & 46.80 & 38.53 & 17.67 \\
-1.15 - 1.25 & 31.29 & 17.21 & 45.00 & 35.70 & 24.80 & 30.53 \\
-1.25 - 1.35 & 33.32 & 22.54 & 32.35 & 37.49 & 28.77 & 23.26 \\
-1.35 - 1.45 & 14.07 & 7.89 & 43.92 & 16.13 & 11.41 & 29.26 \\
-1.45 - 1.55 & 20.43 & 10.48 & 48.70 & 24.61 & 17.54 & 28.73 \\
+0.15 - 0.25 & 25.05 & 17.53 & 30.02 & 27.66 & 21.94 & 20.68 \\
+0.25 - 0.35 & 23.45 & 10.29 & 56.12 & 24.74 & 13.35 & 46.04 \\
+0.35 - 0.45 & 25.70 & 15.11 & 41.21 & 26.79 & 17.44 & 34.90 \\
+0.45 - 0.55 & 24.53 & 11.90 & 51.49 & 26.14 & 15.23 & 41.74 \\
+0.55 - 0.65 & 29.74 & 13.48 & 54.67 & 33.27 & 20.55 & 38.23 \\
+0.65 - 0.75 & 34.81 & 19.03 & 45.33 & 38.66 & 26.50 & 31.45 \\
+0.75 - 0.85 & 29.37 & 15.48 & 47.29 & 33.13 & 22.24 & 32.87 \\
+0.85 - 0.95 & 27.13 & 12.75 & 53.00 & 33.66 & 24.01 & 28.67 \\
+0.95 - 1.05 & 31.24 & 15.54 & 50.26 & 45.36 & 36.67 & 19.16 \\
+1.05 - 1.15 & 33.30 & 19.43 & 41.65 & 46.80 & 38.52 & 17.69 \\
+1.15 - 1.25 & 31.29 & 17.16 & 45.16 & 35.70 & 24.79 & 30.56 \\
+1.25 - 1.35 & 33.32 & 22.49 & 32.50 & 37.49 & 28.76 & 23.29 \\
+1.35 - 1.45 & 30.68 & 17.12 & 44.20 & 35.17 & 24.87 & 29.29 \\
+1.45 - 1.55 & 20.43 & 10.44 & 48.90 & 24.61 & 17.53 & 28.77 \\
 \hline
 \end{tabular}
 \caption{Summary of the fractional errors (in percentage) on the flux, genie, and detector systematics before and after the $\nu_\mu$ constrain for the \zpsel BDT selection}
@@ -411,10 +410,10 @@ The quantitative impact of the constraint on diagonal uncertainties in the \npse
 
 \subsection{Final Sensitivities}
 
-\par The sensitivity of to the MB-\nue LEE model is computed by constructing a combined matrix of \npsel, \zpsel, and \numu channels as described in ~\cref{ssec:finalSensitivityCalc}. This combined matrix is then fed into ~\cref{eqn:deltachi2_systematic}, where the inclusion of the \numu channel will effectively constrain the systematics of the \npsel and \zpsel channels through the correlation elements of the covariance matrix between the channels. In addition, the incorporation of the \zpsel selection also provide additional constraint for the uncertainty related to proton reconstruction, multiplicity and kinematics in the \npsel selection through the side-by-side fit.
+\par The sensitivity to the MB-\nue LEE model is computed by constructing a combined matrix of \npsel, \zpsel, and \numu channels as described in ~\cref{ssec:finalSensitivityCalc}. This combined matrix is then fed into ~\cref{eqn:deltachi2_systematic}, where the inclusion of the \numu channel will effectively constrain the systematics of the \npsel and \zpsel channels through the correlation elements between the channels of the covariance matrix. In addition, the incorporation of the \zpsel selection also provide additional constraint for the uncertainty related to proton reconstruction, multiplicity and kinematics in the \npsel selection through the side-by-side fit.
 
 %leveraging the constraint procedure of sec.~\ref{subsec:constraintfromnumu} and utilizing the constrained covariance matrix summarized by table~\ref{tab:numu_1e0p_bdt_const} as input, the sensitivity to the MB-\nue LEE model is computed and illustrated in figure~\ref{fig:constrained_sensitivity}. 
-A summary of the measured sensitivity for the BDT selections with stats-only, systematics, and constrained systematics is presented in table~\ref{tab:sensitivity}. Supplemental plots for the sensitivity estimation using the expected 12.5E20 from run 1-5 is given in ~\cref{app:sensitivity}.
+A summary of the measured sensitivity for the BDT selections with stats-only, systematics, and constrained systematics is presented in table~\ref{tab:sensitivity}. Supplemental plots for the sensitivity estimation using the expected 12.5E20POT from run 1-5 is given in ~\cref{app:sensitivity}.
 
 \input{sensitivitytable.tex}
 
@@ -444,7 +443,7 @@ A summary of the measured sensitivity for the BDT selections with stats-only, sy
     \label{fig:sensitivity_bdt_loose_const}
     \caption{ruling out LEE if SM is true}
     \end{subfigure}
-    \caption{\label{fig:constrained_sensitivity}Final discovery sensitivity to the LEE unfolded signal of the \npsel and \zpsel selection with the constrained systematics.}
+    \caption{\label{fig:constrained_sensitivity}Final discovery sensitivity to the LEE unfolded signal of the \npsel and \zpsel selection with constrained systematics. Sample is taken from combined Monte Carlo samples of Run 1, Run 2, and Run 3 and scaled to $6.95\times10^20$ POT.  (a) $H_0$ is the standard model and $H_1$ is the LEE model, (b) $H_0$ is the LEE model and $H_1$ is the standard model.}
     \end{center}
 \end{figure}
 
@@ -480,7 +479,7 @@ BDT-based \npsel & 14.1 & $2.6$ & $1.9$ & $2.4$ \\
     \label{fig:sensitivity_bdt_loose_const}
     \caption{Loose BDT selection}
     \end{subfigure}
-    \caption{Final exclusion sensitivity to the LEE unfolded signal of the \npsel selection with the constrained systematics.}
+    \caption{Final exclusion sensitivity to the LEE unfolded signal of the \npsel selection with the \numu constraint. Sample is taken from combined Monte Carlo samples of Run 1, Run 2, and Run 3 and scaled to $6.95\times10^20$ POT.  (a) $H_0$ is the standard model and $H_1$ is the LEE model, (b) $H_0$ is the LEE model and $H_1$ is the standard model.}
     \end{center}
 \end{figure}
 \end{comment}{}

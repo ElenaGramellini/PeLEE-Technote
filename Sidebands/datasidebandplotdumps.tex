@@ -159,11 +159,11 @@ The Loose selection is also a stage where we can check the modeling of the most 
 \begin{figure}[H]
     \begin{center}
     \begin{subfigure}{0.45\textwidth}
-    \includegraphics[width=1.00\textwidth]{Sidebands/Figures/1eNp/TwoShower/TwoPShr_NP_NPLAllShr_pi0e040/pi0_score.pdf}
+    \includegraphics[width=1.00\textwidth]{Sidebands/Figures/1eNp/TwoShower/TwoPShr_NP_NPLAllShr_pi0e040/pi0_score_log.pdf}
     %\caption{}
     \end{subfigure}
     \begin{subfigure}{0.45\textwidth}
-    \includegraphics[width=1.00\textwidth]{Sidebands/Figures/1eNp/TwoShower/TwoPShr_NP_NPLAllShr_pi0e040/nonpi0_score.pdf}
+    \includegraphics[width=1.00\textwidth]{Sidebands/Figures/1eNp/TwoShower/TwoPShr_NP_NPLAllShr_pi0e040/nonpi0_score_log.pdf}
     %\caption{}
     \end{subfigure}
     \caption{\label{fig:sb:1eNp:twopshr:loose:bdt} BDT responses after \npsel Loose cuts in the 2+ shower sideband.}
@@ -595,7 +595,8 @@ reco\_e & 0.084 & 0.990 & 0.466 & 0.337 & 0.516 & 0.475 \\ \hline
  \caption{\label{tab:HiENPpvalues}p-values from the high-energy \npsel sideband for input variables to the \npsel in addition to the final BDT scores (\texttt{pi0\_score}, \texttt{nonpi0\_score}) and the reconstructed energy spectrum \texttt{reco\_e}. The three columns show the p-values computed through statistics-only uncertainties (left), with systematics but not accounting for correlations in systematics (center), and finally including the full systematics covariance matrix. Systematics include flux, cross-sections, and re-interaction uncertainties, but not detector uncertainties.}
 \end{table}
 
-Figures~\ref{fig:HE_1eNp_9} and~\ref{fig:HE_1eNp_10} show select kinematics distributions for selected \npsel events.
+Figures~\ref{fig:HE_1eNp_9} and~\ref{fig:HE_1eNp_10} show select kinematics distributions for \npsel events passing the nominal selection.
+The reconstructed neutrino vertex positions are shown in Fig.~\ref{fig:HE_1eNp_11}.
 
 \begin{figure}[H]
     \centering
@@ -633,7 +634,26 @@ Figures~\ref{fig:HE_1eNp_9} and~\ref{fig:HE_1eNp_10} show select kinematics dist
     \label{fig:HE_1eNp_10}
 \end{figure}
 
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{0.3\textwidth}
+    \includegraphics[width=1.0\textwidth]{Sidebands/Figures/1eNp/HighEnergy/HiEext_NPOneShr_NPBDT_pi0e040/reco_nu_vtx_x.pdf}
+    \caption{}
+    \end{subfigure}
+    \begin{subfigure}{0.3\textwidth}
+    \includegraphics[width=1.0\textwidth]{Sidebands/Figures/1eNp/HighEnergy/HiEext_NPOneShr_NPBDT_pi0e040/reco_nu_vtx_y.pdf}
+    \caption{}
+    \end{subfigure}
+    \begin{subfigure}{0.3\textwidth}
+    \includegraphics[width=1.0\textwidth]{Sidebands/Figures/1eNp/HighEnergy/HiEext_NPOneShr_NPBDT_pi0e040/reco_nu_vtx_z.pdf}
+    \caption{}
+    \end{subfigure}
+    \caption{} 
+    \label{fig:HE_1eNp_11}
+\end{figure}
+
 \subsection{\zpsel 2+ shower Sideband}
+\label{app:sideband:1e0ptwoplusshower}
 \subsubsection{\zpsel Preselection}
 \begin{figure}[H]
     \centering
@@ -1279,7 +1299,228 @@ bkg\_score & 0.019 & 0.844 & 0.114 \\ \hline
 \end{figure}
 
 \subsection{\zpsel High Energy Sideband}
+\label{sec:zpHighE_plots}
 
+%%%%%%%%%%%%%%%%%%%%
+
+Fig.~\ref{fig:1e0p:High_E_Sideband:datamc1}-~\ref{fig:1e0p:High_E_Sideband:datamc2} show the variables used as BDT inputs and in the loose selection at high energy. These plots are after applying the 1e0p pre-selection and requiring exactly one contained shower.
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{0.3\textwidth}
+    \includegraphics[width=1.0\textwidth]{1e0p/High_E_Sideband/anglediff_U.pdf}
+    \caption{angle diff U}
+    \end{subfigure}
+    \begin{subfigure}{0.3\textwidth}
+    \includegraphics[width=1.0\textwidth]{1e0p/High_E_Sideband/anglediff_V.pdf}
+    \caption{angle diff V}
+    \end{subfigure}
+    \begin{subfigure}{0.3\textwidth}
+    \includegraphics[width=1.0\textwidth]{1e0p/High_E_Sideband/anglediff_Y.pdf}
+    \caption{angle diff Y}
+    \end{subfigure}
+    \caption{} 
+    \label{fig:1e0p:High_E_Sideband:datamc1}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{0.3\textwidth}
+    \includegraphics[width=1.0\textwidth]{1e0p/High_E_Sideband/CosmicDirAll3D.pdf}
+    \caption{cosmic dir all 3D}
+    \end{subfigure}
+    \begin{subfigure}{0.3\textwidth}
+    \includegraphics[width=1.0\textwidth]{1e0p/High_E_Sideband/CosmicIPAll3D.pdf}
+    \caption{cosmic IP all 3D}
+    \end{subfigure}
+    \begin{subfigure}{0.3\textwidth}
+    \includegraphics[width=1.0\textwidth]{1e0p/High_E_Sideband/CylFrac2h_1cm.pdf}
+    \caption{CylFrac2h 1cm}
+    \end{subfigure}
+    \caption{} 
+    \label{fig:HE_1eNp_1}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{0.3\textwidth}
+    \includegraphics[width=1.0\textwidth]{1e0p/High_E_Sideband/DeltaRMS2h.pdf}
+    \caption{delta rms 2h}
+    \end{subfigure}
+    \begin{subfigure}{0.3\textwidth}
+    \includegraphics[width=1.0\textwidth]{1e0p/High_E_Sideband/shr_trk_len.pdf}
+    \caption{shr trk len}
+    \end{subfigure}
+    \begin{subfigure}{0.3\textwidth}
+    \includegraphics[width=1.0\textwidth]{1e0p/High_E_Sideband/shrMCSMom.pdf}
+    \caption{shr mcs mom}
+    \end{subfigure}
+    \caption{} 
+    \label{fig:HE_1eNp_1}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{0.3\textwidth}
+    \includegraphics[width=1.0\textwidth]{1e0p/High_E_Sideband/reco_nu_vtx_x.pdf}
+    \caption{x vertex}
+    \end{subfigure}
+    \begin{subfigure}{0.3\textwidth}
+    \includegraphics[width=1.0\textwidth]{1e0p/High_E_Sideband/reco_nu_vtx_y.pdf}
+    \caption{y vertex}
+    \end{subfigure}
+    \begin{subfigure}{0.3\textwidth}
+    \includegraphics[width=1.0\textwidth]{1e0p/High_E_Sideband/reco_nu_vtx_z.pdf}
+    \caption{z vertex}
+    \end{subfigure}
+    \caption{} 
+    \label{fig:HE_1eNp_1}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{0.3\textwidth}
+    \includegraphics[width=1.0\textwidth]{1e0p/High_E_Sideband/secondshower_U_dot.pdf}
+    \caption{second shower dot U}
+    \end{subfigure}
+    \begin{subfigure}{0.3\textwidth}
+    \includegraphics[width=1.0\textwidth]{1e0p/High_E_Sideband/secondshower_V_dot.pdf}
+    \caption{second shower dot V}
+    \end{subfigure}
+    \begin{subfigure}{0.3\textwidth}
+    \includegraphics[width=1.0\textwidth]{1e0p/High_E_Sideband/secondshower_Y_dot.pdf}
+    \caption{second shower dot Y}
+    \end{subfigure}
+    \caption{} 
+    \label{fig:HE_1eNp_1}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{0.3\textwidth}
+    \includegraphics[width=1.0\textwidth]{1e0p/High_E_Sideband/secondshower_U_nhit.pdf}
+    \caption{second shower nhit U}
+    \end{subfigure}
+    \begin{subfigure}{0.3\textwidth}
+    \includegraphics[width=1.0\textwidth]{1e0p/High_E_Sideband/secondshower_V_nhit.pdf}
+    \caption{second shower nhit V}
+    \end{subfigure}
+    \begin{subfigure}{0.3\textwidth}
+    \includegraphics[width=1.0\textwidth]{1e0p/High_E_Sideband/secondshower_Y_nhit.pdf}
+    \caption{second shower nhit Y}
+    \end{subfigure}
+    \caption{} 
+    \label{fig:HE_1eNp_1}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{0.3\textwidth}
+    \includegraphics[width=1.0\textwidth]{1e0p/High_E_Sideband/secondshower_U_vtxdist.pdf}
+    \caption{second shower vtxdist U}
+    \end{subfigure}
+    \begin{subfigure}{0.3\textwidth}
+    \includegraphics[width=1.0\textwidth]{1e0p/High_E_Sideband/secondshower_V_vtxdist.pdf}
+    \caption{second shower vtxdist V}
+    \end{subfigure}
+    \begin{subfigure}{0.3\textwidth}
+    \includegraphics[width=1.0\textwidth]{1e0p/High_E_Sideband/secondshower_Y_vtxdist.pdf}
+    \caption{second shower vtxdist Y}
+    \end{subfigure}
+    \caption{} 
+    \label{fig:HE_1eNp_1}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{0.3\textwidth}
+    \includegraphics[width=1.0\textwidth]{1e0p/High_E_Sideband/shr_tkfit_2cm_dedx_U.pdf}
+    \caption{shr tkfit 2cm dedx U}
+    \end{subfigure}
+    \begin{subfigure}{0.3\textwidth}
+    \includegraphics[width=1.0\textwidth]{1e0p/High_E_Sideband/shr_tkfit_2cm_dedx_V.pdf}
+    \caption{shr tkfit 2cm dedx V}
+    \end{subfigure}
+    \begin{subfigure}{0.3\textwidth}
+    \includegraphics[width=1.0\textwidth]{1e0p/High_E_Sideband/shr_tkfit_2cm_dedx_V.pdf}
+    \caption{shr tkfit 2cm dedx Y}
+    \end{subfigure}
+    \caption{} 
+    \label{fig:HE_1eNp_1}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{0.3\textwidth}
+    \includegraphics[width=1.0\textwidth]{1e0p/High_E_Sideband/shr_tkfit_gap10_dedx_U.pdf}
+    \caption{shr tkfit gap10 dedx U}
+    \end{subfigure}
+    \begin{subfigure}{0.3\textwidth}
+    \includegraphics[width=1.0\textwidth]{1e0p/High_E_Sideband/shr_tkfit_gap10_dedx_V.pdf}
+    \caption{shr tkfit gap10 dedx V}
+    \end{subfigure}
+    \begin{subfigure}{0.3\textwidth}
+    \includegraphics[width=1.0\textwidth]{1e0p/High_E_Sideband/shr_tkfit_gap10_dedx_V.pdf}
+    \caption{shr tkfit gap10 dedx Y}
+    \end{subfigure}
+    \caption{} 
+    \label{fig:HE_1eNp_1}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{0.3\textwidth}
+    \includegraphics[width=1.0\textwidth]{1e0p/High_E_Sideband/shr_trk_sce_end_y.pdf}
+    \caption{shr tkfit end y}
+    \end{subfigure}
+    \begin{subfigure}{0.3\textwidth}
+    \includegraphics[width=1.0\textwidth]{1e0p/High_E_Sideband/shr_trk_sce_start_y.pdf}
+    \caption{shr tkfit start y}
+    \end{subfigure}
+    \begin{subfigure}{0.3\textwidth}
+    \includegraphics[width=1.0\textwidth]{1e0p/High_E_Sideband/shrMCSMom.pdf}
+    \caption{shr mcs mom}
+    \end{subfigure}
+    \caption{} 
+    \label{fig:HE_1eNp_1}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{0.3\textwidth}
+    \includegraphics[width=1.0\textwidth]{1e0p/High_E_Sideband/shrmoliereavg.pdf}
+    \caption{shr moliere avg}
+    \end{subfigure}
+    \begin{subfigure}{0.3\textwidth}
+    \includegraphics[width=1.0\textwidth]{1e0p/High_E_Sideband/shrPCA1CMed_5cm.pdf}
+    \caption{shr pca med 5cm}
+    \end{subfigure}
+    \begin{subfigure}{0.3\textwidth}
+    \includegraphics[width=1.0\textwidth]{1e0p/High_E_Sideband/subcluster.pdf}
+    \caption{subcluster}
+    \end{subfigure}
+    \caption{} 
+    \label{fig:HE_1eNp_1}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{0.3\textwidth}
+    \includegraphics[width=1.0\textwidth]{1e0p/High_E_Sideband/tk1sh1_angle_alltk.pdf}
+    \caption{angle between shower and track for events with at least one total track}
+    \end{subfigure}
+    \begin{subfigure}{0.3\textwidth}
+    \includegraphics[width=1.0\textwidth]{1e0p/High_E_Sideband/n_tracks_tot.pdf}
+    \caption{n tracks tot}
+    \end{subfigure}
+    %\begin{subfigure}{0.3\textwidth}
+   % \includegraphics[width=1.0\textwidth]{1e0p/High_E_Sideband/subcluster.png}
+    %\caption{subcluster}
+   % \end{subfigure}
+    \caption{} 
+    \label{fig:1e0p:High_E_Sideband:datamc2}
+\end{figure}
+%%%%%%%%%%%%%%%
 
 Table~\ref{tab:1e0p:HE:pvalues} collects the p-values for variables used in the \zpsel at pre-selection from the HE sideband.
 
@@ -1291,7 +1532,7 @@ Table~\ref{tab:1e0p:HE:pvalues} collects the p-values for variables used in the 
  \hline
 \multirow{2}{*}{variable} & \multicolumn{3}{c|}{p-values} \\
 \cline{2-4} & stat-only & diag syst. & full covariance \\ \hline
-hits\_ratio & 0.304 & 0.541 & 0.541 \\ \hline
+%hits\_ratio & 0.304 & 0.541 & 0.541 \\ \hline
 CosmicIPAll3D & 0.162 & 0.488 & 0.436 \\ \hline
 CosmicDirAll3D & 0.214 & 0.559 & 0.522 \\ \hline
 tk1sh1\_angle\_alltk & 0.009 & 0.045 & 0.040 \\ \hline
@@ -1311,7 +1552,7 @@ secondshower\_U\_nhit & 0.001 & 0.009 & 0.007 \\ \hline
 secondshower\_U\_dot & 0.000 & 0.000 & 0.000 \\ \hline
 anglediff\_U & 0.118 & 0.315 & 0.328 \\ \hline
 secondshower\_U\_vtxdist & 0.026 & 0.202 & 0.175 \\ \hline
-shr\_tkfit\_dedx\_max & 0.294 & 0.595 & 0.626 \\ \hline
+%shr\_tkfit\_dedx\_max & 0.294 & 0.595 & 0.626 \\ \hline
 shr\_trk\_sce\_start\_y & 0.278 & 0.579 & 0.572 \\ \hline
 shr\_trk\_sce\_end\_y & 0.207 & 0.585 & 0.561 \\ \hline
 shr\_trk\_len & 0.202 & 0.585 & 0.548 \\ \hline
@@ -1323,10 +1564,230 @@ shr\_tkfit\_gap10\_dedx\_V & 0.158 & 0.505 & 0.404 \\ \hline
 shr\_tkfit\_gap10\_dedx\_U & 0.895 & 0.967 & 0.963 \\ \hline
 bkg\_score & 0.770 & 0.907 & 0.892 \\ \hline
  \end{tabular}
- \caption{\label{tab:1e0p:HE:pvalues}p-values from the high-energy \zpsel sideband for input variables to the \zpsel in addition to the final BDT scores (\texttt{pi0\_score}, \texttt{nonpi0\_score}) and the reconstructed energy spectrum \texttt{reco\_e}. The three columns show the p-values computed through statistics-only uncertainties (left), with systematics but not accounting for correlations in systematics (center), and finally including the full systematics covariance matrix. Systematics include flux, cross-sections, and re-interaction uncertainties, but not detector uncertainties.}
+ \caption{\label{tab:1e0p:HE:pvalues}p-values from the high-energy \zpsel sideband for input variables to the \zpsel in addition to the final BDT score (\texttt{bkg\_score}) and the reconstructed energy spectrum \texttt{reco\_e}. The three columns show the p-values computed through statistics-only uncertainties (left), with systematics but not accounting for correlations in systematics (center), and finally including the full systematics covariance matrix. Systematics include flux, cross-sections, and re-interaction uncertainties, but not detector uncertainties.}
 \end{table}
 
 \subsection{\zpsel Low-PID Sideband}
+\label{sec:zpLowPID_plots}
+
+Fig.~\ref{fig:1e0p:Low_BDT_Sideband:datamc1}-~\ref{fig:1e0p:Low_BDT_Sideband:datamc2} show the variables used as BDT inputs and in the loose selection at low BDT response. These plots are after applying the 1e0p pre-selection and requiring exactly one contained shower.
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{0.3\textwidth}
+    \includegraphics[width=1.0\textwidth]{1e0p/Low_BDT_Sideband/anglediff_U.pdf}
+    \caption{angle diff U}
+    \end{subfigure}
+    \begin{subfigure}{0.3\textwidth}
+    \includegraphics[width=1.0\textwidth]{1e0p/Low_BDT_Sideband/anglediff_V.pdf}
+    \caption{angle diff V}
+    \end{subfigure}
+    \begin{subfigure}{0.3\textwidth}
+    \includegraphics[width=1.0\textwidth]{1e0p/Low_BDT_Sideband/anglediff_Y.pdf}
+    \caption{angle diff Y}
+    \end{subfigure}
+    \caption{} 
+    \label{fig:1e0p:Low_BDT_Sideband:datamc1}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{0.3\textwidth}
+    \includegraphics[width=1.0\textwidth]{1e0p/Low_BDT_Sideband/CosmicDirAll3D.pdf}
+    \caption{cosmic dir all 3D}
+    \end{subfigure}
+    \begin{subfigure}{0.3\textwidth}
+    \includegraphics[width=1.0\textwidth]{1e0p/Low_BDT_Sideband/CosmicIPAll3D.pdf}
+    \caption{cosmic IP all 3D}
+    \end{subfigure}
+    \begin{subfigure}{0.3\textwidth}
+    \includegraphics[width=1.0\textwidth]{1e0p/Low_BDT_Sideband/CylFrac2h_1cm.pdf}
+    \caption{CylFrac2h 1cm}
+    \end{subfigure}
+    \caption{} 
+    \label{fig:HE_1eNp_1}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{0.3\textwidth}
+    \includegraphics[width=1.0\textwidth]{1e0p/Low_BDT_Sideband/DeltaRMS2h.pdf}
+    \caption{delta rms 2h}
+    \end{subfigure}
+    \begin{subfigure}{0.3\textwidth}
+    \includegraphics[width=1.0\textwidth]{1e0p/Low_BDT_Sideband/shr_trk_len.pdf}
+    \caption{shr trk len}
+    \end{subfigure}
+    \begin{subfigure}{0.3\textwidth}
+    \includegraphics[width=1.0\textwidth]{1e0p/Low_BDT_Sideband/shrMCSMom.pdf}
+    \caption{shr mcs mom}
+    \end{subfigure}
+    \caption{} 
+    \label{fig:HE_1eNp_1}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{0.3\textwidth}
+    \includegraphics[width=1.0\textwidth]{1e0p/Low_BDT_Sideband/reco_nu_vtx_x.pdf}
+    \caption{x vertex}
+    \end{subfigure}
+    \begin{subfigure}{0.3\textwidth}
+    \includegraphics[width=1.0\textwidth]{1e0p/Low_BDT_Sideband/reco_nu_vtx_y.pdf}
+    \caption{y vertex}
+    \end{subfigure}
+    \begin{subfigure}{0.3\textwidth}
+    \includegraphics[width=1.0\textwidth]{1e0p/Low_BDT_Sideband/reco_nu_vtx_z.pdf}
+    \caption{z vertex}
+    \end{subfigure}
+    \caption{} 
+    \label{fig:HE_1eNp_1}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{0.3\textwidth}
+    \includegraphics[width=1.0\textwidth]{1e0p/Low_BDT_Sideband/secondshower_U_dot.pdf}
+    \caption{second shower dot U}
+    \end{subfigure}
+    \begin{subfigure}{0.3\textwidth}
+    \includegraphics[width=1.0\textwidth]{1e0p/Low_BDT_Sideband/secondshower_V_dot.pdf}
+    \caption{second shower dot V}
+    \end{subfigure}
+    \begin{subfigure}{0.3\textwidth}
+    \includegraphics[width=1.0\textwidth]{1e0p/Low_BDT_Sideband/secondshower_Y_dot.pdf}
+    \caption{second shower dot Y}
+    \end{subfigure}
+    \caption{} 
+    \label{fig:HE_1eNp_1}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{0.3\textwidth}
+    \includegraphics[width=1.0\textwidth]{1e0p/Low_BDT_Sideband/secondshower_U_nhit.pdf}
+    \caption{second shower nhit U}
+    \end{subfigure}
+    \begin{subfigure}{0.3\textwidth}
+    \includegraphics[width=1.0\textwidth]{1e0p/Low_BDT_Sideband/secondshower_V_nhit.pdf}
+    \caption{second shower nhit V}
+    \end{subfigure}
+    \begin{subfigure}{0.3\textwidth}
+    \includegraphics[width=1.0\textwidth]{1e0p/Low_BDT_Sideband/secondshower_Y_nhit.pdf}
+    \caption{second shower nhit Y}
+    \end{subfigure}
+    \caption{} 
+    \label{fig:HE_1eNp_1}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{0.3\textwidth}
+    \includegraphics[width=1.0\textwidth]{1e0p/Low_BDT_Sideband/secondshower_U_vtxdist.pdf}
+    \caption{second shower vtxdist U}
+    \end{subfigure}
+    \begin{subfigure}{0.3\textwidth}
+    \includegraphics[width=1.0\textwidth]{1e0p/Low_BDT_Sideband/secondshower_V_vtxdist.pdf}
+    \caption{second shower vtxdist V}
+    \end{subfigure}
+    \begin{subfigure}{0.3\textwidth}
+    \includegraphics[width=1.0\textwidth]{1e0p/Low_BDT_Sideband/secondshower_Y_vtxdist.pdf}
+    \caption{second shower vtxdist Y}
+    \end{subfigure}
+    \caption{} 
+    \label{fig:HE_1eNp_1}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{0.3\textwidth}
+    \includegraphics[width=1.0\textwidth]{1e0p/Low_BDT_Sideband/shr_tkfit_2cm_dedx_U.pdf}
+    \caption{shr tkfit 2cm dedx U}
+    \end{subfigure}
+    \begin{subfigure}{0.3\textwidth}
+    \includegraphics[width=1.0\textwidth]{1e0p/Low_BDT_Sideband/shr_tkfit_2cm_dedx_V.pdf}
+    \caption{shr tkfit 2cm dedx V}
+    \end{subfigure}
+    \begin{subfigure}{0.3\textwidth}
+    \includegraphics[width=1.0\textwidth]{1e0p/Low_BDT_Sideband/shr_tkfit_2cm_dedx_V.pdf}
+    \caption{shr tkfit 2cm dedx Y}
+    \end{subfigure}
+    \caption{} 
+    \label{fig:HE_1eNp_1}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{0.3\textwidth}
+    \includegraphics[width=1.0\textwidth]{1e0p/Low_BDT_Sideband/shr_tkfit_gap10_dedx_U.pdf}
+    \caption{shr tkfit gap10 dedx U}
+    \end{subfigure}
+    \begin{subfigure}{0.3\textwidth}
+    \includegraphics[width=1.0\textwidth]{1e0p/Low_BDT_Sideband/shr_tkfit_gap10_dedx_V.pdf}
+    \caption{shr tkfit gap10 dedx V}
+    \end{subfigure}
+    \begin{subfigure}{0.3\textwidth}
+    \includegraphics[width=1.0\textwidth]{1e0p/Low_BDT_Sideband/shr_tkfit_gap10_dedx_V.pdf}
+    \caption{shr tkfit gap10 dedx Y}
+    \end{subfigure}
+    \caption{} 
+    \label{fig:HE_1eNp_1}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{0.3\textwidth}
+    \includegraphics[width=1.0\textwidth]{1e0p/Low_BDT_Sideband/shr_trk_sce_end_y.pdf}
+    \caption{shr tkfit end y}
+    \end{subfigure}
+    \begin{subfigure}{0.3\textwidth}
+    \includegraphics[width=1.0\textwidth]{1e0p/Low_BDT_Sideband/shr_trk_sce_start_y.pdf}
+    \caption{shr tkfit start y}
+    \end{subfigure}
+    \begin{subfigure}{0.3\textwidth}
+    \includegraphics[width=1.0\textwidth]{1e0p/Low_BDT_Sideband/shrMCSMom.pdf}
+    \caption{shr mcs mom}
+    \end{subfigure}
+    \caption{} 
+    \label{fig:HE_1eNp_1}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{0.3\textwidth}
+    \includegraphics[width=1.0\textwidth]{1e0p/Low_BDT_Sideband/shrmoliereavg.pdf}
+    \caption{shr moliere avg}
+    \end{subfigure}
+    \begin{subfigure}{0.3\textwidth}
+    \includegraphics[width=1.0\textwidth]{1e0p/Low_BDT_Sideband/shrPCA1CMed_5cm.pdf}
+    \caption{shr pca med 5cm}
+    \end{subfigure}
+    \begin{subfigure}{0.3\textwidth}
+    \includegraphics[width=1.0\textwidth]{1e0p/Low_BDT_Sideband/subcluster.pdf}
+    \caption{subcluster}
+    \end{subfigure}
+    \caption{} 
+    \label{fig:HE_1eNp_1}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{0.3\textwidth}
+    \includegraphics[width=1.0\textwidth]{1e0p/Low_BDT_Sideband/tk1sh1_angle_alltk.pdf}
+    \caption{angle between shower and track for events with at least one total track}
+    \end{subfigure}
+    \begin{subfigure}{0.3\textwidth}
+    \includegraphics[width=1.0\textwidth]{1e0p/Low_BDT_Sideband/n_tracks_tot.pdf}
+    \caption{n tracks tot}
+    \end{subfigure}
+    %\begin{subfigure}{0.3\textwidth}
+   % \includegraphics[width=1.0\textwidth]{1e0p/Low_BDT_Sideband/subcluster.png}
+    %\caption{subcluster}
+   % \end{subfigure}
+    \caption{} 
+    \label{fig:1e0p:Low_BDT_Sideband:datamc2}
+\end{figure}
+%%%%%%%%%%%%%%%
 
 
 Table~\ref{tab:1e0p:LPID:pvalues} collects the p-values for variables used in the \zpsel at pre-selection from the low-PID sideband.
@@ -1340,7 +1801,7 @@ Table~\ref{tab:1e0p:LPID:pvalues} collects the p-values for variables used in th
  \hline
 \multirow{2}{*}{variable} & \multicolumn{3}{c|}{p-values} \\
 \cline{2-4} & stat-only & diag syst. & full covariance \\ \hline
-hits\_ratio & 0.776 & 0.957 & 0.957 \\ \hline
+%hits\_ratio & 0.776 & 0.957 & 0.957 \\ \hline
 CosmicIPAll3D & 0.005 & 0.663 & 0.078 \\ \hline
 CosmicDirAll3D & 0.037 & 0.915 & 0.181 \\ \hline
 tk1sh1\_angle\_alltk & 0.080 & 0.301 & 0.251 \\ \hline
@@ -1360,7 +1821,7 @@ secondshower\_U\_nhit & 0.123 & 0.755 & 0.547 \\ \hline
 secondshower\_U\_dot & 0.780 & 0.972 & 0.898 \\ \hline
 anglediff\_U & 0.024 & 0.697 & 0.086 \\ \hline
 secondshower\_U\_vtxdist & 0.877 & 0.998 & 0.963 \\ \hline
-shr\_tkfit\_dedx\_max & 0.624 & 0.979 & 0.795 \\ \hline
+%shr\_tkfit\_dedx\_max & 0.624 & 0.979 & 0.795 \\ \hline
 shr\_trk\_sce\_start\_y & 0.905 & 1.000 & 0.971 \\ \hline
 shr\_trk\_sce\_end\_y & 0.247 & 0.978 & 0.519 \\ \hline
 shr\_trk\_len & 0.086 & 0.731 & 0.293 \\ \hline
@@ -1372,5 +1833,100 @@ shr\_tkfit\_gap10\_dedx\_V & 0.181 & 0.962 & 0.425 \\ \hline
 shr\_tkfit\_gap10\_dedx\_U & 0.714 & 0.985 & 0.929 \\ \hline
 bkg\_score & 0.490 & 0.960 & 0.627 \\ \hline
  \end{tabular}
- \caption{\label{tab:1e0p:LPID:pvalues}p-values from the low-pid \zpsel sideband for input variables to the \zpsel in addition to the final BDT scores (\texttt{pi0\_score}, \texttt{nonpi0\_score}) and the reconstructed energy spectrum \texttt{reco\_e}. The three columns show the p-values computed through statistics-only uncertainties (left), with systematics but not accounting for correlations in systematics (center), and finally including the full systematics covariance matrix. Systematics include flux, cross-sections, and re-interaction uncertainties, but not detector uncertainties.}
+ \caption{\label{tab:1e0p:LPID:pvalues}p-values from the low-pid \zpsel sideband for input variables to the \zpsel in addition to the final BDT score (\texttt{bkg\_score}) and the reconstructed energy spectrum \texttt{reco\_e}. The three columns show the p-values computed through statistics-only uncertainties (left), with systematics but not accounting for correlations in systematics (center), and finally including the full systematics covariance matrix. Systematics include flux, cross-sections, and re-interaction uncertainties, but not detector uncertainties.}
 \end{table}
+
+
+\subsection{NuMI \npsel Sideband}
+\label{app:sideband:1eNpNuMI}
+Figures~\ref{fig:NuMI_1eNp_1} to~\ref{fig:NuMI_1eNp_5} show all BDT input variables from the   loose selection stage.
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{0.3\textwidth}
+    \includegraphics[width=1.0\textwidth]{Sidebands/Figures/NuMI/1eNp/tksh_distance.pdf}
+    \caption{tksh\_distance}
+    \end{subfigure}
+    \begin{subfigure}{0.3\textwidth}
+    \includegraphics[width=1.0\textwidth]{Sidebands/Figures/NuMI/1eNp/tksh_angle.pdf}
+    \caption{tksh\_angle}
+    \end{subfigure}
+    \begin{subfigure}{0.3\textwidth}
+    \includegraphics[width=1.0\textwidth]{Sidebands/Figures/NuMI/1eNp/shr_tkfit_dedx_max.pdf}
+    \caption{shr\_tkfit\_dedx\_max}
+    \end{subfigure}
+    \caption{} 
+    \label{fig:NuMI_1eNp_1}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{0.3\textwidth}
+    \includegraphics[width=1.0\textwidth]{Sidebands/Figures/NuMI/1eNp/trkfit.pdf}
+    \caption{trkfit}
+    \end{subfigure}
+    \begin{subfigure}{0.3\textwidth}
+    \includegraphics[width=1.0\textwidth]{Sidebands/Figures/NuMI/1eNp/trkpid.pdf}
+    \caption{trkpid}
+    \end{subfigure}
+    \begin{subfigure}{0.3\textwidth}
+    \includegraphics[width=1.0\textwidth]{Sidebands/Figures/NuMI/1eNp/subcluster.pdf}
+    \caption{subcluster}
+    \end{subfigure}
+    \caption{} 
+    \label{fig:NuMI_1eNp_2}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{0.3\textwidth}
+    \includegraphics[width=1.0\textwidth]{Sidebands/Figures/NuMI/1eNp/shrmoliereavg.pdf}
+    \caption{shrmoliereavg}
+    \end{subfigure}
+    \begin{subfigure}{0.3\textwidth}
+    \includegraphics[width=1.0\textwidth]{Sidebands/Figures/NuMI/1eNp/trkshrhitdist2.pdf}
+    \caption{tkshrhitdist2}
+    \end{subfigure}
+    \begin{subfigure}{0.3\textwidth}
+    \includegraphics[width=1.0\textwidth]{Sidebands/Figures/NuMI/1eNp/hits_ratio.pdf}
+    \caption{hits\_ratio}
+    \end{subfigure}
+    \caption{} 
+    \label{fig:NuMI_1eNp_3}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{0.3\textwidth}
+    \includegraphics[width=1.0\textwidth]{Sidebands/Figures/NuMI/1eNp/secondshower_Y_nhit.pdf}
+    \caption{secondshower\_Y\_nhit}
+    \end{subfigure}
+    \begin{subfigure}{0.3\textwidth}
+    \includegraphics[width=1.0\textwidth]{Sidebands/Figures/NuMI/1eNp/secondshower_Y_vtxdist.pdf}
+    \caption{secondshower\_Y\_vtxdist}
+    \end{subfigure}
+    \begin{subfigure}{0.3\textwidth}
+    \includegraphics[width=1.0\textwidth]{Sidebands/Figures/NuMI/1eNp/secondshower_Y_dot.pdf}
+    \caption{secondshower\_Y\_dot}
+    \end{subfigure}
+    \caption{} 
+    \label{fig:NuMI_1eNp_4}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{0.3\textwidth}
+    \includegraphics[width=1.0\textwidth]{Sidebands/Figures/NuMI/1eNp/anglediff_Y.pdf}
+    \caption{anglediff\_Y}
+    \end{subfigure}
+    \begin{subfigure}{0.3\textwidth}
+    \includegraphics[width=1.0\textwidth]{Sidebands/Figures/NuMI/1eNp/CosmicIPAll3D.pdf}
+    \caption{CosmicIPAll3D}
+    \end{subfigure}
+    \begin{subfigure}{0.3\textwidth}
+    \includegraphics[width=1.0\textwidth]{Sidebands/Figures/NuMI/1eNp/CosmicDirAll3D.pdf}
+    \caption{CosmidDirAll3D}
+    \end{subfigure}
+    \caption{} 
+    \label{fig:NuMI_1eNp_5}
+\end{figure}

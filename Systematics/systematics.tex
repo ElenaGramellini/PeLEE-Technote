@@ -32,7 +32,7 @@ A summary of the sources of systematic uncertainty and their impact on this anal
     \end{subfigure}
     \begin{subfigure}[b]{0.32\textwidth}
     \centering
-    \includegraphics[width=1.00\textwidth]{Systematics/1eNp_syst_summary.pdf}
+    \includegraphics[width=1.00\textwidth]{Systematics/1e0p_syst_summary.pdf}
     \caption{\label{fig:systsummary:zp}\zpsel}
     \end{subfigure}
     \begin{subfigure}[b]{0.32\textwidth}
@@ -56,13 +56,13 @@ A summary of the sources of systematic uncertainty and their impact on this anal
 \par Detector systematics samples are generated as \emph{uni-sim} variations, meaning that, for each detector effect, a given MC event is re-simulated once with a change to a detector modeling parameter. This produces a new simulation of the same underlying neutrino interactions, which can be used to measure the impact of the detector effect being studied on efficiencies, reconstructed variables, and event pass-rates, factoring out statistical fluctuations.
 \par In the context of a sensitivity calculation, detector systematics unisims can be used to calculate a covariance matrix for selected event rates in each bin used in the sensitivity calculation. Only diagonal elements of the covariance matrix are then added to the total uncertainty matrix. 
 The main drawback of this approach is the fact that the excursion in the number of measured events in a bin computed from a single variation is taken as the 1$\sigma$ excursion for the error estimation.
-\par Sections~\ref{sec:detsys:light},~\ref{sec:detsys:tpc}, and~\ref{sec:detsys:datamc} below summarize the impact that important detector variations have on the analysis in terms of selection efficiencies and reconstructed variable smearing. They are supplemented in appendix~\ref{app:detsys:impact} by more detailed comparisons which give intuition for the impact of each variation on relevant variables. Section~\ref{sec:detsys:selections} presents the quantitative estimation of detector systematics on the \nue and \numu selections which re then fed as input to SBNFit for the constraint and sensitivity calculation.
+\par Sections~\ref{sec:detsys:light},~\ref{sec:detsys:tpc}, and~\ref{sec:detsys:datamc} below summarize the impact that important detector variations have on the analysis in terms of selection efficiencies and reconstructed variable smearing. They are supplemented by several focused presentations described in DocDBs~\href{https://microboone-docdb.fnal.gov/cgi-bin/private/ShowDocument?docid=30373}{30373}, ~\href{https://microboone-docdb.fnal.gov/cgi-bin/private/ShowDocument?docid=30022}{30022},~\href{https://microboone-docdb.fnal.gov/cgi-bin/private/ShowDocument?docid=29938}{DocDB 29938}, and~\href{https://microboone-docdb.fnal.gov/cgi-bin/private/ShowDocument?docid=29299}{29299}. Section~\ref{sec:detsys:selections} presents the quantitative estimation of detector systematics on the \nue and \numu selections which re then fed as input to SBNFit for the constraint and sensitivity calculation.
 %\par Below, simple comparisons of distributions relevant to the analysis under different detector variation samples are shown, but the full inclusion of detector systematics in the sensitivity calculation has not been performed. For calorimetric variables such as electron \dedx and $\pi^0$ mass some clear differences, such as shifts in energy scale, are visible, though contained to within a few percent. These initial comparisons are promising in that they seem to suggest a relatively minor impact to the analysis from detector systematics. 
 
 \subsubsection{Impact of Light Modeling on Neutrino ID and Cosmic Rejection} 
 \label{sec:detsys:light}
-The \texttt{SliceID} (sec.~\ref{sec:sliceID}) tools used to isolate and identify neutrino interactions in each event rely on scintillation light to identify interactions in-time with the beam and thus likely neutrino candidates. The tools developed aim to reject TPC interactions that are incompatible with the in-time optical flash, rather than selecting the most compatible TPC interaction. This allow the \texttt{SliceID} to rely on light information in a conservative manner, and allows the analysis to be impacted minimally by the significant light mismodeling and time-dependence in scintillation light response observed in the detector. 
-\par Two variations are used to cover overall light mis-modeling: one accounts for a 25\% lower light-yield across the detector (25 \% LY) and another for the uncertainty in the Rayleigh scattering length, simulated at 60 cm in MicroBooNE's CV and varied to 120 cm in the systematic variation sample. A third variation, specific to Run3 and beyond, accounts for mis-modling in the calibration applied to account for time-dependent light degradation in the detector. The effect these variations have on reconstructed light variables used in the analysis is documented in appendix~\ref{app:detsys:impact}.
+The \texttt{SliceID} (sec.~\ref{sec:sliceID}) tools used to isolate and identify neutrino interactions in each event rely on scintillation light to identify interactions in-time with the beam and thus likely neutrino candidates. The tools developed aim to reject TPC interactions that are incompatible with the in-time optical flash, rather than selecting the most compatible TPC interaction. This allows the \texttt{SliceID} to rely on light information in a conservative manner, and allows the analysis to be impacted minimally by the significant light mismodeling and time-dependence in scintillation light response observed in the detector. 
+\par Two variations are used to cover overall light mis-modeling: one accounts for a 25\% lower light-yield across the detector (25 \% LY) and another for the uncertainty in the Rayleigh scattering length, simulated at 60 cm in MicroBooNE's CV and varied to 120 cm in the systematic variation sample. A third variation, specific to Run3 and beyond, accounts for mis-modling in the calibration applied to account for time-dependent light degradation in the detector. The effect these variations have on reconstructed light variables used in the analysis is documented in~\href{https://microboone-docdb.fnal.gov/cgi-bin/private/ShowDocument?docid=29299}{DocDB 29299}.
 
 \par The impact of these significant variations on the \texttt{SliceID} performance is shown in figure~\ref{fig:detsys:light:eff}. The level of variation in efficiency observed is quite small, with larger variations focused on the 200-300 MeV energy bin for $\nu_{\mu}$ interactions.
 
@@ -82,24 +82,27 @@ The \texttt{SliceID} (sec.~\ref{sec:sliceID}) tools used to isolate and identify
 \caption{\label{fig:detsys:light:eff}Impact of light variations on SliceID efficiency for $\nu_{\mu}$ and $\nu_e$ events.}
 \end{center}
 \end{figure}
-\par It is important to note that while the light variations being considered as input to measure the impact of detector systemtatics are substantial, they do not fully cover the data-mc differences in the \textit{flash-PE} variable (which measures the integrated prompt plus late light produced in time with the neutrino beam) at low PE. This can be seen in figures~\ref{fig:detsys:datamc:flashpe:run3} and~\ref{fig:detsys:datamc:flashpe:run1} in appendix~\ref{app:detsys}. While the robustness of the analysis against light variation is an inherent design of the \texttt{SliceID}~\ref{sec:sliceID}, we further validate susceptibility to light-mismodeling by studying the time-dependence of the neutrino selection tools as a function of reconstructed $x$ position (which impacts light yield considerably). No noticeable change in performance is observed over time.
+\par It is important to note that while the light variations being considered as input to measure the impact of detector systemtatics are substantial, they do not fully cover the data-mc differences in the \textit{flash-PE} variable (which measures the integrated prompt plus late light produced in time with the neutrino beam) at low PE. This can be seen in slide 12 of~\href{https://microboone-docdb.fnal.gov/cgi-bin/private/ShowDocument?docid=29299}{DocDB 29299}. While the robustness of the analysis against light variation is an inherent design of the \texttt{SliceID}~\ref{sec:sliceID}, we further validate susceptibility to light-mismodeling by studying the time-dependence of the neutrino selection tools as a function of reconstructed $x$ position (which impacts light yield considerably). No noticeable change in performance is observed over time.
 
 \begin{figure}[hbt!] 
 \begin{center}
     \begin{subfigure}[b]{0.3\textwidth}
     \centering
-    \includegraphics[width=1.00\textwidth]{NuMuCCsel/Images/Ryan/Run1/reco_nu_vtx_sce_x_08062020_samples_longest_noCRT_event_category.pdf}
-    \caption{\label{fig:systematics:run1:nuvtxx}}
+    %\includegraphics[width=1.00\textwidth]{NuMuCCsel/Images/Ryan/Run1/reco_nu_vtx_sce_x_08062020_samples_longest_noCRT_event_category.pdf}
+    \includegraphics[width=1.00\textwidth]{detsys/light/vtx_x_1.png}
+    \caption{\label{fig:systematics:run1:nuvtxx}vertex $x$ - Run 1}
     \end{subfigure}
     \begin{subfigure}[b]{0.3\textwidth}
     \centering
-    \includegraphics[width=1.00\textwidth]{NuMuCCsel/Images/Ryan/Run2/reco_nu_vtx_sce_x_08062020_samples_longest_noCRT_event_category.pdf}
-    \caption{\label{fig:systematics:run2:nuvtxx}}
+    %\includegraphics[width=1.00\textwidth]{NuMuCCsel/Images/Ryan/Run2/reco_nu_vtx_sce_x_08062020_samples_longest_noCRT_event_category.pdf}
+    \includegraphics[width=1.00\textwidth]{detsys/light/vtx_x_2.png}
+    \caption{\label{fig:systematics:run2:nuvtxx}vertex $x$ - Run 2}
     \end{subfigure} %\newline
     \begin{subfigure}[b]{0.3\textwidth}
     \centering
-    \includegraphics[width=1.00\textwidth]{NuMuCCsel/Images/Ryan/Run3_nocrt/reco_nu_vtx_sce_x_08062020_samples_longest_noCRT_event_category.pdf}
-    \caption{\label{fig:systematics:run3:nuvtxx}}
+    %\includegraphics[width=1.00\textwidth]{NuMuCCsel/Images/Ryan/Run3_nocrt/reco_nu_vtx_sce_x_08062020_samples_longest_noCRT_event_category.pdf}
+    \includegraphics[width=1.00\textwidth]{detsys/light/vtx_x_3.png}
+    \caption{\label{fig:systematics:run3:nuvtxx}vertex $x$ - Run 3}
     \end{subfigure}
 \caption{X coordinates of reconstructed neutrino vertex for each run. SliceID applied.}
 \label{fig:systematics:numu:nuvtxx}
@@ -109,7 +112,7 @@ The \texttt{SliceID} (sec.~\ref{sec:sliceID}) tools used to isolate and identify
 \subsubsection{Systematics on Energy Scale and Particle ID} 
 \label{sec:detsys:tpc}
 Systematics which impact the TPC's response can impact calorimetric energy reconstruction important for shower and thus $\nu_e$ event energy reconstruction. Impact on range-based track energy is also expected, though to a lesser extent, and largely confined to systematics related to SCE position reconstruction. This section studies the impact of simulation uncertainties on energy scale reconstruction.
-\par The impact of different variation samples on shower energy scale are studied by measuring the variation of the reconstructed $M_{\gamma\gamma}$ for selected $\pi^0$ candidate events. The outcome of these studies is summarized in table~\ref{tab:energyvar}. More details describing these studies is available in appendix~\ref{app:detsys:impact}.
+\par The impact of different variation samples on shower energy scale are studied by measuring the variation of the reconstructed $M_{\gamma\gamma}$ for selected $\pi^0$ candidate events. The outcome of these studies is summarized in table~\ref{tab:energyvar}. More details describing these studies is available in ~\href{https://microboone-docdb.fnal.gov/cgi-bin/private/ShowDocument?docid=29299}{DocDB 29299}.
 
 
 \begin{table}[H]
@@ -131,7 +134,7 @@ Space Charge & N.A. & N.A. & 0.0 & $<$ 0.4 \\
 \end{table}
 
 
-TPC variations which impact spatial and calorimetric reconstruction can impact particle ID discriminant variables such as the \texttt{LLR trkpid} used for $\mu$/$p$ separation and \dedx used for $e$/$\gamma$ separation. Studies specific to the impact of detector variations on PID reconstructed quantities are described in appendix~\ref{app:detsys:impact}. These are summarized by the impact that the variations have on the selection efficiency for protons and electrons spectively, calculated with the cuts as defined in the \npsel Box-Cut selection. The impact overall is small and contained to a few percent variation, as shown in figure~\ref{fig:syst:detsys:pid}.
+TPC variations which impact spatial and calorimetric reconstruction can impact particle ID discriminant variables such as the \texttt{LLR trkpid} used for $\mu$/$p$ separation and \dedx used for $e$/$\gamma$ separation. Studies specific to the impact of detector variations on PID reconstructed quantities are described in DocDBs~\href{https://microboone-docdb.fnal.gov/cgi-bin/private/ShowDocument?docid=31444}{31444} and~\href{https://microboone-docdb.fnal.gov/cgi-bin/private/ShowDocument?docid=29070}{29070}. These are summarized by the impact that the variations have on the selection efficiency for protons and electrons spectively, calculated with the cuts as defined in the \npsel Box-Cut selection. The impact overall is small and contained to a few percent variation, as shown in figure~\ref{fig:syst:detsys:pid}.
 
 \begin{figure}[H] 
 \begin{center}
@@ -151,7 +154,7 @@ TPC variations which impact spatial and calorimetric reconstruction can impact p
 
 \subsubsection{Validation of Detector Systematic Coverage of Detector Uncertainties}
 \label{sec:detsys:datamc}
-\par This section presents key distributions with the inclusion of detector systematics to understand if the detector systematics samples employed are sufficient to cover discrepancies observed in detector modeling. We focus on distributions that are relevant to understanding detector modeling and that are most impactful for the analysis' performance. Additional data-mc comparisons are included in appendix~\ref{app:detsys:impact}.
+\par This section presents key distributions with the inclusion of detector systematics to understand if the detector systematics samples employed are sufficient to cover discrepancies observed in detector modeling. We focus on distributions that are relevant to understanding detector modeling and that are most impactful for the analysis' performance. Additional data-mc comparisons are included in ~\href{https://microboone-docdb.fnal.gov/cgi-bin/private/ShowDocument?docid=29299}{DocDB 29299}.
 %\par For light modeling, we focus on the distribution of \texttt{flash PE} after the Slice ID and a basic fiducialization cut of neutrino candidates. The distribution is shown for Run1 in figure~\ref{fig:detsys:datamc:flashpe:run1} and for Run3 in figure~\ref{fig:detsys:datamc:flashpe:run3}. On the left hand side, only statistical errors re include, and a significant discrepancy in data-MC is evident. On the right hand side, the same comparison including detector systematics are included. For Run1 these include a 25\% LY quenching and the Rayleigh scattering variation. For Run3 the modeling of x-dependent attenuation is also included. While the systematics cover a significant amount of the data-mc differences, they do not cover the full discrepancy, especially at low PE.
 \par First we show the distributions of $M_{\gamma\gamma}$ and \dedx from $\pi^0$ candidate events, produced using $6.78e20$ POT of BNB data. 
 The plots show the distributions with statistical errors only plus all detector systematics. No flux, crss-section, or re-interaction systematics are included in this area-normalized data/mc comparison. Detector systematics are computed using the relevant variations from CC $\pi^0$ monte-carlo and calculating the fractional event variation in each relevant distribution. This fractional error, bin-by-bin, is applied as an additional uncertainty and summed in quadrature to statistical errors for all the MC contributions in the plot. These studies indicate that current TPC systematics do a good job covering the level of discrepancy observed in relevant data-mc comparisons. In particular, we see tht the $M_{\gamma\gamma}$, showing good agreement out of the box, is subject to small detector uncertainties, while the \dedx distribution which shows  a clear shift in the peak at 4 MeV/cm presents a significant uncertainty which covers this discrepancy. We are confident given these studies that detector uncertainties on shower kinematics and variables are adequately covered in the analysis.
@@ -266,13 +269,14 @@ The red theoretical curves are helpful in guiding the eye in the comparisons bet
 \begin{enumerate}
     \item For $\nu_e$ events the full Run1-2-3 $\nu_e$ intrinsic and Run1-3 eLEE low (0-400 MeV) and high (400-800) MeV samples are used to obtain as high statistics as possible over the entire $\nu_e$ energy spectrum.
     \item Detector systematics are evaluated using bins that have at least $\mathcal{O}$(100) raw events in orer to not be sensitive to statistical fluctuations that are too large. For the \npsel we are able to maintain 100 MeV bins while satisfying this requirement, while for the \zpsel we choose 200 MeV bins up to 1.05 GeV in reconstructed energy, and compute detector systematic uncertainties for events in the 1.05-2.05 GeV range in a single bin.
-    \item Sample statistics for backgrounds to the exclusive \nue selections are too low once final selection cuts are applied, making it impossible to assess detector systematics on these events. Currently a flat 20\% detector systematic is assigned to \nue background events. Because of the high purity of the analysis, backgrounds are subject to $\mathcal{O}$(100\%) statistical fluctuations making detector uncertainties negligible in comparison.
+    \item Sample statistics for \numu CC and NC backgrounds to the exclusive \nue selections are too low once final selection cuts are applied, making it impossible to assess detector systematics on these events. Currently a flat 20\% detector systematic is assigned to these background events. Because of the high purity of the analysis, backgrounds are subject to $\mathcal{O}$(100\%) statistical fluctuations making detector uncertainties negligible in comparison.
 \end{enumerate}
 
 \subsubsection{Detector systematics on the \npsel, \zpsel, and \numu selections}
 \label{sec:detsys:selections}
 
-\par Detector systematics are evaluated by applying the full event selections on identically overlapping sets of events simulated with the CV simulation and the various detector-variation simulations. The event count in each bin under these different variations is evaluated, as shown in figure~\ref{fig:detsys:selection}. Bin to bin variations are then used to construct a covariance matrix (right in figure~\ref{fig:detsys:selection}). The square root of diagonal entries (displayed with their numerical value in the matrix) are then taken as the systematic uncertainty associated to any given variation. Off-diagonal correlations in detector variations are not utilized in this analysis, in part due to the limitation of the uni-sim approach. The impact of different detector variations is finally added in quadrature for all variations to assess the final detector systematic uncertainty for each bin for each selection. The result for the \npsel BDT-based and \numu selections are shown in tables~\ref{tab:detsys:nue:BDT} and~\ref{tab:detsys:numu} respectively. Systematics are of order 10-20\% depending on the bin. Figures showing the bin-to-bin systematic uncertainty for various selections, and at different stages in the selections, are in appendix~\ref{app:detsys:selections}. FIgure~\ref{fig:detsys:numu} shows the final event kinematics distributions with all systematics, including detector uncertainties, for selected \numu events used in the \numu constraint.
+\par Detector systematics are evaluated by applying the full event selections on identically overlapping sets of events simulated with the CV simulation and the various detector-variation simulations. The event count in each bin under these different variations is evaluated, as shown in figure~\ref{fig:detsys:selection}. Bin to bin variations are then used to construct a covariance matrix (right in figure~\ref{fig:detsys:selection}). The square root of diagonal entries (displayed with their numerical value in the matrix) are then taken as the systematic uncertainty associated to any given variation. Off-diagonal correlations in detector variations are not utilized in this analysis, in part due to the limitation of the uni-sim approach. The impact of different detector variations is finally added in quadrature for all variations to assess the final detector systematic uncertainty for each bin for each selection. The result for the \npsel, \zpsel BDT-based, and \numu selections are shown in tables~\ref{tab:detsys:nue:np:BDT},~\ref{tab:detsys:nue:zp:BDT},  and~\ref{tab:detsys:numu} respectively. Systematics are of order 10-20\% depending on the bin. %Figures showing the bin-to-bin systematic uncertainty for various selections, and at different stages in the selections, are in appendix~\ref{app:detsys:selections}.
+FIgure~\ref{fig:detsys:numu} shows the final event kinematics distributions with all systematics, including detector uncertainties, for selected \numu events used in the \numu constraint.
 
 
 
@@ -283,7 +287,7 @@ The red theoretical curves are helpful in guiding the eye in the comparisons bet
 \end{figure}
 
 
-\par Table~\ref{tab:detsys:nue:BDT} shows the magnitude of detector systematic effects on the and BDT-based \npsel. The impact on the box-cut selection, with very similar results, is available in appendix.~\ref{app:detsys} in table~\ref{tab:detsys:nue:box}.
+\par Tables~\ref{tab:detsys:nue:np:BDT} and~\ref{tab:detsys:nue:zp:BDT} shows the magnitude of detector systematic effects on the and BDT-based \npsel and \zpsel selections. %The impact on the box-cut selection, with very similar results, is available in appendix.~\ref{app:detsys} in table~\ref{tab:detsys:nue:box}.
 
 
 \begin{table}[H]
@@ -315,7 +319,7 @@ E [GeV] & scale X & scale YZ & angle YZ & angle XZ & dEdX & SCE & LY down & Rayl
 1.95-2.05 & 0.066 & 0.053 & 0.024 & 0.067 & 0.053 & 0.125 & 0.010 & 0.000 & 0.046 &  0.181 \\
  \hline
  \end{tabular}
- \caption{\label{tab:detsys:nue:BDT} Detector systematics for BDT \npsel selection. The final column is the quadrature sum of all systematic variations.}
+ \caption{\label{tab:detsys:nue:np:BDT} Detector systematics for BDT \npsel selection. The final column is the quadrature sum of all systematic variations.}
 \end{table}
 
 
@@ -336,7 +340,7 @@ E [GeV] & scale X & scale YZ & angle YZ & angle XZ & dEdX & SCE & LY down & Rayl
 1.15-2.15 & 0.037 & 0.014 & 0.010 & 0.066 & 0.045 & 0.143 & 0.017 & 0.014 & 0.024 & 0.172 \\
  \hline
  \end{tabular}
- \caption{\label{tab:detsys:nue:BDT} Detector systematics for BDT \zpsel selection. The final column is the quadrature sum of all systematic variations.}
+ \caption{\label{tab:detsys:nue:zp:BDT} Detector systematics for BDT \zpsel selection. The final column is the quadrature sum of all systematic variations.}
 \end{table}
 
 
@@ -399,7 +403,7 @@ E [GeV] & scale X & scale YZ & angle YZ & angle XZ & dEdX & SCE & LY down & Rayl
 
 The flux model and its uncertainties for MCC9~\cite{bib:fluxmcc9,bib:fluxtechnote} are largely the same as MCC8~\cite{bib:fluxtechnote} and originate from the implementation performed in MiniBooNE~\cite{bib:MBflux}. We use the many universes method to estimate the flux uncertainties. The various sources of uncertainties are taken as independent and  are individually varied by drawing from a Gaussian of width $\pm 1 \sigma$ of their measured uncertainties. The excursion of the variations from each such draw is commonly referred to as a universe. The sources of uncertainty considered are listed in Table~\ref{tab:fluxsyst}. In this analysis, the 13 flux parameter variations are varied simultaneously according to a Gaussian distribution for 1000 universes.
 Figure~\ref{fig:fluxsystvars} displays the effects of reweighting central value in each universe for individual parameters of the flux model. The systematic error is calculated from the difference of the expected events in the various universes with respect to the central value. Therefore the width of the variations in the plots represents the size of systematic uncertainty expected for each individual parameter of the flux model.
-The fractional covariance matrix for the \npsel and \zpsel selections are presented in Figure~\ref{fig:fluxmatrices} and show about 17\% uncertainty in the lowest visible energy bin (0.15 - 0.25 GeV) for the \npsel selection and 5\% for the \zpsel selection. %@cThe flux systematics are calculated only for the background-only hypothesis, where we do not assign any uncertainties to the LEE signal model. 
+The fractional covariance matrix for the \npsel and \zpsel selections are presented in Figure~\ref{fig:fluxmatrices} and show about 17\% uncertainty in the lowest visible energy bin (0.15 - 0.25 GeV) for the \npsel selection and 7\% for the \zpsel selection. %@cThe flux systematics are calculated only for the background-only hypothesis, where we do not assign any uncertainties to the LEE signal model. 
 
 \begin{table}[H]
 \centering
@@ -466,11 +470,11 @@ We use the \texttt{GENIE} event reweighting framework with the standard reweight
 
 The updated Genie central value tune is guided on fits to the T2K data which increase the MA CCQE and scale up the MEC normalization. These provide overall good data-MC agreement in the \numu CC channel as preliminarily shown in sec.~\ref{sec:numuselection}.
 
-A total of 53 sources of uncertainty are considered. The majority of them, 44, are varied with a multisim approach around the updated Genie central value tune. Their variations are simultaneous to take into account their correlations, and are given the name \textit{Genie\_All}. They are listed in Table~\ref{tab:AllGenie}. The variations of the remaining six sources cover the full range of the parameter values: they are varied from 0 to 1, turning on or off a specific modeling effect. Table~\ref{tab:geniesyst} lists the uncertainties that are used in the analysis and the number of universes investigated. %The genie systematic uncertainty is currently also calculated only for the background-only hypothesis and we do not assign any genie systematics to the unfolded LEE signal model.
+A total of 53 sources of uncertainty are considered. The majority of them, 44, are varied with a multisim approach around the updated Genie central value tune. Their variations are simultaneous to take into account their correlations, and are given the name \textit{Genie\_All}. They are listed in Table~\ref{tab:AllGenie}. The variations of the remaining nine sources cover the full range of the parameter values: they are varied from 0 to 1, turning on or off a specific modeling effect. Table~\ref{tab:geniesyst} lists the uncertainties that are used in the analysis and the number of universes investigated. %The genie systematic uncertainty is currently also calculated only for the background-only hypothesis and we do not assign any genie systematics to the unfolded LEE signal model.
 
 The fractional covariance matrix and correlation matrix for the \npsel, \zpsel, and \numu selections are presented in Figure~\ref{fig:geniematrices} which is estimated to be ~20\% in average and up to 50\% at around 0.15 - 0.25 GeV. Meanwhile, Figure~\ref{fig:geniesystvars} displays the effects of reweighting the central value in each universe of an individual genie knob.
 
-One neutrino interaction modeling uncertainty which is still not fully incorporated in the analysis is the uncertainty on the CCMEC interaction kinematics. The current status of the modeling of this knob is presented in \href{https://microboone-docdb.fnal.gov/cgi-bin/private/ShowDocument?docid=31787}{DocDB 31787}. The knob, in a nutshell, allows to reweigh events between the CCMEC ``empirical'' model and the Nieves model (as described in ~\cref{tab:geniesyst}). This knob impacts the kinematics of MEC interactions, but not their rate. In particular, the kinematics of the final state lepton are impacted by the variation. At the time of writing this note, we have been able to assess the preliminary impact of the updated CCMEC knob on the \npsel and \zpsel event rates, but have not folded in this uncertainty in the sensitivity calculation. Figure~\ref{fig:ccmec} shows the impact of the variation on these selections, as well as on the constraint \numu selection. We see that the impact of this knob is at most 10\%, and in the \npsel the variation is smaller at low energies. These comparisons are preliminary as the validation of the knob implementation itself is underway. Motivation for how this variation impacts the selection performance may be attributed to shower energy and shoer angle dependency in the final selection efficiencies. Finally, we note the interesting anti-correlation in the impact of this vaiation between the \npsel and \zpsel selections.
+One neutrino interaction modeling uncertainty which is still not fully incorporated in the analysis is the uncertainty on the CCMEC interaction kinematics. The current status of the modeling of this knob is presented in \href{https://microboone-docdb.fnal.gov/cgi-bin/private/ShowDocument?docid=31787}{DocDB 31787}. The knob, in a nutshell, allows to reweigh events between the CCMEC ``empirical'' model and the Nieves model (as described in ~\cref{tab:geniesyst}). This knob impacts the kinematics of MEC interactions, but not their rate. In particular, the kinematics of the final state lepton are impacted by the variation. At the time of writing this note, we have been able to assess the preliminary impact of the updated CCMEC knob on the \npsel and \zpsel event rates, but have not folded in this uncertainty in the sensitivity calculation. Figure~\ref{fig:ccmec} shows the impact of the variation on these selections, as well as on the constraint \numu selection. We see that the impact of this knob is at most 10\%, and in the \npsel the variation is smaller at low energies. These comparisons are preliminary as the validation of the knob implementation itself is underway. Motivation for how this variation impacts the selection performance may be attributed to shower energy and shower angle dependency in the final selection efficiencies. Finally, we note the interesting anti-correlation in the impact of this variation between the \npsel and \zpsel selections.
 
 \begin{figure}[H] 
     \begin{center}
@@ -617,7 +621,8 @@ NormNCCOH\_UBGenie      &  Scaling factor for NC COH $\pi$ production  & 2\\
 \end{figure}
 
 \subsection{Hadronic Reinteraction Uncertainties }
-An additional type of systematic uncertainty that can be included is that related to hadrons interacting strongly with argon nuclei~\cite{bib:reintslides}. These hadronic rescatterings can induce a large momentum transfer in the hadron and thus have an impact in the reconstruction and the selection of events. Additionally, they can led to a re-classification of the event based on the final-state particles produced in the event. These uncertainties can be thought of as GEANT4 uncertainties in the cross section of a hadron's interaction with argon nuclei. The hadronic reinteraction uncertainties listed in Table~\ref{tab:fluxsyst} was made available for MCC9 (see DocDB 27561~\cite{bib:g4uncertainties}) and has been incorporated into the analysis. The impact on the \nue intrinsic selection is expected to be small, and the systematics have a larger impact on the background events such as the charged-current $\pi^0$ and neutral current with no $\pi$ in the final states. The effects of the larger systematics on the background events can be seen on ~\cref{fig:g4matrices}.
+\label{sec:systematics:reint}
+An additional type of systematic uncertainty that can be included is that related to hadrons interacting strongly with argon nuclei~\cite{bib:reintslides}. These hadronic rescatterings can induce a large momentum transfer in the hadron and thus have an impact in the reconstruction and the selection of events. Additionally, they can led to a re-classification of the event based on the final-state particles produced in the event. These uncertainties can be thought of as GEANT4 uncertainties in the cross section of a hadron's interaction with argon nuclei. The hadronic reinteraction uncertainties listed in Table~\ref{tab:g4syst} was made available for MCC9 (see DocDB 27561~\cite{bib:g4uncertainties}) and has been incorporated into the analysis. The impact on the \nue intrinsic selection is expected to be small, and the systematics have a larger impact on the background events such as the charged-current $\pi^0$ and neutral current with no $\pi$ in the final states. The effects of the larger systematics on the background events can be seen on ~\cref{fig:g4matrices}.
 
 \begin{table}[H]
 \centering
@@ -634,7 +639,7 @@ reint\_all                    &  all 3 reinteraction knobs randomly and simultan
 \hline
 \end{tabular}
 \caption{List of hadronic reinteraction systematic variations, the reint\_all knob is used in the analysis}
-\label{tab:fluxsyst}
+\label{tab:g4syst}
 \end{table}
 
 \begin{figure}[ht] 
@@ -668,8 +673,8 @@ Energy [GeV] & Flux Only & Genie Only  & G4 Only & Flux + Genie + G4 & Flux + Ge
 0.15 - 0.25 & 17.33 & 47.51 & 1.09 & 50.59 & 52.38 \\
 0.25 - 0.35 & 7.41 & 33.63 & 0.73 & 34.45 & 35.42 \\
 0.35 - 0.45 & 6.97 & 31.51 & 1.12 & 32.29 & 33.23 \\
-0.45 - 0.55 & 5.65 & 22.52 & 1.15 & 23.25 & 23.72 \\
-0.55 - 0.65 & 5.75 & 21.66 & 0.59 & 22.41 & 23.05 \\
+0.45 - 0.55 & 5.95 & 23.72 & 1.22 & 24.48 & 24.98 \\
+0.55 - 0.65 & 6.06 & 22.81 & 0.62 & 23.61 & 24.28 \\
 0.65 - 0.75 & 5.84 & 22.32 & 0.97 & 23.10 & 24.02 \\
 0.75 - 0.85 & 5.33 & 22.60 & 1.52 & 23.27 & 24.16 \\
 0.85 - 0.95 & 5.59 & 22.15 & 0.99 & 22.87 & 24.22 \\
@@ -692,19 +697,19 @@ Energy [GeV] & Flux Only & Genie Only  & G4 Only & Flux + Genie + G4 & Flux + Ge
 \hline
 Energy [GeV] & Flux Only & Genie Only  & G4 Only & Flux + Genie + G4 & Flux + Genie + G4 + Det. Syst. \\
 \hline
-0.15 - 0.25 & 4.81 & 16.94 & 1.53 & 17.67 & 19.52 \\
-0.25 - 0.35 & 5.02 & 18.91 & 0.43 & 19.57 & 20.65 \\
-0.35 - 0.45 & 5.75 & 21.98 & 0.43 & 22.73 & 23.69 \\
-0.45 - 0.55 & 4.19 & 14.35 & 0.64 & 14.97 & 15.95 \\
+0.15 - 0.25 & 6.82 & 24.00 & 2.17 & 25.05 & 27.66 \\
+0.25 - 0.35 & 6.02 & 22.66 & 0.52 & 23.45 & 24.74 \\
+0.35 - 0.45 & 6.50 & 24.86 & 0.48 & 25.70 & 26.79 \\
+0.45 - 0.55 & 6.86 & 23.52 & 1.05 & 24.53 & 26.14 \\
 0.55 - 0.65 & 5.70 & 29.19 & 0.36 & 29.74 & 33.27 \\
-0.65 - 0.75 & 4.18 & 26.65 & 1.55 & 27.02 & 30.01 \\
-0.75 - 0.85 & 5.93 & 22.21 & 0.53 & 23.00 & 25.94 \\
-0.85 - 0.95 & 4.03 & 18.57 & 1.54 & 19.06 & 23.65 \\
+0.65 - 0.75 & 5.38 & 34.33 & 2.00 & 34.81 & 38.66 \\
+0.75 - 0.85 & 7.58 & 28.37 & 0.68 & 29.37 & 33.13 \\
+0.85 - 0.95 & 5.73 & 26.43 & 2.19 & 27.13 & 33.66 \\
 0.95 - 1.05 & 7.51 & 30.32 & 0.43 & 31.24 & 45.36 \\
 1.05 - 1.15 & 7.49 & 32.45 & 0.24 & 33.30 & 46.80 \\
 1.15 - 1.25 & 5.78 & 30.74 & 0.46 & 31.29 & 35.70 \\
 1.25 - 1.35 & 7.89 & 32.37 & 0.35 & 33.32 & 37.49 \\
-1.35 - 1.45 & 3.37 & 13.66 & 0.25 & 14.07 & 16.13 \\
+1.35 - 1.45 & 7.34 & 29.78 & 0.54 & 30.68 & 35.17 \\
 1.45 - 1.55 & 6.92 & 19.22 & 0.50 & 20.43 & 24.61 \\
 \hline
 \end{tabular}

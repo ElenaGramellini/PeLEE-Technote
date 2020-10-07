@@ -5,7 +5,59 @@ Five sets of fake data were produced to test the robustness of the analysis.  Th
 
 There are a few aspects in which the fake data sets are different than the real data sets. These are noted here.  In particular, there is no EXT or dirt contribution to the fake-data to MC comparison plots, by construction in the way that the fake datasets were produced.  Also, no $\pi^{0}$ scaling is applied to these plots because good scaling agreement is seen out of the box in the $\pi^{0}$ samples. The optical filter is also not applied to events in the fake-data samples.
 
+\newpage
+
 \subsection{Set 1}
+
+\begin{comment}
+\begin{figure}[H] 
+\begin{center}
+    \begin{subfigure}[b]{0.35\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{Fakedata/set1/fake1_numu_energy.pdf}
+    \caption{\label{fig:fakedata:set1:numu_energy} \numu energy spectrum.}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.35\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{Fakedata/set1/pi0.pdf}
+    \caption{\label{fig:fakedata:set1:pi0} $\pi^0$ mass}
+    \end{subfigure}
+\caption{\label{fig:fakedata:set1:numu} \numu CC and $\pi^0$ selections for fake-data set 1.}
+\end{center}
+\end{figure}
+
+\begin{figure}[H] 
+\begin{center}
+    \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{Fakedata/set1/1e0p_numu_reco_e_H1_mc_fakedata_set1_univ_overlay_nue.pdf}
+    \caption{\label{fig:fakedata:set1:zp_final} \zpsel results.}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{Fakedata/set1/nue_numu_reco_e_H1_mc_fakedata_set1_univ_overlay_nue.pdf}
+    \caption{\label{fig:fakedata:set1:np_final} \npsel results.}
+    \end{subfigure}
+\caption{\label{fig:fakedata:set1:zp_const} \nue selection results compared to SM (red) and LEE model (blue).}
+\end{center}
+\end{figure}
+
+\begin{figure}[H] 
+\begin{center}
+    \begin{subfigure}[b]{0.4\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{Fakedata/set1/plotSig_constrained_set1.pdf}
+    \caption{\label{fig:fakedata:set1:sensitivity} \zpsel results.}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\textwidth}
+    \centering
+    \raisebox{0.9cm}{\includegraphics[width=1.00\textwidth]{Fakedata/set1/set1_conclusions.png}}
+    \caption{\label{fig:fakedata:set1:conclusions} \npsel results.}
+    \end{subfigure}
+\caption{\label{fig:fakedata:set1:zp_const} Analysis sensitivity, observed $\Delta\chi^2$, and observations and interpretation for fake-data set 1.}
+\end{center}
+\end{figure}
+\end{comment}
 
 The first selections studied are those rich in $\pi^{0}$s. Fig~\ref{fig:fakedata:set1:pi0} shows the reconstructed $\pi^{0}$ mass for the $\pi^{0}$ selection. Good data-MC agreement is observed, as well as good energy scale resolution in the reconstructed $\pi^{0}$ mass. 
 \begin{figure}[H]
@@ -81,7 +133,7 @@ The exclusive electron neutrino selections were also performed on the fake data.
 \begin{center}
     \begin{subfigure}[b]{0.45\textwidth}
     \centering
-    \includegraphics[width=1.00\textwidth]{Fakedata/set1/np_2shr.pdf}
+    \includegraphics[width=1.00\textwidth]{Fakedata/set1/Np_presel_recoe.pdf}
     \caption{\label{fig:fakedata:set1:Np_presel_recoe} 1eNp at pre-selection}
     \end{subfigure}
     \begin{subfigure}[b]{0.45\textwidth}
@@ -93,7 +145,7 @@ The exclusive electron neutrino selections were also performed on the fake data.
 \end{center}
 \end{figure}
 
-Fig~\ref{fig:fakedata:set1:npsel} shows various distributions after the 1eNp BDT selection.  An excess is observed at low reconstructed neutrino energy. There is also an excess in one track events relative to two track events which suggests that there may be some migration between the categories.
+Fig~\ref{fig:fakedata:set1:npsel} shows various distributions after the 1eNp BDT selection.  An excess with respect to the \nue intrinsic distribution is observed at low reconstructed neutrino energy . There is also an excess with respect to the \nue intrinsic distribution in one track events relative to two track events which suggests that there may be some migration between the categories.
 
 \begin{figure}[H] 
 \begin{center}
@@ -111,7 +163,7 @@ Fig~\ref{fig:fakedata:set1:npsel} shows various distributions after the 1eNp BDT
 \end{center}
 \end{figure}
 
-Fig~\ref{fig:fakedata:set1:zpsel} shows the 1e0p selection after BDT selection.  An excess is observed at low energy. There is also an excess in high BDT response and in overall normalization.
+Fig~\ref{fig:fakedata:set1:zpsel} shows the 1e0p selection after BDT selection.  An excess with respect to the \nue intrinsic is observed at low energy. There is also an excess with respect to the \nue intrinsic in high BDT response and in overall normalization.
 
 \begin{figure}[H] 
 \begin{center}
@@ -134,9 +186,9 @@ Fig~\ref{fig:fakedata:set1:zpsel} shows the 1e0p selection after BDT selection. 
 \end{center}
 \end{figure}
 
-The muon neutrino and exclusive electron neutrino selections are then passed to SBNfit to perform a constraint of the systmeatic uncertainties through a joint fit of $\nu_{\mu}$ and $\nu_e$ channels, following which a LEE-signal sensitivity is extracted.  Full systematic uncertainties are included: flux, genie, and detector.  %In all of the constraint plots the red line corresponds to the MC without any LEE hypothesis. 
+The muon neutrino and exclusive electron neutrino selections are then passed to SBNfit to perform a constraint of the systematic uncertainties through a joint fit of $\nu_{\mu}$ and $\nu_e$ channels, following which a LEE-signal sensitivity is extracted.  Full systematic uncertainties are included: flux, genie, and detector.  In all of the constraint plots the red line corresponds to the MC without any LEE hypothesis. 
 Fig. ~\ref{fig:fakedata:set1:numu_const} shows the muon neutrino selection before and after the constraint. After the constraint is performed the muon neutrino prediction collapses to the observed data as a result of the $\chi^2$-based constraint.
-Fig. ~\ref{fig:fakedata:set1:np_const} shows the 1eNp selection before and after the constraint, and Fig. ~\ref{fig:fakedata:set1:np_const} the 1e0p selection.  In both selections the excess at low energy increases after the constraint is performed.    
+Fig. ~\ref{fig:fakedata:set1:np_const} shows the 1eNp selection before and after the constraint, and Fig. ~\ref{fig:fakedata:set1:zp_const} the 1e0p selection.  In both selections the excess with respect to the Standard Model prediction (represented by the red histogram) at low energy increases after the constraint is performed.    
 \begin{figure}[H] 
 \begin{center}
     \begin{subfigure}[b]{0.45\textwidth}
@@ -196,9 +248,33 @@ The sensitivity can then be calculated using the joint fit procedure within SBNF
 \begin{figure}[H]
 \begin{center}
 \includegraphics[width=0.75\textwidth]{Fakedata/set1/sens.pdf}
-\caption{\label{fig:fakedata:set1:sens} $\Delta \chi^{2}$ for fake data set relative to standard model and LEE hypotheses. The $\chi^{2}$ for the $H_0$ hypothesis is $67.2$, the $\chi^{2}$ for the $H_1$ hypothesis is $46.7$, and the resulting $\Delta \chi^{2}$ is $20.5$ }
+\caption{\label{fig:fakedata:set1:sens} $\Delta \chi^{2}$ for fake data set relative to standard model and LEE hypotheses. The $\chi^{2}$ for the $H_0$ hypothesis is $75.5$, the $\chi^{2}$ for the $H_1$ hypothesis is $54.02$, and the resulting $\Delta \chi^{2}$ is $21.48$ }
 \end{center}
 \end{figure}
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.75\textwidth]{Fakedata/set1/plotSig_constrained_set1.pdf}
+\caption{\label{fig:fakedata:set1:combinedSig} Breakdown of the sensitivity based on the \npsel, \zpsel, and combined \npsel+\zpsel channel.}
+\end{center}
+\end{figure}
+
+\begin{table}[h!]
+\centering
+\begin{center}
+\begin{tabular}{ c | m{7cm} | m{5cm} } 
+\hline \hline
+Samples & Observation & Hypothesis \\ 
+\hline \hline
+ $\pi^0$ & Agreement within uncertainties & No change to $\pi^0$ production \\ 
+ \numu & Overall low normalization & Reduction in \numu CC CCQE cross-section \\ 
+ \zpsel+\npsel & Excess in relation to Standard Model is observed in low energy bin, and enhanced by the \numu constraint. We rule out SM at 3.4 $\sigma$. Observe a signal scaling compatible with 2x the MiniBooNE unfolded LEE model & Low energy excess \nue signal injected. Signal strength larger than the nominal MiniBooNE unfolded LEE model. \\ 
+ \hline \hline
+\end{tabular}
+\end{center}
+\caption{observations and interpretation for fake-data set 1.}
+\label{tab:fakedata:summaryset1}
+\end{table}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -278,7 +354,7 @@ The exclusive electron neutrino selections were also performed on the fake data.
 \begin{center}
     \begin{subfigure}[b]{0.45\textwidth}
     \centering
-    \includegraphics[width=1.00\textwidth]{Fakedata/set2/np_2shr.pdf}
+    \includegraphics[width=1.00\textwidth]{Fakedata/set2/Np_presel_recoe.pdf}
     \caption{\label{fig:fakedata:set2:Np_presel_recoe} 1eNp at pre-selection}
     \end{subfigure}
     \begin{subfigure}[b]{0.45\textwidth}
@@ -290,7 +366,7 @@ The exclusive electron neutrino selections were also performed on the fake data.
 \end{center}
 \end{figure}
 
-Fig~\ref{fig:fakedata:set2:npsel} shows various distributions after the 1eNp BDT selection.  An excess is observed at medium reconstructed neutrino energy. There is also an excess in one track events relative the prediction.
+Fig~\ref{fig:fakedata:set2:npsel} shows various distributions after the 1eNp BDT selection.  An excess with respect to the \nue intrinsic distribution is observed at medium reconstructed neutrino energy. There is also an excess with respect to the \nue intrinsic distribution in one track events relative the prediction.
 
 \begin{figure}[H] 
 \begin{center}
@@ -308,7 +384,7 @@ Fig~\ref{fig:fakedata:set2:npsel} shows various distributions after the 1eNp BDT
 \end{center}
 \end{figure}
 
-Fig~\ref{fig:fakedata:set2:zpsel} shows the 1e0p selection after BDT selection.  There is agreement at low energy after the BDT selection and in overall normalization. An excess is observed at high BDT response.
+Fig~\ref{fig:fakedata:set2:zpsel} shows the 1e0p selection after BDT selection.  There is agreement at low energy after the BDT selection and in overall normalization. An excess with respect to the \nue intrinsic distribution is observed at high BDT response.
 
 \begin{figure}[H] 
 \begin{center}
@@ -332,21 +408,23 @@ Fig~\ref{fig:fakedata:set2:zpsel} shows the 1e0p selection after BDT selection. 
 \end{figure}
 
 The muon neutrino and exclusive electron neutrino selections are then passed to SBNfit to perform a constraint of the systematic uncertainties, and a fit to the sensitivity.  Full systematic uncertainties are included: flux, genie, geant re-interaction, and detector.  In all of the constraint plots the red line corresponds to the MC without any LEE hypothesis. Fig. ~\ref{fig:fakedata:set2:numu_const} shows the muon neutrino selection before and after the constraint. After the constraint is performed the muon neutrino data agrees well with the prediction.   
-Fig. ~\ref{fig:fakedata:set2:np_const} shows the 1eNp selection before and after the constraint, and Fig. ~\ref{fig:fakedata:set2:np_const} the 1e0p selection.  In both selections the small data excess relative to prediction is  mitigated by the constraint.
+Fig. ~\ref{fig:fakedata:set2:np_const} shows the 1eNp selection before and after the constraint, and Fig. ~\ref{fig:fakedata:set2:zp_const} the 1e0p selection.  In both selections a modest data excess relative to the Standard Model prediction (represented by the red histogram) in the low energy bin of 0.15-0.35 GeV is  mitigated by the constraint.
 
 \begin{figure}[H] 
 \begin{center}
     \begin{subfigure}[b]{0.45\textwidth}
     \centering
-    \includegraphics[width=1.00\textwidth]{Fakedata/set2/numu_before_constrain.pdf}
+    %\includegraphics[width=1.00\textwidth]{Fakedata/set1/numu_before_constrain.pdf}
+    \includegraphics[width=1.00\textwidth]{Fakedata/set2/nue_numu_reco_e_H1_mc_fakedata_set2_numu_before_data_constraint.pdf}
     \caption{\label{fig:fakedata:set2:numu_before_constrain} Before constraint.}
     \end{subfigure}
     \begin{subfigure}[b]{0.45\textwidth}
     \centering
-    \includegraphics[width=1.00\textwidth]{Fakedata/set2/numu_after_constrain.pdf}
-    \caption{\label{fig:fakedata:set2:numu_after_constrain} After constraint.}
+    %\includegraphics[width=1.00\textwidth]{Fakedata/set1/numu_after_constrain.pdf}
+    \includegraphics[width=1.00\textwidth]{Fakedata/set2/nue_numu_reco_e_H1_mc_fakedata_set2_scaled_numu.pdf}
+    \caption{\label{fig:fakedata:set1:numu_after_constrain} After constraint.}
     \end{subfigure}
-\caption{\label{fig:fakedata:set2:numu_const} Muon neutrino selection.}
+\caption{\label{fig:fakedata:set1:numu_const} Muon neutrino selection.}
 \end{center}
 \end{figure}
 
@@ -354,12 +432,14 @@ Fig. ~\ref{fig:fakedata:set2:np_const} shows the 1eNp selection before and after
 \begin{center}
     \begin{subfigure}[b]{0.45\textwidth}
     \centering
-    \includegraphics[width=1.00\textwidth]{Fakedata/set2/np_before_constrain.pdf}
-    \caption{\label{fig:fakedata:set2:np_before_constrain} Before constraint.}
+    %\includegraphics[width=1.00\textwidth]{Fakedata/set2/np_before_constrain.pdf}
+    \includegraphics[width=1.00\textwidth]{Fakedata/set2/nue_numu_reco_e_H1_mc_fakedata_set2_nue_before_data_constraint.pdf}
+    \caption{\label{fig:fakedata:set1:np_before_constrain} Before constraint.}
     \end{subfigure}
     \begin{subfigure}[b]{0.45\textwidth}
     \centering
-    \includegraphics[width=1.00\textwidth]{Fakedata/set2/np_after_constrain.pdf}
+    %\includegraphics[width=1.00\textwidth]{Fakedata/set2/np_after_constrain.pdf}
+    \includegraphics[width=1.00\textwidth]{Fakedata/set2/nue_numu_reco_e_H1_mc_fakedata_set2_univ_overlay_nue.pdf}
     \caption{\label{fig:fakedata:set2:np_after_constrain} After constraint.}
     \end{subfigure}
 \caption{\label{fig:fakedata:set2:np_const} 1eNp selection.}
@@ -370,26 +450,52 @@ Fig. ~\ref{fig:fakedata:set2:np_const} shows the 1eNp selection before and after
 \begin{center}
     \begin{subfigure}[b]{0.45\textwidth}
     \centering
-    \includegraphics[width=1.00\textwidth]{Fakedata/set2/zp_before_constrain.pdf}
-    \caption{\label{fig:fakedata:set2:zp_before_constrain} Before constraint.}
+    %\includegraphics[width=1.00\textwidth]{Fakedata/set1/zp_before_constrain.pdf}
+    \includegraphics[width=1.00\textwidth]{Fakedata/set2/1e0p_numu_reco_e_H1_mc_fakedata_set2_nue_before_data_constraint.pdf}
+    \caption{\label{fig:fakedata:set1:zp_before_constrain} Before constraint.}
     \end{subfigure}
     \begin{subfigure}[b]{0.45\textwidth}
     \centering
-    \includegraphics[width=1.00\textwidth]{Fakedata/set2/zp_after_constrain.pdf}
+    %\includegraphics[width=1.00\textwidth]{Fakedata/set2/zp_after_constrain.pdf}
+    \includegraphics[width=1.00\textwidth]{Fakedata/set2/1e0p_numu_reco_e_H1_mc_fakedata_set2_univ_overlay_nue.pdf}
     \caption{\label{fig:fakedata:set2:zp_after_constrain} After constraint.}
     \end{subfigure}
 \caption{\label{fig:fakedata:set2:zp_const} 1e0p selection.}
 \end{center}
 \end{figure}
 
-The sensitivity can then be calculated using the joint fit procedure within SBNFit. The $\Delta \chi^{2}$ for the LEE and standard model hypotheses are shown in Fig.~\ref{fig:fakedata:set2:sens}.  $\Delta \chi^{2}$ is defined as $\chi^{2}_{fakedata, H_{0}}-\chi^{2}_{fakedata, H_{1}}$. The sensitivity to rule out the standard model if the LEE is true for fake data set 2 is 1.9 sigma.  The median sensitivity is 2.6 sigma. This result is inconclusive.
+The sensitivity can then be calculated using the joint fit procedure within SBNFit. The $\Delta \chi^{2}$ for the LEE and standard model hypotheses are shown in Fig.~\ref{fig:fakedata:set2:sens}.  $\Delta \chi^{2}$ is defined as $\chi^{2}_{fakedata, H_{0}}-\chi^{2}_{fakedata, H_{1}}$. The sensitivity to rule out the standard model if the LEE is true for fake data set 2 is 1.9 sigma.  The median sensitivity is 2.6 sigma. Overall, this excess is not significant ( we rule out SM if LEE is true at 1.9 $\sigma$), but it is also consistent with a (<1 $\sigma$) down-fluctuation of the MiniBooNE unfolded model of 0.75x strength.
 
 \begin{figure}[H]
 \begin{center}
 \includegraphics[width=0.75\textwidth]{Fakedata/set2/sens.pdf}
-\caption{\label{fig:fakedata:set2:sens} $\Delta \chi^{2}$ for fake data set relative to standard model and LEE hypotheses. H0 is the standard model and H1 is the unfolded LEE model.}
+\caption{\label{fig:fakedata:set2:sens} $\Delta \chi^{2}$ for fake data set relative to standard model and LEE hypotheses. H0 is the standard model and H1 is the unfolded LEE model. The $\chi^{2}$ for the $H_0$ hypothesis is $61.93$, the $\chi^{2}$ for the $H_1$ hypothesis is $57.92$, and the resulting $\Delta \chi^{2}$ is $4.01$}
 \end{center}
 \end{figure}
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.75\textwidth]{Fakedata/set2/plotSig_constrained_set2.pdf}
+\caption{\label{fig:fakedata:set2:combinedSig} Breakdown of the sensitivity based on the \npsel, \zpsel, and combined \npsel+\zpsel channel.}
+\end{center}
+\end{figure}
+
+\begin{table}[h!]
+\centering
+\begin{center}
+\begin{tabular}{ c | m{7cm} | m{5cm} } 
+\hline \hline
+Samples & Observation & Hypothesis \\ 
+\hline \hline
+ $\pi^0$ & Agreement within uncertainties & No change to $\pi^0$ production \\ 
+ \numu & Overall high normalization & Increase in CCQE/MEC cross section \\ 
+ \zpsel+\npsel & We observe a modest excess of \nue candidates in the \zpsel channel, as well as in the lowest energy bin of the \npsel channel. Overall, this excess is not significant (we rule out SM if LEE is true at 1.9 $\sigma$), but it is also consistent with a (<1$\sigma$) down-fluctuation of the MB unfolded model of 0.75x strength. & Analysis result does not point to a clear hypothesis on whether a signal has been injected or not. \\ 
+ \hline \hline
+\end{tabular}
+\end{center}
+\caption{observations and interpretation for fake-data set 2.}
+\label{tab:fakedata:summaryset2}
+\end{table}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -403,7 +509,7 @@ The first selections studied are those rich in $\pi^{0}$s. Fig~\ref{fig:fakedata
 \end{center}
 \end{figure}
 
-Fig~\ref{fig:fakedata:set3:2shr} shows the 2+ shower side band for the 1eNp and 1e0p selections. There is good agreement in the 2+ shower side band in the 1e0p selection.  There is an excess in the 2+ shower sideband with the Np selection relative to prediction observed at medium energy.  
+Fig~\ref{fig:fakedata:set3:2shr} shows the 2+ shower side band for the 1eNp and 1e0p selections. There is good agreement in the 2+ shower side band in the 1e0p selection.  There is an excess with respect to the \nue intrinsic distribution in the 2+ shower sideband with the Np selection relative to prediction observed at medium energy.  
 
 \begin{figure}[H] 
 \begin{center}
@@ -469,7 +575,7 @@ The exclusive electron neutrino selections were also performed on the fake data.
 \begin{center}
     \begin{subfigure}[b]{0.45\textwidth}
     \centering
-    \includegraphics[width=1.00\textwidth]{Fakedata/set3/np_2shr.pdf}
+    \includegraphics[width=1.00\textwidth]{Fakedata/set3/Np_presel_recoe.pdf}
     \caption{\label{fig:fakedata:set3:Np_presel_recoe} 1eNp at pre-selection}
     \end{subfigure}
     \begin{subfigure}[b]{0.45\textwidth}
@@ -481,7 +587,7 @@ The exclusive electron neutrino selections were also performed on the fake data.
 \end{center}
 \end{figure}
 
-Fig~\ref{fig:fakedata:set3:npsel} shows various distributions after the 1eNp BDT selection.  An excess is observed at medium reconstructed neutrino energy. There is also a shape difference in the number of tracks; in particular there are more events with higher numbers of tracks than predicted. 
+Fig~\ref{fig:fakedata:set3:npsel} shows various distributions after the 1eNp BDT selection.  An excess with respect to the \nue intrinsic distribution is observed at medium reconstructed neutrino energy. There is also a shape difference in the number of tracks; in particular there are more events with higher numbers of tracks than predicted. 
 
 \begin{figure}[H] 
 \begin{center}
@@ -522,19 +628,22 @@ Fig~\ref{fig:fakedata:set3:zpsel} shows the 1e0p selection after BDT selection. 
 \end{center}
 \end{figure}
 
-The muon neutrino and exclusive electron neutrino selections are then passed to SBNfit to perform a constraint of the systmeatic uncertainties, and a fit to the sensitivity.  Full systematic uncertainties are included: flux, genie, geant re-interaction, and detector.  In all of the constraint plots the red line corresponds to the MC without any LEE hypothesis. Fig. ~\ref{fig:fakedata:set3:numu_const} shows the muon neutrino selection before and after the constraint. After the constraint is performed the muon neutrino data agrees well with the prediction.   
-Fig. ~\ref{fig:fakedata:set3:np_const} shows the 1eNp selection before and after the constraint, and Fig. ~\ref{fig:fakedata:set3:np_const} the 1e0p selection.  In both selections the constraint does not have a large impact on the electron neutrino selections due to overall agreement between data and simulation in the low energy muon neutrinos before the constraint is performed.
+The muon neutrino and exclusive electron neutrino selections are then passed to SBNfit to perform a constraint of the systmeatic uncertainties, and a fit to the sensitivity.  Full systematic uncertainties are included: flux, genie, geant re-interaction, and detector.  In all of the constraint plots the red line corresponds to the MC without any LEE hypothesis. Fig. ~\ref{fig:fakedata:set3:numu_const} shows the muon neutrino selection before and after the constraint. After the constraint is performed the muon neutrino data agrees well with the prediction. 
+
+Fig. ~\ref{fig:fakedata:set3:np_const} shows the 1eNp selection before and after the constraint, and Fig. ~\ref{fig:fakedata:set3:zp_const} the 1e0p selection.  In both selections the constraint does not have a large impact on the electron neutrino selections due to overall agreement between data and simulation in the low energy muon neutrinos before the constraint is performed.  We observe more \nue's compared to the Standard Model prediction in the lowest energy bins of \npsel and \zpsel. A broader data/MC tension is observed in \npsel across energy spectrum.
 
 \begin{figure}[H] 
 \begin{center}
     \begin{subfigure}[b]{0.45\textwidth}
     \centering
-    \includegraphics[width=1.00\textwidth]{Fakedata/set3/numu_before_constrain.pdf}
+    %\includegraphics[width=1.00\textwidth]{Fakedata/set3/numu_before_constrain.pdf}
+    \includegraphics[width=1.00\textwidth]{Fakedata/set3/nue_numu_reco_e_H1_mc_fakedata_set3_numu_before_data_constraint.pdf}
     \caption{\label{fig:fakedata:set3:numu_before_constrain} Before constraint.}
     \end{subfigure}
     \begin{subfigure}[b]{0.45\textwidth}
     \centering
-    \includegraphics[width=1.00\textwidth]{Fakedata/set3/numu_after_constrain.pdf}
+    %\includegraphics[width=1.00\textwidth]{Fakedata/set3/numu_after_constrain.pdf}
+    \includegraphics[width=1.00\textwidth]{Fakedata/set3/nue_numu_reco_e_H1_mc_fakedata_set3_scaled_numu.pdf}
     \caption{\label{fig:fakedata:set3:numu_after_constrain} After constraint.}
     \end{subfigure}
 \caption{\label{fig:fakedata:set3:numu_const} Muon neutrino selection.}
@@ -545,12 +654,14 @@ Fig. ~\ref{fig:fakedata:set3:np_const} shows the 1eNp selection before and after
 \begin{center}
     \begin{subfigure}[b]{0.45\textwidth}
     \centering
-    \includegraphics[width=1.00\textwidth]{Fakedata/set3/np_before_constrain.pdf}
+    %\includegraphics[width=1.00\textwidth]{Fakedata/set3/np_before_constrain.pdf}
+    \includegraphics[width=1.00\textwidth]{Fakedata/set3/nue_numu_reco_e_H1_mc_fakedata_set3_nue_before_data_constraint.pdf}
     \caption{\label{fig:fakedata:set3:np_before_constrain} Before constraint.}
     \end{subfigure}
     \begin{subfigure}[b]{0.45\textwidth}
     \centering
-    \includegraphics[width=1.00\textwidth]{Fakedata/set3/np_after_constrain.pdf}
+    %\includegraphics[width=1.00\textwidth]{Fakedata/set3/np_after_constrain.pdf}
+    \includegraphics[width=1.00\textwidth]{Fakedata/set3/nue_numu_reco_e_H1_mc_fakedata_set3_univ_overlay_nue.pdf}
     \caption{\label{fig:fakedata:set3:np_after_constrain} After constraint.}
     \end{subfigure}
 \caption{\label{fig:fakedata:set3:np_const} 1eNp selection.}
@@ -561,26 +672,52 @@ Fig. ~\ref{fig:fakedata:set3:np_const} shows the 1eNp selection before and after
 \begin{center}
     \begin{subfigure}[b]{0.45\textwidth}
     \centering
-    \includegraphics[width=1.00\textwidth]{Fakedata/set3/zp_before_constrain.pdf}
+    %\includegraphics[width=1.00\textwidth]{Fakedata/set3/zp_before_constrain.pdf}
+    \includegraphics[width=1.00\textwidth]{Fakedata/set3/1e0p_numu_reco_e_H1_mc_fakedata_set3_nue_before_data_constraint.pdf}
     \caption{\label{fig:fakedata:set3:zp_before_constrain} Before constraint.}
     \end{subfigure}
     \begin{subfigure}[b]{0.45\textwidth}
     \centering
-    \includegraphics[width=1.00\textwidth]{Fakedata/set3/zp_after_constrain.pdf}
+    %\includegraphics[width=1.00\textwidth]{Fakedata/set3/zp_after_constrain.pdf}
+    \includegraphics[width=1.00\textwidth]{Fakedata/set3/1e0p_numu_reco_e_H1_mc_fakedata_set3_univ_overlay_nue.pdf}
     \caption{\label{fig:fakedata:set3:zp_after_constrain} After constraint.}
     \end{subfigure}
 \caption{\label{fig:fakedata:set3:zp_const} 1e0p selection.}
 \end{center}
 \end{figure}
 
-The sensitivity can then be calculated using the joint fit procedure within SBNFit. The $\Delta \chi^{2}$ for the LEE and standard model hypotheses are shown in Fig.~\ref{fig:fakedata:set3:sens}.  $\Delta \chi^{2}$ is defined as $\chi^{2}_{fakedata, H_{0}}-\chi^{2}_{fakedata, H_{1}}$. The sensitivity to rule out the standard model if the LEE is true for fake data set 3 is 2.3 sigma.  The median sensitivity is 2.6 sigma. This result slightly prefers the LEE hypothesis, but may be driven by the first bin in reconstructed energy.
+The sensitivity can then be calculated using the joint fit procedure within SBNFit. The $\Delta \chi^{2}$ for the LEE and standard model hypotheses are shown in Fig.~\ref{fig:fakedata:set3:sens}.  $\Delta \chi^{2}$ is defined as $\chi^{2}_{fakedata, H_{0}}-\chi^{2}_{fakedata, H_{1}}$. The sensitivity to rule out the standard model if the LEE is true for fake data set 3 is 2.3 $\sigma$, albeit some tension with respect to the LEE.  The median sensitivity is 2.6 $\sigma$.
 
 \begin{figure}[H]
 \begin{center}
 \includegraphics[width=0.75\textwidth]{Fakedata/set3/sens.pdf}
-\caption{\label{fig:fakedata:set3:sens} $\Delta \chi^{2}$ for fake data set relative to standard model and LEE hypotheses. H0 is the standard model and H1 is the unfolded LEE model.}
+\caption{\label{fig:fakedata:set3:sens} $\Delta \chi^{2}$ for fake data set relative to standard model and LEE hypotheses. H0 is the standard model and H1 is the unfolded LEE model. The $\chi^{2}$ for the $H_0$ hypothesis is $39.71$, the $\chi^{2}$ for the $H_1$ hypothesis is $32.63$, and the resulting $\Delta \chi^{2}$ is $7.08$}
 \end{center}
 \end{figure}
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.75\textwidth]{Fakedata/set3/plotSig_constrained_set3.pdf}
+\caption{\label{fig:fakedata:set3:combinedSig} Breakdown of the sensitivity based on the \npsel, \zpsel, and combined \npsel+\zpsel channel.}
+\end{center}
+\end{figure}
+
+\begin{table}[h!]
+\centering
+\begin{center}
+\begin{tabular}{ c | m{7cm} | m{5cm} } 
+\hline \hline
+Samples & Observation & Hypothesis \\ 
+\hline \hline
+ $\pi^0$ & Higher rate of $\pi^0$ & increase in RES/pion production \\ 
+ \numu & Excess at higher energies, and in high track multiplicity. Good agreement in QE rate. & Cross-section variation: increase in RES/pion   production. \\ 
+ \zpsel+\npsel & More nues than SM in the lowest energy bins of \zpsel+\npsel. Broader data/MC tension in \npsel across energy spectrum. Ruling out the SM model if LEE if true at 2.3 $\sigma$, albeit some tension with respect to LEE. & LEE+other variation, or other variations faking a smaller excess than LEE. \\ 
+ \hline \hline
+\end{tabular}
+\end{center}
+\caption{observations and interpretation for fake-data set 3.}
+\label{tab:fakedata:summaryset3}
+\end{table}
 
 %%%%%%%%%%%%%%%%%%%%
 \subsection{Set 4}
@@ -588,12 +725,12 @@ The sensitivity can then be calculated using the joint fit procedure within SBNF
 The first selections studied are those rich in $\pi^{0}$s. Fig~\ref{fig:fakedata:set4:pi0} shows the reconstructed $\pi^{0}$ mass for the $\pi^{0}$ selection. Good data-MC agreement is observed, as well as good energy scale resolution in the reconstructed $\pi^{0}$ mass. 
 \begin{figure}[H]
 \begin{center}
-\includegraphics[width=0.45\textwidth]{Fakedata/set4/pi0.pdf}
+\includegraphics[width=0.45\textwidth]{Fakedata/set4/pi0sel.png}
 \caption{\label{fig:fakedata:set4:pi0} $\pi^{0}$ selection.}
 \end{center}
 \end{figure}
 
-Fig~\ref{fig:fakedata:set4:2shr} shows the 2+ shower side band for the 1eNp and 1e0p selections. There is good agreement in the 2+ shower side band in the 1e0p selection.  There is an excess in the 2+ shower sideband with the Np selection relative to prediction observed at medium energy.  
+Fig~\ref{fig:fakedata:set4:2shr} shows the 2+ shower side band for the 1eNp and 1e0p selections. There is good agreement in the 2+ shower side band in the 1e0p selection.  There is an excess with respect to the \nue intrinsic distribution in the 2+ shower sideband with the Np selection relative to prediction observed at medium energy.  
 
 \begin{figure}[H] 
 \begin{center}
@@ -659,7 +796,7 @@ The exclusive electron neutrino selections were also performed on the fake data.
 \begin{center}
     \begin{subfigure}[b]{0.45\textwidth}
     \centering
-    \includegraphics[width=1.00\textwidth]{Fakedata/set4/np_2shr.pdf}
+    \includegraphics[width=1.00\textwidth]{Fakedata/set4/Np_presel_recoe.pdf}
     \caption{\label{fig:fakedata:set4:Np_presel_recoe} 1eNp at pre-selection}
     \end{subfigure}
     \begin{subfigure}[b]{0.45\textwidth}
@@ -671,7 +808,7 @@ The exclusive electron neutrino selections were also performed on the fake data.
 \end{center}
 \end{figure}
 
-Fig~\ref{fig:fakedata:set4:npsel} shows various distributions after the 1eNp BDT selection.  An excess is observed at medium reconstructed neutrino energy. There is also a shape difference in the number of tracks; in particular there are more events with higher numbers of tracks than predicted. 
+Fig~\ref{fig:fakedata:set4:npsel} shows various distributions after the 1eNp BDT selection.  An excess with respect to the \nue intrinsic distribution is observed at medium reconstructed neutrino energy. There is also a shape difference in the number of tracks; in particular there are more events with higher numbers of tracks than predicted. 
 
 \begin{figure}[H] 
 \begin{center}
@@ -712,7 +849,7 @@ Fig~\ref{fig:fakedata:set4:zpsel} shows the 1e0p selection after BDT selection. 
 \end{center}
 \end{figure}
 
-\begin{comment}
+%\begin{comment}
 
 The muon neutrino and exclusive electron neutrino selections are then passed to SBNfit to perform a constraint of the systmeatic uncertainties, and a fit to the sensitivity.  Full systematic uncertainties are included: flux, genie, geant re-interaction, and detector.  In all of the constraint plots the red line corresponds to the MC without any LEE hypothesis. Fig. ~\ref{fig:fakedata:set4:numu_const} shows the muon neutrino selection before and after the constraint. After the constraint is performed the muon neutrino data agrees well with the prediction.   
 Fig. ~\ref{fig:fakedata:set4:np_const} shows the 1eNp selection before and after the constraint, and Fig. ~\ref{fig:fakedata:set4:np_const} the 1e0p selection.  In both selections the constraint does not have a large impact on the electron neutrino selections due to overall agreement between data and simulation in the low energy muon neutrinos before the constraint is performed.
@@ -721,12 +858,14 @@ Fig. ~\ref{fig:fakedata:set4:np_const} shows the 1eNp selection before and after
 \begin{center}
     \begin{subfigure}[b]{0.45\textwidth}
     \centering
-    \includegraphics[width=1.00\textwidth]{Fakedata/set4/numu_before_constrain.pdf}
+    %\includegraphics[width=1.00\textwidth]{Fakedata/set4/numu_before_constrain.pdf}
+    \includegraphics[width=1.00\textwidth]{Fakedata/set4/nue_numu_reco_e_H1_mc_fakedata_set4_numu_before_data_constraint.pdf}
     \caption{\label{fig:fakedata:set4:numu_before_constrain} Before constraint.}
     \end{subfigure}
     \begin{subfigure}[b]{0.45\textwidth}
     \centering
-    \includegraphics[width=1.00\textwidth]{Fakedata/set4/numu_after_constrain.pdf}
+    %\includegraphics[width=1.00\textwidth]{Fakedata/set4/numu_after_constrain.pdf}
+    \includegraphics[width=1.00\textwidth]{Fakedata/set4/nue_numu_reco_e_H1_mc_fakedata_set4_scaled_numu.pdf}
     \caption{\label{fig:fakedata:set4:numu_after_constrain} After constraint.}
     \end{subfigure}
 \caption{\label{fig:fakedata:set4:numu_const} Muon neutrino selection.}
@@ -737,12 +876,14 @@ Fig. ~\ref{fig:fakedata:set4:np_const} shows the 1eNp selection before and after
 \begin{center}
     \begin{subfigure}[b]{0.45\textwidth}
     \centering
-    \includegraphics[width=1.00\textwidth]{Fakedata/set4/np_before_constrain.pdf}
+    %\includegraphics[width=1.00\textwidth]{Fakedata/set4/np_before_constrain.pdf}
+    \includegraphics[width=1.00\textwidth]{Fakedata/set4/nue_numu_reco_e_H1_mc_fakedata_set4_nue_before_data_constraint.pdf}
     \caption{\label{fig:fakedata:set4:np_before_constrain} Before constraint.}
     \end{subfigure}
     \begin{subfigure}[b]{0.45\textwidth}
     \centering
-    \includegraphics[width=1.00\textwidth]{Fakedata/set4/np_after_constrain.pdf}
+    %\includegraphics[width=1.00\textwidth]{Fakedata/set4/np_after_constrain.pdf}
+    \includegraphics[width=1.00\textwidth]{Fakedata/set4/nue_numu_reco_e_H1_mc_fakedata_set4_univ_overlay_nue.pdf}
     \caption{\label{fig:fakedata:set4:np_after_constrain} After constraint.}
     \end{subfigure}
 \caption{\label{fig:fakedata:set4:np_const} 1eNp selection.}
@@ -753,12 +894,14 @@ Fig. ~\ref{fig:fakedata:set4:np_const} shows the 1eNp selection before and after
 \begin{center}
     \begin{subfigure}[b]{0.45\textwidth}
     \centering
-    \includegraphics[width=1.00\textwidth]{Fakedata/set4/zp_before_constrain.pdf}
+    %\includegraphics[width=1.00\textwidth]{Fakedata/set4/zp_before_constrain.pdf}
+    \includegraphics[width=1.00\textwidth]{Fakedata/set4/1e0p_numu_reco_e_H1_mc_fakedata_set4_nue_before_data_constraint.pdf}
     \caption{\label{fig:fakedata:set4:zp_before_constrain} Before constraint.}
     \end{subfigure}
     \begin{subfigure}[b]{0.45\textwidth}
     \centering
-    \includegraphics[width=1.00\textwidth]{Fakedata/set4/zp_after_constrain.pdf}
+    %\includegraphics[width=1.00\textwidth]{Fakedata/set4/zp_after_constrain.pdf}
+    \includegraphics[width=1.00\textwidth]{Fakedata/set4/1e0p_numu_reco_e_H1_mc_fakedata_set4_univ_overlay_nue.pdf}
     \caption{\label{fig:fakedata:set4:zp_after_constrain} After constraint.}
     \end{subfigure}
 \caption{\label{fig:fakedata:set4:zp_const} 1e0p selection.}
@@ -766,21 +909,47 @@ Fig. ~\ref{fig:fakedata:set4:np_const} shows the 1eNp selection before and after
 \end{figure}
 
 The sensitivity can then be calculated using the joint fit procedure within SBNFit. The $\Delta \chi^{2}$ for the LEE and standard model hypotheses are shown in Fig.~\ref{fig:fakedata:set4:sens}.  $\Delta \chi^{2}$ is defined as $\chi^{2}_{fakedata, H_{0}}-\chi^{2}_{fakedata, H_{1}}$. The sensitivity to rule out the standard model if the LEE is true for fake data set 4 is 2.3 sigma.  The median sensitivity is 2.6 sigma. This result slightly prefers the LEE hypothesis, but may be driven by the first bin in reconstructed energy.
-
+\begin{comment}
 \begin{figure}[H]
 \begin{center}
 \includegraphics[width=0.75\textwidth]{Fakedata/set4/sens.pdf}
 \caption{\label{fig:fakedata:set4:sens} $\Delta \chi^{2}$ for fake data set relative to standard model and LEE hypotheses. H0 is the standard model and H1 is the unfolded LEE model.}
 \end{center}
 \end{figure}
-
 \end{comment}
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.75\textwidth]{Fakedata/set4/plotSig_constrained_set4.pdf}
+\caption{\label{fig:fakedata:set4:combinedSig} Breakdown of the sensitivity based on the \npsel, \zpsel, and combined \npsel+\zpsel channel.}
+\end{center}
+\end{figure}
+
+\begin{table}[h!]
+\centering
+\begin{center}
+\begin{tabular}{ c | m{7cm} | m{5cm} } 
+\hline \hline
+Samples & Observation & Hypothesis \\ 
+\hline \hline
+ $\pi^0$ & Higher rate of $\pi^0$ & increase in RES/pion production \\ 
+ \numu & Excess at higher energies, and in high track multiplicity
+ & Cross-section variation: increase in RES/pion   production. \\ 
+ \zpsel+\npsel & Excess at medium energy with respect to the Standard Model. Observe an excess in the lower energy bins that agree with the LEE prediction in \npsel selection. Agreement with the Standard Model prediction in \zpsel selection, with an excess observed in the 0.25-0.35 GeV bin. We rule out SM if LEE is true at 2.2 sigma. & LEE+other variation, or other variations faking a smaller excess than LEE. \\ 
+ \hline \hline
+\end{tabular}
+\end{center}
+\caption{observations and interpretation for fake-data set 4.}
+\label{tab:fakedata:summaryset4}
+\end{table}
+
+%\end{comment}
 %%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%
 \subsection{Set 5}
 
-Set 5 is different from the previous four fake data sets in that there is only fake data generated from set 1, not from both run 1 and run 3.  This does not impact the analysis of the fake data set except in that the CRT cannot be used in the muon neutrino selection. 
+Set 5 is different from the previous four fake data sets in that there is only fake data generated from run 1, not from both run 1 and run 3.  This does not impact the analysis of the fake data set except in that the CRT cannot be used in the muon neutrino selection. 
 
 The first selections studied are those rich in $\pi^{0}$s. Fig~\ref{fig:fakedata:set5:pi0} shows the reconstructed $\pi^{0}$ mass for the $\pi^{0}$ selection. Good data-MC agreement is observed, as well as good energy scale resolution in the reconstructed $\pi^{0}$ mass. 
 \begin{figure}[H]
@@ -790,7 +959,7 @@ The first selections studied are those rich in $\pi^{0}$s. Fig~\ref{fig:fakedata
 \end{center}
 \end{figure}
 
-Fig~\ref{fig:fakedata:set5:2shr} shows the 2+ shower side band for the 1eNp and 1e0p selections. There is good agreement in the 2+ shower side band in the 1eNp selection.  There is an excess in the 2+ shower sideband with the 0p selection relative to prediction.  
+Fig~\ref{fig:fakedata:set5:2shr} shows the 2+ shower side band for the 1eNp and 1e0p selections. There is good agreement in the 2+ shower side band in the 1eNp selection.  There is an excess with respect to the \nue intrinsic distribution in the 2+ shower sideband with the 0p selection relative to prediction.  
 
 \begin{figure}[H] 
 \begin{center}
@@ -850,13 +1019,13 @@ Fig~\ref{fig:fakedata:set5:numu} shows the muon neutrino selection in lepton ang
 \end{center}
 \end{figure}
 
-The exclusive electron neutrino selections were also performed on the fake data. Fig~\ref{fig:fakedata:set5:presel} shows the reconstructed energy of events passing the 1eNp and 1e0p pre-selections.  General agreement is observed in the 1eNp selection.  There is an excess in the reconstructed energy distribution in the 1e0p events at pre-selection.
+The exclusive electron neutrino selections were also performed on the fake data. Fig~\ref{fig:fakedata:set5:presel} shows the reconstructed energy of events passing the 1eNp and 1e0p pre-selections.  General agreement is observed in the 1eNp selection.  There is an excess with respect to the \nue intrinsic distribution in the reconstructed energy distribution in the 1e0p events at pre-selection.
 
 \begin{figure}[H] 
 \begin{center}
     \begin{subfigure}[b]{0.45\textwidth}
     \centering
-    \includegraphics[width=1.00\textwidth]{Fakedata/set5/np_2shr.pdf}
+    \includegraphics[width=1.00\textwidth]{Fakedata/set5/Np_presel_recoe.pdf}
     \caption{\label{fig:fakedata:set5:Np_presel_recoe} 1eNp at pre-selection}
     \end{subfigure}
     \begin{subfigure}[b]{0.45\textwidth}
@@ -886,7 +1055,7 @@ Fig~\ref{fig:fakedata:set5:npsel} shows various distributions after the 1eNp BDT
 \end{center}
 \end{figure}
 
-Fig~\ref{fig:fakedata:set5:zpsel} shows the 1e0p selection after BDT selection.  There is an excess at low reconstructed energy, as well as in BDT score and overall normalization.
+Fig~\ref{fig:fakedata:set5:zpsel} shows the 1e0p selection after BDT selection.  There is an excess with respect to the \nue intrinsic distribution at low reconstructed energy, as well as in BDT score and overall normalization.
 
 \begin{figure}[H] 
 \begin{center}
@@ -909,7 +1078,7 @@ Fig~\ref{fig:fakedata:set5:zpsel} shows the 1e0p selection after BDT selection. 
 \end{center}
 \end{figure}
 
-\begin{comment}
+%\begin{comment}
 
 The muon neutrino and exclusive electron neutrino selections are then passed to SBNfit to perform a constraint of the systmeatic uncertainties, and a fit to the sensitivity.  Full systematic uncertainties are included: flux, genie, geant re-interaction, and detector.  In all of the constraint plots the red line corresponds to the MC without any LEE hypothesis. Fig. ~\ref{fig:fakedata:set5:numu_const} shows the muon neutrino selection before and after the constraint. After the constraint is performed the muon neutrino data agrees well with the prediction.   
 Fig. ~\ref{fig:fakedata:set5:np_const} shows the 1eNp selection before and after the constraint, and Fig. ~\ref{fig:fakedata:set5:np_const} the 1e0p selection.  In both selections the constraint does not have a large impact on the electron neutrino selections due to overall agreement between data and simulation in the low energy muon neutrinos before the constraint is performed.
@@ -918,12 +1087,14 @@ Fig. ~\ref{fig:fakedata:set5:np_const} shows the 1eNp selection before and after
 \begin{center}
     \begin{subfigure}[b]{0.45\textwidth}
     \centering
-    \includegraphics[width=1.00\textwidth]{Fakedata/set5/numu_before_constrain.pdf}
+    %\includegraphics[width=1.00\textwidth]{Fakedata/set5/numu_before_constrain.pdf}
+    \includegraphics[width=1.00\textwidth]{Fakedata/set5/nue_numu_reco_e_H1_mc_fakedata_set5_numu_before_data_constraint.pdf}
     \caption{\label{fig:fakedata:set5:numu_before_constrain} Before constraint.}
     \end{subfigure}
     \begin{subfigure}[b]{0.45\textwidth}
     \centering
-    \includegraphics[width=1.00\textwidth]{Fakedata/set5/numu_after_constrain.pdf}
+    %\includegraphics[width=1.00\textwidth]{Fakedata/set5/numu_after_constrain.pdf}
+    \includegraphics[width=1.00\textwidth]{Fakedata/set5/nue_numu_reco_e_H1_mc_fakedata_set5_scaled_numu.pdf}
     \caption{\label{fig:fakedata:set5:numu_after_constrain} After constraint.}
     \end{subfigure}
 \caption{\label{fig:fakedata:set5:numu_const} Muon neutrino selection.}
@@ -934,12 +1105,14 @@ Fig. ~\ref{fig:fakedata:set5:np_const} shows the 1eNp selection before and after
 \begin{center}
     \begin{subfigure}[b]{0.45\textwidth}
     \centering
-    \includegraphics[width=1.00\textwidth]{Fakedata/set5/np_before_constrain.pdf}
+    %\includegraphics[width=1.00\textwidth]{Fakedata/set5/np_before_constrain.pdf}
+    \includegraphics[width=1.00\textwidth]{Fakedata/set5/nue_numu_reco_e_H1_mc_fakedata_set5_nue_before_data_constraint.pdf}
     \caption{\label{fig:fakedata:set5:np_before_constrain} Before constraint.}
     \end{subfigure}
     \begin{subfigure}[b]{0.45\textwidth}
     \centering
-    \includegraphics[width=1.00\textwidth]{Fakedata/set5/np_after_constrain.pdf}
+    %\includegraphics[width=1.00\textwidth]{Fakedata/set5/np_after_constrain.pdf}
+    \includegraphics[width=1.00\textwidth]{Fakedata/set5/nue_numu_reco_e_H1_mc_fakedata_set5_univ_overlay_nue.pdf}
     \caption{\label{fig:fakedata:set5:np_after_constrain} After constraint.}
     \end{subfigure}
 \caption{\label{fig:fakedata:set5:np_const} 1eNp selection.}
@@ -950,12 +1123,14 @@ Fig. ~\ref{fig:fakedata:set5:np_const} shows the 1eNp selection before and after
 \begin{center}
     \begin{subfigure}[b]{0.45\textwidth}
     \centering
-    \includegraphics[width=1.00\textwidth]{Fakedata/set5/zp_before_constrain.pdf}
+    %\includegraphics[width=1.00\textwidth]{Fakedata/set5/zp_before_constrain.pdf}
+    \includegraphics[width=1.00\textwidth]{Fakedata/set5/1e0p_numu_reco_e_H1_mc_fakedata_set5_nue_before_data_constraint.pdf}
     \caption{\label{fig:fakedata:set5:zp_before_constrain} Before constraint.}
     \end{subfigure}
     \begin{subfigure}[b]{0.45\textwidth}
     \centering
-    \includegraphics[width=1.00\textwidth]{Fakedata/set5/zp_after_constrain.pdf}
+    %\includegraphics[width=1.00\textwidth]{Fakedata/set5/zp_after_constrain.pdf}
+    \includegraphics[width=1.00\textwidth]{Fakedata/set5/1e0p_numu_reco_e_H1_mc_fakedata_set5_univ_overlay_nue.pdf}
     \caption{\label{fig:fakedata:set5:zp_after_constrain} After constraint.}
     \end{subfigure}
 \caption{\label{fig:fakedata:set5:zp_const} 1e0p selection.}
@@ -964,14 +1139,43 @@ Fig. ~\ref{fig:fakedata:set5:np_const} shows the 1eNp selection before and after
 
 The sensitivity can then be calculated using the joint fit procedure within SBNFit. The $\Delta \chi^{2}$ for the LEE and standard model hypotheses are shown in Fig.~\ref{fig:fakedata:set5:sens}.  $\Delta \chi^{2}$ is defined as $\chi^{2}_{fakedata, H_{0}}-\chi^{2}_{fakedata, H_{1}}$. The sensitivity to rule out the standard model if the LEE is true for fake data set 5 is 2.3 sigma.  The median sensitivity is 2.6 sigma. This result slightly prefers the LEE hypothesis, but may be driven by the first bin in reconstructed energy.
 
+\begin{comment}
 \begin{figure}[H]
 \begin{center}
 \includegraphics[width=0.75\textwidth]{Fakedata/set5/sens.pdf}
 \caption{\label{fig:fakedata:set5:sens} $\Delta \chi^{2}$ for fake data set relative to standard model and LEE hypotheses. H0 is the standard model and H1 is the unfolded LEE model.}
 \end{center}
 \end{figure}
-
 \end{comment}
+
+The sensitivity can then be calculated using the joint fit procedure within SBNFit. The $\Delta \chi^{2}$ for the LEE and standard model hypotheses are shown in Fig.~\ref{fig:fakedata:set3:sens}.  $\Delta \chi^{2}$ is defined as $\chi^{2}_{fakedata, H_{0}}-\chi^{2}_{fakedata, H_{1}}$. The sensitivity to rule out the standard model if the LEE is true for fake data set 3 is 2.3 $\sigma$, albeit some tension with respect to the LEE.  The median sensitivity is 2.6 $\sigma$.
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.75\textwidth]{Fakedata/set5/plotSig_constrained_set5.pdf}
+\caption{\label{fig:fakedata:set3:combinedSig} Breakdown of the sensitivity based on the \npsel, \zpsel, and combined \npsel+\zpsel channel.}
+\end{center}
+\end{figure}
+
+\begin{table}[h!]
+\centering
+\begin{center}
+\begin{tabular}{ c | m{7cm} | m{5cm} } 
+\hline \hline
+Samples & Observation & Hypothesis \\ 
+\hline \hline
+ $\pi^0$ & Agreement within uncertainties, except for excess in 1e0p 2+ shower selection. & increase in RES/pion production \\ 
+ \numu & Excess in energy, and in high track multiplicity
+ & \\ 
+ \zpsel+\npsel & Agreement, or even deficit, relative to intrinsic nues only in 1eNp; enhanced by constraint. Excess at low energy in 1e0p, mitigated by constraint Rule out SM if LEE is true at 1.7 sigma. &  \\ 
+ \hline \hline
+\end{tabular}
+\end{center}
+\caption{observations and interpretation for fake-data set 3.}
+\label{tab:fakedata:summaryset3}
+\end{table}
+
+%\end{comment}
 %%%%%%%%%%%%%%%%%%%%
 
 \subsection{Fake Data Conclusions}
@@ -996,5 +1200,5 @@ The five fake data sets have been fully analyzed as the real data will be. The c
 \label{tab:fakedata:summary}
 \end{table}
 
-Additional studies on the fake data can be found in Appendix AA. 
+Additional studies on the fake data can be found in Section~\ref{sec:fakedataappendix}. 
 

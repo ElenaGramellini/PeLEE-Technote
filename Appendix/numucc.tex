@@ -4,9 +4,9 @@
 
 \par Figures \ref{fig::Appendix::constraint:inputvars:reconuvtx}-\ref{fig::Appendix::constraint:inputvars:others} are all the variable distributions used as input for the preselection filter of this selection. Only the common SliceID cut has been applied at this point (see section \ref{sec:sliceID}). The variables used in the preselection refer to the entire event, not individual tracks. See table \ref{tab:1muNp:preseInclusivel} for the values of the cuts used in this selection and surrounding text for discussion.
 
-\par Figures \ref{fig::Appendix::constraint:inputvars:startpoints}-\ref{fig::Appendix::constraint:inputvars:others} show the Data-MC comparisons of the variables used to tag the muon candidates. Instead of showing information associated with every track in these events that pass preselection, just the longest tracks of each event are represented in the histogram. The distributions are shown with the preselection filter for this section applied, just no track-level cuts. See table \ref{tab:findthemuon} for the values of the cuts used in this selection and see the surrounding text for discussion.
+\par Figures \ref{fig::Appendix::constraint:inputvars:startpoints}-\ref{fig::Appendix::constraint:inputvars:others} show the Data-MC comparisons of the variables used to tag the muon candidates. Instead of showing information associated with every track in these events that pass preselection, just the longest tracks of each event are represented in the histogram. The distributions are shown with the preselection filter for this section applied, just no track-level cuts. See table~\ref{tab:findthemuon} for the values of the cuts used in this selection and see the surrounding text for discussion.
 
-\par Figure \ref{fig:NuMuCCsel:crtimpact} demonstrates the impact of the CRT cuts on the full $\nu_{\mu}$ CC INC selection. The cos($\theta$) of the muon candidate and the final reconstructed $\nu$ energy are shown, with the full selection applied. 
+\par Figure \ref{fig:NuMuCCsel:crtimpact} demonstrates the impact of the CRT cuts on the full $\nu_{\mu}$ CC INC selection. The angle of the muon candidate about the beam axis and the final reconstructed $\nu$ energy are shown, with the full selection applied. 
 
 \par Although varying degrees of filtering have been done to the distributions below, they all show similar error bars. The data error bars, represented by the vertical lines of the black data points, are simply the statistical errors of the data. The gray vertical bands about the MC histograms represent the quadrature sum of the statistical errors and simulation-based errors. Simulation-based errors refer to the systematic errors about the flux simulation, the Genie simulation, and the Geant4 simulation. The detector systematic errors are not included in the plots of this appendix, although they are included in the plots of section \ref{sec:NuMUCCsel} that show the final selection kinematics of the selection. The detector systematics could be tediously included in all the plots of this appendix but they would be excessive as the data-MC agreement is already quite good. 
 
@@ -166,7 +166,7 @@
 \subsection{CRT Impact}
 \label{ssec:Appendix:numu:CRTimpact}
 %----------CRT IMPACT-----------%
-\begin{figure}[hbt!] 
+\begin{figure}[H] 
 \begin{center}
     \begin{subfigure}[b]{0.35\textwidth}
         \centering
@@ -182,7 +182,7 @@
     \end{subfigure}
     \begin{subfigure}[b]{0.35\textwidth}
         \centering
-        \includegraphics[width=1.00\textwidth]{NuMuCCsel/Images/Ryan/Run3_nocrt/reco_nu_e_range_v_08052020_fullsel_samples_event_category_noCRT.pdf}
+        \includegraphics[width=1.00\textwidth]{NuMuCCsel/Images/Ryan/Run3_nocrt/reco_nu_e_range_v_08052020_full_samples_longest_noCRT_event_category.pdf}
         \caption{No CRT cuts.}
         \label{fig:NuMUCCsel:ryan:run3_Enu_noCRT}
     \end{subfigure}
@@ -200,7 +200,7 @@
 \subsection{Time Dependence}
 \label{ssec:Appendix:numu:timedep}
 %--------------------------- TIME DEPENDENCE STUDIES ----------------------
-\begin{figure}[hbt!] 
+\begin{figure}[H] 
 \begin{center}
     \begin{subfigure}[b]{0.35\textwidth}
         \centering
@@ -223,7 +223,7 @@
 \end{center}
 \end{figure}
 
-\begin{figure}[hbt!] 
+\begin{figure}[H] 
 \begin{center}
     \begin{subfigure}[b]{0.35\textwidth}
         \centering
@@ -329,12 +329,27 @@
         \centering
         \includegraphics[width=1.00\textwidth]{NuMuCCsel/Images/Ryan/Run3_nocrt/reco_nu_vtx_sce_x_08062020_samples_longest_noCRT_event_category.pdf}
     \end{subfigure} %\newline
-    \begin{subfigure}[b]{0.35\textwidth}
-        \centering
-        \includegraphics[width=1.00\textwidth]{NuMuCCsel/Images/Ryan/combined/}
-    \end{subfigure}
 \caption{Time dependence of X coordinate of reconstructed vertex position. Only SliceID applied.}
 \label{fig:NuMuCCsel:timedep:vtxX}
+\end{center}
+\end{figure}
+
+\begin{figure}[hbt!] 
+\begin{center}
+    \begin{subfigure}[b]{0.35\textwidth}
+        \centering
+        \includegraphics[width=1.00\textwidth]{NuMuCCsel/Images/Ryan/Run1/reco_nu_vtx_sce_x_08072020_fullsel_samples_longest_noCRT_event_category.pdf}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.35\textwidth}
+        \centering
+        \includegraphics[width=1.00\textwidth]{NuMuCCsel/Images/Ryan/Run2/reco_nu_vtx_sce_x_08072020_fullsel_samples_longest_noCRT_event_category.pdf}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.35\textwidth}
+        \centering
+        \includegraphics[width=1.00\textwidth]{NuMuCCsel/Images/Ryan/Run3_nocrt/reco_nu_vtx_sce_x_08072020_fullsel_samples_longest_noCRT_event_category.pdf}
+    \end{subfigure} %\newline
+\caption{Time dependence of X coordinate of reconstructed vertex position. Full selection applied.}
+\label{fig:NuMuCCsel:timedep:vtxX_fullsel}
 \end{center}
 \end{figure}
 
@@ -352,12 +367,27 @@
         \centering
         \includegraphics[width=1.00\textwidth]{NuMuCCsel/Images/Ryan/Run3_nocrt/topological_score_08062020_samples_longest_noCRT_event_category.pdf}
     \end{subfigure} %\newline
-    \begin{subfigure}[b]{0.35\textwidth}
-        \centering
-        \includegraphics[width=1.00\textwidth]{NuMuCCsel/Images/Ryan/combined/}
-    \end{subfigure}
 \caption{Time dependence of topological score. Only SliceID applied.}
 \label{fig:NuMuCCsel:timedep:topo}
+\end{center}
+\end{figure}
+
+\begin{figure}[hbt!] 
+\begin{center}
+    \begin{subfigure}[b]{0.35\textwidth}
+        \centering
+        \includegraphics[width=1.00\textwidth]{NuMuCCsel/Images/Ryan/Run1/topological_score_08072020_fullsel_samples_longest_noCRT_event_category.pdf}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.35\textwidth}
+        \centering
+        \includegraphics[width=1.00\textwidth]{NuMuCCsel/Images/Ryan/Run2/topological_score_08072020_fullsel_samples_longest_noCRT_event_category.pdf}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.35\textwidth}
+        \centering
+        \includegraphics[width=1.00\textwidth]{NuMuCCsel/Images/Ryan/Run3_nocrt/topological_score_08072020_fullsel_samples_longest_noCRT_event_category.pdf}
+    \end{subfigure} %\newline
+\caption{Time dependence of topological score. Full selection applied.}
+\label{fig:NuMuCCsel:timedep:topo_fullsel}
 \end{center}
 \end{figure}
 

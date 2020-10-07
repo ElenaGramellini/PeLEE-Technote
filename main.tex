@@ -84,7 +84,7 @@
 \begin{document}
 \maketitle
 
-\abstract{The analysis presented in this note uses data from the MicroBooNE Experiment to measure  $\nu_e$ interactions from the Booster Neutrino Beamline (BNB) using the Pandora reconstruction framework. Our goal is to address the nature of the anomalous excess of low-energy events (LEE) with electromagnetic activity in the final state as recorded by the MiniBooNE experiment. In this document, we outline the analysis strategy, focusing on the reconstruction and event selections performed, the evaluation of systematic uncertainties associated with detector, flux, and neutrino-interaction modeling, and the expected sensitivity to the MiniBooNE-$\nu_e$ LEE model using the available BNB data set of 10.1$\times 10^{20}$ POT. }
+\abstract{The analysis presented in this note uses data from the MicroBooNE Experiment to measure  $\nu_e$ interactions from the Booster Neutrino Beamline (BNB) using the Pandora reconstruction framework. Our goal is to investigate the nature of the anomalous excess of low-energy events (LEE) with electromagnetic activity in the final state as recorded by the MiniBooNE experiment. In this document, we outline the analysis strategy, focusing on the reconstruction and event selections performed, the evaluation of systematic uncertainties associated with detector, flux, and neutrino-interaction modeling, and the expected sensitivity to the MiniBooNE-$\nu_e$ LEE model using the available BNB data set of 6.86$\times 10^{20}$ POT. }
 
 \tableofcontents
 
@@ -107,7 +107,7 @@
 \input{NuEvtReco-Ch4/NuEvtReco}
 \newpage
 
-\section{Side-band studies}
+\section{$\pi^0$ / \numu Sideband Studies}
 \label{sec:controls}
 
 \par The selections of this analysis rely on well understood detector, simulation, calibration, and analysis tools performance. This section is dedicated to evaluating the performance of detector modeling through data-mc comparisons of targeted samples. Detailed results from the $\nu_e$ low-PID and high-energy sidebands are described in section~\ref{sec:sidebands}. This chapter focuses on modeling of detector variables through the study of EM showers from $\pi^0$ decay and protons from $\nu_{\mu}$ CC interactions, as well as the modeling of $\pi^0$ production in MicroBooNE data.
@@ -142,7 +142,9 @@
 \include{Sidebands/sidebands}
 %\end{comment}
 
+\begin{comment}
 \include{Fakedata/fakedata}
+\end{comment}
 
 \newpage
 
@@ -170,6 +172,42 @@
     \end{center}
 \end{figure}
 
+The \numu selection's time-dependence is particularly important given that selected \numu events from Run 3 are being used to constrain \nue events from all three runs. While validations of time-stability for the \numu selection are available in chapter~\ref{sec:NuMUCCsel} and in appendix~\ref{sec:Appendix:numu:constr} and DocDB 31176. Figure~\ref{fig:stability:numu} shows selected \numu events Run123 vs. Run3 and indicate consistent results between the different datasets. This observation gives confidence in the ability to use Run3 \numu events to constrain our full Run123 \nue dataset.
+
+\begin{figure}[H]
+    \begin{center}
+    \includegraphics[width=0.35\textwidth]{stability/run123_vs_run3_numus.png}
+    \caption{Stat-only comparison of Run123 vs. Run3 \numu selected events.}
+    \label{fig:stability:numu}
+    \end{center}
+\end{figure}
+
+Figure~\ref{fig:stability:pi0mass} shows the reconstructed $\pi^0$ mass for Runs 1, 2, and 3 separately. More studies of time stability for different selections are shown as part of the far-sideband chapter and appendices. All selections in the analysis show stable time-dependence. 
+
+\begin{figure}[H] 
+\begin{center}
+    \begin{subfigure}[b]{0.3\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{stability/pi0_mass_Y_corrpi0_mass_Y_corr_run1.pdf}
+    \caption{\label{fig:stability:pi0mass:R1} Run1 $\pi^0$ mass}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.3\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{stability/pi0_mass_Y_corrpi0_mass_Y_corr_run2.pdf}
+    \caption{\label{fig:stability:pi0mass:R2} Run2 $\pi^0$ mass}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.3\textwidth}
+    \centering
+    \includegraphics[width=1.00\textwidth]{stability/pi0_mass_Y_corrpi0_mass_Y_corr_run3.pdf}
+    \caption{\label{fig:stability:pi0mass:R3} Run3 $\pi^0$ mass}
+    \end{subfigure}
+\caption{\label{fig:stability:pi0mass}Stability of $\pi^0$ mass in data/MC comparisons for Runs 1, 2, and 3. Statistical errors are shown in each. The data to MC normalization applied for all three plots is based on the flat $\pi^0$ scaling of 0.76 derived from the combined data for Runs 1, 2, and 3.}
+\end{center}
+\end{figure}
+
+\begin{comment}
+
+
 \par Figure~\ref{fig:stability:pi0} shows the pass-rate for on and off-beam datasets for different run-periods. $C1$ and $C2$ refer to Run1, $D2$, $E1$, and $E2$ to Run2, and $F$ through $G2$ to Run3. For the periods $C1$, $D2$, $E1$, $F$, and $G1$ the on-off beam pass-rate per POT is found to be $8.62\pm0.52$, $9.10\pm0.68$, $9.46\pm0.93$, $8.47\pm0.89$, and $8.54\pm0.44$ respectively, all consistent within 1$\sigma$ of the average pass rate of $8.82$ $\pi^0$ candidates per $10^{18}$ POT.
 
 \begin{figure}[H]
@@ -180,8 +218,7 @@
     \end{center}
 \end{figure}
 
-\par The studies of figure~\ref{fig:stability:neutrinoID} and~\ref{fig:stability:pi0} show that the tools and selections developed are stable over the dataset intended to be used by this analysis. We next move to exploring the stability of the analysis on MC. This is important and relevant because MicroBooNE's MC is produced by overlaying real off-beam data events from each corresponding run on simulated events. Furthermore, the detector response of the simulated neutrinos themselves is computed based on time-dependent calibrations. Figure~\ref{fig:stability:pi0eff} shows the efficiency for selecting $\pi^0$ candidates in NC and CC overlay events for Runs 1 and 3. The performance overall is stable. When the same study is repeated for $\nu_e$ events, however, a lower efficiency for Run1 vs. Runs 2 and 3 can be seen for the \npsel, particularly at low energy. Figure~\ref{fig:stability:nueeff} shows this effect. We hypothesize that this effect is caused by a change in detector state after Run1, tied to the implementation of hardware noise reduction in the TPC. This would impact the MC because the noise in each MC event originates from the raw data obtained from the overlay portion of the event. To test this hypothesis, the purity of each neutrino slice (measured as the fraction of MC-backtracked hits over the total number of hits in a slice) is plotted for $\nu_e$ events in Runs 1,2, and 3 and shown in figure~\ref{fig:stability:slpurity}. A clear separation between Run 1 vs. Runs 2,3 is found. This effect leads to a measurably lower efficiency of the $\nu_e$ selection in Run1 data. Because this effect is present in MC thanks to the overlay approach, while indicating time-dependence in the performance of the analysis, it can be accounted and controlled for. In order to treat this time dependence rigorously we expect final results to weigh the MC of each run proportionally to the POT collected by that run. This is not finalized in the current version of this analysis, but should lead to minor shifts in results, as we are already mixing in equal amounts data from overlay runs 1, 2, and 3.
-\par Overall, the studies of these sections allow us to conclude that the analysis is stable and robust to time-dependent changes across runs 1,2, and 3, and that time-dependent effects observed are reflected in the MC and therefeore can be properly accounted for in the analysis. Final checks on the time-stability of the analysis will be carried out once larger datasets are available as part of the unblinding procedure outlined by the group in DocDB 28527. 
+\par The studies of figure~\ref{fig:stability:neutrinoID} and~\ref{fig:stability:pi0} show that the tools and selections developed are stable over the dataset intended to be used by this analysis. We next move to exploring the stability of the analysis on MC. This is important and relevant because MicroBooNE's MC is produced by overlaying real off-beam data events from each corresponding run on simulated events. Furthermore, the detector response of the simulated neutrinos themselves is computed based on time-dependent calibrations. Figure~\ref{fig:stability:pi0eff} shows the efficiency for selecting $\pi^0$ candidates in NC and CC overlay events for Runs 1 and 3. The performance overall is stable. 
 
 \begin{figure}[H] 
 \begin{center}
@@ -208,6 +245,11 @@
 \caption{\label{fig:stability:pi0eff}Stability of $\pi^0$ selection efficiency in Run1 vs. Run3. The $y$-axis label, cut out in the plots, is the measurement of the selection efficiency.}
 \end{center}
 \end{figure}
+\end{comment}
+
+When studying our selection efficiency for $\nu_e$ events, a lower efficiency for Run1 vs. Runs 2 and 3 can be seen for the \npsel, particularly at low energy. Figure~\ref{fig:stability:nueeff} shows this effect. We originally hypothesized that this effect is caused by a change in detector state after Run1, tied to the implementation of hardware noise reduction in the TPC. This would impact the MC because the noise in each MC event originates from the raw data obtained from the overlay portion of the event. The time-dependence of how noise impacts the neutrino selection can be identified plotting the purity of each neutrino slice (measured as the fraction of MC-backtracked hits over the total number of hits in a slice) is plotted for $\nu_e$ events in Runs 1,2, and 3 and shown in figure~\ref{fig:stability:slpurity}. A clear separation between Run 1 vs. Runs 2,3 is found. This effect leads to a measurably lower efficiency of the $\nu_e$ selection in Run1 data.
+A closer look at run-dependence led us to identify the origin of this time-dependent feature linked to the abundance of PMT noise in the detector. Figure~\ref{fig:pmtnoise} shows the fraction of events with a non-zero amount of PMT-induced noise decreasing over time. Because this effect is present in MC thanks to the overlay approach, while indicating time-dependence in the performance of the analysis, it can be accounted and controlled for. 
+\par Overall, the studies of these sections allow us to conclude that the analysis is stable and robust to time-dependent changes across runs 1,2, and 3, and that time-dependent effects observed are reflected in the MC and therefore can be properly accounted for in the analysis provided we appropriately use MC from all three run periods. Significant more studies of time-dependence are included in DocDB 30709, focusing in particular on th impact of Run3 time-dependence for the \nue HE sideband.
 
 \begin{figure}[H] 
 \begin{center}
@@ -225,28 +267,16 @@
 \end{center}
 \end{figure}
 
-
-
-\begin{figure}[H] 
-\begin{center}
-    \begin{subfigure}[b]{0.3\textwidth}
+\begin{figure}[H]
     \centering
-    \includegraphics[width=1.00\textwidth]{stability/pi0_mass_Y_corrpi0_mass_Y_corr_run1.pdf}
-    \caption{\label{fig:stability:pi0mass:R1} Run1 $\pi^0$ mass}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.3\textwidth}
-    \centering
-    \includegraphics[width=1.00\textwidth]{stability/pi0_mass_Y_corrpi0_mass_Y_corr_run2.pdf}
-    \caption{\label{fig:stability:pi0mass:R2} Run2 $\pi^0$ mass}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.3\textwidth}
-    \centering
-    \includegraphics[width=1.00\textwidth]{stability/pi0_mass_Y_corrpi0_mass_Y_corr_run3.pdf}
-    \caption{\label{fig:stability:pi0mass:R3} Run3 $\pi^0$ mass}
-    \end{subfigure}
-\caption{\label{fig:stability:pi0eff}Stability of $\pi^0$ mass in data/MC comparisons for Runs 1, 2, and 3. Statistical errors are shown in each. The data to MC normalization applied for all three plots is based on the flat $\pi^0$ scaling of 0.76 derived from the combined data for Runs 1, 2, and 3.}
-\end{center}
+    \includegraphics[width=0.60\textwidth]{stability/pmtnoise1.png}
+    \caption{Fraction of events with non-zero PMT noise vs. run number.}
+    \label{fig:pmtnoise}
 \end{figure}
+
+
+
+
 
 
 \newpage
@@ -636,6 +666,7 @@ The reconstructed energy distribution after this selection is shown in Fig.~\ref
 
 %\emph{Note that this plot uses the new Genie model, but the cuts have not yet been optimized for the new MC -- an improvement currently in the works.  This selection predicts 9.8 true \zpsel events in the full data set and is 27\% pure in Run 3 for electron neutrinos and the LEE.  This selection will be tuned and the work expanded to include Run 1.}
 
+\begin{comment}
 \section{Supplemental Systematics Studies and Results}
 \label{app:detsys}
 
@@ -1049,6 +1080,7 @@ Energy [GeV] & Flux Only & Genie Only  & Flux + Genie & Flux + Genie + Det. Syst
 \end{figure}
 
 \newpage
+\end{comment}
 
 \section{Supplemental Sensitivity Studies}
 \label{app:sensitivity}
@@ -1284,7 +1316,9 @@ It is worth noting that closure tests represent a form of fake-data studies and 
 
 \newpage
 
+\begin{comment}
 \include{Fakedata/fakedataappendix}
+\end{comment}
 
 \newpage
 
@@ -1418,10 +1452,11 @@ Ji, Xiangpan and Gu, Wenqiang and Qian, Xin and Wei, Hanyu and Zhang, Chao, \emp
 \bibitem{bib:NuMIFlux}
 Krishan Mistry, Katrina Miller \emph{NuMI Flux at MicroBooNE}, \href{https://microboone-docdb.fnal.gov/cgi-bin/private/ShowDocument?docid=27085}{DocDB 27085}
 
-
 \bibitem{bib:NuMINorm}
  Elena Gramellini,\emph{PeLEE at NuMI} \href{https://microboone-docdb.fnal.gov/cgi-bin/private/ShowDocument?docid=31757}{DocDB 31757}
 
+\bibitem{bib:NuMIPi0}
+ Aditya Bhanderi ,\emph{Pi0 Data/MC comparison for NuMI Beam} \href{https://microboone-docdb.fnal.gov/cgi-bin/private/RetrieveFile?docid=31730&filename=23July2020.pdf&version=1}{DocDB 31730}.
 
 \end{thebibliography}
 

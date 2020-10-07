@@ -35,7 +35,7 @@ The validation of EM shower reconstruction is performed primarily with a sample 
 
 Figure~\ref{fig:pi0massscaled} shows the reconstructed $\pi^0$ mass applying the same shower energy calibration used for the $\nu_e$ analysis. The excellent agreement between data and MC as well as the overall agreement with the expected $\pi^0$ mass provide a strong validation for the calibration of EM showers in this analysis.
 
-Figure~\ref{fig:pi0:dedxbest} shows comparisons of the collection-plane \dedx for all leading $\gamma$ showers from the $\pi^0$ selection. The image on the right focuses on showers aligned with the beam ($p_z$ $>$ 0.75). The level of agreement is generally good, with a slight offset in the \dedx peak at 4 MeV/cm  between data and MC. This offset is discussed in more detail in Ch~\ref{sec:systematics} when detector systematics are introduced. 
+Figure~\ref{fig:pi0:dedxbest} shows comparisons of the collection-plane \dedx for all leading $\gamma$ showers from the $\pi^0$ selection. The image on the right focuses on showers aligned with the beam ($p_z/p$ $>$ 0.75). The level of agreement is generally good, with a slight offset in the \dedx peak at 4 MeV/cm  between data and MC. This offset is discussed in more detail in Ch~\ref{sec:systematics} when detector systematics are introduced. 
 
 %\end{comment}
 
@@ -70,7 +70,7 @@ Figure~\ref{fig:pi0:dedxbest} shows comparisons of the collection-plane \dedx fo
 \label{sec:pi0tune}
 \par Measurements of MicroBooNE data rich in $\pi^0$ events have shown significant tension with MC expectations. The observations made from these datasets show an indication of an energy-dependent mis-modeling, with better data/mc agreement at lower $\pi^0$ (or total neutrino) energy and a stronger deficit in data at higher values. Based on these observations, a $\pi^0$-tune was developed with the aim of:
 \begin{enumerate}
-    \item Performing a data-driven constraint of $\pi^0$ events in MicroBooNE data as a function of $\pi^0$ energy and motivated by the energy-dependent data/mc discrepancies observed.
+    \item Performing a data-driven constraint of $\pi^0$ events in MicroBooNE data as a function of $\pi^0$ total energy~\footnote{throught this section when we refer to $\pi^0$ energy we imply the total energy, including the particle's rest mass.} and motivated by the energy-dependent data/mc discrepancies observed.
     \item Validate that the tune we obtain shows good data/MC agreement in $\pi^0$ rich sidebands across all variables, and in particular for selections that are very close to the $\nu_e$ signal region.
     \item Study the impact of the obtained tune on the predicted $\pi^0$ backgrounds to the eLEE analysis.
 \end{enumerate}
@@ -103,11 +103,11 @@ The fit in a distribution of reconstructed energy is motivated by the good energ
     \includegraphics[width=1.00\textwidth]{pi0/pi0tune/pi0energy_040_scaling.png}
     \caption{\label{fig:pi0fitspectrum}energy spectrum post fit.}
     \end{subfigure}
-%\caption{\label{fig:pi0fit}Various sidebands rich in $\pi^0$ events with default CV weights (left) and after applying the $\pi^0$ energy-dependent weight obtained from the 2+ shower sideband fit to data (middle spectrum). The consistently improved data/MC agreement across our siebands gives confidence in the robustness of this tune and its ability to correctly model $\pi^0$ backgrounds for the eLEE analysis.}
+\caption{Summary of $\pi^0$ fit results. Figure~\ref{fig:pi0eres} shows the performance in measuring the $\pi^0$ energy, which shows no bias and good resolution and justifies the choice of this variable in the fit. Figure~\ref{fig:pi0fitresult} shows the fit result as a function of the weight scaling applied. Finally, figure~\ref{fig:pi0fitresult} shows the level of data/MC agreement post-fit.}
 \end{center}
 \end{figure}
 
-The validity of the tune is checked by performing the same fit procedure over multiple variables in the same sideband. These cross-check are found to give a consistent best fit at $w = 0.4$. Additionally, we test the tune by comparing data/MC agreement before and after the tune is implemented on three different sidebands: the $\pi^0$ sideband (figures~\cref{fig:pi0tune00,fig:pi0tune01}), 2+ shower sideband (figures~\cref{fig:pi0tune02,fig:pi0tune03}), and one-shower sideband (figures~\cref{fig:pi0tune04,fig:pi0tune05}). All show an improvement in data/mc agreement when comparing pre-tune (left) and post-tune (right) distributions. The absolute data/mc agreement after the tune is within systematics for all three sidebands.
+The validity of the tune is checked by performing the same fit procedure over multiple variables in the same sideband. These cross-check are found to give a consistent best fit at $w = 0.4$. Additionally, we test the tune by comparing data/MC agreement before and after the tune is implemented on three different sidebands: the $\pi^0$ sideband (figures~\cref{fig:pi0tune00,fig:pi0tune01}), 2+ shower sideband (figures~\cref{fig:pi0tune02,fig:pi0tune03}), and one-shower sideband (figures~\cref{fig:pi0tune04,fig:pi0tune05}). All show an improvement in data/mc agreement when comparing pre-tune (left) and post-tune (right) distributions. The absolute data/mc agreement after the tune is within systematics for all three sidebands. These studies are summarized in \href{https://microboone-docdb.fnal.gov/cgi-bin/private/ShowDocument?docid=31910}{DocDB 31910}.
 
 %\end{comment}
 
@@ -167,7 +167,7 @@ The interested reader can find a complete list of plots of data/simulation compa
 A purely geometrical selection (i.e. without using any calorimetric information) of neutrino-induced stopping muons has been performed, achieving a purity of neutrino-induced muons of about 57\%, that becomes 73\% when we subtract the Beam OFF data.
 This allows testing the effect of the re-calibration, by looking at the MIP-like region of stopping muons, considering only hits at residual range $>$ 30 cm.
 This region should show similar data/simulation discrepancies to what was observed with the ACPTs.
-Figure \ref{fig:stopping_muons_large_rr_high_pitch} shows the data/simulation comparisons of the \dqdx distribution before (left) and after (right) re-calibration, in a bin of high pitch and $\phi$, where re-calibration corrections are larger.
+Figure \ref{fig:stopping_muons_large_rr_high_pitch} shows the data/simulation comparisons of the \dqdx distribution before (left) and after (right) re-calibration, in a bin of high pitch and $\phi$ (defined in eq.~\ref{eq:phi}), where re-calibration corrections are larger.
 We notice considerable improvement of the accuracy of the simulation, although it does not fully recover data/MC differences.
 %It is noteworthy that the corrections needed in the two angular bins are significantly different, even visually.
 %This reinforces again the importance of correcting the simulation as a function of the angular variables.

@@ -77,13 +77,13 @@ The scaling factors for the Run 1, 2, and 3 combined EXT data set to match the f
 \end{itemize}
 The material presented in this tech-note was processed from tags \texttt{v08\_00\_00\_43} (MC / open-data) and \texttt{v08\_00\_00\_44} (detector systematics) of the \texttt{geniev30} branch of \texttt{searchingfornues} repository. $\nu_{\mu}$ NTuples and $\nu_e$ far-sideband NTuples were processed directly by the production team with tags \texttt{v08\_00\_00\_41} and \texttt{v08\_00\_00\_42} of \texttt{uboonecode} respectively.
 \par \textbf{Plotting} Plotting code used to load input NTuples, perform event selections, calculate systematic uncertainties, and correctly POT scale distributions for MC and data/MC comparisons is available in the \texttt{PELEE} repository: \url{https://github.com/ubneutrinos/PELEE}.
-\par \textbf{Sensitivity calculations} The SBNFit framework is used to extract full covariance matrices for analysis selections, assess analysis systematics, excercise the $\nu_{\mu}$ constraint and assess the analysis' sensitivity. \textcolor{red}{provide code reference}.
+\par \textbf{Sensitivity calculations} The SBNFit framework is used to extract full covariance matrices for analysis selections, assess analysis systematics, excercise the $\nu_{\mu}$ constraint and assess the analysis' sensitivity \cite{bib:sbnfitgit}.
 
 \subsection{How to read plots in this note} A large fraction of plots in this note are data-simulation comparisons. This paragraph describes common features of these plots. An example data-MC comparison from the analysis' two-shower sideband is shown in figure~\ref{fig:exampleplot} to help orient the reader as different features are described. All plots, unless otherwise labeled, are POT normalized, following the procedure outlined in DocDB 15204~\cite{bib:POTscaling} with the POT labeled on the top-right corner. Data-simulation comparisons are accompanied by a legend which denotes the various event categories shown. Categories are described below:
 \begin{itemize}
     \item \textbf{BNB}: On-beam contributions (data).
     \item \textbf{EXT}: Off-beam contributions (data).
-    \item \textbf{Cosmic}: Events from MC overlay where a cosmic instead of a neutrino interaction has been selected as the neutrino candidate by Pandora's \texttt{NeutrinoID}.
+    \item \textbf{Cosmic}: Events from MC overlay where a cosmic instead of a neutrino interaction has been selected as the neutrino candidate by Pandora's \texttt{NeutrinoID}. In this case at least $80\%$ of the hits in the neutrino slice come from overlay cosmics, instead of the true neutrino interaction. 
     \item \textbf{Out. fid. vol.}: Events from MC overlay where a neutrino was tagged, but the neutrino interaction vertex is outside of the defined TPC fiducial volume.
     \item \textbf{MiniBooNE LEE}: Events from the MB-$\nu_e$ LEE model.
     \item \textbf{$\nu_e$}: CC $\nu_e$ events, split by final state (\zpsel, \npsel, and X$\pi$, where N$\geq$1 and X$\geq$0).
@@ -92,13 +92,13 @@ The material presented in this tech-note was processed from tags \texttt{v08\_00
     \item \textbf{NC}: NC events (all flavors) with no final state $\pi^0$s.
 \end{itemize}{}
 
-Error bars for data-points are computed as $\sqrt{N}$ with $N$ the number of entries in a bin. Error bands, when included, are shown as a semi-transparent gray band on the MC + EXT stacked entries. The shaded error-bands always include MC statistical errors, generally include flux, cross-section, and re-interaction uncertainties, and when explicitly labeled include detector systematics as well. The same convention is used for stacked data/MC comparisons as well as ratio plots. Finally, the title of each plot contains information on the selection applied or sideband of  origin for the comparison, and the second row, when present, indicates what type of $\pi^0$ scaling has been applied (i.e. \texttt{$\pi^0$ scaling: [1-0.40 $\times E_{\pi}$}).
+Error bars for data-points are computed as $\sqrt{N}$ with $N$ the number of entries in a bin\footnote{We can also produce plots with asymmetric statistical uncertainties as discussed in Appendix~\ref{app:dataerrorbars}, but these are not used by default in the note}. Error bands, when included, are shown as a semi-transparent gray band on the MC + EXT stacked entries. The shaded error-bands always include MC statistical errors, generally include flux, cross-section, and re-interaction uncertainties, and when explicitly labeled include detector systematics as well. The same convention is used for stacked data/MC comparisons as well as ratio plots. Finally, the title of each plot contains information on the selection applied or sideband of origin for the comparison, and the second row, when present, indicates what type of $\pi^0$ scaling has been applied (i.e. \texttt{$\pi^0$ scaling: [1-0.40 $\times E_{\pi}$}).
 
 
 \begin{figure}[ht]
 \begin{center}
 \includegraphics[width=0.5\textwidth]{Sidebands/Figures/1eNp/TwoShower/TwoPShr_NP_None_pi0e040/reco_e.pdf}
-\caption{\label{fig:exampleplot}Example data/MC comparison to help illustrate the conventions and labeles used throughout this document.}
+\caption{\label{fig:exampleplot}Example data/MC comparison to help illustrate the conventions and labels used throughout this document.}
 \end{center}
 \end{figure}
 
